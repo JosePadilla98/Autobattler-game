@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level 
+namespace Auttobattler
 {
-        
+    public class Creature : MonoBehaviour
+    {
 
+
+    }
 }

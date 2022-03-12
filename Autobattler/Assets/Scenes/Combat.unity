@@ -852,8 +852,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 818854690}
-  - component: {fileID: 818854692}
   - component: {fileID: 818854691}
+  - component: {fileID: 818854692}
   m_Layer: 5
   m_Name: CombatController
   m_TagString: Untagged
@@ -1067,6 +1067,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+--- !u!1 &952133770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 952133772}
+  - component: {fileID: 952133771}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &952133771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952133770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bc97800b5c75f4c849e5f9f20d7d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portraits:
+  - {fileID: 11400000, guid: 09a701b85be52bd439119c02d5dd50c4, type: 2}
+--- !u!4 &952133772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952133770}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 661.76306, y: 812.4917, z: -1.3871956}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &974967673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,6 +1915,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 61328618}
     m_Modifications:
+    - target: {fileID: 4464961693855815604, guid: d0d61eac423ef024eaa4e11dc33aebc4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7064d5260e501ec4f94d9acf14477604, type: 3}
     - target: {fileID: 4464961693855815606, guid: d0d61eac423ef024eaa4e11dc33aebc4, type: 3}
       propertyPath: m_Name
       value: Creature

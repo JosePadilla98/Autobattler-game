@@ -50,7 +50,6 @@ namespace Auttobattler.Combat
         public float maxFatigue = 100;
     }
 
-
     public class AttackModule
     {
         public ValuePair progress;

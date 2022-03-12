@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee255b8b72384d64089604ca51ac4ad3, type: 3}
-  m_Name: Creature
+  m_Name: ghost-1
   m_EditorClassIdentifier: 
   creatureName: Dancing wisp
   sprite: {fileID: 21300000, guid: 50ac659bbc09cd144b7d84923568d130, type: 3}
   stats:
-    health: 0
-    attack: 0
-    habilityPower: 0
-    attackSpeed: 0
-    manaRegen: 0
+    health: 25
+    attack: 15
+    attackPower: 1
+    attackSpeed: 24
+    magic: 20
+    manaRegen: 1
     cooldownReduction: 0
-    encumbrance: 0
-    Reinvigoration: 0
-    maxFatigue: 100
+    attackEncumbrance: 0
+    magicEncumbrance: 0
+    reinvigoration: 1
+    vigor: 0
