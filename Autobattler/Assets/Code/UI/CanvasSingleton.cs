@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace auttobattler
+namespace Auttobattler
 {
     public class CanvasSingleton : MonoBehaviour
     {
+        #region SINGLETON
+
         private static Canvas instance;
         public static Canvas Instance
         {
@@ -18,6 +20,8 @@ namespace auttobattler
                 instance = value;
             }
         }
+
+        #endregion 
 
         private void Awake()
         {

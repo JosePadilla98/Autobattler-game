@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace auttobattler
+namespace Auttobattler
 {
-    public class BattlefieldSlot : MonoBehaviour, IDropHandler
+    [RequireComponent(typeof(CombatSlot))]
+    public class GridDropArea : MonoBehaviour, IDropHandler
     {
         public CreatureDragHandler item;
+        private CombatSlot combatSlot;
+
+        private void Awake()
+        {
+            combatSlot = GetComponent<CombatSlot>();
+        }
 
         public void OnDrop(PointerEventData eventData)
         {
@@ -15,10 +22,10 @@ namespace auttobattler
             {
                 item = CreatureDragHandler.objBeingDraged;
                 item.slot = this;
+                combatSlot.creature = item.CreatureUI.Creature;
                 item.transform.SetParent(transform);
                 item.transform.position = transform.position;
             }
         }
-
     }
 }

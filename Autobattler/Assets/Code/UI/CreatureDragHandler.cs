@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace auttobattler
+namespace Auttobattler
 {
+    [RequireComponent(typeof(CreatureCombatUI))]
     public class CreatureDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         private Canvas canvas;
@@ -16,14 +17,21 @@ namespace auttobattler
         private Transform startParent;
         private CanvasGroup canvasGroup;
 
-        private BattlefieldSlot lastSlot;
-        public BattlefieldSlot slot;
+        [HideInInspector]
+        public GridDropArea slot;
+        private GridDropArea lastSlot;
+
+        private CreatureCombatUI creatureUI;
+        public CreatureCombatUI CreatureUI { get => creatureUI; }
+        public Transform Limbo { get => Battlefield.Instance.transform; }
 
         private void Awake()
         {
             rect = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-            slot = transform.parent.GetComponent<BattlefieldSlot>();
+            creatureUI = GetComponent<CreatureCombatUI>();
+
+            slot = transform.parent.GetComponent<GridDropArea>();
             slot.item = this;
         }
 
@@ -40,7 +48,7 @@ namespace auttobattler
 
             startPosition = transform.position;
             startParent = transform.parent;
-            transform.SetParent(canvas.transform);
+            transform.SetParent(Limbo);
 
             canvasGroup.alpha = .6f;
             canvasGroup.blocksRaycasts = false;
@@ -61,7 +69,7 @@ namespace auttobattler
             canvasGroup.blocksRaycasts = true;
 
             objBeingDraged = null;
-            if (transform.parent == canvas.transform)
+            if (transform.parent == Limbo)
             {
                 transform.position = startPosition;
                 transform.SetParent(startParent);
