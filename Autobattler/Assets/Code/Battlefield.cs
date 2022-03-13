@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 using Auttobattler.Combat;
 using Auttobattler.Scriptables;
 
@@ -9,8 +10,8 @@ namespace Auttobattler
 {
     public class Battlefield : MonoBehaviour
     {
-        public Grid left;
-        public Grid right;
+        public Grid leftGrid;
+        public Grid rightGrid;
 
         public Unit unitPrefab;
 
@@ -38,33 +39,29 @@ namespace Auttobattler
 
         public void SummonEnemies(Level level)
         {
-            for (int i = 0; i < level.frontRow.Length; i++)
+            Action<BuildedUnitBlueprint[], CombatSlot[]> action = (blueprintColum, SummonLocationColumn) =>
             {
-                BuildedUnitBlueprint blueprint = level.frontRow[i];
+                for (int i = 0; i < blueprintColum.Length; i++)
+                {
+                    BuildedUnitBlueprint blueprint = blueprintColum[i];
 
-                if (blueprint == null)
-                    continue;
+                    if (blueprint == null)
+                        continue;
 
-                SummonUnit(blueprint, right.front[i], UnitType.ENEMY);
-            }
+                    SummonUnit(blueprint, SummonLocationColumn[i], Side.RIGHT);
+                }
+            };
 
-            for (int i = 0; i < level.backRow.Length; i++)
-            {
-                BuildedUnitBlueprint blueprint = level.backRow[i];
-
-                if (blueprint == null)
-                    continue;
-
-                SummonUnit(blueprint, right.back[i], UnitType.ENEMY);
-            }
+            action(level.frontColumn, rightGrid.front);
+            action(level.backColumn, rightGrid.back);
         }
 
-        public void SummonUnit(BuildedUnitBlueprint blueprint, CombatSlot slot, UnitType type)
+        public void SummonUnit(BuildedUnitBlueprint blueprint, CombatSlot slot, Side side)
         {
             Unit unit = Instantiate(unitPrefab, slot.transform);
-            unit.CreateCombatInstance(new BuildedUnit(blueprint));
+            unit.CreateCombatInstance(new BuildedUnit(blueprint, blueprint.level), side);
 
-            if (type == UnitType.ENEMY)
+            if (side == Side.RIGHT)
             {
                 unit.image.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 CombatController.Instance.rightTeam.Add(unit);
@@ -78,10 +75,7 @@ namespace Auttobattler
         }
     }
 
-    public enum UnitType
-    {
-        FRIEND, ENEMY
-    }
+    
 
     [System.Serializable]
     public class Grid
@@ -90,7 +84,7 @@ namespace Auttobattler
         public CombatSlot[] back = new CombatSlot[3];
         public Side side;
 
-        public Position GetPosition(UnitCombatModule c)
+        public Position GetPosition(UnitCombatInstance c)
         {
             Position pos = SearchInColumn(front, c, GridColumn.FRONT);
 
@@ -100,7 +94,7 @@ namespace Auttobattler
             return pos;
         }
 
-        private Position SearchInColumn(CombatSlot[] column, UnitCombatModule c, GridColumn columnName)
+        private Position SearchInColumn(CombatSlot[] column, UnitCombatInstance c, GridColumn columnName)
         {
             for (int i = 0; i < column.Length; i++)
             {

@@ -43,6 +43,8 @@ namespace Auttobattler
 		{
 			value = v;
 			v.OnValueChanged += SetValue;
+
+			SetValue(v.Value);
 		}
 
 		public void Unnatach()

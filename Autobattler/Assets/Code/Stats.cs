@@ -45,29 +45,32 @@ namespace Auttobattler
         #region MODIFIED BY LEVEL
 
         public int level;
-        public BuildStat maxHealth;
+        public BuildStat health;
         public BuildStat attack;
+        public BuildStat defense;
 
         #endregion
-
-        public BuildStat health;
+        
         public BuildStat attackPower;
         public BuildStat attackSpeed;
         public BuildStat attackDuration;
 
-        public BuildedUnit(BaseUnitBlueprint baseBlueprint)
+        public BuildedUnit(BaseUnitBlueprint baseBlueprint, int level)
         {
             this.baseBlueprint = baseBlueprint;
+            this.level = level;
 
             Stats baseStats = baseBlueprint.stats;
             this.health = new BuildStat(baseStats.health);
             this.attack = new BuildStat(baseStats.attack);
+            this.defense = new BuildStat(baseStats.defense);
+
             this.attackPower = new BuildStat(baseStats.attackPower);
             this.attackSpeed = new BuildStat(baseStats.attackSpeed);
             this.attackDuration = new BuildStat(baseStats.attackDuration);
         }
 
-        public BuildedUnit(BuildedUnitBlueprint blueprint) : this(blueprint.baseBlueprint)
+        public BuildedUnit(BuildedUnitBlueprint blueprint, int level) : this(blueprint.baseBlueprint, level)
         {
 
         }

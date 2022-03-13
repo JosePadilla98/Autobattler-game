@@ -5,27 +5,34 @@ using UnityEngine;
 
 namespace Auttobattler.Combat
 {
-    public class UnitCombatModule 
+    public class UnitCombatInstance
     {
-        public Grid hisSide;
+        public Grid side;
         public CombatValuesWrapper values;
 
         #region PROPERTIES
-
-        public Position Position { get => hisSide.GetPosition(this); }
-
+        public Position Position { get => side.GetPosition(this); }
         #endregion
 
         #region SYSTEMS
 
         public AttackSystem attackSys;
+        public DefenseSystem defenseSys;
+        public HealthSystem healthSystem;
 
         #endregion
 
-        public UnitCombatModule(BuildedUnit build)
+        public UnitCombatInstance(BuildedUnit build, Side side)
         {
-            attackSys = new AttackSystem(this);
             values = new CombatValuesWrapper(build);
+            attackSys = new AttackSystem(this);
+            defenseSys = new DefenseSystem(this);
+            healthSystem = new HealthSystem(this);
+
+            if(side == Side.RIGHT)
+                this.side = Battlefield.Instance.rightGrid;
+            else
+                this.side = Battlefield.Instance.leftGrid;
         }
 
         public void Refresh()
@@ -36,13 +43,29 @@ namespace Auttobattler.Combat
 
     public class CombatValuesWrapper
     {
+        public int level;
+
+        public CombatValue maxHealth;
+        public CombatValue health;
+
+        public CombatValue attack;
         public CombatValue attackSpeed;
         public CombatValue attackProgress;
         public CombatValue attackDuration;
         public CombatValue attackPower;
 
+        public CombatValue defense;
+
         public CombatValuesWrapper(BuildedUnit build)
         {
+            this.level = build.level;
+
+            maxHealth = new CombatValue(build.health.Get, build.level);
+            health = new CombatValue(build.health.Get, build.level);
+
+            attack = new CombatValue(build.attack.Get, build.level);
+            defense = new CombatValue(build.defense.Get, build.level);
+
             attackSpeed = new CombatValue(build.attackSpeed.Get);
             attackProgress = new CombatValue(0);
             attackDuration = new CombatValue(build.attackDuration.Get);
@@ -76,35 +99,103 @@ namespace Auttobattler.Combat
         }
     }
 
-    public class AttackSystem
+    #region SYSTEMS
+
+    public abstract class CombatSystem
     {
-        private UnitCombatModule parent;
+        protected UnitCombatInstance parent;
 
-        public float Progress { get => parent.values.attackProgress.Value; set => parent.values.attackProgress.Value = value; }
-        public float AttackSpeed { get => parent.values.attackSpeed.Value; set => parent.values.attackSpeed.Value = value; } 
-        public float MaxAmount { get => parent.values.attackDuration.Value; set => parent.values.attackDuration.Value = value; }
-
-        public AttackSystem(UnitCombatModule parent)
+        public CombatSystem(UnitCombatInstance parent)
         {
             this.parent = parent;
         }
+    }
+
+    public class AttackSystem : CombatSystem
+    {
+        public AttackSystem(UnitCombatInstance parent) : base(parent) { }
+
+        #region Properties
+        public int Level { get => parent.values.level; }
+        public float Attack { get => parent.values.attack.Value; set => parent.values.attack.Value = value; }
+        public float Progress { get => parent.values.attackProgress.Value; set => parent.values.attackProgress.Value = value; }
+        public float AttackSpeed { get => parent.values.attackSpeed.Value; set => parent.values.attackSpeed.Value = value; } 
+        public float Duration { get => parent.values.attackDuration.Value; set => parent.values.attackDuration.Value = value; }
+        public float Power { get => parent.values.attackPower.Value; }
+        #endregion 
 
         public void Refresh()
         {
             Progress += Time.fixedDeltaTime * AttackSpeed;
-            while (Progress >= MaxAmount)
+            while (Progress >= Duration)
             {
-                Progress -= MaxAmount;
+                Progress -= Duration;
 
-                Attack();
+                MakeAnAttack();
             }
         }
 
-        private void Attack()
+        private void MakeAnAttack()
         {
-            //ObjetivesProcessor.GetObjetives(ObjectiveTypes.ENEMY_CLOSEST, parent.Position, Battlefield.Instance);
+            List<UnitCombatInstance> objetives = ObjetivesProcessor.GetObjetives(ObjectiveTypes.ENEMY_CLOSEST, parent.Position, Battlefield.Instance);
+            foreach (var unit in objetives)
+            {
+                float rawValue = Attack * Level * Power * Constants.K_DAMAGE_CONSTANT;
+
+                unit.defenseSys.BeAttacked(new AttackData(rawValue, AttackType.PHYSICAL));
+            }
         }
     }
+
+    public enum AttackType
+    {
+        PHYSICAL, MAGICAL
+    }
+
+    public struct AttackData
+    {
+        public float rawDamage;
+        public AttackType type;
+
+        public AttackData(float rawDamage, AttackType type)
+        {
+            this.rawDamage = rawDamage;
+            this.type = type;
+        }
+    }
+
+    public class DefenseSystem : CombatSystem
+    {
+        public DefenseSystem(UnitCombatInstance parent) : base(parent) { }
+
+        #region Properties
+        public float Defense { get => parent.values.defense.Value; set => parent.values.attack.Value = value; }
+        #endregion 
+
+        public void BeAttacked(AttackData data)
+        {
+            float damage = data.rawDamage / Defense;
+            parent.healthSystem.ReceiveDamage(damage);
+        }
+    }
+
+    public class HealthSystem : CombatSystem
+    {
+        public HealthSystem(UnitCombatInstance parent) : base(parent) { }
+
+        #region Properties
+        public float MaxHealth { get => parent.values.maxHealth.Value; set => parent.values.maxHealth.Value = value; }
+        public float Health { get => parent.values.health.Value; set => parent.values.health.Value = value; }
+        #endregion 
+
+        public void ReceiveDamage(float damage)
+        {
+            Health -= damage;
+            //Check if die
+        }
+    }
+
+    #endregion
 
     #region OBJETIVES_PROCCESOR
     public enum ObjectiveTypes
@@ -114,9 +205,9 @@ namespace Auttobattler.Combat
 
     public static class ObjetivesProcessor
     {
-        static List<UnitCombatModule> objetives = new List<UnitCombatModule>(6);
+        static List<UnitCombatInstance> objetives = new List<UnitCombatInstance>(6);
 
-        public static List<UnitCombatModule> GetObjetives(ObjectiveTypes type, Position pos, Battlefield battleField)
+        public static List<UnitCombatInstance> GetObjetives(ObjectiveTypes type, Position ownPos, Battlefield battleField)
         {
             objetives.Clear();
 
@@ -124,16 +215,21 @@ namespace Auttobattler.Combat
             {
                 case ObjectiveTypes.ENEMY_CLOSEST:
 
-                    //CreatureInCombat creature = GetClosest(pos, );
+                    Grid gridObjetive;
+                    if (ownPos.side == Side.LEFT)
+                        gridObjetive = battleField.rightGrid;
+                    else 
+                        gridObjetive = battleField.leftGrid;
 
-                    //objetives.Add(creature);
+                    UnitCombatInstance creature = GetClosest(ownPos, gridObjetive);
+                    objetives.Add(creature);
                     break;
             }
 
             return objetives;
         }
 
-        public static UnitCombatModule GetClosest(Position pos, CombatSlot[] column)
+        public static UnitCombatInstance GetClosest(Position pos, Grid grid)
         {
             int[] order = null;
 
@@ -152,18 +248,18 @@ namespace Auttobattler.Combat
                     break;
             }
 
-            UnitCombatModule unit = SearchUntilGetOne(order, column);
+            UnitCombatInstance unit = SearchUntilGetOne(order, grid.front);
             if (unit == null)
-                unit = SearchUntilGetOne(order, column);
+                unit = SearchUntilGetOne(order, grid.back);
 
             return unit;
         }
 
-        public static UnitCombatModule SearchUntilGetOne(int[] order, CombatSlot[] column)
+        public static UnitCombatInstance SearchUntilGetOne(int[] order, CombatSlot[] column)
         {
             foreach (int i in order)
             {
-                UnitCombatModule c = column[i].unit;
+                UnitCombatInstance c = column[i].unit;
                 if (c != null) return c;
             }
 

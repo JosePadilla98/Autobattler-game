@@ -27,8 +27,8 @@ namespace Auttobattler
     [System.Serializable]
     public class Level
     {
-        public BuildedUnitBlueprint[] frontRow;
-        public BuildedUnitBlueprint[] backRow;
+        public BuildedUnitBlueprint[] frontColumn;
+        public BuildedUnitBlueprint[] backColumn;
     }
 }
 

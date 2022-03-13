@@ -10,12 +10,12 @@ namespace Auttobattler
     {
         public UnitInfoBars infoBars;
         public Image image;
+        
+        public UnitCombatInstance combatModule;
 
-        public UnitCombatModule combatModule;
-
-        public void CreateCombatInstance(BuildedUnit build) 
+        public void CreateCombatInstance(BuildedUnit build, Side team) 
         {
-            combatModule = new UnitCombatModule(build);
+            combatModule = new UnitCombatInstance(build, team);
             infoBars.AttachUnit(combatModule);
         }
     }
@@ -29,15 +29,19 @@ namespace Auttobattler
         [SerializeField]
         private SliderBar attackProgressBar;
 
-        public void AttachUnit(UnitCombatModule unit)
+        public void AttachUnit(UnitCombatInstance unit)
         {
             attackProgressBar.AttachMaxValue(unit.values.attackDuration);
             attackProgressBar.AttachValue(unit.values.attackProgress);
+
+            healthBar.AttachMaxValue(unit.values.maxHealth);
+            healthBar.AttachValue(unit.values.health);
         }
 
         public void UnattachUnit()
         {
             attackProgressBar.Unnatach();
+            healthBar.Unnatach();
         }
     }
 
