@@ -47,18 +47,34 @@ namespace Auttobattler
 
                 SummonUnit(blueprint, right.front[i], UnitType.ENEMY);
             }
+
+            for (int i = 0; i < level.backRow.Length; i++)
+            {
+                BuildedUnitBlueprint blueprint = level.backRow[i];
+
+                if (blueprint == null)
+                    continue;
+
+                SummonUnit(blueprint, right.back[i], UnitType.ENEMY);
+            }
         }
 
         public void SummonUnit(BuildedUnitBlueprint blueprint, CombatSlot slot, UnitType type)
         {
             Unit unit = Instantiate(unitPrefab, slot.transform);
-            unit.build = new BuildedUnit(blueprint);
-            unit.CreateCombatInstance();
+            unit.CreateCombatInstance(new BuildedUnit(blueprint));
 
             if (type == UnitType.ENEMY)
+            {
                 unit.image.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                CombatController.Instance.rightTeam.Add(unit);
+            }
+            else
+            {
+                CombatController.Instance.leftTeam.Add(unit);
+            }
 
-            slot.unit = unit.combatInstance;
+            slot.unit = unit.combatModule;
         }
     }
 
@@ -74,7 +90,7 @@ namespace Auttobattler
         public CombatSlot[] back = new CombatSlot[3];
         public Side side;
 
-        public Position GetPosition(UnitCombatInstance c)
+        public Position GetPosition(UnitCombatModule c)
         {
             Position pos = SearchInColumn(front, c, GridColumn.FRONT);
 
@@ -84,7 +100,7 @@ namespace Auttobattler
             return pos;
         }
 
-        private Position SearchInColumn(CombatSlot[] column, UnitCombatInstance c, GridColumn columnName)
+        private Position SearchInColumn(CombatSlot[] column, UnitCombatModule c, GridColumn columnName)
         {
             for (int i = 0; i < column.Length; i++)
             {

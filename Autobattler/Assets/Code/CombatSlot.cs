@@ -7,9 +7,9 @@ namespace Auttobattler
 {
     public class CombatSlot : MonoBehaviour
     {
-        public UnitCombatInstance unit;
+        public UnitCombatModule unit;
 
-        public bool IsThereThisCreature(UnitCombatInstance creature)
+        public bool IsThereThisCreature(UnitCombatModule creature)
         {
             if (creature == null) 
                 return false;

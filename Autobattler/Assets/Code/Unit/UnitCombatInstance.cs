@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Auttobattler.Combat
 {
-    public class UnitCombatInstance 
+    public class UnitCombatModule 
     {
         public Grid hisSide;
         public CombatValuesWrapper values;
@@ -22,7 +22,7 @@ namespace Auttobattler.Combat
 
         #endregion
 
-        public UnitCombatInstance(BuildedUnit build)
+        public UnitCombatModule(BuildedUnit build)
         {
             attackSys = new AttackSystem(this);
             values = new CombatValuesWrapper(build);
@@ -78,13 +78,13 @@ namespace Auttobattler.Combat
 
     public class AttackSystem
     {
-        private UnitCombatInstance parent;
+        private UnitCombatModule parent;
 
         public float Progress { get => parent.values.attackProgress.Value; set => parent.values.attackProgress.Value = value; }
         public float AttackSpeed { get => parent.values.attackSpeed.Value; set => parent.values.attackSpeed.Value = value; } 
         public float MaxAmount { get => parent.values.attackDuration.Value; set => parent.values.attackDuration.Value = value; }
 
-        public AttackSystem(UnitCombatInstance parent)
+        public AttackSystem(UnitCombatModule parent)
         {
             this.parent = parent;
         }
@@ -114,9 +114,9 @@ namespace Auttobattler.Combat
 
     public static class ObjetivesProcessor
     {
-        static List<UnitCombatInstance> objetives = new List<UnitCombatInstance>(6);
+        static List<UnitCombatModule> objetives = new List<UnitCombatModule>(6);
 
-        public static List<UnitCombatInstance> GetObjetives(ObjectiveTypes type, Position pos, Battlefield battleField)
+        public static List<UnitCombatModule> GetObjetives(ObjectiveTypes type, Position pos, Battlefield battleField)
         {
             objetives.Clear();
 
@@ -133,7 +133,7 @@ namespace Auttobattler.Combat
             return objetives;
         }
 
-        public static UnitCombatInstance GetClosest(Position pos, CombatSlot[] column)
+        public static UnitCombatModule GetClosest(Position pos, CombatSlot[] column)
         {
             int[] order = null;
 
@@ -152,18 +152,18 @@ namespace Auttobattler.Combat
                     break;
             }
 
-            UnitCombatInstance unit = SearchUntilGetOne(order, column);
+            UnitCombatModule unit = SearchUntilGetOne(order, column);
             if (unit == null)
                 unit = SearchUntilGetOne(order, column);
 
             return unit;
         }
 
-        public static UnitCombatInstance SearchUntilGetOne(int[] order, CombatSlot[] column)
+        public static UnitCombatModule SearchUntilGetOne(int[] order, CombatSlot[] column)
         {
             foreach (int i in order)
             {
-                UnitCombatInstance c = column[i].unit;
+                UnitCombatModule c = column[i].unit;
                 if (c != null) return c;
             }
 
