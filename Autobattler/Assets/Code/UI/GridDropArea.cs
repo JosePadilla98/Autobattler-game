@@ -8,7 +8,7 @@ namespace Auttobattler
     [RequireComponent(typeof(CombatSlot))]
     public class GridDropArea : MonoBehaviour, IDropHandler
     {
-        public CreatureDragHandler item;
+        public UnitDragHandler item;
         private CombatSlot combatSlot;
 
         private void Awake()
@@ -20,9 +20,9 @@ namespace Auttobattler
         {
             if (!item)
             {
-                item = CreatureDragHandler.objBeingDraged;
+                item = UnitDragHandler.objBeingDraged;
                 item.slot = this;
-                combatSlot.creature = item.CreatureUI.Creature;
+                //combatSlot.unit = item.CreatureUI.Creature;
                 item.transform.SetParent(transform);
                 item.transform.position = transform.position;
             }

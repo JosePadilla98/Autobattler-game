@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Auttobattler.Combat;
+using Auttobattler.Scriptables;
 
 namespace Auttobattler
 {
@@ -10,6 +11,8 @@ namespace Auttobattler
     {
         public Grid left;
         public Grid right;
+
+        public Unit unitPrefab;
 
         #region SINGLETON
 
@@ -32,6 +35,36 @@ namespace Auttobattler
         {
             Instance = this;
         }
+
+        public void SummonEnemies(Level level)
+        {
+            for (int i = 0; i < level.frontRow.Length; i++)
+            {
+                BuildedUnitBlueprint blueprint = level.frontRow[i];
+
+                if (blueprint == null)
+                    continue;
+
+                SummonUnit(blueprint, right.front[i], UnitType.ENEMY);
+            }
+        }
+
+        public void SummonUnit(BuildedUnitBlueprint blueprint, CombatSlot slot, UnitType type)
+        {
+            Unit unit = Instantiate(unitPrefab, slot.transform);
+            unit.build = new BuildedUnit(blueprint);
+            unit.CreateCombatInstance();
+
+            if (type == UnitType.ENEMY)
+                unit.transform.localRotation = Quaternion.Euler(0, 180, 0);
+
+            slot.unit = unit.combatInstance;
+        }
+    }
+
+    public enum UnitType
+    {
+        FRIEND, ENEMY
     }
 
     [System.Serializable]
@@ -41,15 +74,7 @@ namespace Auttobattler
         public CombatSlot[] back = new CombatSlot[3];
         public Side side;
 
-        private Battlefield parent;
-        public Battlefield Battlefield { get => parent; }
-
-        public Grid(Battlefield parent)
-        {
-            this.parent = parent;
-        }
-
-        public Position GetPosition(CreatureInCombat c)
+        public Position GetPosition(UnitCombatInstance c)
         {
             Position pos = SearchInColumn(front, c, GridColumn.FRONT);
 
@@ -59,7 +84,7 @@ namespace Auttobattler
             return pos;
         }
 
-        private Position SearchInColumn(CombatSlot[] column, CreatureInCombat c, GridColumn columnName)
+        private Position SearchInColumn(CombatSlot[] column, UnitCombatInstance c, GridColumn columnName)
         {
             for (int i = 0; i < column.Length; i++)
             {

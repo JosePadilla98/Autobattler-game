@@ -7,8 +7,7 @@ namespace Auttobattler.Combat
     [RequireComponent(typeof(Battlefield))]
     public class CombatController : MonoBehaviour
     {
-        public CreatureInCombat[] c;
-        public List<CreatureInCombat> leftTeam;
+        public List<UnitCombatInstance> leftTeam;
 
         private void FixedUpdate()
         {

@@ -15,12 +15,12 @@ namespace Auttobattler
 		[SerializeField]
 		private Image fill;
 
-		private ValuePair valuePair;
+		private CombatValue value;
+		private CombatValue maxValue;
 
 		private void SetMaxValue(float value)
 		{
 			slider.maxValue = value;
-			slider.value = value;
 			fill.color = gradient.Evaluate(1f);
 		}
 
@@ -30,18 +30,30 @@ namespace Auttobattler
 			fill.color = gradient.Evaluate(slider.normalizedValue);
 		}
 
-		public void AttachValuePair(ValuePair valuePair)
+        #region EVENTS_ATTACHERS
+
+        public void AttachMaxValue(CombatValue v)
 		{
-			this.valuePair = valuePair;
-			valuePair.OnCurrentValueChanged += SetValue;
-			valuePair.OnMaxValueChanged += SetMaxValue;
+			maxValue = v;
+			v.OnValueChanged += SetMaxValue;
+
+			SetMaxValue(v.Value);
+		}
+		public void AttachValue(CombatValue v)
+		{
+			value = v;
+			v.OnValueChanged += SetValue;
 		}
 
 		public void Unnatach()
 		{
-			valuePair.OnCurrentValueChanged -= SetValue;
-			valuePair.OnMaxValueChanged -= SetMaxValue;
-			this.valuePair = null;
+			value.OnValueChanged -= SetValue;
+			maxValue.OnValueChanged -= SetMaxValue;
+
+			value = null;
+			maxValue = null;
 		}
-	}
+
+        #endregion
+    }
 }

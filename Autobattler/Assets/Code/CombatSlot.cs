@@ -7,14 +7,14 @@ namespace Auttobattler
 {
     public class CombatSlot : MonoBehaviour
     {
-        public CreatureInCombat creature;
+        public UnitCombatInstance unit;
 
-        public bool IsThereThisCreature(CreatureInCombat creature)
+        public bool IsThereThisCreature(UnitCombatInstance creature)
         {
             if (creature == null) 
                 return false;
 
-            return (this.creature == creature);
+            return (this.unit == creature);
         }
     }
 }

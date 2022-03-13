@@ -5,31 +5,29 @@ using UnityEngine.EventSystems;
 
 namespace Auttobattler
 {
-    [RequireComponent(typeof(CreatureCombatUI))]
-    public class CreatureDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class UnitDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         private Canvas canvas;
         private RectTransform rect;
 
-        public static CreatureDragHandler objBeingDraged;
-
         private Vector3 startPosition;
         private Transform startParent;
         private CanvasGroup canvasGroup;
+        public static UnitDragHandler objBeingDraged;
 
         [HideInInspector]
         public GridDropArea slot;
         private GridDropArea lastSlot;
-
-        private CreatureCombatUI creatureUI;
-        public CreatureCombatUI CreatureUI { get => creatureUI; }
-        public Transform Limbo { get => Battlefield.Instance.transform; }
+        
+        private Unit unit;
+        public Unit Unit { get => unit; }
+        public Transform TmpParent { get => Battlefield.Instance.transform; }
 
         private void Awake()
         {
             rect = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-            creatureUI = GetComponent<CreatureCombatUI>();
+            unit = GetComponent<Unit>();
 
             slot = transform.parent.GetComponent<GridDropArea>();
             slot.item = this;
@@ -48,7 +46,7 @@ namespace Auttobattler
 
             startPosition = transform.position;
             startParent = transform.parent;
-            transform.SetParent(Limbo);
+            transform.SetParent(TmpParent);
 
             canvasGroup.alpha = .6f;
             canvasGroup.blocksRaycasts = false;
@@ -69,7 +67,7 @@ namespace Auttobattler
             canvasGroup.blocksRaycasts = true;
 
             objBeingDraged = null;
-            if (transform.parent == Limbo)
+            if (transform.parent == TmpParent)
             {
                 transform.position = startPosition;
                 transform.SetParent(startParent);
@@ -77,7 +75,6 @@ namespace Auttobattler
                 slot = lastSlot;
             }
         }
-
         #endregion
     }
 }

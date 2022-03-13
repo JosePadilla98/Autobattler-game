@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Auttobattler.Data
+namespace Auttobattler.Scriptables
 {
     [CreateAssetMenu(fileName = "Creature", menuName = "ScriptableObjects/BuildedUnitBlueprint", order = 2)]
     public class BuildedUnitBlueprint : ScriptableObject
     {
         public int level;
-        public CreatureBlueprint baseBlueprint;
+        public BaseUnitBlueprint baseBlueprint;
     }
 
-    public class CreatureModifier
+    public class UnitMutator
     {
 
     }
 }
+
+

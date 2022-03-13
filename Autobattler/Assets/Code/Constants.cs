@@ -6,7 +6,7 @@ namespace Auttobattler
 {
     public class Constants
     {
-        public const float VALUE_TO_COMPLETE_AN_ATTACK = 100;
+        public const float LEVEL_STATS_INCREMENT_FACTOR = 0.3f;
 
 
     }
