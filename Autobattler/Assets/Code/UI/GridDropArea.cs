@@ -10,6 +10,7 @@ namespace Auttobattler
     {
         public UnitDragHandler item;
         private CombatSlot combatSlot;
+        public CombatSlot CombatSlot { get => combatSlot;}
 
         private void Awake()
         {
@@ -21,7 +22,7 @@ namespace Auttobattler
             if (!item)
             {
                 item = UnitDragHandler.objBeingDraged;
-                item.slot = this;
+                item.dropArea = this;
                 //combatSlot.unit = item.CreatureUI.Creature;
                 item.transform.SetParent(transform);
                 item.transform.position = transform.position;

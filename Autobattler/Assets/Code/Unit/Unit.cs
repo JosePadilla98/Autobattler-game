@@ -17,8 +17,6 @@ namespace Auttobattler
         {
             combatModule = new UnitCombatModule(build);
             infoBars.AttachUnit(combatModule);
-
-
         }
     }
 

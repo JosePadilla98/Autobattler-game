@@ -10,7 +10,7 @@ namespace Auttobattler.Combat
         public List<Unit> leftTeam = new List<Unit>();
         public List<Unit> rightTeam = new List<Unit>();
 
-        public bool combatStarted = false;
+        private bool combatStarted = false;
 
         #region SINGLETON
 
@@ -28,6 +28,16 @@ namespace Auttobattler.Combat
         }
 
         #endregion 
+
+        public void startCombat()
+        {
+            foreach (var item in leftTeam)
+            {
+                PlayerUnit u = (PlayerUnit)item;
+                u.PreparativesToBattle();
+            }
+            combatStarted = true;
+        }
 
         private void Awake()
         {

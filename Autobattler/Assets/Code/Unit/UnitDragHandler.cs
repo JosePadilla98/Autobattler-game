@@ -16,21 +16,18 @@ namespace Auttobattler
         public static UnitDragHandler objBeingDraged;
 
         [HideInInspector]
-        public GridDropArea slot;
-        private GridDropArea lastSlot;
+        public GridDropArea dropArea;
+        private GridDropArea lastDropArea;
         
-        private Unit unit;
-        public Unit Unit { get => unit; }
         public Transform TmpParent { get => Battlefield.Instance.transform; }
 
         private void Awake()
         {
             rect = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-            unit = GetComponent<Unit>();
 
-            slot = transform.parent.GetComponent<GridDropArea>();
-            slot.item = this;
+            dropArea = transform.parent.GetComponent<GridDropArea>();
+            dropArea.item = this;
         }
 
         private void Start()
@@ -51,9 +48,9 @@ namespace Auttobattler
             canvasGroup.alpha = .6f;
             canvasGroup.blocksRaycasts = false;
 
-            lastSlot = slot;
-            slot.item = null;
-            slot = null;
+            lastDropArea = dropArea;
+            dropArea.item = null;
+            dropArea = null;
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -72,7 +69,7 @@ namespace Auttobattler
                 transform.position = startPosition;
                 transform.SetParent(startParent);
 
-                slot = lastSlot;
+                dropArea = lastDropArea;
             }
         }
         #endregion
