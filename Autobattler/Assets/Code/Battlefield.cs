@@ -56,7 +56,7 @@ namespace Auttobattler
             unit.CreateCombatInstance();
 
             if (type == UnitType.ENEMY)
-                unit.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                unit.image.transform.localRotation = Quaternion.Euler(0, 180, 0);
 
             slot.unit = unit.combatInstance;
         }

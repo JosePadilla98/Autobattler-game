@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Auttobattler.Combat;
+using UnityEngine.UI;
 
 namespace Auttobattler
 {
     public class Unit : MonoBehaviour
     {
         public UnitInfoBars infoBars;
+        public Image image;
+
         public BuildedUnit build;
         public UnitCombatInstance combatInstance;
 
