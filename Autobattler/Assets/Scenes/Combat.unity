@@ -1064,11 +1064,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCount: 0
   levels:
-  - frontRow:
+  - frontColumn:
     - {fileID: 0}
     - {fileID: 11400000, guid: 5fc71234dfe20cb4e871c0610fbd50c1, type: 2}
     - {fileID: 0}
-    backRow:
+    backColumn:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aaadcfe07d0bce45a0c04c5df1897dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left:
+  leftGrid:
     front:
     - {fileID: 1024947045}
     - {fileID: 61328622}
@@ -1109,7 +1109,7 @@ MonoBehaviour:
     - {fileID: 749354757}
     - {fileID: 494042687}
     side: 0
-  right:
+  rightGrid:
     front:
     - {fileID: 377393863}
     - {fileID: 94100298}
@@ -1117,7 +1117,7 @@ MonoBehaviour:
     back:
     - {fileID: 1120393928}
     - {fileID: 1225736623}
-    - {fileID: 0}
+    - {fileID: 974967677}
     side: 1
   unitPrefab: {fileID: 8946373774452722114, guid: 299b848081491614390ea6005f1b0e4a, type: 3}
 --- !u!1 &974967673

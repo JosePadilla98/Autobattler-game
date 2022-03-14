@@ -10,26 +10,44 @@ namespace Auttobattler
     public struct Stats
     {
         public float health;
+
+        [Space(10)]
+        [Header("Attack")]
         public float attack;
         public float attackPower;
         public float attackSpeed;
         public float attackDuration;
 
+        [Space(10)]
+        [Header("Magic")]
         public float magic;
         public float manaRegen;
-
-        public float defense;
-        public float magicDefense;
-        public float evasion;
-
         public float cooldownReduction;
 
+        [Space(10)]
+        [Header("Critics")]
+        public float criticMultiplier;
+        public float physicalCriticChance;
+        public float magicalCriticChance;
+
+        [Space(10)]
+        [Header("Defenses")]
+        public float defense;
+        public float magicDefense;
+        public float physicalEvasion;
+        public float magicalEvasion;
+        public float physicalReduction;
+        public float magicReduction;
+
+        [Space(10)]
+        [Header("Vigor")]
         public float attackEncumbrance;
         public float magicEncumbrance;
         public float reinvigoration;
         public float vigor;
 
-        public float precision;
+        [Space(10)]
+        [Header("Precision")]
         public float attackPrecision;
         public float magicPrecision;
     }

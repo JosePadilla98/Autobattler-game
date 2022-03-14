@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Console
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 139
+  controlID: 91
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 105
+  controlID: 79
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 106
+  controlID: 80
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -346,22 +346,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Code
+    - Assets/Blueprints
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Code
+  - Assets/Blueprints
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\UnityRepos\Autobattler-game\Autobattler
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b0500000
-    m_LastClickedID: 20656
-    m_ExpandedIDs: 00000000aa500000b050000000ca9a3b
+    m_SelectedIDs: 24530000
+    m_LastClickedID: 21284
+    m_ExpandedIDs: 00000000165300002653000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -389,7 +389,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000aa50000000ca9a3b
+    m_ExpandedIDs: 0000000016530000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -414,8 +414,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: dc510000
-    m_LastClickedInstanceID: 20956
+    m_SelectedInstanceIDs: 82520000
+    m_LastClickedInstanceID: 21122
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -517,9 +517,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 4887feff
-      m_LastClickedID: -96440
-      m_ExpandedIDs: 60bffeff5accfeffaa4affff4454ffffaafaffff5451000060510000ac510000cc510000f851000030520000
+      m_SelectedIDs: 70520000
+      m_LastClickedID: 21104
+      m_ExpandedIDs: 7c70ffff8273ffff2cfbffff5c510000685100007a5100009c510000b0510000e0510000f851000024520000285200003652000070520000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -790,9 +790,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 969.21906, y: 558.3316, z: -4.7788024}
+    m_Target: {x: 983.0359, y: 596.6693, z: -10.960908}
     speed: 2
-    m_Value: {x: 969.21906, y: 558.3316, z: -4.7788024}
+    m_Value: {x: 983.0359, y: 596.6693, z: -10.960908}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -843,9 +843,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 482.7731
+    m_Target: 778.26984
     speed: 2
-    m_Value: 482.7731
+    m_Value: 778.26984
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -942,7 +942,7 @@ MonoBehaviour:
       y: 21
       width: 1156
       height: 539
-    m_Scale: {x: 0.49907404, y: 0.49907407}
+    m_Scale: {x: 0.49907407, y: 0.49907407}
     m_Translation: {x: 578, y: 269.5}
     m_MarginLeft: 0
     m_MarginRight: 0
