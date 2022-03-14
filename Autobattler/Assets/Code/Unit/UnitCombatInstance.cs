@@ -60,8 +60,8 @@ namespace Auttobattler.Combat
         {
             this.level = build.level;
 
-            maxHealth = new CombatValue(build.health.Get, build.level);
-            health = new CombatValue(build.health.Get, build.level);
+            maxHealth = new CombatValue(build.health.Get);
+            health = new CombatValue(build.health.Get);
 
             attack = new CombatValue(build.attack.Get, build.level);
             defense = new CombatValue(build.defense.Get, build.level);
@@ -140,7 +140,7 @@ namespace Auttobattler.Combat
             List<UnitCombatInstance> objetives = ObjetivesProcessor.GetObjetives(ObjectiveTypes.ENEMY_CLOSEST, parent.Position, Battlefield.Instance);
             foreach (var unit in objetives)
             {
-                float rawValue = Attack * Level * Power * Constants.K_DAMAGE_CONSTANT;
+                float rawValue = Attack * Power * Constants.K_DAMAGE_CONSTANT;
 
                 unit.defenseSys.BeAttacked(new AttackData(rawValue, AttackType.PHYSICAL));
             }
