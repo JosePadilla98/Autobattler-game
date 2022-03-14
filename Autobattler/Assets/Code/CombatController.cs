@@ -33,9 +33,14 @@ namespace Auttobattler.Combat
         {
             foreach (var item in leftTeam)
             {
-                PlayerUnit u = (PlayerUnit)item;
-                u.PreparativesToBattle();
+                item.PreparativesToBattle();
             }
+
+            foreach (var item in rightTeam)
+            {
+                item.PreparativesToBattle();
+            }
+
             combatStarted = true;
         }
 

@@ -17,12 +17,16 @@ namespace Auttobattler
         [HideInInspector]
         public GridDropArea dropArea;
         private GridDropArea lastDropArea;
+
+        //This is a ñapa to solve a bug
+        private Animator animator; 
         
         public Transform TmpParent { get => CanvasSingleton.Instance.transform; }
         public RectTransform Rect { get => rect;  }
 
         private void Awake()
         {
+            animator = GetComponent<Animator>();
             rect = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             dropArea = transform.parent.GetComponent<GridDropArea>();
@@ -33,8 +37,10 @@ namespace Auttobattler
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            objBeingDraged = this;
+            if(animator != null)
+                animator.enabled = false;
 
+            objBeingDraged = this;
             startPosition = transform.position;
             startParent = transform.parent;
             transform.SetParent(TmpParent);
@@ -54,6 +60,9 @@ namespace Auttobattler
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (animator != null)
+                animator.enabled = true;
+
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
 

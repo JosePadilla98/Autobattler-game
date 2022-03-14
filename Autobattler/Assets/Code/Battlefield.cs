@@ -75,8 +75,6 @@ namespace Auttobattler
         }
     }
 
-    
-
     [System.Serializable]
     public class Grid
     {

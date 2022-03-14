@@ -8,20 +8,24 @@ namespace Auttobattler
 {
     public class Unit : MonoBehaviour
     {
-        [SerializeField]
-        private UnitAnimationsController animationsController;
         public UnitInfoBars infoBars;
         public Image image;
 
+        private UnitAnimationsController animationsController;
         private UnitCombatInstance combatInstance;
-
         public UnitCombatInstance CombatInstance { get => combatInstance; }
 
-        /// <summary>
-        /// When the unit is summoned by the level, this methods is called before Awake
-        /// </summary>
+        protected virtual void Awake()
+        {
+            animationsController = GetComponent<UnitAnimationsController>();
+        }
+
         public void CreateCombatInstance(BuildedUnit build, Side team) 
         {
+            /// <summary>
+            /// When the unit is summoned by the level, this methods is called before Awake
+            /// </summary>
+
             combatInstance = new UnitCombatInstance(build, team);
         }
 

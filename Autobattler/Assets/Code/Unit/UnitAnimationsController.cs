@@ -11,7 +11,12 @@ namespace Auttobattler
         private Animator animator;
         private UnitCombatInstance attachedUnit;
 
+        #region ANIMATION_NAMES
+
         private const string ATTACK = "Attack";
+        private const string MIRROR_ATTACK = "AttackMirror";
+
+        #endregion
 
         private void Awake()
         {
@@ -22,26 +27,27 @@ namespace Auttobattler
 
         public void AttachUnit(UnitCombatInstance unit)
         {
+            attachedUnit = unit;
             unit.attackSys.OnAttack += AttackAnimation;
         }
 
         public void UnnatachUnit()
         {
             attachedUnit.attackSys.OnAttack -= AttackAnimation;
+            attachedUnit = null;
         }
         #endregion
 
         private void AttackAnimation()
         {
-            animator.SetTrigger(ATTACK);
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (attachedUnit.grid.side == Side.LEFT)
             {
-                AttackAnimation();
-            }    
+                animator.SetTrigger(ATTACK);
+            }
+            else
+            {
+                animator.SetTrigger(MIRROR_ATTACK);
+            }
         }
     }
 }

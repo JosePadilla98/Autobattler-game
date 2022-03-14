@@ -7,11 +7,11 @@ namespace Auttobattler.Combat
 {
     public class UnitCombatInstance
     {
-        public Grid side;
+        public Grid grid;
         public CombatValuesWrapper values;
 
         #region PROPERTIES
-        public Position Position { get => side.GetPosition(this); }
+        public Position Position { get => grid.GetPosition(this); }
         #endregion
 
         #region SYSTEMS
@@ -30,9 +30,9 @@ namespace Auttobattler.Combat
             healthSystem = new HealthSystem(this);
 
             if(side == Side.RIGHT)
-                this.side = Battlefield.Instance.rightGrid;
+                this.grid = Battlefield.Instance.rightGrid;
             else
-                this.side = Battlefield.Instance.leftGrid;
+                this.grid = Battlefield.Instance.leftGrid;
         }
 
         public void Refresh()
@@ -84,7 +84,7 @@ namespace Auttobattler.Combat
             set
             {
                 this.value = value;
-                OnValueChanged(this.value);
+                OnValueChanged?.Invoke(this.value);
             }
         }
 

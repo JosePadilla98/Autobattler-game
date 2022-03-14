@@ -9,16 +9,16 @@ namespace Auttobattler
     [RequireComponent(typeof(UnitDragHandler))]
     public class PlayerUnit : Unit
     {
-        
         private UnitDragHandler dragHandler;
         public BuildedUnitBlueprint blueprint;
 
-        private void Awake()
+        protected override void Awake()
         {
-            dragHandler = GetComponent<UnitDragHandler>();
-            dragHandler.dropArea.CombatSlot.unit = CombatInstance;
+            base.Awake();
 
             CreateCombatInstance(new BuildedUnit(blueprint, blueprint.level), Side.LEFT);
+            dragHandler = GetComponent<UnitDragHandler>();
+            dragHandler.dropArea.CombatSlot.unit = CombatInstance;
         }
     }
 }
