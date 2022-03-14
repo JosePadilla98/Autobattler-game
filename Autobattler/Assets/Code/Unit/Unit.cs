@@ -8,15 +8,27 @@ namespace Auttobattler
 {
     public class Unit : MonoBehaviour
     {
+        [SerializeField]
+        private UnitAnimationsController animationsController;
         public UnitInfoBars infoBars;
         public Image image;
-        
-        public UnitCombatInstance combatModule;
 
+        public UnitCombatInstance combatInstance;
+
+        /// <summary>
+        /// Cuando lo invoca el nivel, se llama antes del Awake. Esta funci´´on debería ser llamada sólamente por el
+        /// CombatController. Cambiar esto.
+        /// </summary>
         public void CreateCombatInstance(BuildedUnit build, Side team) 
         {
-            combatModule = new UnitCombatInstance(build, team);
-            infoBars.AttachUnit(combatModule);
+            combatInstance = new UnitCombatInstance(build, team);
+            infoBars.AttachUnit(combatInstance);
+            animationsController?.AttachUnit(combatInstance);
+        }
+
+        public void PreparativesToBattle()
+        {
+            
         }
     }
 

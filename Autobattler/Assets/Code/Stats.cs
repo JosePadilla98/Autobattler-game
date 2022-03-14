@@ -61,14 +61,14 @@ namespace Auttobattler
         public BaseUnitBlueprint baseBlueprint;
 
         #region MODIFIED BY LEVEL
-
         public int level;
-        public BuildStat health;
+        
         public BuildStat attack;
         public BuildStat defense;
-
         #endregion
-        
+
+        public BuildStat health;
+
         public BuildStat attackPower;
         public BuildStat attackSpeed;
         public BuildStat attackDuration;

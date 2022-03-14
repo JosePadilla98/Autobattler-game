@@ -15,7 +15,7 @@ namespace Auttobattler
         public void PreparativesToBattle()
         {
             CreateCombatInstance(new BuildedUnit(blueprint, blueprint.level), Side.LEFT);
-            dragHandler.dropArea.CombatSlot.unit = combatModule;
+            dragHandler.dropArea.CombatSlot.unit = combatInstance;
         }
 
         private void Awake()

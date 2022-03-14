@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99e2d731a0a69074fbac329da3ce7d52, type: 3}
-  m_Name: Creature 1
+  m_Name: b_creature
   m_EditorClassIdentifier: 
-  level: 100
+  level: 1
   baseBlueprint: {fileID: 11400000, guid: 8bd979d1c29c2b6478dc2ea668086480, type: 2}

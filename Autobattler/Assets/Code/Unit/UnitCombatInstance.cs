@@ -135,14 +135,17 @@ namespace Auttobattler.Combat
             }
         }
 
+        public delegate void AttackEvent();
+        public event AttackEvent OnAttack;
+
         private void MakeAnAttack()
         {
             List<UnitCombatInstance> objetives = ObjetivesProcessor.GetObjetives(ObjectiveTypes.ENEMY_CLOSEST, parent.Position, Battlefield.Instance);
             foreach (var unit in objetives)
             {
                 float rawValue = Attack * Power * Constants.K_DAMAGE_CONSTANT;
-
                 unit.defenseSys.BeAttacked(new AttackData(rawValue, AttackType.PHYSICAL));
+                OnAttack?.Invoke();
             }
         }
     }
