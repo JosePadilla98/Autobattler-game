@@ -71,7 +71,7 @@ namespace Auttobattler
                 CombatController.Instance.leftTeam.Add(unit);
             }
 
-            slot.unit = unit.combatInstance;
+            slot.unit = unit.CombatInstance;
         }
     }
 

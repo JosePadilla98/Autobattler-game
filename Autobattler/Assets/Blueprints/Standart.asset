@@ -18,7 +18,7 @@ MonoBehaviour:
     health: 25
     attack: 25
     attackPower: 1
-    attackSpeed: 25
+    attackSpeed: 100
     attackDuration: 100
     magic: 25
     manaRegen: 1
@@ -26,7 +26,7 @@ MonoBehaviour:
     criticMultiplier: 0
     physicalCriticChance: 0
     magicalCriticChance: 0
-    defense: 10
+    defense: 25
     magicDefense: 25
     physicalEvasion: 0
     magicalEvasion: 0

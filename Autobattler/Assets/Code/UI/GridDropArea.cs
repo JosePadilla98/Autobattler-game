@@ -23,9 +23,9 @@ namespace Auttobattler
             {
                 item = UnitDragHandler.objBeingDraged;
                 item.dropArea = this;
-                //combatSlot.unit = item.CreatureUI.Creature;
                 item.transform.SetParent(transform);
                 item.transform.position = transform.position;
+                item.Rect.anchoredPosition = Vector3.zero;
             }
         }
     }

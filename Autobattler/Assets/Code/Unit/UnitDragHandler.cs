@@ -5,11 +5,10 @@ using UnityEngine.EventSystems;
 
 namespace Auttobattler
 {
+    [RequireComponent(typeof(CanvasGroup))]
     public class UnitDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        private Canvas canvas;
         private RectTransform rect;
-
         private Vector3 startPosition;
         private Transform startParent;
         private CanvasGroup canvasGroup;
@@ -19,20 +18,15 @@ namespace Auttobattler
         public GridDropArea dropArea;
         private GridDropArea lastDropArea;
         
-        public Transform TmpParent { get => Battlefield.Instance.transform; }
+        public Transform TmpParent { get => CanvasSingleton.Instance.transform; }
+        public RectTransform Rect { get => rect;  }
 
         private void Awake()
         {
             rect = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-
             dropArea = transform.parent.GetComponent<GridDropArea>();
             dropArea.item = this;
-        }
-
-        private void Start()
-        {
-            canvas = CanvasSingleton.Instance;
         }
 
         #region DragFunctions
@@ -55,7 +49,7 @@ namespace Auttobattler
 
         public void OnDrag(PointerEventData eventData)
         {
-            rect.anchoredPosition += eventData.delta / canvas.scaleFactor;
+            Rect.anchoredPosition += eventData.delta / CanvasSingleton.Instance.scaleFactor;
         }
 
         public void OnEndDrag(PointerEventData eventData)

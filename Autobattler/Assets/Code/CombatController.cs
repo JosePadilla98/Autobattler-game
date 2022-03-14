@@ -50,12 +50,12 @@ namespace Auttobattler.Combat
 
             foreach (var item in leftTeam)
             {
-                item.combatInstance.Refresh();
+                item.CombatInstance.Refresh();
             }
 
             foreach (var item in rightTeam)
             {
-                item.combatInstance.Refresh();
+                item.CombatInstance.Refresh();
             }
         }
     }

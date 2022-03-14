@@ -13,22 +13,22 @@ namespace Auttobattler
         public UnitInfoBars infoBars;
         public Image image;
 
-        public UnitCombatInstance combatInstance;
+        private UnitCombatInstance combatInstance;
+
+        public UnitCombatInstance CombatInstance { get => combatInstance; }
 
         /// <summary>
-        /// Cuando lo invoca el nivel, se llama antes del Awake. Esta funci´´on debería ser llamada sólamente por el
-        /// CombatController. Cambiar esto.
+        /// When the unit is summoned by the level, this methods is called before Awake
         /// </summary>
         public void CreateCombatInstance(BuildedUnit build, Side team) 
         {
             combatInstance = new UnitCombatInstance(build, team);
-            infoBars.AttachUnit(combatInstance);
-            animationsController?.AttachUnit(combatInstance);
         }
 
         public void PreparativesToBattle()
         {
-            
+            infoBars.AttachUnit(CombatInstance);
+            animationsController?.AttachUnit(CombatInstance);
         }
     }
 

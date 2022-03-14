@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2784316720388713778}
   - component: {fileID: 8946373774452722114}
+  - component: {fileID: 2803015391924516132}
+  - component: {fileID: 5451122883687542042}
   m_Layer: 5
   m_Name: Unit
   m_TagString: Untagged
@@ -52,10 +54,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71bf4d498a4e2746b584b2c645e4c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationsController: {fileID: 0}
   infoBars:
     healthBar: {fileID: 2869102244471569806}
     attackProgressBar: {fileID: 2869102245233841949}
   image: {fileID: 2869102244435404643}
+--- !u!95 &2803015391924516132
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476206055623851142}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3dcde1bbc9c6a7f4abfbd000c9fa1b88, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5451122883687542042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476206055623851142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49268448e687eac48945ebf8ee2f65d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2869102243383509591
 GameObject:
   m_ObjectHideFlags: 0
