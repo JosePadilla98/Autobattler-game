@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Auttobattler.Scriptables;
 using Auttobattler.Mutators;
+using Auttobattler.Ultimates;
 using System;
 
 namespace Auttobattler
@@ -69,42 +70,15 @@ namespace Auttobattler
     /// </summary>
     public class BuildedUnit : ICloneable
     {
-        public BaseUnitBlueprint baseBlueprint;
+        public BuildStatsWrapper statsWrapper;
         public List<UnitMutator> mutators;
-
-        #region MODIFIED BY LEVEL
-        public int level;
-        
-        public BuildStat attack;
-        public BuildStat magic;
-        public BuildStat defense;
-        #endregion
-
-        public BuildStat health;
-
-        public BuildStat attackPower;
-        public BuildStat attackSpeed;
-        public BuildStat attackDuration;
-
-        public BuildStat ultimateRegen;
+        public UltimateScriptable ultScriptable;
 
         public BuildedUnit(BuildedUnitBlueprint blueprint)
         {
-            baseBlueprint = blueprint.baseBlueprint;
-            level = blueprint.level;
+            statsWrapper = new BuildStatsWrapper(blueprint);
             mutators = new List<UnitMutator>(blueprint.mutators);
-
-            Stats baseStats = baseBlueprint.stats;
-            health = new BuildStat(baseStats.health);
-            attack = new BuildStat(baseStats.attack);
-            defense = new BuildStat(baseStats.defense);
-            magic = new BuildStat(baseStats.magic);
-
-            attackPower = new BuildStat(baseStats.attackPower);
-            attackSpeed = new BuildStat(baseStats.attackSpeed);
-            attackDuration = new BuildStat(baseStats.attackDuration);
-
-            ultimateRegen = new BuildStat(baseStats.ultimateRegen);
+            ultScriptable = blueprint.ultimate;
 
             //StatsModifiers
             foreach (var mutator in mutators)
@@ -118,11 +92,11 @@ namespace Auttobattler
                 switch (modifier.statName)
                 {
                     case StatsNames.ATTACK:
-                        statToModify = attack;
+                        statToModify = statsWrapper.attack;
                         break;
                 }
 
-                List<float> modifierList = (modifier.type == ModifierType.LINEAR) ?
+                List<float> modifierList = (modifier.type == ModifierType.LINEAL) ?
                     modifierList = statToModify.linearModifiers : modifierList = statToModify.modifiers;
 
                 modifierList.Add(modifier.value);
@@ -133,6 +107,40 @@ namespace Auttobattler
         {
             var clone = (BuildedUnit)this.MemberwiseClone();
             return clone;
+        }
+    }
+
+    public class BuildStatsWrapper
+    {
+        #region MODIFIED BY LEVEL
+        public int level;
+
+        public BuildStat attack;
+        public BuildStat magic;
+        public BuildStat defense;
+        #endregion
+
+        public BuildStat health;
+
+        public BuildStat attackPower;
+        public BuildStat attackSpeed;
+        public BuildStat attackDuration;
+
+        public BuildStat ultimateRegen;
+
+        public BuildStatsWrapper(BuildedUnitBlueprint blueprint)
+        {
+            Stats baseStats = blueprint.baseBlueprint.stats;
+            health = new BuildStat(baseStats.health);
+            attack = new BuildStat(baseStats.attack);
+            defense = new BuildStat(baseStats.defense);
+            magic = new BuildStat(baseStats.magic);
+
+            attackPower = new BuildStat(baseStats.attackPower);
+            attackSpeed = new BuildStat(baseStats.attackSpeed);
+            attackDuration = new BuildStat(baseStats.attackDuration);
+
+            ultimateRegen = new BuildStat(baseStats.ultimateRegen);
         }
     }
 

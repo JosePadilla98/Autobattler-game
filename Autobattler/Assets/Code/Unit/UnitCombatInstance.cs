@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Auttobattler.Ultimates;
 
 namespace Auttobattler.Combat
 {
@@ -9,7 +10,7 @@ namespace Auttobattler.Combat
     {
         public Grid grid;
         public CombatValuesWrapper values;
-        public Ultimate ultimate = new Ultimate();
+        public Ultimate ultimate;
 
         #region PROPERTIES
         public Position Position { get => grid.GetPosition(this); }
@@ -31,6 +32,7 @@ namespace Auttobattler.Combat
             defenseSys = new DefenseSystem(this);
             healthSys = new HealthSystem(this);
             ultimateSys = new UltimateSystem(this);
+            ultimate = build.ultScriptable.GetUltimate();
 
             if (side == Side.RIGHT)
                 this.grid = Battlefield.Instance.rightGrid;
@@ -42,6 +44,18 @@ namespace Auttobattler.Combat
         {
             attackSys.Refresh();
             ultimateSys.Refresh();
+        }
+
+        public void LaunchAttack(AttackType attackType, float power)
+        {
+            float attackValue = (attackType == AttackType.PHYSICAL) ? values.attack.Value : values.magic.Value;
+
+            List<UnitCombatInstance> objetives = ObjetivesProcessor.GetObjetives(ObjectiveTypes.ENEMY_CLOSEST, Position, Battlefield.Instance);
+            foreach (var unit in objetives)
+            {
+                float rawValue = attackValue * power * Constants.K_DAMAGE_CONSTANT;
+                unit.defenseSys.BeAttacked(new RawDamageData(rawValue, AttackType.PHYSICAL));
+            }
         }
     }
 
@@ -68,21 +82,22 @@ namespace Auttobattler.Combat
 
         public CombatValuesWrapper(BuildedUnit build)
         {
-            this.level = build.level;
+            BuildStatsWrapper stats = build.statsWrapper;
+            this.level = stats.level;
 
-            maxHealth = new CombatValue(build.health.Get);
-            health = new CombatValue(build.health.Get);
+            maxHealth = new CombatValue(stats.health.Get);
+            health = new CombatValue(stats.health.Get);
 
-            attack = new CombatValue(build.attack.Get, build.level);
-            magic = new CombatValue(build.magic.Get, build.level);
-            defense = new CombatValue(build.defense.Get, build.level);
+            attack = new CombatValue(stats.attack.Get, stats.level);
+            magic = new CombatValue(stats.magic.Get, stats.level);
+            defense = new CombatValue(stats.defense.Get, stats.level);
 
-            attackSpeed = new CombatValue(build.attackSpeed.Get);
+            attackSpeed = new CombatValue(stats.attackSpeed.Get);
             attackProgress = new CombatValue(0);
-            attackDuration = new CombatValue(build.attackDuration.Get);
-            attackPower = new CombatValue(build.attackPower.Get);
+            attackDuration = new CombatValue(stats.attackDuration.Get);
+            attackPower = new CombatValue(stats.attackPower.Get);
 
-            ultimateRegen = new CombatValue(build.ultimateRegen.Get);
+            ultimateRegen = new CombatValue(stats.ultimateRegen.Get);
             ultimateProgress = new CombatValue(0);
         }
     }
@@ -112,6 +127,27 @@ namespace Auttobattler.Combat
             this.value = value + ((level - 1) * value * Constants.LEVEL_STATS_INCREMENT_FACTOR);
         }
     }
+
+    #region ATTACK DATA TYPES
+
+    public enum AttackType
+    {
+        PHYSICAL, MAGICAL
+    }
+
+    public struct RawDamageData
+    {
+        public float rawDamage;
+        public AttackType type;
+
+        public RawDamageData(float rawDamage, AttackType type)
+        {
+            this.rawDamage = rawDamage;
+            this.type = type;
+        }
+    }
+
+    #endregion
 
     #region SYSTEMS
 
@@ -145,22 +181,17 @@ namespace Auttobattler.Combat
             {
                 Progress -= Duration;
 
-                MakeAnAttack();
+                LaunchBasicAttack();
             }
         }
 
         public delegate void AttackEvent();
         public event AttackEvent OnAttack;
 
-        private void MakeAnAttack()
+        private void LaunchBasicAttack()
         {
-            List<UnitCombatInstance> objetives = ObjetivesProcessor.GetObjetives(ObjectiveTypes.ENEMY_CLOSEST, parent.Position, Battlefield.Instance);
-            foreach (var unit in objetives)
-            {
-                float rawValue = Attack * Power * Constants.K_DAMAGE_CONSTANT;
-                unit.defenseSys.BeAttacked(new AttackData(rawValue, AttackType.PHYSICAL));
-                OnAttack?.Invoke();
-            }
+            parent.LaunchAttack(AttackType.PHYSICAL, Power);
+            OnAttack?.Invoke();
         }
     }
 
@@ -172,42 +203,31 @@ namespace Auttobattler.Combat
         public int Level { get => parent.values.level; }
         public float Attack { get => parent.values.attack.Value; set => parent.values.attack.Value = value; }
         public float Magic { get => parent.values.magic.Value; set => parent.values.magic.Value = value; }
-        //public Ultimate Ultimate { get => parent.ultimate; }
+        public Ultimate Ultimate { get => parent.ultimate; }
         public float ChargeRate { get => parent.values.ultimateRegen.Value; set => parent.values.ultimateRegen.Value = value; }
         public float Progress { get => parent.values.ultimateProgress.Value; set => parent.values.ultimateProgress.Value = value; }
         public float ChargeToCast { get => parent.values.ultimateChargeToCast.Value; set => parent.values.ultimateChargeToCast.Value = value; }
-        #endregion 
+        #endregion
+
+        public delegate void UltimateEvent();
+        public event UltimateEvent OnUltimateCasted;
 
         public void Refresh()
         {
             Progress += Time.fixedDeltaTime * ChargeRate;
-            Debug.Log(Progress);
             while (Progress >= ChargeToCast)
             {
                 Progress -= ChargeToCast;
-
-                Debug.Log("Ultimate");
+                LaunchUltimate();
             }
         }
-    }
 
-    public enum AttackType
-    {
-        PHYSICAL, MAGICAL
-    }
-
-    public struct AttackData
-    {
-        public float rawDamage;
-        public AttackType type;
-
-        public AttackData(float rawDamage, AttackType type)
+        public void LaunchUltimate()
         {
-            this.rawDamage = rawDamage;
-            this.type = type;
+            Ultimate?.Cast(parent);
         }
     }
-
+  
     public class DefenseSystem : CombatSystem
     {
         public DefenseSystem(UnitCombatInstance parent) : base(parent) { }
@@ -216,7 +236,7 @@ namespace Auttobattler.Combat
         public float Defense { get => parent.values.defense.Value; set => parent.values.attack.Value = value; }
         #endregion 
 
-        public void BeAttacked(AttackData data)
+        public void BeAttacked(RawDamageData data)
         {
             float damage = data.rawDamage / Defense;
             parent.healthSys.ReceiveDamage(damage);
@@ -241,7 +261,7 @@ namespace Auttobattler.Combat
 
     #endregion
 
-    #region OBJETIVES_PROCCESOR
+    #region OBJETIVES PROCCESOR
     public enum ObjectiveTypes
     {
         ENEMY_CLOSEST

@@ -14,6 +14,6 @@ namespace Auttobattler.Mutators
 
     public enum ModifierType
     {
-        LINEAR, PERCENTAGE
+        LINEAL, PERCENTAGE
     }
 }
