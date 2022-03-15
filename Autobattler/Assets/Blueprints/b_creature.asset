@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   baseBlueprint: {fileID: 11400000, guid: 8bd979d1c29c2b6478dc2ea668086480, type: 2}
+  mutators:
+  - {fileID: 11400000, guid: 07fb9cc44ea16c24d9408676da2efb32, type: 2}

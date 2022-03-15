@@ -45,23 +45,31 @@ namespace Auttobattler
     {
         [SerializeField]
         private SliderBar healthBar;
-
         [SerializeField]
         private SliderBar attackProgressBar;
+        [SerializeField]
+        private SliderBar ultimateProgressBar;
 
         public void AttachUnit(UnitCombatInstance unit)
         {
+            healthBar.AttachMaxValue(unit.values.maxHealth);
+            healthBar.AttachValue(unit.values.health);
+
             attackProgressBar.AttachMaxValue(unit.values.attackDuration);
             attackProgressBar.AttachValue(unit.values.attackProgress);
 
-            healthBar.AttachMaxValue(unit.values.maxHealth);
-            healthBar.AttachValue(unit.values.health);
+            if (ultimateProgressBar != null)
+            {
+                ultimateProgressBar.AttachMaxValue(unit.values.ultimateChargeToCast);
+                ultimateProgressBar.AttachValue(unit.values.ultimateProgress);
+            }
         }
 
         public void UnattachUnit()
         {
-            attackProgressBar.Unnatach();
             healthBar.Unnatach();
+            attackProgressBar.Unnatach();
+            ultimateProgressBar.Unnatach();
         }
     }
 

@@ -23,7 +23,12 @@ namespace Auttobattler
         [Header("Magic")]
         public float magic;
         public float manaRegen;
+        public float maxMana;
         public float cooldownReduction;
+
+        [Space(10)]
+        [Header("Ultimate")]
+        public float ultimateRegen;
 
         [Space(10)]
         [Header("Critics")]
@@ -71,6 +76,7 @@ namespace Auttobattler
         public int level;
         
         public BuildStat attack;
+        public BuildStat magic;
         public BuildStat defense;
         #endregion
 
@@ -80,20 +86,25 @@ namespace Auttobattler
         public BuildStat attackSpeed;
         public BuildStat attackDuration;
 
+        public BuildStat ultimateRegen;
+
         public BuildedUnit(BuildedUnitBlueprint blueprint)
         {
-            this.baseBlueprint = blueprint.baseBlueprint;
-            this.level = blueprint.level;
+            baseBlueprint = blueprint.baseBlueprint;
+            level = blueprint.level;
             mutators = new List<UnitMutator>(blueprint.mutators);
 
             Stats baseStats = baseBlueprint.stats;
-            this.health = new BuildStat(baseStats.health);
-            this.attack = new BuildStat(baseStats.attack);
-            this.defense = new BuildStat(baseStats.defense);
+            health = new BuildStat(baseStats.health);
+            attack = new BuildStat(baseStats.attack);
+            defense = new BuildStat(baseStats.defense);
+            magic = new BuildStat(baseStats.magic);
 
-            this.attackPower = new BuildStat(baseStats.attackPower);
-            this.attackSpeed = new BuildStat(baseStats.attackSpeed);
-            this.attackDuration = new BuildStat(baseStats.attackDuration);
+            attackPower = new BuildStat(baseStats.attackPower);
+            attackSpeed = new BuildStat(baseStats.attackSpeed);
+            attackDuration = new BuildStat(baseStats.attackDuration);
+
+            ultimateRegen = new BuildStat(baseStats.ultimateRegen);
 
             //StatsModifiers
             foreach (var mutator in mutators)

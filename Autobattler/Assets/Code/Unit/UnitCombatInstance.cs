@@ -9,6 +9,7 @@ namespace Auttobattler.Combat
     {
         public Grid grid;
         public CombatValuesWrapper values;
+        public Ultimate ultimate = new Ultimate();
 
         #region PROPERTIES
         public Position Position { get => grid.GetPosition(this); }
@@ -18,7 +19,8 @@ namespace Auttobattler.Combat
 
         public AttackSystem attackSys;
         public DefenseSystem defenseSys;
-        public HealthSystem healthSystem;
+        public HealthSystem healthSys;
+        public UltimateSystem ultimateSys;
 
         #endregion
 
@@ -27,9 +29,10 @@ namespace Auttobattler.Combat
             values = new CombatValuesWrapper(build);
             attackSys = new AttackSystem(this);
             defenseSys = new DefenseSystem(this);
-            healthSystem = new HealthSystem(this);
+            healthSys = new HealthSystem(this);
+            ultimateSys = new UltimateSystem(this);
 
-            if(side == Side.RIGHT)
+            if (side == Side.RIGHT)
                 this.grid = Battlefield.Instance.rightGrid;
             else
                 this.grid = Battlefield.Instance.leftGrid;
@@ -38,6 +41,7 @@ namespace Auttobattler.Combat
         public void Refresh()
         {
             attackSys.Refresh();
+            ultimateSys.Refresh();
         }
     }
 
@@ -54,6 +58,12 @@ namespace Auttobattler.Combat
         public CombatValue attackDuration;
         public CombatValue attackPower;
 
+        public CombatValue magic;
+
+        public CombatValue ultimateRegen;
+        public CombatValue ultimateProgress;
+        public CombatValue ultimateChargeToCast = new CombatValue(100f);
+
         public CombatValue defense;
 
         public CombatValuesWrapper(BuildedUnit build)
@@ -64,12 +74,16 @@ namespace Auttobattler.Combat
             health = new CombatValue(build.health.Get);
 
             attack = new CombatValue(build.attack.Get, build.level);
+            magic = new CombatValue(build.magic.Get, build.level);
             defense = new CombatValue(build.defense.Get, build.level);
 
             attackSpeed = new CombatValue(build.attackSpeed.Get);
             attackProgress = new CombatValue(0);
             attackDuration = new CombatValue(build.attackDuration.Get);
             attackPower = new CombatValue(build.attackPower.Get);
+
+            ultimateRegen = new CombatValue(build.ultimateRegen.Get);
+            ultimateProgress = new CombatValue(0);
         }
     }
 
@@ -150,6 +164,33 @@ namespace Auttobattler.Combat
         }
     }
 
+    public class UltimateSystem : CombatSystem
+    {
+        public UltimateSystem(UnitCombatInstance parent) : base(parent) { }
+
+        #region Properties
+        public int Level { get => parent.values.level; }
+        public float Attack { get => parent.values.attack.Value; set => parent.values.attack.Value = value; }
+        public float Magic { get => parent.values.magic.Value; set => parent.values.magic.Value = value; }
+        //public Ultimate Ultimate { get => parent.ultimate; }
+        public float ChargeRate { get => parent.values.ultimateRegen.Value; set => parent.values.ultimateRegen.Value = value; }
+        public float Progress { get => parent.values.ultimateProgress.Value; set => parent.values.ultimateProgress.Value = value; }
+        public float ChargeToCast { get => parent.values.ultimateChargeToCast.Value; set => parent.values.ultimateChargeToCast.Value = value; }
+        #endregion 
+
+        public void Refresh()
+        {
+            Progress += Time.fixedDeltaTime * ChargeRate;
+            Debug.Log(Progress);
+            while (Progress >= ChargeToCast)
+            {
+                Progress -= ChargeToCast;
+
+                Debug.Log("Ultimate");
+            }
+        }
+    }
+
     public enum AttackType
     {
         PHYSICAL, MAGICAL
@@ -178,7 +219,7 @@ namespace Auttobattler.Combat
         public void BeAttacked(AttackData data)
         {
             float damage = data.rawDamage / Defense;
-            parent.healthSystem.ReceiveDamage(damage);
+            parent.healthSys.ReceiveDamage(damage);
         }
     }
 
