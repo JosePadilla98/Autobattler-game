@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7aab7a75c3b7c4ca8dcc06f7d869f0, type: 3}
   m_Name: Level
   m_EditorClassIdentifier: 
-  sidesInfo: []
+  sidesInfo:
+  - side: 1
+    frontColumn:
+    - {fileID: 0}
+    - {fileID: 11400000, guid: 5fc71234dfe20cb4e871c0610fbd50c1, type: 2}
+    - {fileID: 0}
+    backColumn:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}

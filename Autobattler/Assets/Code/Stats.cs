@@ -52,6 +52,11 @@ namespace Auttobattler
         public float magicPrecision;
     }
 
+    public enum StatsNamesEnum
+    {
+        ATTACK
+    }
+
     /// <summary>
     /// Build only keeps in mind the unit mutators, not the objects. 
     /// This is cause the effects of objects can be disabled in battle

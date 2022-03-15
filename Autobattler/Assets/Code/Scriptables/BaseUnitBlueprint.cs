@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Auttobattler.Scriptables
 {
-    [CreateAssetMenu(fileName = "Creature", menuName = "ScriptableObjects/BaseUnitBlueprint", order = 1)]
+    [CreateAssetMenu(fileName = "BaseUnit", menuName = "ScriptableObjects/Unit/BaseUnitBlueprint", order = 1)]
     public class BaseUnitBlueprint : ScriptableObject
     {
         public string unitName;

@@ -1028,14 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCount: 0
   levels:
-  - frontColumn:
-    - {fileID: 0}
-    - {fileID: 11400000, guid: 5fc71234dfe20cb4e871c0610fbd50c1, type: 2}
-    - {fileID: 0}
-    backColumn:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+  - {fileID: 11400000, guid: 5e54e0f37eb332e4bb58d457e8a92506, type: 2}
 --- !u!114 &952133774
 MonoBehaviour:
   m_ObjectHideFlags: 0

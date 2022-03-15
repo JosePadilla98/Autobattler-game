@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Auttobattler.Scriptables
 {
-    [CreateAssetMenu(fileName = "Creature", menuName = "ScriptableObjects/Level", order = 3)]
+    [CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/Level", order = 3)]
     public class Level : ScriptableObject
     {
         public SummonsPerSide[] sidesInfo;
