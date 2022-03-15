@@ -18,7 +18,7 @@ MonoBehaviour:
     health: 25
     attack: 25
     attackPower: 1
-    attackSpeed: 100
+    attackSpeed: 25
     attackDuration: 100
     magic: 25
     manaRegen: 1

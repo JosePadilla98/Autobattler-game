@@ -22,11 +22,15 @@ namespace Auttobattler
 
         public void CreateCombatInstance(BuildedUnit build, Side team) 
         {
+            combatInstance = new UnitCombatInstance(build, team);
+        }
+        public void AttachCombatInstance(UnitCombatInstance combatInstance)
+        {
             /// <summary>
             /// When the unit is summoned by the level, this methods is called before Awake
             /// </summary>
 
-            combatInstance = new UnitCombatInstance(build, team);
+            this.combatInstance = combatInstance;
         }
 
         public void PreparativesToBattle()

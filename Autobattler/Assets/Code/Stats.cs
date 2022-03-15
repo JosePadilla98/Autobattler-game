@@ -73,10 +73,10 @@ namespace Auttobattler
         public BuildStat attackSpeed;
         public BuildStat attackDuration;
 
-        public BuildedUnit(BaseUnitBlueprint baseBlueprint, int level)
+        public BuildedUnit(BuildedUnitBlueprint blueprint)
         {
-            this.baseBlueprint = baseBlueprint;
-            this.level = level;
+            this.baseBlueprint = blueprint.baseBlueprint;
+            this.level = blueprint.level;
 
             Stats baseStats = baseBlueprint.stats;
             this.health = new BuildStat(baseStats.health);
@@ -86,11 +86,6 @@ namespace Auttobattler
             this.attackPower = new BuildStat(baseStats.attackPower);
             this.attackSpeed = new BuildStat(baseStats.attackSpeed);
             this.attackDuration = new BuildStat(baseStats.attackDuration);
-        }
-
-        public BuildedUnit(BuildedUnitBlueprint blueprint, int level) : this(blueprint.baseBlueprint, level)
-        {
-
         }
 
         public object Clone()

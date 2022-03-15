@@ -37,31 +37,14 @@ namespace Auttobattler
             Instance = this;
         }
 
-        public void SummonEnemies(Level level)
+        public void SummonUnit(UnitCombatInstance combatInstance, Position pos)
         {
-            Action<BuildedUnitBlueprint[], CombatSlot[]> action = (blueprintColum, SummonLocationColumn) =>
-            {
-                for (int i = 0; i < blueprintColum.Length; i++)
-                {
-                    BuildedUnitBlueprint blueprint = blueprintColum[i];
-
-                    if (blueprint == null)
-                        continue;
-
-                    SummonUnit(blueprint, SummonLocationColumn[i], Side.RIGHT);
-                }
-            };
-
-            action(level.frontColumn, rightGrid.front);
-            action(level.backColumn, rightGrid.back);
-        }
-
-        public void SummonUnit(BuildedUnitBlueprint blueprint, CombatSlot slot, Side side)
-        {
+            CombatSlot slot = GetCombatSlot(pos);
             Unit unit = Instantiate(unitPrefab, slot.transform);
-            unit.CreateCombatInstance(new BuildedUnit(blueprint, blueprint.level), side);
+            unit.AttachCombatInstance(combatInstance);
+            slot.unit = unit.CombatInstance;
 
-            if (side == Side.RIGHT)
+            if (pos.side == Side.RIGHT)
             {
                 unit.image.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 CombatController.Instance.rightTeam.Add(unit);
@@ -70,8 +53,18 @@ namespace Auttobattler
             {
                 CombatController.Instance.leftTeam.Add(unit);
             }
+        }
 
-            slot.unit = unit.CombatInstance;
+        public CombatSlot GetCombatSlot(Position pos)
+        {
+            Grid grid = (pos.side == Side.LEFT) ? leftGrid : rightGrid;
+            CombatSlot[] column = (pos.column == Column.FRONT) ? grid.front : grid.back;
+            return column[pos.heigh];
+        }
+    
+        public Grid GetGrid(Side side)
+        {
+            return (side == Side.RIGHT) ? rightGrid : leftGrid;
         }
     }
 
@@ -84,15 +77,15 @@ namespace Auttobattler
 
         public Position GetPosition(UnitCombatInstance c)
         {
-            Position pos = SearchInColumn(front, c, GridColumn.FRONT);
+            Position pos = SearchInColumn(front, c, Column.FRONT);
 
-            if (pos.column == GridColumn.NONE)
-                pos = SearchInColumn(back, c, GridColumn.BACK);
+            if (pos.column == Column.NONE)
+                pos = SearchInColumn(back, c, Column.BACK);
 
             return pos;
         }
 
-        private Position SearchInColumn(CombatSlot[] column, UnitCombatInstance c, GridColumn columnName)
+        private Position SearchInColumn(CombatSlot[] column, UnitCombatInstance c, Column columnName)
         {
             for (int i = 0; i < column.Length; i++)
             {
@@ -103,11 +96,13 @@ namespace Auttobattler
                 }
             }
 
-            return new Position(0, GridColumn.NONE, side);
+            return new Position(0, Column.NONE, side);
         }
     }
 
-    public enum GridColumn
+    #region POSITION INFO
+
+    public enum Column
     {
         FRONT, BACK, NONE
     }
@@ -120,14 +115,16 @@ namespace Auttobattler
     public struct Position
     {
         public int heigh;
-        public GridColumn column;
+        public Column column;
         public Side side;
 
-        public Position(int heigh, GridColumn column, Side side)
+        public Position(int heigh, Column column, Side side)
         {
             this.heigh = heigh;
             this.column = column;
             this.side = side;
         }
     }
+
+    #endregion
 }
