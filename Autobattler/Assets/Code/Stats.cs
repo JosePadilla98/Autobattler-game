@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Auttobattler.Scriptables;
+using Auttobattler.Mutators;
 using System;
 
 namespace Auttobattler
@@ -52,7 +53,7 @@ namespace Auttobattler
         public float magicPrecision;
     }
 
-    public enum StatsNamesEnum
+    public enum StatsNames
     {
         ATTACK
     }
@@ -64,6 +65,7 @@ namespace Auttobattler
     public class BuildedUnit : ICloneable
     {
         public BaseUnitBlueprint baseBlueprint;
+        public List<UnitMutator> mutators;
 
         #region MODIFIED BY LEVEL
         public int level;
@@ -82,6 +84,7 @@ namespace Auttobattler
         {
             this.baseBlueprint = blueprint.baseBlueprint;
             this.level = blueprint.level;
+            mutators = new List<UnitMutator>(blueprint.mutators);
 
             Stats baseStats = baseBlueprint.stats;
             this.health = new BuildStat(baseStats.health);
@@ -91,6 +94,28 @@ namespace Auttobattler
             this.attackPower = new BuildStat(baseStats.attackPower);
             this.attackSpeed = new BuildStat(baseStats.attackSpeed);
             this.attackDuration = new BuildStat(baseStats.attackDuration);
+
+            //StatsModifiers
+            foreach (var mutator in mutators)
+            {
+                if (!(mutator is StatModifier))
+                    return;
+
+                StatModifier modifier = (StatModifier)mutator;
+                BuildStat statToModify = null;
+
+                switch (modifier.statName)
+                {
+                    case StatsNames.ATTACK:
+                        statToModify = attack;
+                        break;
+                }
+
+                List<float> modifierList = (modifier.type == ModifierType.LINEAR) ?
+                    modifierList = statToModify.linearModifiers : modifierList = statToModify.modifiers;
+
+                modifierList.Add(modifier.value);
+            }
         }
 
         public object Clone()

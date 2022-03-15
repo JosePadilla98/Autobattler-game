@@ -8,6 +8,7 @@ namespace Auttobattler
     [RequireComponent(typeof(CombatSlot))]
     public class GridDropArea : MonoBehaviour, IDropHandler
     {
+        [HideInInspector]
         public UnitDragHandler item;
         private CombatSlot combatSlot;
         public CombatSlot CombatSlot { get => combatSlot;}

@@ -7,13 +7,13 @@ namespace Auttobattler.Mutators
     [CreateAssetMenu(fileName = "StatModifier", menuName = "ScriptableObjects/Mutators/StatModifier", order = 3)]
     public class StatModifier : UnitMutator
     {
-        public StatsNamesEnum statName;
+        public StatsNames statName;
         public ModifierType type;
         public float value;
+    }
 
-        public enum ModifierType
-        {
-            LINEAR, PERCENTAGE
-        }
+    public enum ModifierType
+    {
+        LINEAR, PERCENTAGE
     }
 }
