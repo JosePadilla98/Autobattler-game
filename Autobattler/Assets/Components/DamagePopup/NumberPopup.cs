@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Pool;
 
 namespace Auttobattler
 {
@@ -17,6 +18,7 @@ namespace Auttobattler
         public float fontSize;
     }
 
+    //TODO: Object pool
     public class NumberPopup : MonoBehaviour
     {
         private const float DISAPPEAR_TIMER_MAX = 0.7f;
@@ -35,8 +37,8 @@ namespace Auttobattler
 
         public static NumberPopup Create(Transform parent, int value, NumberPopupTypes type)
         {
-            NumberPopup damagePopup = Instantiate(GameAssets.Instance.damagePopup, parent);
-            damagePopup.Setup(value, type);
+            NumberPopup damagePopup = NumberPopupPool.Get();
+            damagePopup.Setup(parent ,value, type);
 
             return damagePopup;
         }
@@ -47,10 +49,11 @@ namespace Auttobattler
             rect = GetComponent<RectTransform>();
         }
 
-        public void Setup(int value, NumberPopupTypes type)
+        public void Setup(Transform parent, int value, NumberPopupTypes type)
         {
             textMesh.SetText(value.ToString());
 
+            #region SET_FONT
             float fontSize = 0f;
             Color color = Color.white;
             switch (type)
@@ -78,9 +81,13 @@ namespace Auttobattler
             float y = Random.Range(0.6f, 1);
             float x = Random.Range(-0.3f, 0.3f);
             Vector2 normalizedVector = new Vector2(x, y);
-            Debug.Log(normalizedVector);
-
             moveVector = normalizedVector * 600f;
+            #endregion
+
+            transform.SetParent(parent);
+            transform.localScale = Vector3.one;
+            rect.anchoredPosition = Vector2.zero;
+            enabled = true;
         }
 
         private void Update()
@@ -111,7 +118,8 @@ namespace Auttobattler
                 textMesh.color = tmp;
                 if (tmp.a < 0)
                 {
-                    Destroy(gameObject);
+                    enabled = false;
+                    NumberPopupPool.ReleasePopup(this);
                 }
             }
         }
