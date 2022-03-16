@@ -28,7 +28,6 @@ namespace Auttobattler.Ultimates
         public override void Cast(UnitCombatInstance instance)
         {
             instance.LaunchAttack(attackData.type, attackData.Power);
-            Debug.Log("Casted");
         }
 
         public override string GetName()

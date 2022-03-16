@@ -10,19 +10,27 @@ namespace Auttobattler
     {
         public UnitInfoBars infoBars;
         public Image image;
+        public Transform numberPopupsLocation;
 
         private UnitAnimationsController animationsController;
         private UnitCombatInstance combatInstance;
-        public UnitCombatInstance CombatInstance { get => combatInstance; }
+
+        public UnitCombatInstance CombatInstance { get => combatInstance; 
+            set 
+            { 
+                combatInstance = value;
+                combatInstance.gameObject = this; 
+            } 
+        }
 
         protected virtual void Awake()
         {
             animationsController = GetComponent<UnitAnimationsController>();
         }
 
-        public void CreateCombatInstance(BuildedUnit build, Side team) 
+        public void CreateCombatInstance(BuildedUnit build, Side team)
         {
-            combatInstance = new UnitCombatInstance(build, team);
+            CombatInstance = new UnitCombatInstance(build, team);
         }
         public void AttachCombatInstance(UnitCombatInstance combatInstance)
         {
@@ -30,7 +38,7 @@ namespace Auttobattler
             /// When the unit is summoned by the level, this methods is called before Awake
             /// </summary>
 
-            this.combatInstance = combatInstance;
+            this.CombatInstance = combatInstance;
         }
 
         public void PreparativesToBattle()

@@ -22,7 +22,9 @@ MonoBehaviour:
     attackDuration: 100
     magic: 25
     manaRegen: 1
+    maxMana: 0
     cooldownReduction: 0
+    ultimateRegen: 10
     criticMultiplier: 0
     physicalCriticChance: 0
     magicalCriticChance: 0

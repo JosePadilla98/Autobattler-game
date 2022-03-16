@@ -57,7 +57,9 @@ MonoBehaviour:
   infoBars:
     healthBar: {fileID: 2869102244471569806}
     attackProgressBar: {fileID: 2869102245233841949}
+    ultimateProgressBar: {fileID: 0}
   image: {fileID: 2869102244435404643}
+  numberPopupsLocation: {fileID: 2784316720388713778}
 --- !u!95 &2803015391924516132
 Animator:
   serializedVersion: 4

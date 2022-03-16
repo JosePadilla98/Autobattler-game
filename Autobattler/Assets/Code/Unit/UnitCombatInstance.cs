@@ -11,6 +11,7 @@ namespace Auttobattler.Combat
         public Grid grid;
         public CombatValuesWrapper values;
         public Ultimate ultimate;
+        public Unit gameObject;
 
         #region PROPERTIES
         public Position Position { get => grid.GetPosition(this); }
@@ -255,7 +256,7 @@ namespace Auttobattler.Combat
         public void ReceiveDamage(float damage)
         {
             Health -= damage;
-            //Check if die
+            NumberPopup.Create(parent.gameObject.numberPopupsLocation, (int)damage, NumberPopupTypes.DAMAGE); 
         }
     }
 
