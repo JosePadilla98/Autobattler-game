@@ -16,7 +16,6 @@ namespace Auttobattler
 
         public static NumberPopup Get()
         {
-            Debug.Log(pool.CountAll);
             return pool.Get();
         }
 

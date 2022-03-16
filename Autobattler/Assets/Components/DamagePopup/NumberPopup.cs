@@ -76,13 +76,16 @@ namespace Auttobattler
 
             textMesh.fontSize = fontSize;
             textMesh.color = color;
-            disappearTimer = DISAPPEAR_TIMER_MAX;
-
-            float y = Random.Range(0.6f, 1);
-            float x = Random.Range(-0.3f, 0.3f);
-            Vector2 normalizedVector = new Vector2(x, y);
-            moveVector = normalizedVector * 600f;
             #endregion
+
+            #region MOVEMENT
+            disappearTimer = DISAPPEAR_TIMER_MAX;
+            float y = Random.Range(0.6f, 1);
+            float x = Random.Range(-0.6f, 0.6f);
+            Vector2 normalizedVector = new Vector2(x, y);
+            moveVector = normalizedVector * 600f; 
+            #endregion
+
 
             transform.SetParent(parent);
             transform.localScale = Vector3.one;
