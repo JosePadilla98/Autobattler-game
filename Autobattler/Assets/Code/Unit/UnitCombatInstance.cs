@@ -80,6 +80,7 @@ namespace Auttobattler.Combat
         public CombatValue ultimateChargeToCast = new CombatValue(100f);
 
         public CombatValue defense;
+        public CombatValue magicDefense;
 
         public CombatValuesWrapper(BuildedUnit build)
         {
@@ -92,6 +93,7 @@ namespace Auttobattler.Combat
             attack = new CombatValue(stats.attack.Get, stats.level);
             magic = new CombatValue(stats.magic.Get, stats.level);
             defense = new CombatValue(stats.defense.Get, stats.level);
+            magicDefense = new CombatValue(stats.magicDefense.Get, stats.level);
 
             attackSpeed = new CombatValue(stats.attackSpeed.Get);
             attackProgress = new CombatValue(0);
@@ -235,11 +237,13 @@ namespace Auttobattler.Combat
 
         #region Properties
         public float Defense { get => parent.values.defense.Value; set => parent.values.attack.Value = value; }
+        public float MagicDefense { get => parent.values.magicDefense.Value; set => parent.values.magicDefense.Value = value; }
         #endregion 
 
         public void BeAttacked(RawDamageData data)
         {
-            float damage = data.rawDamage / Defense;
+            float defenseValue = (data.type == AttackType.PHYSICAL) ? Defense : MagicDefense;
+            float damage = data.rawDamage / defenseValue;
             parent.healthSys.ReceiveDamage(damage);
         }
     }

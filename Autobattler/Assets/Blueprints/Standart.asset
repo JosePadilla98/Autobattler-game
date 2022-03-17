@@ -18,13 +18,13 @@ MonoBehaviour:
     health: 25
     attack: 25
     attackPower: 1
-    attackSpeed: 25
+    attackSpeed: 100
     attackDuration: 100
     magic: 25
     manaRegen: 1
     maxMana: 0
     cooldownReduction: 0
-    ultimateRegen: 10
+    ultimateRegen: 25
     criticMultiplier: 0
     physicalCriticChance: 0
     magicalCriticChance: 0

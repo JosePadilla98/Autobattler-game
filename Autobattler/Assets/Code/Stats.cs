@@ -64,10 +64,6 @@ namespace Auttobattler
         ATTACK
     }
 
-    /// <summary>
-    /// Build only keeps in mind the unit mutators, not the objects. 
-    /// This is cause the effects of objects can be disabled in battle
-    /// </summary>
     public class BuildedUnit : ICloneable
     {
         public BuildStatsWrapper statsWrapper;
@@ -118,6 +114,7 @@ namespace Auttobattler
         public BuildStat attack;
         public BuildStat magic;
         public BuildStat defense;
+        public BuildStat magicDefense;
         #endregion
 
         public BuildStat health;
@@ -133,8 +130,9 @@ namespace Auttobattler
             Stats baseStats = blueprint.baseBlueprint.stats;
             health = new BuildStat(baseStats.health);
             attack = new BuildStat(baseStats.attack);
-            defense = new BuildStat(baseStats.defense);
             magic = new BuildStat(baseStats.magic);
+            defense = new BuildStat(baseStats.defense);
+            magicDefense = new BuildStat(baseStats.magicDefense);
 
             attackPower = new BuildStat(baseStats.attackPower);
             attackSpeed = new BuildStat(baseStats.attackSpeed);
