@@ -12,16 +12,10 @@ namespace Auttobattler
         private UnitDragHandler dragHandler;
         public BuildedUnitBlueprint blueprint;
 
-        protected override void Awake()
-        {
-            base.Awake();
-
-            CreateCombatInstance(new BuildedUnit(blueprint), Side.LEFT);
-            dragHandler = GetComponent<UnitDragHandler>();
-        }
-
         private void Start()
         {
+            CreateCombatInstance(new BuildedUnit(blueprint), Side.LEFT);
+            dragHandler = GetComponent<UnitDragHandler>();
             dragHandler.dropArea.CombatSlot.unit = CombatInstance;
         }
     }

@@ -7,6 +7,7 @@ namespace Auttobattler
     public class GameAssets : MonoBehaviour
     {
         public NumberPopup damagePopup;
+        public Unit unitPrefab;
 
         #region SINGLETON
 

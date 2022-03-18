@@ -13,8 +13,6 @@ namespace Auttobattler
         public Grid leftGrid;
         public Grid rightGrid;
 
-        public Unit unitPrefab;
-
         #region SINGLETON
 
         private static Battlefield instance;
@@ -40,7 +38,7 @@ namespace Auttobattler
         public void SummonUnit(UnitCombatInstance combatInstance, Position pos)
         {
             CombatSlot slot = GetCombatSlot(pos);
-            Unit unit = Instantiate(unitPrefab, slot.transform);
+            Unit unit = Instantiate(GameAssets.Instance.unitPrefab, slot.transform);
             unit.AttachCombatInstance(combatInstance);
             slot.unit = unit.CombatInstance;
 
