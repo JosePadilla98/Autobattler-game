@@ -161,7 +161,7 @@ namespace Auttobattler
 
         public void OnValueChanged(float f)
         {
-            text.text = textToShow + " :" + f;
+            text.text = textToShow + ": " + f;
         }
     }
 }
