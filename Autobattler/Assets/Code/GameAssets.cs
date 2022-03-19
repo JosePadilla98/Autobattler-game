@@ -6,8 +6,13 @@ namespace Auttobattler
 {
     public class GameAssets : MonoBehaviour
     {
+        [Header("Prefabs")]
         public NumberPopup damagePopup;
         public Unit unitPrefab;
+
+        [Space(10)]
+        [Header("Configs")]
+        public ColorPalette colorPalette;
 
         #region SINGLETON
 

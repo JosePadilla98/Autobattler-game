@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Auttobattler.Combat;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace Auttobattler
 {
-    public class Unit : MonoBehaviour
+    public class Unit : MonoBehaviour, IPointerClickHandler
     {
         public UnitInfoBars infoBars;
         public Image image;
@@ -46,6 +47,11 @@ namespace Auttobattler
             infoBars.AttachUnit(CombatInstance);
             animationsController?.AttachUnit(CombatInstance);
         }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            UnitInfoPanel.Instance.AttachUnit(CombatInstance);
+        }
     }
 
     [System.Serializable]
@@ -68,7 +74,7 @@ namespace Auttobattler
 
             if (ultimateProgressBar != null)
             {
-                ultimateProgressBar.AttachMaxValue(unit.values.ultimateChargeToCast);
+                ultimateProgressBar.AttachMaxValue(unit.values.ultimateCost);
                 ultimateProgressBar.AttachValue(unit.values.ultimateProgress);
             }
         }
@@ -77,7 +83,11 @@ namespace Auttobattler
         {
             healthBar.Unnatach();
             attackProgressBar.Unnatach();
-            ultimateProgressBar.Unnatach();
+
+            if (ultimateProgressBar != null)
+            {
+                ultimateProgressBar.Unnatach();
+            }
         }
     }
 

@@ -8,6 +8,7 @@ using System;
 
 namespace Auttobattler
 {
+    #region BASE
     [System.Serializable]
     public struct Stats
     {
@@ -25,26 +26,16 @@ namespace Auttobattler
         public float magic;
         public float manaRegen;
         public float maxMana;
-        public float cooldownReduction;
+        public float cdr;
 
         [Space(10)]
         [Header("Ultimate")]
         public float ultimateRegen;
 
         [Space(10)]
-        [Header("Critics")]
-        public float criticMultiplier;
-        public float physicalCriticChance;
-        public float magicalCriticChance;
-
-        [Space(10)]
         [Header("Defenses")]
         public float defense;
         public float magicDefense;
-        public float physicalEvasion;
-        public float magicalEvasion;
-        public float physicalReduction;
-        public float magicReduction;
 
         [Space(10)]
         [Header("Vigor")]
@@ -52,11 +43,6 @@ namespace Auttobattler
         public float magicEncumbrance;
         public float reinvigoration;
         public float vigor;
-
-        [Space(10)]
-        [Header("Precision")]
-        public float attackPrecision;
-        public float magicPrecision;
     }
 
     public enum StatsNames
@@ -64,6 +50,25 @@ namespace Auttobattler
         ATTACK
     }
 
+    public struct AdvancedStats
+    {
+        [Header("Critics")]
+        public float criticMultiplier;
+        public float criticChance;
+
+        [Space(10)]
+        [Header("Evasion")]
+        public float physicalEvasion;
+        public float magicalEvasion;
+
+        [Space(10)]
+        [Header("Precision")]
+        public float Precision;
+    }
+
+    #endregion
+    
+    #region BUILDED
     public class BuildedUnit : ICloneable
     {
         public BuildStatsWrapper statsWrapper;
@@ -123,7 +128,17 @@ namespace Auttobattler
         public BuildStat attackSpeed;
         public BuildStat attackDuration;
 
+        public BuildStat manaRegen;
+        public BuildStat maxMana;
+        public BuildStat cdr;
+
+        public BuildStat ultimateCost;
         public BuildStat ultimateRegen;
+
+        public BuildStat vigor;
+        public BuildStat reinvigoration;
+        public BuildStat aEncumbrance;
+        public BuildStat mEncumbrance;
 
         public BuildStatsWrapper(BuildedUnitBlueprint blueprint)
         {
@@ -138,7 +153,17 @@ namespace Auttobattler
             attackSpeed = new BuildStat(baseStats.attackSpeed);
             attackDuration = new BuildStat(baseStats.attackDuration);
 
+            maxMana = new BuildStat(baseStats.maxMana);
+            manaRegen = new BuildStat(baseStats.manaRegen);
+            cdr = new BuildStat(baseStats.cdr);
+
             ultimateRegen = new BuildStat(baseStats.ultimateRegen);
+            ultimateCost = new BuildStat(blueprint.ultimate.cost);
+
+            vigor = new BuildStat(baseStats.vigor);
+            reinvigoration = new BuildStat(baseStats.reinvigoration);
+            aEncumbrance = new BuildStat(baseStats.attackEncumbrance);
+            mEncumbrance = new BuildStat(baseStats.magicEncumbrance);
         }
     }
 
@@ -184,7 +209,8 @@ namespace Auttobattler
 
             return clone;
         }
-    }
+    } 
+    #endregion
 }
 
 

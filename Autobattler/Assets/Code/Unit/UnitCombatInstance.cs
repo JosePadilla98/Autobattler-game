@@ -74,13 +74,23 @@ namespace Auttobattler.Combat
         public CombatValue attackPower;
 
         public CombatValue magic;
+        public CombatValue maxMana;
+        public CombatValue currentMana;
+        public CombatValue manaRegen;
+        public CombatValue cdr;
 
         public CombatValue ultimateRegen;
         public CombatValue ultimateProgress;
-        public CombatValue ultimateChargeToCast = new CombatValue(100f);
+        public CombatValue ultimateCost;
 
         public CombatValue defense;
         public CombatValue magicDefense;
+
+        public CombatValue vigor;
+        public CombatValue currentVigor;
+        public CombatValue reinvigoration;
+        public CombatValue aEncumbrance;
+        public CombatValue mEncumbrance;
 
         public CombatValuesWrapper(BuildedUnit build)
         {
@@ -100,8 +110,20 @@ namespace Auttobattler.Combat
             attackDuration = new CombatValue(stats.attackDuration.Get);
             attackPower = new CombatValue(stats.attackPower.Get);
 
+            maxMana = new CombatValue(stats.maxMana.Get);
+            currentMana = new CombatValue(0);
+            manaRegen = new CombatValue(stats.manaRegen.Get);
+            cdr = new CombatValue(stats.cdr.Get);
+
+            ultimateCost = new CombatValue(stats.ultimateCost.Get);
             ultimateRegen = new CombatValue(stats.ultimateRegen.Get);
             ultimateProgress = new CombatValue(0);
+
+            vigor = new CombatValue(stats.vigor.Get);
+            currentVigor = new CombatValue(0);
+            reinvigoration = new CombatValue(stats.reinvigoration.Get);
+            aEncumbrance = new CombatValue(stats.aEncumbrance.Get);
+            mEncumbrance = new CombatValue(stats.mEncumbrance.Get);
         }
     }
 
@@ -209,7 +231,7 @@ namespace Auttobattler.Combat
         public Ultimate Ultimate { get => parent.ultimate; }
         public float ChargeRate { get => parent.values.ultimateRegen.Value; set => parent.values.ultimateRegen.Value = value; }
         public float Progress { get => parent.values.ultimateProgress.Value; set => parent.values.ultimateProgress.Value = value; }
-        public float ChargeToCast { get => parent.values.ultimateChargeToCast.Value; set => parent.values.ultimateChargeToCast.Value = value; }
+        public float ChargeToCast { get => parent.values.ultimateCost.Value; set => parent.values.ultimateCost.Value = value; }
         #endregion
 
         public delegate void UltimateEvent();

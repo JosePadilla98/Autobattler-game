@@ -8,6 +8,8 @@ namespace Auttobattler.Ultimates
 {
     public abstract class UltimateScriptable : ScriptableObject
     {
+        [Range(1, 400)]
+        public int cost;
         public abstract Ultimate GetUltimate();
     }
 
