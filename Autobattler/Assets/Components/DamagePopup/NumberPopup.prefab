@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb8e3153f092d94687aaa33a8584a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DISAPPEAR_TIME: 0.4
   damageData:
     color: {r: 0.9528302, g: 0.37305427, b: 0.15730685, a: 1}
     fontSize: 33

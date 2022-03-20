@@ -21,7 +21,8 @@ namespace Auttobattler
     //TODO: Object pool
     public class NumberPopup : MonoBehaviour
     {
-        private const float DISAPPEAR_TIMER_MAX = 0.7f;
+        [SerializeField]
+        private float DISAPPEAR_TIME = 0.7f;
 
         private TMP_Text textMesh;
         private float disappearTimer;
@@ -79,7 +80,7 @@ namespace Auttobattler
             #endregion
 
             #region MOVEMENT
-            disappearTimer = DISAPPEAR_TIMER_MAX;
+            disappearTimer = DISAPPEAR_TIME;
             float y = Random.Range(0.6f, 1);
             float x = Random.Range(-0.6f, 0.6f);
             Vector2 normalizedVector = new Vector2(x, y);
@@ -98,7 +99,7 @@ namespace Auttobattler
             rect.anchoredPosition += moveVector * Time.deltaTime;
             moveVector -= moveVector * 8f * Time.deltaTime;
 
-            if (disappearTimer > DISAPPEAR_TIMER_MAX * .5f)
+            if (disappearTimer > DISAPPEAR_TIME * .5f)
             {
                 // First half of the popup lifetime
                 float increaseScaleAmount = 1f;
