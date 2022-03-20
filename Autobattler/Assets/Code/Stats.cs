@@ -142,6 +142,7 @@ namespace Auttobattler
 
         public BuildStatsWrapper(BuildedUnitBlueprint blueprint)
         {
+            level = blueprint.level;
             Stats baseStats = blueprint.baseBlueprint.stats;
             health = new BuildStat(baseStats.health);
             attack = new BuildStat(baseStats.attack);

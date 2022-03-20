@@ -18,25 +18,16 @@ MonoBehaviour:
     health: 25
     attack: 25
     attackPower: 1
-    attackSpeed: 100
+    attackSpeed: 25
     attackDuration: 100
     magic: 25
-    manaRegen: 1
-    maxMana: 0
-    cooldownReduction: 0
-    ultimateRegen: 25
-    criticMultiplier: 0
-    physicalCriticChance: 0
-    magicalCriticChance: 0
+    manaRegen: 3
+    maxMana: 100
+    cdr: 0
+    ultimateRegen: 3
     defense: 25
     magicDefense: 25
-    physicalEvasion: 0
-    magicalEvasion: 0
-    physicalReduction: 0
-    magicReduction: 0
     attackEncumbrance: 10
     magicEncumbrance: 10
-    reinvigoration: 0
+    reinvigoration: 1
     vigor: 100
-    attackPrecision: 0
-    magicPrecision: 0

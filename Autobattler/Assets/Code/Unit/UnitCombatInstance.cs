@@ -23,6 +23,8 @@ namespace Auttobattler.Combat
         public DefenseSystem defenseSys;
         public HealthSystem healthSys;
         public UltimateSystem ultimateSys;
+        public ManaSystem manaSys;
+        public VigorSystem vigorSys;
 
         #endregion
 
@@ -34,6 +36,8 @@ namespace Auttobattler.Combat
             healthSys = new HealthSystem(this);
             ultimateSys = new UltimateSystem(this);
             ultimate = build.ultScriptable.GetUltimate();
+            manaSys = new ManaSystem(this);
+            vigorSys = new VigorSystem(this);
 
             if (side == Side.RIGHT)
                 this.grid = Battlefield.Instance.rightGrid;
@@ -45,6 +49,8 @@ namespace Auttobattler.Combat
         {
             attackSys.Refresh();
             ultimateSys.Refresh();
+            manaSys.Refresh();
+            vigorSys.Refresh();
         }
 
         public void LaunchAttack(AttackType attackType, float power)
@@ -99,7 +105,7 @@ namespace Auttobattler.Combat
 
             maxHealth = new CombatValue(stats.health.Get);
             health = new CombatValue(stats.health.Get);
-
+            
             attack = new CombatValue(stats.attack.Get, stats.level);
             magic = new CombatValue(stats.magic.Get, stats.level);
             defense = new CombatValue(stats.defense.Get, stats.level);
@@ -194,7 +200,7 @@ namespace Auttobattler.Combat
         public int Level { get => parent.values.level; }
         public float Attack { get => parent.values.attack.Value; set => parent.values.attack.Value = value; }
         public float Progress { get => parent.values.attackProgress.Value; set => parent.values.attackProgress.Value = value; }
-        public float AttackSpeed { get => parent.values.attackSpeed.Value; set => parent.values.attackSpeed.Value = value; } 
+        public float AttackSpeed { get => parent.values.attackSpeed.Value; set => parent.values.attackSpeed.Value = value; }
         public float Duration { get => parent.values.attackDuration.Value; set => parent.values.attackDuration.Value = value; }
         public float Power { get => parent.values.attackPower.Value; }
         #endregion 
@@ -252,7 +258,7 @@ namespace Auttobattler.Combat
             Ultimate?.Cast(parent);
         }
     }
-  
+
     public class DefenseSystem : CombatSystem
     {
         public DefenseSystem(UnitCombatInstance parent) : base(parent) { }
@@ -282,7 +288,47 @@ namespace Auttobattler.Combat
         public void ReceiveDamage(float damage)
         {
             Health -= damage;
-            NumberPopup.Create(parent.gameObject.numberPopupsLocation, (int)damage, NumberPopupTypes.DAMAGE); 
+            NumberPopup.Create(parent.gameObject.numberPopupsLocation, (int)damage, NumberPopupTypes.DAMAGE);
+        }
+    }
+
+    public class ManaSystem : CombatSystem
+    {
+        public ManaSystem(UnitCombatInstance parent) : base(parent) { }
+
+        #region Properties
+        public float MaxMana { get => parent.values.maxMana.Value; set => parent.values.maxMana.Value = value; }
+        public float CurrentMana { get => parent.values.currentMana.Value; set => parent.values.currentMana.Value = value; }
+        public float ManaRegen { get => parent.values.manaRegen.Value; set => parent.values.manaRegen.Value = value; }
+        #endregion 
+
+        public void Refresh()
+        {
+            CurrentMana += Time.fixedDeltaTime * ManaRegen;
+            if(CurrentMana > MaxMana)
+            {
+                CurrentMana = MaxMana;
+            }
+        }
+    }
+
+    public class VigorSystem : CombatSystem
+    {
+        public VigorSystem(UnitCombatInstance parent) : base(parent) { }
+
+        #region Properties
+        public float MaxVigor { get => parent.values.vigor.Value; set => parent.values.vigor.Value = value; }
+        public float CurrentVigor { get => parent.values.currentVigor.Value; set => parent.values.currentVigor.Value = value; }
+        public float Reinvigoration { get => parent.values.reinvigoration.Value; set => parent.values.reinvigoration.Value = value; }
+        #endregion 
+
+        public void Refresh()
+        {
+            CurrentVigor += Time.fixedDeltaTime * Reinvigoration;
+            if (CurrentVigor > MaxVigor)
+            {
+                CurrentVigor = MaxVigor;
+            }
         }
     }
 
@@ -309,7 +355,7 @@ namespace Auttobattler.Combat
                     Grid gridObjetive;
                     if (ownPos.side == Side.LEFT)
                         gridObjetive = battleField.rightGrid;
-                    else 
+                    else
                         gridObjetive = battleField.leftGrid;
 
                     UnitCombatInstance creature = GetClosest(ownPos, gridObjetive);

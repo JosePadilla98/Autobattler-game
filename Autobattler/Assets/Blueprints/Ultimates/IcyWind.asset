@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c43769713db1f4394c4ef7cbe0ab91, type: 3}
   m_Name: IcyWind
   m_EditorClassIdentifier: 
+  cost: 80
   attackData:
     Power: 5
     type: 0

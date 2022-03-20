@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 63036109}
   - component: {fileID: 63036111}
   - component: {fileID: 63036110}
+  - component: {fileID: 63036112}
   m_Layer: 5
   m_Name: UnitInfoPanel
   m_TagString: Untagged
@@ -304,6 +305,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 63036108}
   m_CullTransparentMesh: 1
+--- !u!114 &63036112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63036108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1793617379e67394dbc6a045c0a9e42b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+    text: {fileID: 1686433894}
+    textToShow: HP
+  attack:
+    text: {fileID: 1832123983}
+    textToShow: Attack
+  attackSpeed:
+    text: {fileID: 1303036067}
+    textToShow: AttackSpeed
+  defense:
+    text: {fileID: 372365403}
+    textToShow: Defense
+  ult:
+    text: {fileID: 227991467}
+    textToShow: Ult
+  ultRegen:
+    text: {fileID: 1522967767}
+    textToShow: UltRegen
+  magic:
+    text: {fileID: 1461685268}
+    textToShow: Magic
+  magicDefense:
+    text: {fileID: 1561176531}
+    textToShow: MDefense
+  mana:
+    text: {fileID: 518153940}
+    textToShow: Mana
+  manaRegen:
+    text: {fileID: 1366431983}
+    textToShow: ManaRegen
+  cdr:
+    text: {fileID: 1588237910}
+    textToShow: CDR
+  vigor:
+    text: {fileID: 1872098210}
+    textToShow: Vigor
+  reinvigoration:
+    text: {fileID: 1682793302}
+    textToShow: Reinvigoration
+  aEncumbrance:
+    text: {fileID: 2131948004}
+    textToShow: Attack E
+  mEncumbrance:
+    text: {fileID: 625893719}
+    textToShow: Magic E
 --- !u!1 &94100294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,7 +1480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePopup: {fileID: 1638914695523467917, guid: e6712d4b71d222846bc2cbcca27476f8, type: 3}
   unitPrefab: {fileID: 8512757757831946157, guid: 49472e97cd6ccd947b40c4889d5db5eb, type: 3}
-  colorPalette: {fileID: 0}
+  colorPalette: {fileID: 11400000, guid: 3c10e9af708f7e14589bab0ddbddbff4, type: 2}
 --- !u!4 &679851591
 Transform:
   m_ObjectHideFlags: 0
