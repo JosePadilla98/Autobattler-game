@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 namespace Auttobattler
 {
-    public class Unit : MonoBehaviour, IPointerClickHandler
+    public class Unit : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public UnitInfoBars infoBars;
         public Image image;
@@ -45,10 +45,19 @@ namespace Auttobattler
             animationsController?.AttachUnit(CombatInstance);
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        #region MOUSE_INTERACTIONS
+
+        public void OnPointerEnter(PointerEventData eventData)
         {
-            UnitInfoPanel.Instance.AttachUnit(CombatInstance);
+            UnitInfoPanel.Instance?.AttachUnit(CombatInstance);
         }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            UnitInfoPanel.Instance?.UnattachUnit();
+        }
+
+        #endregion
     }
 
     [System.Serializable]

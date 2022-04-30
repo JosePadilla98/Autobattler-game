@@ -50,28 +50,15 @@ namespace Auttobattler
         private StatText mEncumbrance;
 
         private ColorPalette ColorPalette { get => GameAssets.Instance.colorPalette; }
-
-        #region SINGLETON
-
-        private static UnitInfoPanel instance;
-        public static UnitInfoPanel Instance
-        {
+        public static UnitInfoPanel Instance { 
             get => instance;
             set
             {
-                if (instance != null)
-                    throw new System.Exception("Must be only one");
-
+                instance?.UnattachUnit();
                 instance = value;
             }
         }
-
-        #endregion 
-
-        private void Awake()
-        {
-            instance = this;
-        }
+        private static UnitInfoPanel instance;
 
         private void Start()
         {
@@ -135,7 +122,28 @@ namespace Auttobattler
 
         public void UnattachUnit()
         {
-            health.Unnatach();
+            health.Unattach();
+            attack.Unattach();
+            attackSpeed.Unattach();
+            defense.Unattach();
+
+            //
+            ult.Unattach();
+            ultRegen.Unattach();
+            magic.Unattach();
+            magicDefense.Unattach();
+
+            //
+            mana.Unattach();
+            manaRegen.Unattach();
+            cdr.Unattach();
+
+            //
+            vigor.Unattach();
+            reinvigoration.Unattach();
+            aEncumbrance.Unattach();
+            mEncumbrance.Unattach();
+
             gameObject.SetActive(false);
         }
     }
@@ -154,8 +162,9 @@ namespace Auttobattler
 
         public void Attach(CombatValue v)
         {
+            this.v = v;
             v.OnValueChanged += OnValueChanged;
-            OnValueChanged(v.Value);
+            ChangeText(v.Value);
         }
 
         public void Unattach()
@@ -164,6 +173,11 @@ namespace Auttobattler
         }
 
         public void OnValueChanged(float f)
+        {
+            ChangeText(f);
+        }
+
+        private void ChangeText(float f)
         {
             text.text = textToShow + ": " + f;
         }

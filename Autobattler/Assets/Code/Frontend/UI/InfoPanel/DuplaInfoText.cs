@@ -60,7 +60,7 @@ namespace Auttobattler
             v.OnValueChanged += OnValueChanged;
         }
 
-        public void Unnatach()
+        public void Unattach()
         {
             value.OnValueChanged -= OnValueChanged;
             maxValue.OnValueChanged -= OnMaxChanged;
