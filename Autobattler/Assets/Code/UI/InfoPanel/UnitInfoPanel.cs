@@ -76,6 +76,7 @@ namespace Auttobattler
         private void Start()
         {
             SetColors();
+            gameObject.SetActive(false);
         }
 
         private void SetColors()
@@ -128,11 +129,14 @@ namespace Auttobattler
             reinvigoration.Attach(unit.values.reinvigoration);
             aEncumbrance.Attach(unit.values.aEncumbrance);
             mEncumbrance.Attach(unit.values.mEncumbrance);
+
+            gameObject.SetActive(true);
         }
 
         public void UnattachUnit()
         {
             health.Unnatach();
+            gameObject.SetActive(false);
         }
     }
 

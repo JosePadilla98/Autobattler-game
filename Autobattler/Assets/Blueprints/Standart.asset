@@ -21,7 +21,7 @@ MonoBehaviour:
     attackSpeed: 25
     attackDuration: 100
     magic: 25
-    manaRegen: 3
+    manaRegen: 5
     maxMana: 100
     cdr: 0
     ultimateRegen: 3

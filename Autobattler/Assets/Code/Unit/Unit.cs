@@ -33,12 +33,9 @@ namespace Auttobattler
         {
             CombatInstance = new UnitCombatInstance(build, team);
         }
+
         public void AttachCombatInstance(UnitCombatInstance combatInstance)
         {
-            /// <summary>
-            /// When the unit is summoned by the level, this methods is called before Awake
-            /// </summary>
-
             this.CombatInstance = combatInstance;
         }
 

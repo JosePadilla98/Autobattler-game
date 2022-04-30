@@ -31,17 +31,24 @@ namespace Auttobattler.Combat
 
         public void startCombat()
         {
-            foreach (var item in leftTeam)
-            {
-                item.PreparativesToBattle();
-            }
-
-            foreach (var item in rightTeam)
-            {
-                item.PreparativesToBattle();
-            }
+            PrepareTeam(leftTeam);
+            PrepareTeam(rightTeam);
 
             combatStarted = true;
+        }
+
+        private void PrepareTeam(List<Unit> team)
+        {
+            foreach (Unit unit in team)
+            {
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+                if (unit == null)
+                    Debug.Log("Look at the monobehaviour, you left there a null!");
+#endif
+
+                unit.PreparativesToBattle();
+            }
         }
 
         private void Awake()

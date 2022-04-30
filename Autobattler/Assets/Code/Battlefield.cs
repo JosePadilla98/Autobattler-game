@@ -44,7 +44,7 @@ namespace Auttobattler
 
             if (pos.side == Side.RIGHT)
             {
-                unit.image.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                unit.image.transform.localScale = new Vector3(-1, 1, 1);
                 CombatController.Instance.rightTeam.Add(unit);
             }
             else

@@ -18,7 +18,7 @@ namespace Auttobattler
         public GridDropArea dropArea;
         private GridDropArea lastDropArea;
 
-        //This is a ñapa to solve a bug
+        //If animator is active while dragging, the position of this object goes to the shit
         private Animator animator; 
         
         public Transform TmpParent { get => CanvasSingleton.Instance.transform; }
@@ -37,8 +37,9 @@ namespace Auttobattler
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if(animator != null)
+            if(animator != null){
                 animator.enabled = false;
+            }
 
             objBeingDraged = this;
             startPosition = transform.position;

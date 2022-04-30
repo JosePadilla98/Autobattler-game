@@ -14,7 +14,8 @@ namespace Auttobattler
 
         private void Start()
         {
-            CreateCombatInstance(new BuildedUnit(blueprint), Side.LEFT);
+            UnitCombatInstance combatInstance = new UnitCombatInstance(new BuildedUnit(blueprint), Side.LEFT);
+            AttachCombatInstance(combatInstance);
             dragHandler = GetComponent<UnitDragHandler>();
             dragHandler.dropArea.CombatSlot.unit = CombatInstance;
         }
