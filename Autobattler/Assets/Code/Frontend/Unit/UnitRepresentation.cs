@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 namespace Auttobattler
 {
-    public class Unit : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class UnitRepresentation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public UnitInfoBars infoBars;
         public Image image;
@@ -29,7 +29,7 @@ namespace Auttobattler
             animationsController = GetComponent<UnitAnimationsController>();
         }
 
-        public void CreateCombatInstance(BuildedUnit build, Side team)
+        public void CreateCombatInstance(Unit build, Side team)
         {
             CombatInstance = new UnitCombatInstance(build, team);
         }

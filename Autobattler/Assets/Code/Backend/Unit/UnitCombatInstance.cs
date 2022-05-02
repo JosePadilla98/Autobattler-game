@@ -9,11 +9,15 @@ namespace Auttobattler.Combat
     public class UnitCombatInstance
     {
         public Grid grid;
+
         public CombatValuesWrapper values;
         public Ultimate ultimate;
-        public Unit gameObject;
+
+        //No debería de saber su representacion
+        public UnitRepresentation gameObject;
 
         #region PROPERTIES
+        //Debería de preguntarle al battlefield
         public Position Position { get => grid.GetPosition(this); }
         #endregion
 
@@ -28,14 +32,12 @@ namespace Auttobattler.Combat
 
         #endregion
 
-        public UnitCombatInstance(BuildedUnit build, Side side)
+        public UnitCombatInstance(Unit build, Side side)
         {
             values = new CombatValuesWrapper(build);
             attackSys = new AttackSystem(this);
             defenseSys = new DefenseSystem(this);
             healthSys = new HealthSystem(this);
-            ultimateSys = new UltimateSystem(this);
-            ultimate = build.ultScriptable.GetUltimate();
             manaSys = new ManaSystem(this);
             vigorSys = new VigorSystem(this);
 
@@ -98,9 +100,9 @@ namespace Auttobattler.Combat
         public CombatValue aEncumbrance;
         public CombatValue mEncumbrance;
 
-        public CombatValuesWrapper(BuildedUnit build)
+        public CombatValuesWrapper(Unit build)
         {
-            BuildStatsWrapper stats = build.statsWrapper;
+            Stats stats = build.statsWrapper;
             this.level = stats.level;
 
             maxHealth = new CombatValue(stats.health.Get);
@@ -288,6 +290,8 @@ namespace Auttobattler.Combat
         public void ReceiveDamage(float damage)
         {
             Health -= damage;
+
+            //La representacion debería de engancharse a un delegado que se lanza aquí
             NumberPopup.Create(parent.gameObject.numberPopupsLocation, (int)damage, NumberPopupTypes.DAMAGE);
         }
     }

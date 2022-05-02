@@ -38,15 +38,15 @@ namespace Auttobattler
         public static void SummonUnitsInGrid(SummonsPerSide level)
         {
             Battlefield battlefield = Battlefield.Instance;
-            System.Action<BuildedUnitBlueprint[], Side, Column > iterateColumnAndSummon = (columArray, side, column) =>
+            System.Action<UnitBuild[], Side, Column > iterateColumnAndSummon = (columArray, side, column) =>
             {
                 for (int i = 0; i < columArray.Length; i++)
                 {
-                    BuildedUnitBlueprint blueprint = columArray[i];
+                    UnitBuild blueprint = columArray[i];
                     if (blueprint == null)
                         continue;
 
-                    var buildedUnit = new BuildedUnit(blueprint);
+                    var buildedUnit = new Unit(blueprint);
                     var unitCombatInstance = new UnitCombatInstance(buildedUnit, side);
 
                     Position location = new Position(i, column, side);

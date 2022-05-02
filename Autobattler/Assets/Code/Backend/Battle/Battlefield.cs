@@ -38,7 +38,7 @@ namespace Auttobattler
         public void SummonUnit(UnitCombatInstance combatInstance, Position pos)
         {
             CombatSlot slot = GetCombatSlot(pos);
-            Unit unit = Instantiate(GameAssets.Instance.unitPrefab, slot.transform);
+            UnitRepresentation unit = Instantiate(GameAssets.Instance.unitPrefab, slot.transform);
             unit.AttachCombatInstance(combatInstance);
             slot.unit = unit.CombatInstance;
 

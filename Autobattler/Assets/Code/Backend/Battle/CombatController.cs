@@ -7,8 +7,8 @@ namespace Auttobattler.Combat
     [RequireComponent(typeof(Battlefield))]
     public class CombatController : MonoBehaviour
     {
-        public List<Unit> leftTeam = new List<Unit>();
-        public List<Unit> rightTeam = new List<Unit>();
+        public List<UnitRepresentation> leftTeam = new List<UnitRepresentation>();
+        public List<UnitRepresentation> rightTeam = new List<UnitRepresentation>();
 
         private bool combatStarted = false;
 
@@ -37,9 +37,9 @@ namespace Auttobattler.Combat
             combatStarted = true;
         }
 
-        private void PrepareTeam(List<Unit> team)
+        private void PrepareTeam(List<UnitRepresentation> team)
         {
-            foreach (Unit unit in team)
+            foreach (UnitRepresentation unit in team)
             {
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD

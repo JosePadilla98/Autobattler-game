@@ -2,16 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Auttobattler.Combat
+namespace Auttobattler.MutationsSystem
 {
-    public abstract class Mutation : ScriptableObject
+    public abstract class Mutation : ScriptableObject, IMutation
     {
         [SerializeField]
-        private string name;
+        protected string name;
         [SerializeField]
-        private Sprite sprite;
+        protected Sprite sprite;
 
-        public string MutationName { get => name; }
-        public Sprite Sprite { get => sprite; }
+        public string GetName()
+        {
+            return name;
+        }
+
+        public void AttachToUnit(Unit unit)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UnattachToUnit(Unit unit)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
+    public interface IMutation
+    {
+        public string GetName();
+        public void AttachToUnit(Unit unit);
+        public void UnattachToUnit(Unit unit);
     }
 }

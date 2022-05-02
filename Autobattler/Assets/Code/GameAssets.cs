@@ -8,7 +8,7 @@ namespace Auttobattler
     {
         [Header("Prefabs")]
         public NumberPopup damagePopup;
-        public Unit unitPrefab;
+        public UnitRepresentation unitPrefab;
 
         [Space(10)]
         [Header("Configs")]

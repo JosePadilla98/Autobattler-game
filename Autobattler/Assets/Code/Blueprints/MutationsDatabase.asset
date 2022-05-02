@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ffa45e0abbc4e4c990440faeffd753, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c127457d664eda4a8068f5677e5775f, type: 3}
   m_Name: MutationsDatabase
   m_EditorClassIdentifier: 
-  mutationsPacks: []
+  name: Skin Regeneration
+  sprite: {fileID: 0}
+  statModifiers:
+  - statName: 1
+    type: 0
+    value: 3

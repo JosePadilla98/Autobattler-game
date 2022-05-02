@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Auttobattler.Combat
+namespace Auttobattler.MutationsSystem
 {
-    [CreateAssetMenu(fileName = "MutationsPack", menuName = "ScriptableObjects/Mutations/MutationsPack")]
+    [CreateAssetMenu(fileName = "MutationsPack", menuName = "ScriptableObjects/MutationsSystem/MutationsPack")]
     public class MutationsPack : ScriptableObject
     {
         public int rarity;

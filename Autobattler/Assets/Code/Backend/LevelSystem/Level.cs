@@ -14,8 +14,8 @@ namespace Auttobattler.Scriptables
     public class SummonsPerSide
     {
         public Side side;
-        public BuildedUnitBlueprint[] frontColumn;
-        public BuildedUnitBlueprint[] backColumn;
+        public UnitBuild[] frontColumn;
+        public UnitBuild[] backColumn;
     }
 
 }

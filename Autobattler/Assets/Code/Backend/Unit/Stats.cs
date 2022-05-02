@@ -8,172 +8,84 @@ using System;
 
 namespace Auttobattler
 {
-    #region BASE
-    [System.Serializable]
-    public struct Stats
-    {
-        public float health;
-
-        [Space(10)]
-        [Header("Attack")]
-        public float attack;
-        public float attackPower;
-        public float attackSpeed;
-        public float attackDuration;
-
-        [Space(10)]
-        [Header("Magic")]
-        public float magic;
-        public float manaRegen;
-        public float maxMana;
-        public float cdr;
-
-        [Space(10)]
-        [Header("Ultimate")]
-        public float ultimateRegen;
-
-        [Space(10)]
-        [Header("Defenses")]
-        public float defense;
-        public float magicDefense;
-
-        [Space(10)]
-        [Header("Vigor")]
-        public float attackEncumbrance;
-        public float magicEncumbrance;
-        public float reinvigoration;
-        public float vigor;
-    }
-
     public enum StatsNames
     {
-        ATTACK
+        HEALTH, HEALTH_REGEN,
+        PHYSICAL_ATTACK, MAGICAL_ATTACK,
+        PHYSICAL_DEFENSE, MAGICAL_DEFENSE,
+        SPEED, MAGICAL_CHARGE_VELOCITY,
+        VIGOR, REINVIGORATION,
+        MAX_MANA, MANA_REGEN,
+        INTELLECT,
+
+        WEIGHT_CAPACITY,
+
+        PHYSICAL_FATIGUE, MAGICAL_FATIGUE,
+        BASE_ATTACK_DURATION
     }
 
-    public struct AdvancedStats
+    public class Stats
     {
-        [Header("Critics")]
-        public float criticMultiplier;
-        public float criticChance;
-
-        [Space(10)]
-        [Header("Evasion")]
-        public float physicalEvasion;
-        public float magicalEvasion;
-
-        [Space(10)]
-        [Header("Precision")]
-        public float Precision;
-    }
-
-    #endregion
-    
-    #region BUILDED
-    public class BuildedUnit : ICloneable
-    {
-        public BuildStatsWrapper statsWrapper;
-        public List<UnitMutator> mutators;
-        public UltimateScriptable ultScriptable;
-
-        public BuildedUnit(BuildedUnitBlueprint blueprint)
+        private static Dictionary<StatsNames, Stat> StandardStats()
         {
-            statsWrapper = new BuildStatsWrapper(blueprint);
-            mutators = new List<UnitMutator>(blueprint.mutators);
-            ultScriptable = blueprint.ultimate;
-
-            //StatsModifiers
-            foreach (var mutator in mutators)
+            Dictionary<StatsNames, Stat> dic = new Dictionary<StatsNames, Stat>
             {
-                if (!(mutator is StatModifier))
-                    return;
+                { StatsNames.HEALTH, new Stat(25f) },
+                { StatsNames.HEALTH_REGEN, new Stat(0.05f) },
 
-                StatModifier modifier = (StatModifier)mutator;
-                BuildStat statToModify = null;
+                { StatsNames.PHYSICAL_ATTACK, new Stat(25f, true) },
+                { StatsNames.MAGICAL_ATTACK, new Stat(25f, true) },
 
-                switch (modifier.statName)
-                {
-                    case StatsNames.ATTACK:
-                        statToModify = statsWrapper.attack;
-                        break;
-                }
+                { StatsNames.PHYSICAL_DEFENSE, new Stat(25f, true) },
+                { StatsNames.MAGICAL_DEFENSE, new Stat(25f, true) },
 
-                List<float> modifierList = (modifier.type == ModifierType.LINEAL) ?
-                    modifierList = statToModify.linearModifiers : 
-                    modifierList = statToModify.modifiers;
+                { StatsNames.SPEED, new Stat(25f) },
+                { StatsNames.MAGICAL_CHARGE_VELOCITY, new Stat(25f) },
 
-                modifierList.Add(modifier.value);
-            }
+                { StatsNames.VIGOR, new Stat(100f) },
+                { StatsNames.REINVIGORATION, new Stat(1f) },
+
+                { StatsNames.MAX_MANA, new Stat(100f) },
+                { StatsNames.MANA_REGEN, new Stat(1f) },
+
+                { StatsNames.INTELLECT, new Stat(25f) },
+
+                { StatsNames.WEIGHT_CAPACITY, new Stat(10f) },
+
+                { StatsNames.PHYSICAL_FATIGUE, new Stat(1f) },
+                { StatsNames.MAGICAL_FATIGUE, new Stat(1f) },
+
+                { StatsNames.BASE_ATTACK_DURATION, new Stat(100f) },
+            };
+
+
+            return dic;
         }
 
-        public object Clone()
+        public Stats()
         {
-            var clone = (BuildedUnit)this.MemberwiseClone();
-            return clone;
+
+        }
+
+
+
+        public float GetValue(StatsNames name, int level)
+        {
+            //Se le aplica el nivelsi lo requiere
+            return dic
         }
     }
 
-    public class BuildStatsWrapper
-    {
-        #region MODIFIED BY LEVEL
-        public int level;
-
-        public BuildStat attack;
-        public BuildStat magic;
-        public BuildStat defense;
-        public BuildStat magicDefense;
-        #endregion
-
-        public BuildStat health;
-
-        public BuildStat attackPower;
-        public BuildStat attackSpeed;
-        public BuildStat attackDuration;
-
-        public BuildStat manaRegen;
-        public BuildStat maxMana;
-        public BuildStat cdr;
-
-        public BuildStat ultimateCost;
-        public BuildStat ultimateRegen;
-
-        public BuildStat vigor;
-        public BuildStat reinvigoration;
-        public BuildStat aEncumbrance;
-        public BuildStat mEncumbrance;
-
-        public BuildStatsWrapper(BuildedUnitBlueprint blueprint)
-        {
-            level = blueprint.level;
-            Stats baseStats = blueprint.baseBlueprint.stats;
-            health = new BuildStat(baseStats.health);
-            attack = new BuildStat(baseStats.attack);
-            magic = new BuildStat(baseStats.magic);
-            defense = new BuildStat(baseStats.defense);
-            magicDefense = new BuildStat(baseStats.magicDefense);
-
-            attackPower = new BuildStat(baseStats.attackPower);
-            attackSpeed = new BuildStat(baseStats.attackSpeed);
-            attackDuration = new BuildStat(baseStats.attackDuration);
-
-            maxMana = new BuildStat(baseStats.maxMana);
-            manaRegen = new BuildStat(baseStats.manaRegen);
-            cdr = new BuildStat(baseStats.cdr);
-
-            ultimateRegen = new BuildStat(baseStats.ultimateRegen);
-            ultimateCost = new BuildStat(blueprint.ultimate.cost);
-
-            vigor = new BuildStat(baseStats.vigor);
-            reinvigoration = new BuildStat(baseStats.reinvigoration);
-            aEncumbrance = new BuildStat(baseStats.attackEncumbrance);
-            mEncumbrance = new BuildStat(baseStats.magicEncumbrance);
-        }
-    }
-
-    public class BuildStat : ICloneable
+    public class Stat : ICloneable
     {
         private float baseStat;
         public List<float> modifiers = new List<float>();
         public List<float> linearModifiers = new List<float>();
+
+        public bool scalesByLevel;
+
+        public delegate void CurrentValueChanged(float value);
+        public event CurrentValueChanged OnCurrentValueChanged;
 
         public float Get
         {
@@ -194,25 +106,22 @@ namespace Auttobattler
             }
         }
 
-        public BuildStat(float baseStat)
+        public Stat(float baseStat, bool scalesByLevel = false)
         {
             this.baseStat = baseStat;
+            this.scalesByLevel = scalesByLevel;
         }
-
-        public delegate void CurrentValueChanged(float value);
-        public event CurrentValueChanged OnCurrentValueChanged;
-
 
         public object Clone()
         {
-            var clone = (BuildStat)this.MemberwiseClone();
+            var clone = (Stat)this.MemberwiseClone();
             clone.modifiers = new List<float>(modifiers);
             clone.linearModifiers = new List<float>(linearModifiers);
 
             return clone;
         }
-    } 
-    #endregion
+    }
+
 }
 
 

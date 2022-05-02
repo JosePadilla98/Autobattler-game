@@ -7,7 +7,7 @@ using Auttobattler.Ultimates;
 namespace Auttobattler.Scriptables
 {
     [CreateAssetMenu(fileName = "Build", menuName = "ScriptableObjects/Unit/BuildedUnitBlueprint", order = 2)]
-    public class BuildedUnitBlueprint : ScriptableObject
+    public class UnitBuild : ScriptableObject
     {
         public int level;
         public BaseUnitBlueprint baseBlueprint;
