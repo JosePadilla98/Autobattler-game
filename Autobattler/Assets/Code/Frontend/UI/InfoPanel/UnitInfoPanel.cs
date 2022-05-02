@@ -54,11 +54,14 @@ namespace Auttobattler
             get => instance;
             set
             {
-                instance?.UnattachUnit();
                 instance = value;
             }
         }
         private static UnitInfoPanel instance;
+
+        public bool IsShowing { get => isShowing; }
+        private bool isShowing;
+      
 
         private void Start()
         {
@@ -94,30 +97,27 @@ namespace Auttobattler
 
         public void AttachUnit(UnitCombatInstance unit)
         {
-            //
             health.AttachValues(unit.values.maxHealth, unit.values.health);
             attack.Attach(unit.values.attack);
             attackSpeed.Attach(unit.values.attackSpeed);
             defense.Attach(unit.values.defense);
 
-            //
             ult.AttachValues(unit.values.ultimateCost, unit.values.ultimateProgress);
             ultRegen.Attach(unit.values.ultimateRegen);
             magic.Attach(unit.values.magic);
             magicDefense.Attach(unit.values.magicDefense);
 
-            //
             mana.AttachValues(unit.values.maxMana, unit.values.currentMana);
             manaRegen.Attach(unit.values.manaRegen);
             cdr.Attach(unit.values.cdr);
 
-            //
             vigor.AttachValues(unit.values.vigor, unit.values.currentVigor);
             reinvigoration.Attach(unit.values.reinvigoration);
             aEncumbrance.Attach(unit.values.aEncumbrance);
             mEncumbrance.Attach(unit.values.mEncumbrance);
 
             gameObject.SetActive(true);
+            isShowing = true;
         }
 
         public void UnattachUnit()
@@ -127,24 +127,22 @@ namespace Auttobattler
             attackSpeed.Unattach();
             defense.Unattach();
 
-            //
             ult.Unattach();
             ultRegen.Unattach();
             magic.Unattach();
             magicDefense.Unattach();
 
-            //
             mana.Unattach();
             manaRegen.Unattach();
             cdr.Unattach();
 
-            //
             vigor.Unattach();
             reinvigoration.Unattach();
             aEncumbrance.Unattach();
             mEncumbrance.Unattach();
 
             gameObject.SetActive(false);
+            isShowing = false;
         }
     }
 

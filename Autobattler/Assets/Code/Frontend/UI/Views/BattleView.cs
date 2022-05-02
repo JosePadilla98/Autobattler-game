@@ -6,11 +6,21 @@ namespace Auttobattler
 {
     public class BattleView : MonoBehaviour
     {
-        public UnitInfoPanel unitInfoPanel;
+        [SerializeField]
+        private UnitInfoPanel unitInfoPanelInScene;
 
         private void OnEnable()
         {
-            UnitInfoPanel.Instance = unitInfoPanel;
+            UnitInfoPanel.Instance = unitInfoPanelInScene;
+        }
+
+        private void OnDisable()
+        {
+            if (UnitInfoPanel.Instance.IsShowing)
+            {
+                UnitInfoPanel.Instance.UnattachUnit();
+            }
+            UnitInfoPanel.Instance = null;
         }
     }
 }

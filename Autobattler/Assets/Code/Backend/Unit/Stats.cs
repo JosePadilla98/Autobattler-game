@@ -98,7 +98,8 @@ namespace Auttobattler
                 }
 
                 List<float> modifierList = (modifier.type == ModifierType.LINEAL) ?
-                    modifierList = statToModify.linearModifiers : modifierList = statToModify.modifiers;
+                    modifierList = statToModify.linearModifiers : 
+                    modifierList = statToModify.modifiers;
 
                 modifierList.Add(modifier.value);
             }
