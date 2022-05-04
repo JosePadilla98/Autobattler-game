@@ -8,6 +8,6 @@ namespace Auttobattler.MutationsSystem
     public class MutationsPack : ScriptableObject
     {
         public int rarity;
-        public Mutation[] mutation;
+        public MutationModel[] mutation;
     }
 }

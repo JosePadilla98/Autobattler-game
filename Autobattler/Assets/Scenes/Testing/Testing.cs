@@ -12,42 +12,21 @@ namespace Auttobattler.Testing
 
         void Start()
         {
-            test = new Test (2f, 2f);
+            test = new Test();
+            test.n = "pepe";
 
-            Debug.Log(GetPropertyValues(test));
-            //PropertyInfo[] info = test.GetType().GetProperties();
+            Debug.Log(test.GetHashCode());
 
-            //foreach (PropertyInfo prop in info)
-            //{
-            //    object propValue = prop.GetValue(test);
-            //    Debug.Log(propValue.ToString());
-            //    // Do something with propValue
-            //}
-        }
-        private static string GetPropertyValues(System.Object o)
-        {
-            Type type = o.GetType();
-            PropertyInfo[] props = type.GetProperties();
-            string str = "{";
-            foreach (var prop in props)
-            {
-                str += (prop.Name + ":" + prop.GetValue(o)) + ",";
-            }
-            return str.Remove(str.Length - 1) + "}";
+            test.n = "antonio";
+
+            Debug.Log(test.GetHashCode());
         }
     }
 
     [System.Serializable]
     public class Test
     {
-        public float attack { get; set; }
-        public float defense { get; set; }
-
-        public Test(float attack, float defense)
-        {
-            this.attack = attack;
-            this.defense = defense;
-        }
+        public string n;
     }
 }
 

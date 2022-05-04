@@ -1,4 +1,4 @@
-using Auttobattler.Mutators;
+using Auttobattler.MutationsSystem;
 using Auttobattler.Scriptables;
 using Auttobattler.Ultimates;
 using System;
@@ -11,14 +11,17 @@ namespace Auttobattler
     public class Unit : ICloneable
     {
         public Stats stats;
-        public List<UnitMutator> mutators;
+
+        public List<Mutation> mutations;
+        public List<Mutation> disabledMutations;
 
         public Unit(UnitBuild blueprint)
         {
-            stats = new Stats(blueprint);
-            mutators = new List<UnitMutator>(blueprint.mutators);
+            stats = new Stats();
+            mutations = new List<Mutation>(blueprint.mutations);
+            disabledMutations = new List<Mutation>();
         }
-
+        
         public object Clone()
         {
             var clone = (Unit)this.MemberwiseClone();

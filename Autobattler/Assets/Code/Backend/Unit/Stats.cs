@@ -13,7 +13,7 @@ namespace Auttobattler
         HEALTH, HEALTH_REGEN,
         PHYSICAL_ATTACK, MAGICAL_ATTACK,
         PHYSICAL_DEFENSE, MAGICAL_DEFENSE,
-        SPEED, MAGICAL_CHARGE_VELOCITY,
+        PHYSICAL_SPEED, MAGICAL_SPEED,
         VIGOR, REINVIGORATION,
         MAX_MANA, MANA_REGEN,
         INTELLECT,
@@ -26,12 +26,36 @@ namespace Auttobattler
 
     public class Stats
     {
-        private static Dictionary<StatsNames, Stat> StandardStats()
+        private Dictionary<StatsNames, Stat> valuePairs;
+        public int level;
+
+        public Stats()
+        {
+            valuePairs = StandardStats();
+        }
+
+        public float GetStat(StatsNames name)
+        {
+            Stat stat;
+            valuePairs.TryGetValue(name, out stat);
+            float value = stat.Get;
+
+            return (!stat.scalesByLevel) ? value
+               : GetValueWithLevelModifier(value, level);
+        }
+
+        private float GetValueWithLevelModifier(float value, int level)
+        {
+            float increment = ((level - 1) * value * Constants.LEVEL_STATS_INCREMENT_FACTOR);
+            return value + increment;
+        }
+
+        private Dictionary<StatsNames, Stat> StandardStats()
         {
             Dictionary<StatsNames, Stat> dic = new Dictionary<StatsNames, Stat>
             {
                 { StatsNames.HEALTH, new Stat(25f) },
-                { StatsNames.HEALTH_REGEN, new Stat(0.05f) },
+                { StatsNames.HEALTH_REGEN, new Stat(1f) },
 
                 { StatsNames.PHYSICAL_ATTACK, new Stat(25f, true) },
                 { StatsNames.MAGICAL_ATTACK, new Stat(25f, true) },
@@ -39,40 +63,24 @@ namespace Auttobattler
                 { StatsNames.PHYSICAL_DEFENSE, new Stat(25f, true) },
                 { StatsNames.MAGICAL_DEFENSE, new Stat(25f, true) },
 
-                { StatsNames.SPEED, new Stat(25f) },
-                { StatsNames.MAGICAL_CHARGE_VELOCITY, new Stat(25f) },
+                { StatsNames.PHYSICAL_SPEED, new Stat(25f) },
+                { StatsNames.MAGICAL_SPEED, new Stat(25f) },
 
-                { StatsNames.VIGOR, new Stat(100f) },
+                { StatsNames.VIGOR, new Stat(25f) },
                 { StatsNames.REINVIGORATION, new Stat(1f) },
 
-                { StatsNames.MAX_MANA, new Stat(100f) },
+                { StatsNames.MAX_MANA, new Stat(25f) },
                 { StatsNames.MANA_REGEN, new Stat(1f) },
 
                 { StatsNames.INTELLECT, new Stat(25f) },
 
-                { StatsNames.WEIGHT_CAPACITY, new Stat(10f) },
+                { StatsNames.WEIGHT_CAPACITY, new Stat(1f) },
 
                 { StatsNames.PHYSICAL_FATIGUE, new Stat(1f) },
                 { StatsNames.MAGICAL_FATIGUE, new Stat(1f) },
-
-                { StatsNames.BASE_ATTACK_DURATION, new Stat(100f) },
             };
 
-
             return dic;
-        }
-
-        public Stats()
-        {
-
-        }
-
-
-
-        public float GetValue(StatsNames name, int level)
-        {
-            //Se le aplica el nivelsi lo requiere
-            return dic
         }
     }
 

@@ -28,11 +28,6 @@ namespace Auttobattler
         }
     }
     
-    public class HarcodedLevel
-    {
-
-    }
-
     public class UnitsSummoner
     {
         public static void SummonUnitsInGrid(SummonsPerSide level)
@@ -54,7 +49,6 @@ namespace Auttobattler
                 }
             };
 
-            Grid grid = battlefield.GetGrid(level.side);
             iterateColumnAndSummon(level.frontColumn, level.side ,Column.FRONT);
             iterateColumnAndSummon(level.backColumn, level. side ,Column.BACK);
         }

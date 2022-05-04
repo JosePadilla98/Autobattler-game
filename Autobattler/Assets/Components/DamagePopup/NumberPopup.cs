@@ -18,7 +18,7 @@ namespace Auttobattler
         public float fontSize;
     }
 
-    //TODO: Object pool
+    //TODO: Hacer este sistema en condiciones
     public class NumberPopup : MonoBehaviour
     {
         [SerializeField]
@@ -87,7 +87,6 @@ namespace Auttobattler
             moveVector = normalizedVector * 600f; 
             #endregion
 
-
             transform.SetParent(parent);
             transform.localScale = Vector3.one;
             rect.anchoredPosition = Vector2.zero;
@@ -123,7 +122,7 @@ namespace Auttobattler
                 if (tmp.a < 0)
                 {
                     enabled = false;
-                    NumberPopupPool.ReleasePopup(this);
+                    NumberPopupPool.Release(this);
                 }
             }
         }

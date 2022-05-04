@@ -45,11 +45,11 @@ namespace Auttobattler
             if (pos.side == Side.RIGHT)
             {
                 unit.image.transform.localScale = new Vector3(-1, 1, 1);
-                CombatController.Instance.rightTeam.Add(unit);
+                CombatController.Instance.enemyTeam.Add(unit);
             }
             else
             {
-                CombatController.Instance.leftTeam.Add(unit);
+                CombatController.Instance.playerTeam.Add(unit);
             }
         }
 
@@ -60,9 +60,9 @@ namespace Auttobattler
             return column[pos.heigh];
         }
     
-        public Grid GetGrid(Side side)
+        public Position GetFighterPosition(UnitCombatInstance unitCombatInstance)
         {
-            return (side == Side.RIGHT) ? rightGrid : leftGrid;
+            return null;
         }
     }
 

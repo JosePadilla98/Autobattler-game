@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Auttobattler.MutationsSystem
 {
     [CreateAssetMenu(fileName = "MutationsDatabase", menuName = "ScriptableObjects/MutationsSystem/Mutations/SkinRegeneration")]
-    public class SkinRegeneration : Mutation
+    public class SkinRegeneration : MutationModel
     {
         [SerializeField]
         protected StatModifier[] statModifiers;
