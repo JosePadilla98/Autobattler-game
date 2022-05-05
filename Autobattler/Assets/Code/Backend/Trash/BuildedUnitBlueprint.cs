@@ -10,6 +10,7 @@ namespace Auttobattler.Scriptables
     {
         public int level;
         public Sprite sprite;
+        public MutationModel[] baseMutations;
         public MutationModel[] mutations;
     }
 }

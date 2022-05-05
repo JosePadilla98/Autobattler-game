@@ -1,46 +1,44 @@
 using Auttobattler.Combat;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Auttobattler.MutationsSystem
 {
-    public abstract class MutationModel : ScriptableObject, IMutation
+    public abstract class MutationModel : ScriptableObject
     {
         [SerializeField]
         protected string name;
         [SerializeField]
         protected Sprite sprite;
         [SerializeField]
-        protected bool canPlayerNotUseIt;
+        protected bool canBeDisabledByPlayer;
+        [SerializeField]
+        protected bool canBeStacked;
 
         public string GetName()
         {
-            throw new System.NotImplementedException();
+            return name;
         }
 
-        public void AttachToCombatModules(UnitCombatInstance unit)
-        {
-            throw new System.NotImplementedException();
-        }
+        public abstract void ModifyStats(Stats stats);
 
-        public void ModifyStats(Stats stats)
-        {
-            throw new System.NotImplementedException();
-        }
+        public abstract void UnmodifyStats(Stats stats);
 
-        public void UnattachToCombatModules(UnitCombatInstance unit)
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="order">The mutation instance index in the unit's collection. Some mutations need to know this (see the chargerSystem)</param>
+        /// <param name="key">The mutation instance ID of a fighter</param>
+        /// <param name="unit"></param>
+        public abstract void AttachToCombatModules(int order, int key, UnitCombatInstance unit);
+       
+        public abstract void UnattachToCombatModules(int key, UnitCombatInstance unit);
 
-        public void UnmodifyStats(Stats stats)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 
-    public class Mutation
+    public class Mutation : IMutation
     {
         private int key;
         private MutationModel model;
@@ -52,10 +50,40 @@ namespace Auttobattler.MutationsSystem
             key = UniqueKeysDispenser.GetNewKey();
         }
 
-        public int GetKey()
+        public string GetName()
         {
-            return key;
+            throw new NotImplementedException();
         }
+
+        public void ModifyStats(Stats stats)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UnmodifyStats(Stats stats)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="order">This mutation instance index in the unit's collection. Some mutations need to know this (see the chargerSystem)</param>
+        /// <param name="key">This instance key (ID)</param>
+        /// <param name="unit"></param>
+        public void AttachToCombatModules(int order ,int key, UnitCombatInstance unit)
+        {
+            model.AttachToCombatModules(order, key, unit);
+        }
+
+        public void UnattachToCombatModules(int key, UnitCombatInstance unit)
+        {
+            throw new NotImplementedException();
+        }
+
+        #region POOL
+
+        #endregion
     }
 
     public interface IMutation
@@ -64,7 +92,7 @@ namespace Auttobattler.MutationsSystem
         public void ModifyStats(Stats stats);
         public void UnmodifyStats(Stats stats);
 
-        public void AttachToCombatModules(UnitCombatInstance unit);
-        public void UnattachToCombatModules(UnitCombatInstance unit);
+        public void AttachToCombatModules(int order, int key, UnitCombatInstance unit);
+        public void UnattachToCombatModules(int key, UnitCombatInstance unit);
     }
 }

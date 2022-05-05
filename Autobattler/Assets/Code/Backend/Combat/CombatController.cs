@@ -33,7 +33,7 @@ namespace Auttobattler.Combat
 
         #endregion 
 
-        public void startCombat()
+        public void StartCombat()
         {
             PrepareTeam(playerTeam);
             PrepareTeam(enemyTeam);
@@ -78,5 +78,6 @@ namespace Auttobattler.Combat
         {
             throw new NotImplementedException();
         }
+
     }
 }

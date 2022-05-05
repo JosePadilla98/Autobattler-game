@@ -5,6 +5,7 @@ using Auttobattler.Scriptables;
 using Auttobattler.Mutators;
 using Auttobattler.Ultimates;
 using System;
+using Auttobattler.MutationsSystem;
 
 namespace Auttobattler
 {
@@ -34,10 +35,16 @@ namespace Auttobattler
             valuePairs = StandardStats();
         }
 
-        public float GetStat(StatsNames name)
+        public Stat GetStat(StatsNames name)
         {
             Stat stat;
             valuePairs.TryGetValue(name, out stat);
+            return stat;
+        }
+
+        public float GetStatValue(StatsNames name)
+        {
+            Stat stat = GetStat(name);
             float value = stat.Get;
 
             return (!stat.scalesByLevel) ? value
@@ -82,12 +89,38 @@ namespace Auttobattler
 
             return dic;
         }
+
+        public static void ApplyStatsModifiers(StatModifier[] modifiers, Stats stats)
+        {
+            foreach (var modifier in modifiers)
+            {
+                var stat = stats.GetStat(modifier.statName);
+
+                if (modifier.type == ModifierType.LINEAL)
+                    stat.linearModifiers.Add(modifier.value);
+                else
+                    stat.percentualModifiers.Add(modifier.value);
+            }
+        }
+
+        public static void UnapplyStatsModifiers(StatModifier[] modifiers, Stats stats)
+        {
+            foreach (var modifier in modifiers)
+            {
+                var stat = stats.GetStat(modifier.statName);
+
+                if (modifier.type == ModifierType.LINEAL)
+                    stat.linearModifiers.Remove(modifier.value);
+                else
+                    stat.percentualModifiers.Remove(modifier.value);
+            }
+        }
     }
 
     public class Stat : ICloneable
     {
         private float baseStat;
-        public List<float> modifiers = new List<float>();
+        public List<float> percentualModifiers = new List<float>();
         public List<float> linearModifiers = new List<float>();
 
         public bool scalesByLevel;
@@ -105,7 +138,7 @@ namespace Auttobattler
                     output += item;
                 }
 
-                foreach (var item in modifiers)
+                foreach (var item in percentualModifiers)
                 {
                     output *= item;
                 }
@@ -123,7 +156,7 @@ namespace Auttobattler
         public object Clone()
         {
             var clone = (Stat)this.MemberwiseClone();
-            clone.modifiers = new List<float>(modifiers);
+            clone.percentualModifiers = new List<float>(percentualModifiers);
             clone.linearModifiers = new List<float>(linearModifiers);
 
             return clone;

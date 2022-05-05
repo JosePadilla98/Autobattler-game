@@ -28,12 +28,12 @@ namespace Auttobattler
         public void AttachUnit(UnitCombatInstance unit)
         {
             attachedUnit = unit;
-            unit.attackSys.OnAttack += AttackAnimation;
+            unit.attackSys.OnAttackCasted += AttackAnimation;
         }
 
         public void UnnatachUnit()
         {
-            attachedUnit.attackSys.OnAttack -= AttackAnimation;
+            attachedUnit.attackSys.OnAttackCasted -= AttackAnimation;
             attachedUnit = null;
         }
         #endregion
