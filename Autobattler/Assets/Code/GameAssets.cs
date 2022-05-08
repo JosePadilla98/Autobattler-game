@@ -1,4 +1,4 @@
-using Auttobattler.Frontend.CombatState;
+using Auttobattler.Frontend.CombatScreen;
 using UnityEngine;
 
 namespace Auttobattler

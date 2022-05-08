@@ -1,6 +1,8 @@
+using Auttobattler.Backend.Run;
+using Auttobattler.Backend.Run.CombatState;
 using System;
 
-namespace Auttobattler.Backend.Run.CombatState
+namespace Assets.Code.Backend.Run.CombatState.Controllers.Battlefield
 {
     public class Battlefield
     {
@@ -13,7 +15,7 @@ namespace Auttobattler.Backend.Run.CombatState
         private static Battlefield instance;
         public static Battlefield Instance
         {
-            get 
+            get
             {
                 if (instance == null)
                     instance = new Battlefield();
@@ -29,7 +31,7 @@ namespace Auttobattler.Backend.Run.CombatState
             rightGrid = new CombatGrid(Side.RIGHT);
         }
 
-        public void SummonUnit(Fighter combatInstance, Position pos)
+        public void AttachUnit(Fighter combatInstance, Position pos)
         {
             CombatSlot slot = GetCombatSlot(pos);
             slot.AttachUnit(combatInstance);
@@ -46,11 +48,11 @@ namespace Auttobattler.Backend.Run.CombatState
 
         public CombatSlot GetCombatSlot(Position pos)
         {
-            CombatGrid grid = (pos.side == Side.LEFT) ? leftGrid : rightGrid;
-            CombatSlot[] column = (pos.column == Column.FRONT) ? grid.front : grid.back;
+            CombatGrid grid = pos.side == Side.LEFT ? leftGrid : rightGrid;
+            CombatSlot[] column = pos.column == Column.FRONT ? grid.front : grid.back;
             return column[pos.heigh];
         }
-    
+
         public Position GetFighterPosition(Fighter unitCombatInstance)
         {
             Position pos = leftGrid.GetUnitPosition(unitCombatInstance);
