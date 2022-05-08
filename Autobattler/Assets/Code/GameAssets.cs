@@ -1,4 +1,5 @@
 using Auttobattler.Frontend.CombatScreen;
+using Assets.Code.Frontend.Run.Views.Unit;
 using UnityEngine;
 
 namespace Auttobattler
@@ -7,7 +8,7 @@ namespace Auttobattler
     {
         [Header("Prefabs")]
         public NumberPopup damagePopup;
-        public FighterRepresentation fighterRepresentation;
+        public UnitView unitView;
 
         [Space(10)]
         [Header("Configs")]

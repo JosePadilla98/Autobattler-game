@@ -1,18 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-
-namespace Auttobattler
+namespace Assets.Code.Backend
 {
     public enum RunState
     {
         COMBAT,
-        MANAGEMENT
+        MANAGEMENT,
+        NONE
     }
 
-    public class Run 
+    [Serializable]
+    public class Run
     {
+        [SerializeField]
         private RunState state;
+
+        public void ChangeState(RunState state)
+        {
+            switch (state)
+            {
+                case RunState.COMBAT:
+                    this.state = RunState.COMBAT;
+                    break;
+
+                case RunState.MANAGEMENT:
+                    this.state = RunState.MANAGEMENT ;
+                    break;
+            }
+        }
     }
 }

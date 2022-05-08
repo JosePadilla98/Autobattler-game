@@ -1,5 +1,5 @@
-using Auttobattler.Backend.Run.CombatState;
-using Auttobattler.Backend.Run.ManagementState;
+using Auttobattler.Backend.RunLogic.CombatState;
+using Auttobattler.Backend.RunLogic.ManagementState;
 using System;
 using UnityEngine;
 
