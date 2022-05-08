@@ -7,22 +7,19 @@ namespace Auttobattler.Combat
 {
     public class AttackSystem : CombatSystem
     {
-        public AttackSystem(UnitCombatInstance parent) : base(parent) { }
+        public AttackSystem(Fighter parent) : base(parent) { }
+        public Stats Stats { get => parent.Stats; }
 
         public Action OnAttackCasted;
         public Action OnHitMade;
 
-        public void LaunchAttack(AttackType attackType)
+        public void LaunchSimpleAttack(AttackData attack)
         {
-            float attackValue = (attackType == AttackType.PHYSICAL) ? values.attack.Value : values.magic.Value;
+            float value = attack.scaleFactor * Stats.GetStatValue(attack.statScaler) * BalanceConstants.DAMAGE_MULTIPLIER;
+            Fighter objetive = TargetsProcessor.GetClosestEnemy(parent.Position);
+            objetive.defenseSys.BeAttacked(new DamageData(value, attack.damageType));
 
-            List<UnitCombatInstance> objetives = TargetsProcessor.GetObjetives(TargetTypes.ENEMY_CLOSEST, Position, Battlefield.Instance);
-            foreach (var unit in objetives)
-            {
-                float rawValue = attackValue * BalanceConstants.DAMAGE_MULTIPLIER;
-                unit.defenseSys.BeAttacked(new AttackData(rawValue, AttackType.PHYSICAL));
-            }
-
+            OnHitMade?.Invoke();
             OnAttackCasted?.Invoke();
         }
     }
@@ -35,6 +32,26 @@ namespace Auttobattler.Combat
     public struct AttackData
     {
         public float scaleFactor;
-        public DamageType StatScale;
+        public StatsNames statScaler;
+        public DamageType damageType;
+
+        public AttackData(float scaleFactor, StatsNames statScaler, DamageType damageType)
+        {
+            this.scaleFactor = scaleFactor;
+            this.statScaler = statScaler;
+            this.damageType = damageType;
+        }
+    }
+
+    public struct DamageData
+    {
+        public float value;
+        public DamageType type;
+
+        public DamageData(float value, DamageType damageType)
+        {
+            this.value = value;
+            type = damageType;
+        }
     }
 }

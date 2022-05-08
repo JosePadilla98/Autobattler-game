@@ -8,11 +8,10 @@ namespace Auttobattler.Combat
     public enum Team { PLAYER, ENEMY }
 
     [RequireComponent(typeof(Battlefield))]
-    public class CombatController : MonoBehaviour
+    public class CombatController
     {
-        public List<UnitRepresentation> playerTeam = new List<UnitRepresentation>();
-
-        public List<UnitRepresentation> enemyTeam = new List<UnitRepresentation>();
+        public List<Fighter> playerTeam = new List<Fighter>();
+        public List<Fighter> enemyTeam = new List<Fighter>();
 
         private bool combatStarted = false;
 
@@ -21,13 +20,12 @@ namespace Auttobattler.Combat
         private static CombatController instance;
         public static CombatController Instance
         {
-            get => instance;
-            set
+            get
             {
-                if (instance != null)
-                    throw new System.Exception("Must be only one");
+                if (instance == null)
+                    instance = new CombatController();
 
-                instance = value;
+                return instance;
             }
         }
 
@@ -35,48 +33,39 @@ namespace Auttobattler.Combat
 
         public void StartCombat()
         {
-            PrepareTeam(playerTeam);
-            PrepareTeam(enemyTeam);
-
             combatStarted = true;
         }
 
-        private void Awake()
-        {
-            Instance = this;
-        }
-
-        private void FixedUpdate()
+        public void Refresh()
         {
             if (!combatStarted) return;
 
-            foreach (var item in playerTeam)
+            foreach (var combatInstance in playerTeam)
             {
-                item.CombatInstance.Refresh();
+                combatInstance.Refresh();
             }
 
-            foreach (var item in enemyTeam)
+            foreach (var combatInstance in enemyTeam)
             {
-                item.CombatInstance.Refresh();
-            }
-        }
-
-        private void PrepareTeam(List<UnitRepresentation> team)
-        {
-            foreach (UnitRepresentation unit in team)
-            {
-                #if UNITY_EDITOR || DEVELOPMENT_BUILD
-                if (unit == null)
-                    Debug.Log("Look at the monobehaviour, you left there a null!");
-                #endif
-
-                unit.PreparativesToBattle();
+                combatInstance.Refresh();
             }
         }
 
-        internal Team GetFighterTeam(UnitCombatInstance unitCombatInstance)
+        public Team GetFighterTeam(Fighter unitCombatInstance)
         {
-            throw new NotImplementedException();
+            foreach (var unit in playerTeam)
+            {
+                if (unitCombatInstance == unit)
+                    return Team.PLAYER;
+            }
+
+            foreach (var unit in enemyTeam)
+            {
+                if (unitCombatInstance == unit)
+                    return Team.ENEMY;
+            }
+
+            throw new Exception("Something is wrong");
         }
 
     }

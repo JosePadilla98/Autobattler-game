@@ -9,7 +9,7 @@ namespace Auttobattler.MutationsSystem
     public abstract class MutationModel : ScriptableObject
     {
         [SerializeField]
-        protected string name;
+        protected string mutationName;
         [SerializeField]
         protected Sprite sprite;
         [SerializeField]
@@ -19,7 +19,7 @@ namespace Auttobattler.MutationsSystem
 
         public string GetName()
         {
-            return name;
+            return mutationName;
         }
 
         public abstract void ModifyStats(Stats stats);
@@ -32,9 +32,9 @@ namespace Auttobattler.MutationsSystem
         /// <param name="order">The mutation instance index in the unit's collection. Some mutations need to know this (see the chargerSystem)</param>
         /// <param name="key">The mutation instance ID of a fighter</param>
         /// <param name="unit"></param>
-        public abstract void AttachToCombatModules(int order, int key, UnitCombatInstance unit);
+        public abstract void AttachToCombatModules(int order, int key, Fighter unit);
        
-        public abstract void UnattachToCombatModules(int key, UnitCombatInstance unit);
+        public abstract void UnattachToCombatModules(int key, Fighter unit);
 
     }
 
@@ -71,12 +71,12 @@ namespace Auttobattler.MutationsSystem
         /// <param name="order">This mutation instance index in the unit's collection. Some mutations need to know this (see the chargerSystem)</param>
         /// <param name="key">This instance key (ID)</param>
         /// <param name="unit"></param>
-        public void AttachToCombatModules(int order ,int key, UnitCombatInstance unit)
+        public void AttachToCombatModules(int order ,int key, Fighter unit)
         {
             model.AttachToCombatModules(order, key, unit);
         }
 
-        public void UnattachToCombatModules(int key, UnitCombatInstance unit)
+        public void UnattachToCombatModules(int key, Fighter unit)
         {
             throw new NotImplementedException();
         }
@@ -92,7 +92,7 @@ namespace Auttobattler.MutationsSystem
         public void ModifyStats(Stats stats);
         public void UnmodifyStats(Stats stats);
 
-        public void AttachToCombatModules(int order, int key, UnitCombatInstance unit);
-        public void UnattachToCombatModules(int key, UnitCombatInstance unit);
+        public void AttachToCombatModules(int order, int key, Fighter unit);
+        public void UnattachToCombatModules(int key, Fighter unit);
     }
 }

@@ -10,13 +10,8 @@ namespace Auttobattler
     {
         [HideInInspector]
         public UnitDragHandler item;
-        private CombatSlot combatSlot;
-        public CombatSlot CombatSlot { get => combatSlot;}
 
-        private void Awake()
-        {
-            combatSlot = GetComponent<CombatSlot>();
-        }
+        public PlayerUnitRepresentation playerUnitRepresentation;
 
         public void OnDrop(PointerEventData eventData)
         {

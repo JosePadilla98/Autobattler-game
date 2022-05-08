@@ -13,9 +13,8 @@ namespace Auttobattler
         public Color defense;
         public Color magic;
         public Color magicDefense;
-        public Color ult;
+        public Color intellect;
         public Color mana;
-        public Color cdr;
         public Color vigor;
     }
 }

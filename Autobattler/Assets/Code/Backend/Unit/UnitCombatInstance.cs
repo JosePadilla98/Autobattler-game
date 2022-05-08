@@ -6,15 +6,16 @@ using Auttobattler.MutationsSystem;
 
 namespace Auttobattler.Combat
 {
-    public class UnitCombatInstance
+    public class Fighter
     {
         public Team Team { get => CombatController.Instance.GetFighterTeam(this); }
         public Position Position { get => Battlefield.Instance.GetFighterPosition(this); }
-        public CombatValues combatValues;
-
+       
         private readonly Unit unit;
         public Stats Stats { get { return unit.stats; } }
         public List<Mutation> Mutations { get => unit.enabledMutations;  }
+
+        public CombatValues combatValues;
 
         #region SYSTEMS
 
@@ -26,37 +27,43 @@ namespace Auttobattler.Combat
 
         #endregion
 
-        public UnitCombatInstance(Unit unit)
+        public Fighter(Unit unit)
         {
-           
+            this.unit = unit;
         }
 
         public void Refresh()
         {
-
+            ChargerSys.Refresh();
         }
     }
 
     public class CombatValues
     {
+        public CombatValue currentHealth;
+        public CombatValue currentVigor;
+        public CombatValue currentMana;
+
         public CombatValues(Unit build)
         {
-            
+            currentHealth = new CombatValue(build.stats.GetStatValue(StatsNames.HEALTH));
+            currentVigor = new CombatValue(build.stats.GetStatValue(StatsNames.VIGOR));
+            currentMana = new CombatValue(build.stats.GetStatValue(StatsNames.MANA));
         }
     }
 
     public class CombatValue
     {
         private float value;
-        public delegate void ValueChanged(float value);
-        public event ValueChanged OnValueChanged;
+        public Action<float> onValueChanged;
+
         public float Value
         {
             get => value;
             set
             {
                 this.value = value;
-                OnValueChanged?.Invoke(this.value);
+                onValueChanged?.Invoke(this.value);
             }
         }
 
@@ -66,17 +73,11 @@ namespace Auttobattler.Combat
         }
     }
 
-    #region ATTACK DATA TYPES
-
-   
-
-    #endregion
-
     public abstract class CombatSystem
     {
-        protected UnitCombatInstance parent;
+        protected Fighter parent;
 
-        public CombatSystem(UnitCombatInstance parent)
+        public CombatSystem(Fighter parent)
         {
             this.parent = parent;
         }

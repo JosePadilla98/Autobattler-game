@@ -12,7 +12,7 @@ namespace Auttobattler.Combat
 
     public class EnergySystem : CombatSystem
     {
-        public EnergySystem(UnitCombatInstance parent) : base(parent) { }
+        public EnergySystem(Fighter parent) : base(parent) { }
        
 
         public bool TryPayCost(EnergyCostData cost)

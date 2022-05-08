@@ -14,7 +14,7 @@ namespace Auttobattler
         [SerializeField]
         private string textToShow;
 
-        protected override void OnMaxChanged(float value)
+        protected override void OnMaxChanged()
         {
             RefreshText();
         }
@@ -26,7 +26,7 @@ namespace Auttobattler
 
         private void RefreshText()
         {
-            text.text = textToShow + ": " + (int)value.Value + "/" + (int)maxValue.Value;
+            text.text = textToShow + ": " + (int)value.Value + "/" + (int)maxValue.Get();
         }
 
         public void SetColor(Color color)
@@ -34,7 +34,7 @@ namespace Auttobattler
             text.color = color;
         }
 
-        public override void AttachValues(CombatValue max, CombatValue v)
+        public override void AttachValues(Stat max, CombatValue v)
         {
             base.AttachValues(max, v);
             RefreshText();
@@ -44,26 +44,26 @@ namespace Auttobattler
     public abstract class DuplaInfo
     {
         protected CombatValue value;
-        protected CombatValue maxValue;
+        protected Stat maxValue;
 
-        protected abstract void OnMaxChanged(float value);
+        protected abstract void OnMaxChanged();
         protected abstract void OnValueChanged(float value);
 
         #region EVENTS_ATTACHERS
 
-        public virtual void AttachValues(CombatValue max, CombatValue v)
+        public virtual void AttachValues(Stat max, CombatValue v)
         {
             maxValue = max;
-            maxValue.OnValueChanged += OnMaxChanged;
+            maxValue.onValueChanged += OnMaxChanged;
 
             value = v;
-            v.OnValueChanged += OnValueChanged;
+            v.onValueChanged += OnValueChanged;
         }
 
         public void Unattach()
         {
-            value.OnValueChanged -= OnValueChanged;
-            maxValue.OnValueChanged -= OnMaxChanged;
+            value.onValueChanged -= OnValueChanged;
+            maxValue.onValueChanged -= OnMaxChanged;
 
             value = null;
             maxValue = null;

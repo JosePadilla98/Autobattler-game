@@ -1,7 +1,6 @@
 using Auttobattler.Combat;
 using Auttobattler.MutationsSystem;
 using Auttobattler.Scriptables;
-using Auttobattler.Ultimates;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,9 +24,6 @@ namespace Auttobattler
             disabledMutations = new List<Mutation>();
         }
 
-        /// <summary>
-        /// When builded from scriptable
-        /// </summary>
         public Unit(UnitBuild blueprint) : base()
         {
             foreach (var mutationModel in blueprint.mutations)
@@ -41,9 +37,9 @@ namespace Auttobattler
             }
         }
 
-        public UnitCombatInstance BuildCombatInstance()
+        public Fighter BuildCombatInstance()
         {
-            return new UnitCombatInstance(this);
+            return new Fighter(this);
         }
 
         public object Clone()

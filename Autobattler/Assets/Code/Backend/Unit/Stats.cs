@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Auttobattler.Scriptables;
-using Auttobattler.Mutators;
-using Auttobattler.Ultimates;
 using System;
 using Auttobattler.MutationsSystem;
+using Auttobattler.Combat;
 
 namespace Auttobattler
 {
@@ -16,13 +15,12 @@ namespace Auttobattler
         PHYSICAL_DEFENSE, MAGICAL_DEFENSE,
         PHYSICAL_SPEED, MAGICAL_SPEED,
         VIGOR, REINVIGORATION,
-        MAX_MANA, MANA_REGEN,
+        MANA, MANA_REGEN,
         INTELLECT,
 
         WEIGHT_CAPACITY,
 
         PHYSICAL_FATIGUE, MAGICAL_FATIGUE,
-        BASE_ATTACK_DURATION
     }
 
     public class Stats
@@ -32,6 +30,7 @@ namespace Auttobattler
 
         public Stats()
         {
+            level = 1;
             valuePairs = StandardStats();
         }
 
@@ -45,16 +44,7 @@ namespace Auttobattler
         public float GetStatValue(StatsNames name)
         {
             Stat stat = GetStat(name);
-            float value = stat.Get;
-
-            return (!stat.scalesByLevel) ? value
-               : GetValueWithLevelModifier(value, level);
-        }
-
-        private float GetValueWithLevelModifier(float value, int level)
-        {
-            float increment = ((level - 1) * value * Constants.LEVEL_STATS_INCREMENT_FACTOR);
-            return value + increment;
+            return stat.Get();
         }
 
         private Dictionary<StatsNames, Stat> StandardStats()
@@ -64,11 +54,11 @@ namespace Auttobattler
                 { StatsNames.HEALTH, new Stat(25f) },
                 { StatsNames.HEALTH_REGEN, new Stat(1f) },
 
-                { StatsNames.PHYSICAL_ATTACK, new Stat(25f, true) },
-                { StatsNames.MAGICAL_ATTACK, new Stat(25f, true) },
+                { StatsNames.PHYSICAL_ATTACK, new Stat(25f, ref level) },
+                { StatsNames.MAGICAL_ATTACK, new Stat(25f, ref level) },
 
-                { StatsNames.PHYSICAL_DEFENSE, new Stat(25f, true) },
-                { StatsNames.MAGICAL_DEFENSE, new Stat(25f, true) },
+                { StatsNames.PHYSICAL_DEFENSE, new Stat(25f, ref level) },
+                { StatsNames.MAGICAL_DEFENSE, new Stat(25f, ref level) },
 
                 { StatsNames.PHYSICAL_SPEED, new Stat(25f) },
                 { StatsNames.MAGICAL_SPEED, new Stat(25f) },
@@ -76,7 +66,7 @@ namespace Auttobattler
                 { StatsNames.VIGOR, new Stat(25f) },
                 { StatsNames.REINVIGORATION, new Stat(1f) },
 
-                { StatsNames.MAX_MANA, new Stat(25f) },
+                { StatsNames.MANA, new Stat(25f) },
                 { StatsNames.MANA_REGEN, new Stat(1f) },
 
                 { StatsNames.INTELLECT, new Stat(25f) },
@@ -95,11 +85,7 @@ namespace Auttobattler
             foreach (var modifier in modifiers)
             {
                 var stat = stats.GetStat(modifier.statName);
-
-                if (modifier.type == ModifierType.LINEAL)
-                    stat.linearModifiers.Add(modifier.value);
-                else
-                    stat.percentualModifiers.Add(modifier.value);
+                stat.AddModifier(modifier.type, modifier.value);
             }
         }
 
@@ -108,49 +94,65 @@ namespace Auttobattler
             foreach (var modifier in modifiers)
             {
                 var stat = stats.GetStat(modifier.statName);
-
-                if (modifier.type == ModifierType.LINEAL)
-                    stat.linearModifiers.Remove(modifier.value);
-                else
-                    stat.percentualModifiers.Remove(modifier.value);
+                stat.RemoveModifier(modifier.type, modifier.value);
             }
         }
     }
 
     public class Stat : ICloneable
     {
-        private float baseStat;
-        public List<float> percentualModifiers = new List<float>();
-        public List<float> linearModifiers = new List<float>();
+        private readonly float baseStat;
+        private List<float> percentualModifiers = new List<float>();
+        private List<float> linearModifiers = new List<float>();
 
+        /// <summary>
+        /// This int is passed by reference
+        /// </summary>
+        private int level;
         public bool scalesByLevel;
 
-        public delegate void CurrentValueChanged(float value);
-        public event CurrentValueChanged OnCurrentValueChanged;
+        public Action onValueChanged;
 
-        public float Get
+        public float GetWithoutLevelIncrement()
         {
-            get
+            float value = baseStat;
+            foreach (var item in linearModifiers)
             {
-                float output = baseStat;
-                foreach (var item in linearModifiers)
-                {
-                    output += item;
-                }
-
-                foreach (var item in percentualModifiers)
-                {
-                    output *= item;
-                }
-
-                return output;
+                value += item;
             }
+
+            foreach (var item in percentualModifiers)
+            {
+                value *= item;
+            }
+
+            return value;
         }
 
-        public Stat(float baseStat, bool scalesByLevel = false)
+        public float Get()
+        {
+            float value = GetWithoutLevelIncrement();
+
+            if (!scalesByLevel) return value;
+
+            float increment = ((level - 1) * value * BalanceConstants.LEVEL_STATS_INCREMENT_FACTOR);
+            value += increment;
+
+            return value;
+        }
+
+        public Stat(float baseStat)
         {
             this.baseStat = baseStat;
-            this.scalesByLevel = scalesByLevel;
+            this.scalesByLevel = false;
+            this.level = 0;
+        }
+
+        public Stat(float baseStat, ref int level)
+        {
+            this.baseStat = baseStat;
+            this.scalesByLevel = true;
+            this.level = level;
         }
 
         public object Clone()
@@ -160,6 +162,26 @@ namespace Auttobattler
             clone.linearModifiers = new List<float>(linearModifiers);
 
             return clone;
+        }
+
+        public void AddModifier(ModifierType type, float modifier)
+        {
+            if (type == ModifierType.LINEAL)
+                linearModifiers.Add(modifier);
+            else
+                percentualModifiers.Add(modifier);
+
+            onValueChanged();
+        }
+
+        public void RemoveModifier(ModifierType type, float modifier)
+        {
+            if (type == ModifierType.LINEAL)
+                linearModifiers.Remove(modifier);
+            else
+                percentualModifiers.Remove(modifier);
+
+            onValueChanged();
         }
     }
 

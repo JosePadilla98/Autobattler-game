@@ -9,7 +9,7 @@ namespace Auttobattler
     public class UnitAnimationsController : MonoBehaviour
     {
         private Animator animator;
-        private UnitCombatInstance attachedUnit;
+        private Fighter attachedFighter;
 
         #region ANIMATION_NAMES
 
@@ -25,22 +25,24 @@ namespace Auttobattler
 
         #region ATTACH_METHODS
 
-        public void AttachUnit(UnitCombatInstance unit)
+        public void AttachUnit(Fighter unit)
         {
-            attachedUnit = unit;
+            attachedFighter = unit;
             unit.attackSys.OnAttackCasted += AttackAnimation;
         }
 
         public void UnnatachUnit()
         {
-            attachedUnit.attackSys.OnAttackCasted -= AttackAnimation;
-            attachedUnit = null;
+            attachedFighter.attackSys.OnAttackCasted -= AttackAnimation;
+            attachedFighter = null;
         }
         #endregion
 
         private void AttackAnimation()
         {
-            if (attachedUnit.grid.side == Side.LEFT)
+            Side side = attachedFighter.Position.side;
+
+            if (side == Side.LEFT)
             {
                 animator.SetTrigger(ATTACK);
             }

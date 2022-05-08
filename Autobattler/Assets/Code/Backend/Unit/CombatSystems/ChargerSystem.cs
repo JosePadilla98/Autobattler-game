@@ -8,13 +8,13 @@ namespace Auttobattler.Combat
 {
     public class ChargerSystem : CombatSystem
     {
-        private ChargerSystem(UnitCombatInstance parent) : base(parent) { }
+        private ChargerSystem(Fighter parent) : base(parent) { }
         private EnergySystem energySystem { get => parent.energySys; }
 
         public Dictionary<int, ChargeableItem> rechargingItems = new Dictionary<int, ChargeableItem>();
         private List<ChargeableItem> waiting;
 
-        public void Refresh(Stats stats)
+        public void Refresh()
         {
             //Try to pay the costs of waiting items, and then put it in the recharging collection
             for (int i = waiting.Count; i > 0; i--)
@@ -30,7 +30,7 @@ namespace Auttobattler.Combat
 
             foreach (var RechargingItem in rechargingItems.Values)
             {
-                RechargingItem.Refresh(stats);
+                RechargingItem.Refresh(parent.Stats);
             }
         }
 

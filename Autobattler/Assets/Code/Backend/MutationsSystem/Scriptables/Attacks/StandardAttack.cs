@@ -22,11 +22,9 @@ namespace Auttobattler.MutationsSystem
             Stats.UnapplyStatsModifiers(statModifiers, stats);
         }
 
-        public override void AttachToCombatModules(int order, int key, UnitCombatInstance combatInstance)
+        public override void AttachToCombatModules(int order, int key, Fighter combatInstance)
         {
-            EnergySystem energySystem = combatInstance.energySys;
             ChargerSystem chargerSystem = combatInstance.ChargerSys;
-            AttackSystem attackSystem = combatInstance.attackSys;
 
             ChargeableData data = new ChargeableData();
             Action OnRecharged = null;
@@ -35,7 +33,7 @@ namespace Auttobattler.MutationsSystem
 
             OnRecharged = () =>
             {
-                //Cast
+                Cast(combatInstance);
 
                 //Recursively add to waiting list
                 chargerSystem.rechargingItems.Remove(key);
@@ -43,9 +41,17 @@ namespace Auttobattler.MutationsSystem
             };
         }
 
-        public override void UnattachToCombatModules(int key, UnitCombatInstance unit)
+        public override void UnattachToCombatModules(int key, Fighter unit)
         {
             //Buscar en waiting y elimin
+        }
+
+        private void Cast(Fighter combatInstance)
+        {
+            AttackSystem attackSystem = combatInstance.attackSys;
+
+            AttackData attackData = new AttackData(100f, StatsNames.PHYSICAL_ATTACK, DamageType.PHYSICAL);
+            attackSystem.LaunchSimpleAttack(attackData);
         }
     }
 }

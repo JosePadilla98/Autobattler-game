@@ -6,17 +6,17 @@ namespace Auttobattler.Combat
 {
     public class DefenseSystem : CombatSystem
     {
-        public DefenseSystem(UnitCombatInstance parent) : base(parent) { }
+        public DefenseSystem(Fighter parent) : base(parent) { }
 
         #region Properties
-        public float Defense { get => parent.values.defense.Value; set => parent.values.attack.Value = value; }
-        public float MagicDefense { get => parent.values.magicDefense.Value; set => parent.values.magicDefense.Value = value; }
+        public float PhysicalDefense { get => parent.Stats.GetStatValue(StatsNames.PHYSICAL_DEFENSE); }
+        public float MagicalDefense { get => parent.Stats.GetStatValue(StatsNames.MAGICAL_DEFENSE); }
         #endregion
 
-        public void BeAttacked(AttackData data)
+        public void BeAttacked(DamageData damageData)
         {
-            float defenseValue = (data.type == AttackType.PHYSICAL) ? Defense : MagicDefense;
-            float damage = data.rawDamage / defenseValue;
+            float defenseValue = (damageData.type == DamageType.PHYSICAL) ? PhysicalDefense : MagicalDefense;
+            float damage = damageData.value / defenseValue;
             parent.healthSys.ReceiveDamage(damage);
         }
     }

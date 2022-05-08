@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,28 +7,30 @@ namespace Auttobattler.Combat
 {
     public enum TargetTypes
     {
-        ENEMY_CLOSEST
+        CLOSEST_ENEMY
     }
 
     public static class TargetsProcessor
     {
-        static List<UnitCombatInstance> objetives = new List<UnitCombatInstance>(12);
+        private static List<Fighter> objetives = new List<Fighter>(12);
+        private static Grid LeftGrid { get => Battlefield.Instance.leftGrid; }
+        private static Grid RightGrid { get => Battlefield.Instance.rightGrid; }
 
-        public static List<UnitCombatInstance> GetObjetives(TargetTypes type, Position ownPos, Battlefield battleField)
+        public static List<Fighter> GetObjetives(TargetTypes type, Position ownPos)
         {
             objetives.Clear();
 
             switch (type)
             {
-                case TargetTypes.ENEMY_CLOSEST:
+                case TargetTypes.CLOSEST_ENEMY:
 
                     Grid gridObjetive;
                     if (ownPos.side == Side.LEFT)
-                        gridObjetive = battleField.rightGrid;
+                        gridObjetive = RightGrid;
                     else
-                        gridObjetive = battleField.leftGrid;
+                        gridObjetive = LeftGrid;
 
-                    UnitCombatInstance creature = GetClosest(ownPos, gridObjetive);
+                    Fighter creature = GetClosestEnemy(ownPos);
                     objetives.Add(creature);
                     break;
             }
@@ -35,11 +38,13 @@ namespace Auttobattler.Combat
             return objetives;
         }
 
-        public static UnitCombatInstance GetClosest(Position pos, Grid grid)
+        public static Fighter GetClosestEnemy(Position referencePosition)
         {
-            int[] order = null;
+            Grid oppositeGrid = Battlefield.Instance.GetOppositeGrid(referencePosition.side);
 
-            switch (pos.heigh)
+            //Get the closest heigh
+            int[] order = null;
+            switch (referencePosition.heigh)
             {
                 case 1:
                     order = new int[] { 1, 2, 3 };
@@ -54,22 +59,22 @@ namespace Auttobattler.Combat
                     break;
             }
 
-            UnitCombatInstance unit = SearchUntilGetOne(order, grid.front);
+            Fighter unit = SearchUntilGetOne(order, oppositeGrid.front);
             if (unit == null)
-                unit = SearchUntilGetOne(order, grid.back);
+                unit = SearchUntilGetOne(order, oppositeGrid.back);
 
             return unit;
         }
 
-        public static UnitCombatInstance SearchUntilGetOne(int[] order, CombatSlot[] column)
+        public static Fighter SearchUntilGetOne(int[] order, CombatSlot[] column)
         {
             foreach (int i in order)
             {
-                UnitCombatInstance c = column[i].unit;
-                if (c != null) return c;
+                Fighter combatInstance = column[i].Unit;
+                if (combatInstance != null) return combatInstance;
             }
 
-            return null;
+            throw new Exception("You are looking for a unit but there isn't any. What the hell is happening?");
         }
     }
 

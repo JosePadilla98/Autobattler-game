@@ -8,48 +8,45 @@ using Auttobattler.Scriptables;
 
 namespace Auttobattler
 {
-    public class Battlefield : MonoBehaviour
+    public class Battlefield
     {
         public Grid leftGrid;
         public Grid rightGrid;
 
-        #region SINGLETON
+        public Action<Fighter, CombatSlot> OnUnitSummoned;
 
+        #region SINGLETON
         private static Battlefield instance;
         public static Battlefield Instance
         {
-            get => instance;
-            set
+            get 
             {
-                if (instance != null)
-                    throw new System.Exception("Must be only one");
+                if (instance == null)
+                    instance = new Battlefield();
 
-                instance = value;
+                return instance;
             }
         }
-
         #endregion 
 
-        private void Awake()
+        public Battlefield()
         {
-            Instance = this;
+            leftGrid = new Grid(Side.LEFT);
+            rightGrid = new Grid(Side.RIGHT);
         }
 
-        public void SummonUnit(UnitCombatInstance combatInstance, Position pos)
+        public void SummonUnit(Fighter combatInstance, Position pos)
         {
             CombatSlot slot = GetCombatSlot(pos);
-            UnitRepresentation unit = Instantiate(GameAssets.Instance.unitPrefab, slot.transform);
-            unit.AttachCombatInstance(combatInstance);
-            slot.unit = unit.CombatInstance;
+            slot.AttachUnit(combatInstance);
 
             if (pos.side == Side.RIGHT)
             {
-                unit.image.transform.localScale = new Vector3(-1, 1, 1);
-                CombatController.Instance.enemyTeam.Add(unit);
+                CombatController.Instance.enemyTeam.Add(combatInstance);
             }
             else
             {
-                CombatController.Instance.playerTeam.Add(unit);
+                CombatController.Instance.playerTeam.Add(combatInstance);
             }
         }
 
@@ -60,35 +57,63 @@ namespace Auttobattler
             return column[pos.heigh];
         }
     
-        public Position GetFighterPosition(UnitCombatInstance unitCombatInstance)
+        public Position GetFighterPosition(Fighter unitCombatInstance)
         {
-            return null;
+            Position pos = leftGrid.GetUnitPosition(unitCombatInstance);
+            if (pos.column != Column.NONE)
+                return pos;
+
+            pos = rightGrid.GetUnitPosition(unitCombatInstance);
+            if (pos.column != Column.NONE)
+                return pos;
+
+            throw new Exception("Something is wrong");
+        }
+
+        public Grid GetOppositeGrid(Side side)
+        {
+            if (side == Side.LEFT)
+                return leftGrid;
+
+            return rightGrid;
         }
     }
 
-    [System.Serializable]
     public class Grid
     {
         public CombatSlot[] front = new CombatSlot[3];
         public CombatSlot[] back = new CombatSlot[3];
         public Side side;
 
-        public Position GetPosition(UnitCombatInstance c)
+        public Grid(Side side)
         {
-            Position pos = SearchInColumn(front, c, Column.FRONT);
+            this.side = side;
+        }
+
+        public Position GetUnitPosition(Fighter combatInstance)
+        {
+            Position pos = SearchUnitInColumn(combatInstance, Column.FRONT);
 
             if (pos.column == Column.NONE)
-                pos = SearchInColumn(back, c, Column.BACK);
+                pos = SearchUnitInColumn(combatInstance, Column.BACK);
 
             return pos;
         }
 
-        private Position SearchInColumn(CombatSlot[] column, UnitCombatInstance c, Column columnName)
+        private Position SearchUnitInColumn(Fighter combatInstance, Column columnName)
         {
+            CombatSlot[] column = null;
+            if (columnName == Column.FRONT)
+                column = front;
+            else if (columnName == Column.BACK)
+                column = back;
+            else
+                throw new Exception("What the hell are you doing?");
+
             for (int i = 0; i < column.Length; i++)
             {
-                CombatSlot s = column[i];
-                if (s.IsThereThisCreature(c))
+                CombatSlot combatSlot = column[i];
+                if (combatSlot.IsThereThisCreature(combatInstance))
                 {
                     return new Position(i, columnName, side);
                 }

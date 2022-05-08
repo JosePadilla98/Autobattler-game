@@ -12,22 +12,23 @@ namespace Auttobattler
         [SerializeField]
         private DuplaInfoText health;
         [SerializeField]
-        private StatText attack;
-        [SerializeField]
-        private StatText attackSpeed;
+        private StatText healthRegen;
         [SerializeField]
         private StatText defense;
+        [SerializeField]
+        private StatText magicDefense;
 
         [Space(10)]
         [Header("Column 2")]
         [SerializeField]
-        private DuplaInfoText ult;
+        private StatText physicalAttack;
         [SerializeField]
-        private StatText ultRegen;
+        private StatText physicalSpeed;
         [SerializeField]
-        private StatText magic;
+        private StatText magicalAttack;
         [SerializeField]
-        private StatText magicDefense;
+        private StatText magicalSpeed;
+
 
         [Space(10)]
         [Header("Column 3")]
@@ -36,7 +37,9 @@ namespace Auttobattler
         [SerializeField]
         private StatText manaRegen;
         [SerializeField]
-        private StatText cdr;
+        private StatText magicalFatigue;
+        [SerializeField]
+        private StatText intellect;
 
         [Space(10)]
         [Header("Column 4")]
@@ -45,9 +48,7 @@ namespace Auttobattler
         [SerializeField]
         private StatText reinvigoration;
         [SerializeField]
-        private StatText aEncumbrance;
-        [SerializeField]
-        private StatText mEncumbrance;
+        private StatText physicalFatigue;
 
         private ColorPalette ColorPalette { get => GameAssets.Instance.colorPalette; }
         public static UnitInfoPanel Instance { 
@@ -73,48 +74,46 @@ namespace Auttobattler
         {
             //
             health.SetColor(ColorPalette.health);
-            attack.SetColor(ColorPalette.attack);
-            attackSpeed.SetColor(ColorPalette.attack);
+            healthRegen.SetColor(ColorPalette.health);
             defense.SetColor(ColorPalette.defense);
-
-            //
-            ult.SetColor(ColorPalette.ult);
-            ultRegen.SetColor(ColorPalette.ult);
-            magic.SetColor(ColorPalette.magic);
             magicDefense.SetColor(ColorPalette.magicDefense);
 
             //
+            physicalAttack.SetColor(ColorPalette.attack);
+            physicalSpeed.SetColor(ColorPalette.attack);
+            magicalAttack.SetColor(ColorPalette.magic);
+            magicalSpeed.SetColor(ColorPalette.magic);
+
             mana.SetColor(ColorPalette.mana);
             manaRegen.SetColor(ColorPalette.mana);
-            cdr.SetColor(ColorPalette.cdr);
+            magicalFatigue.SetColor(ColorPalette.vigor);
+            intellect.SetColor(ColorPalette.intellect);
 
-            //
             vigor.SetColor(ColorPalette.vigor);
             reinvigoration.SetColor(ColorPalette.vigor);
-            aEncumbrance.SetColor(ColorPalette.vigor);
-            mEncumbrance.SetColor(ColorPalette.vigor);
+            physicalFatigue.SetColor(ColorPalette.vigor);
         }
 
-        public void AttachUnit(UnitCombatInstance unit)
+        public void AttachUnit(Fighter fighter)
         {
-            health.AttachValues(unit.values.maxHealth, unit.values.health);
-            attack.Attach(unit.values.attack);
-            attackSpeed.Attach(unit.values.attackSpeed);
-            defense.Attach(unit.values.defense);
+            health.AttachValues(fighter.Stats.GetStat(StatsNames.HEALTH), fighter.combatValues.currentHealth);
+            healthRegen.Attach(fighter.Stats.GetStat(StatsNames.HEALTH_REGEN));
+            defense.Attach(fighter.Stats.GetStat(StatsNames.PHYSICAL_DEFENSE));
+            magicDefense.Attach(fighter.Stats.GetStat(StatsNames.MAGICAL_DEFENSE));
 
-            ult.AttachValues(unit.values.ultimateCost, unit.values.ultimateProgress);
-            ultRegen.Attach(unit.values.ultimateRegen);
-            magic.Attach(unit.values.magic);
-            magicDefense.Attach(unit.values.magicDefense);
+            physicalAttack.Attach(fighter.Stats.GetStat(StatsNames.PHYSICAL_ATTACK));
+            physicalSpeed.Attach(fighter.Stats.GetStat(StatsNames.PHYSICAL_SPEED));
+            magicalAttack.Attach(fighter.Stats.GetStat(StatsNames.MAGICAL_ATTACK));
+            magicalSpeed.Attach(fighter.Stats.GetStat(StatsNames.MAGICAL_SPEED));
 
-            mana.AttachValues(unit.values.maxMana, unit.values.currentMana);
-            manaRegen.Attach(unit.values.manaRegen);
-            cdr.Attach(unit.values.cdr);
+            mana.AttachValues(fighter.Stats.GetStat(StatsNames.MANA), fighter.combatValues.currentMana);
+            manaRegen.Attach(fighter.Stats.GetStat(StatsNames.MANA_REGEN));
+            magicalFatigue.Attach(fighter.Stats.GetStat(StatsNames.MAGICAL_FATIGUE));
+            intellect.Attach(fighter.Stats.GetStat(StatsNames.INTELLECT));
 
-            vigor.AttachValues(unit.values.vigor, unit.values.currentVigor);
-            reinvigoration.Attach(unit.values.reinvigoration);
-            aEncumbrance.Attach(unit.values.aEncumbrance);
-            mEncumbrance.Attach(unit.values.mEncumbrance);
+            vigor.AttachValues(fighter.Stats.GetStat(StatsNames.VIGOR), fighter.combatValues.currentVigor);
+            reinvigoration.Attach(fighter.Stats.GetStat(StatsNames.REINVIGORATION));
+            physicalFatigue.Attach(fighter.Stats.GetStat(StatsNames.PHYSICAL_FATIGUE));
 
             gameObject.SetActive(true);
             isShowing = true;
@@ -123,23 +122,23 @@ namespace Auttobattler
         public void UnattachUnit()
         {
             health.Unattach();
-            attack.Unattach();
-            attackSpeed.Unattach();
+            healthRegen.Unattach();
             defense.Unattach();
-
-            ult.Unattach();
-            ultRegen.Unattach();
-            magic.Unattach();
             magicDefense.Unattach();
+
+            physicalAttack.Unattach();
+            physicalSpeed.Unattach();
+            magicalAttack.Unattach();
+            magicalSpeed.Unattach();
 
             mana.Unattach();
             manaRegen.Unattach();
-            cdr.Unattach();
+            magicalFatigue.Unattach();
+            intellect.Unattach();
 
             vigor.Unattach();
             reinvigoration.Unattach();
-            aEncumbrance.Unattach();
-            mEncumbrance.Unattach();
+            physicalFatigue.Unattach();
 
             gameObject.SetActive(false);
             isShowing = false;
@@ -151,28 +150,28 @@ namespace Auttobattler
     {
         public TextMeshProUGUI text;
         public string textToShow;
-        private CombatValue v;
+        private Stat stat;
 
         public void SetColor(Color color)
         {
             text.color = color;
         }
 
-        public void Attach(CombatValue v)
+        public void Attach(Stat stat)
         {
-            this.v = v;
-            v.OnValueChanged += OnValueChanged;
-            ChangeText(v.Value);
+            this.stat = stat;
+            stat.onValueChanged += OnValueChanged;
+            ChangeText(stat.Get());
         }
 
         public void Unattach()
         {
-            v.OnValueChanged -= OnValueChanged;
+            stat.onValueChanged -= OnValueChanged;
         }
 
-        public void OnValueChanged(float f)
+        public void OnValueChanged()
         {
-            ChangeText(f);
+            ChangeText(stat.Get());
         }
 
         private void ChangeText(float f)

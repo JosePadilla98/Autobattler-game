@@ -16,10 +16,11 @@ namespace Auttobattler
 		private Image fill;
 
 		private CombatValue value;
-		private CombatValue maxValue;
+		private Stat maxValue;
 
-		private void SetMaxValue(float value)
+		private void SetMaxValue()
 		{
+			float value = maxValue.Get();
 			slider.maxValue = value;
 			fill.color = gradient.Evaluate(1f);
 		}
@@ -32,25 +33,25 @@ namespace Auttobattler
 
         #region EVENTS_ATTACHERS
 
-        public void AttachMaxValue(CombatValue v)
+        public void AttachMaxValue(Stat stat)
 		{
-			maxValue = v;
-			v.OnValueChanged += SetMaxValue;
+			maxValue = stat;
+			stat.onValueChanged += SetMaxValue;
 
-			SetMaxValue(v.Value);
+			SetMaxValue();
 		}
 		public void AttachValue(CombatValue v)
 		{
 			value = v;
-			v.OnValueChanged += SetValue;
+			v.onValueChanged += SetValue;
 
 			SetValue(v.Value);
 		}
 
 		public void Unnatach()
 		{
-			value.OnValueChanged -= SetValue;
-			maxValue.OnValueChanged -= SetMaxValue;
+			value.onValueChanged -= SetValue;
+			maxValue.onValueChanged -= SetMaxValue;
 
 			value = null;
 			maxValue = null;
