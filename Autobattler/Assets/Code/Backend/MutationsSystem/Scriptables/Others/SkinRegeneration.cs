@@ -1,9 +1,9 @@
-using Auttobattler.Combat;
-using System.Collections;
-using System.Collections.Generic;
+using Auttobattler.Backend.Run.CombatState;
+using Auttobattler.Backend.Run.ManagementState;
+using Auttobattler.MutationsSystem;
 using UnityEngine;
 
-namespace Auttobattler.MutationsSystem
+namespace Auttobattler.Backend.MutationSystem
 {
     [CreateAssetMenu(fileName = "MutationsDatabase", menuName = "ScriptableObjects/MutationsSystem/Mutations/SkinRegeneration")]
     public class SkinRegeneration : MutationModel
@@ -21,7 +21,7 @@ namespace Auttobattler.MutationsSystem
             throw new System.NotImplementedException();
         }
 
-        public override void UnattachToCombatModules(int key, Fighter unit)
+        public override void UnattachToCombatModules(int key, Fighter fighter)
         {
             throw new System.NotImplementedException();
         }

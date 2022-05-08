@@ -1,10 +1,11 @@
-using Auttobattler.Combat;
+using Auttobattler.Backend.Run.CombatState;
+using Auttobattler.Backend.Run.ManagementState;
+using Auttobattler.MutationsSystem;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Auttobattler.MutationsSystem
+namespace Auttobattler.Backend.MutationSystem
 {
     [CreateAssetMenu(fileName = "MutationsDatabase", menuName = "ScriptableObjects/MutationsSystem/Mutations/Attacks/Standard")]
     public class StandardAttack : MutationModel
@@ -22,9 +23,9 @@ namespace Auttobattler.MutationsSystem
             Stats.UnapplyStatsModifiers(statModifiers, stats);
         }
 
-        public override void AttachToCombatModules(int order, int key, Fighter combatInstance)
+        public override void AttachToCombatModules(int order, int key, Fighter fighter)
         {
-            ChargerSystem chargerSystem = combatInstance.ChargerSys;
+            ChargerSystem chargerSystem = fighter.ChargerSys;
 
             ChargeableData data = new ChargeableData();
             Action OnRecharged = null;
@@ -33,7 +34,7 @@ namespace Auttobattler.MutationsSystem
 
             OnRecharged = () =>
             {
-                Cast(combatInstance);
+                Cast(fighter);
 
                 //Recursively add to waiting list
                 chargerSystem.rechargingItems.Remove(key);
@@ -41,7 +42,7 @@ namespace Auttobattler.MutationsSystem
             };
         }
 
-        public override void UnattachToCombatModules(int key, Fighter unit)
+        public override void UnattachToCombatModules(int key, Fighter fighter)
         {
             //Buscar en waiting y elimin
         }

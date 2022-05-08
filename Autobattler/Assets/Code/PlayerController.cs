@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Auttobattler
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerControllerFrontend : MonoBehaviour
     {
         public void StartCombat()
         {

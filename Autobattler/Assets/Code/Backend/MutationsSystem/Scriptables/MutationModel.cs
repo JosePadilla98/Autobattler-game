@@ -1,10 +1,9 @@
-using Auttobattler.Combat;
+using Auttobattler.Backend.Run.CombatState;
+using Auttobattler.Backend.Run.ManagementState;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Auttobattler.MutationsSystem
+namespace Auttobattler.Backend.MutationSystem
 {
     public abstract class MutationModel : ScriptableObject
     {

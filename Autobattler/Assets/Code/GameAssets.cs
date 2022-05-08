@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Auttobattler.Frontend.CombatState;
 using UnityEngine;
 
 namespace Auttobattler
