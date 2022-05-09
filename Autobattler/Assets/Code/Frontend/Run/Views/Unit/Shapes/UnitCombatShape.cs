@@ -1,6 +1,6 @@
 ﻿using Assets.Code.Frontend.UnitView.Unit.Components;
 using Assets.Code.Frontend.UnitView.Unit.Components.InfoBars;
-using Auttobattler.Backend.RunLogic.CombatState;
+using Auttobattler.Backend.RunLogic.Combat;
 using Auttobattler.Frontend;
 using UnityEngine;
 using UnityEngine.EventSystems;

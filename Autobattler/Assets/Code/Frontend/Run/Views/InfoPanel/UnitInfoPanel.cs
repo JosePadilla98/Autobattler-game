@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
-using Auttobattler.Backend.RunLogic.ManagementState;
-using Auttobattler.Backend.RunLogic.CombatState;
+using Auttobattler.Backend.RunLogic.Management;
+using Auttobattler.Backend.RunLogic.Combat;
 using Assets.Code.Frontend.Run.Views.InfoPanel.Components;
 
 namespace Auttobattler.Frontend

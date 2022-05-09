@@ -1,23 +1,32 @@
 ﻿using Assets.Code.Backend;
+using Assets.Code.Backend.RunLogic;
 using UnityEngine;
 
 
 namespace Assets.Code.Frontend.Run.Screens
 {
     [ExecuteInEditMode]
-    class MainScreen : MonoBehaviour
+    class MainScreen : MonoBehaviour, Screen
     {
-        [SerializeField]
         private App app;
 
         #if UNITY_EDITOR
         private void OnEnable()
         {
-
-            app.ChangeState(AppState.RUN);
-            app.run.ChangeState(RunState.MANAGEMENT);
-
+            var initializer = GameObject.Find("GameManager").gameObject.GetComponent<AppInitInEditor>();
+            initializer.appState = AppState.RUN;
+            initializer.runState = RunState.MANAGEMENT;
         }
         #endif
+
+        public void Init(App app)
+        {
+            this.app = app;
+        }
+
+        public GameObject GetGameObject()
+        {
+            return gameObject;
+        }
     }
 }

@@ -1,4 +1,4 @@
-using Auttobattler.Backend.RunLogic.ManagementState;
+using Auttobattler.Backend.RunLogic.Management;
 
 namespace Auttobattler.MutationsSystem
 {

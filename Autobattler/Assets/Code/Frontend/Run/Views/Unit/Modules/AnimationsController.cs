@@ -1,5 +1,5 @@
 using UnityEngine;
-using Auttobattler.Backend.RunLogic.CombatState;
+using Auttobattler.Backend.RunLogic.Combat;
 using Auttobattler.Backend.RunLogic;
 
 namespace Assets.Code.Frontend.UnitView.Unit.Components

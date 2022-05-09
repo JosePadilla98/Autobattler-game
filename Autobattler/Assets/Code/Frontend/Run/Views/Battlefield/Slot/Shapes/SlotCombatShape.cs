@@ -1,6 +1,6 @@
 ﻿using Assets.Code.Frontend.Run.Views.Unit.Shapes;
 using Auttobattler;
-using Auttobattler.Backend.RunLogic.CombatState;
+using Auttobattler.Backend.RunLogic.Combat;
 
 namespace Assets.Code.Frontend.Run.Views.Battlefield.Slot
 {

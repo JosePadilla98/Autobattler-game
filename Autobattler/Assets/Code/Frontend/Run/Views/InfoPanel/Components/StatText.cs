@@ -1,4 +1,4 @@
-﻿using Auttobattler.Backend.RunLogic.ManagementState;
+﻿using Auttobattler.Backend.RunLogic.Management;
 using TMPro;
 using UnityEngine;
 

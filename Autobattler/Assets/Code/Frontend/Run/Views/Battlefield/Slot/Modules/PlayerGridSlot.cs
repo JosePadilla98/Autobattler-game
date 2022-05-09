@@ -1,4 +1,4 @@
-﻿using Auttobattler.Backend.RunLogic.CombatState;
+﻿using Auttobattler.Backend.RunLogic.Combat;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
