@@ -1,3 +1,4 @@
+using Assets.Code.Backend.RunLogic.Combat.Fighter;
 using Auttobattler.Backend.RunLogic.Combat;
 using Auttobattler.Backend.RunLogic.Management;
 using Auttobattler.MutationsSystem;

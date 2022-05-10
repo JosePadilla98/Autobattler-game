@@ -16,7 +16,7 @@ namespace Assets.Code.Frontend.Run.Screens.CombatScreen
             initializer.appState = AppState.RUN;
             initializer.runState = RunState.COMBAT;
         }
-#endif
+        #endif
 
         public void Init(App app)
         {

@@ -1,4 +1,6 @@
 
+using Assets.Code.Backend.RunLogic.Combat.Fighter;
+
 namespace Auttobattler.Backend.RunLogic.Combat
 {
     public struct EnergyCostData

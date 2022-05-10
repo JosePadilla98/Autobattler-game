@@ -1,5 +1,5 @@
+using Assets.Code.Backend.RunLogic.Combat.Fighter;
 using Auttobattler.Backend.MutationSystem;
-using Auttobattler.Backend.RunLogic.Combat;
 using System;
 using System.Collections.Generic;
 

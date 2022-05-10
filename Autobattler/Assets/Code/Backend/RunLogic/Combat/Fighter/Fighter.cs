@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using Auttobattler.MutationsSystem;
 using Auttobattler.Backend.RunLogic.Management;
 using Auttobattler.Backend.MutationSystem;
-using Assets.Code.Backend.RunLogic.Combat.Controllers.Battlefield;
+using Auttobattler.Backend.RunLogic;
+using Auttobattler.Backend.RunLogic.Combat;
 
-namespace Auttobattler.Backend.RunLogic.Combat
+namespace Assets.Code.Backend.RunLogic.Combat.Fighter
 {
     public class Fighter
     {
         public Team Team { get => TeamsController.Instance.GetFighterTeam(this); }
         public Position Position { get => Battlefield.Instance.GetFighterPosition(this); }
-       
+
         private readonly Unit unit;
         public Stats Stats { get { return unit.stats; } }
-        public List<Mutation> Mutations { get => unit.enabledMutations;  }
+        public List<Mutation> Mutations { get => unit.enabledMutations; }
 
         public CombatValues combatValues;
 
