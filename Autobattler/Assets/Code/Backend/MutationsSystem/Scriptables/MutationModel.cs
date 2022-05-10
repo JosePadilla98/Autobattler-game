@@ -1,5 +1,3 @@
-using Assets.Code.Backend.RunLogic.Combat.Fighter;
-using Auttobattler.Backend.RunLogic.Management;
 using System;
 using UnityEngine;
 
@@ -32,7 +30,7 @@ namespace Auttobattler.Backend.MutationSystem
         /// <param name="key">The mutation instance ID of a fighter</param>
         /// <param name="unit"></param>
         public abstract void AttachToCombatModules(int order, int key, Fighter unit);
-       
+
         public abstract void UnattachToCombatModules(int key, Fighter unit);
 
     }
@@ -70,7 +68,7 @@ namespace Auttobattler.Backend.MutationSystem
         /// <param name="order">This mutation instance index in the unit's collection. Some mutations need to know this (see the chargerSystem)</param>
         /// <param name="key">This instance key (ID)</param>
         /// <param name="unit"></param>
-        public void AttachToCombatModules(int order ,int key, Fighter unit)
+        public void AttachToCombatModules(int order, int key, Fighter unit)
         {
             model.AttachToCombatModules(order, key, unit);
         }

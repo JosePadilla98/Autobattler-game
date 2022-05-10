@@ -1,12 +1,6 @@
-﻿using Assets.Code.Backend.RunLogic;
-using Assets.Code.Frontend;
-using Assets.Code.Frontend.Run;
-using Assets.Code.Frontend.Run.Screens;
-using Assets.Code.Frontend.Run.Screens.CombatScreen;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Code.Backend
+namespace Auttobattler.Backend
 {
     public enum AppState { MENU, RUN }
 
@@ -23,7 +17,7 @@ namespace Assets.Code.Backend
 
         private void FixedUpdate()
         {
-            if(state == AppState.RUN)
+            if (state == AppState.RUN)
                 run.Refresh();
         }
 

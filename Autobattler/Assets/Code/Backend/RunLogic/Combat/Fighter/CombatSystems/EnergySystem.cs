@@ -1,7 +1,5 @@
 
-using Assets.Code.Backend.RunLogic.Combat.Fighter;
-
-namespace Auttobattler.Backend.RunLogic.Combat
+namespace Auttobattler.Backend
 {
     public struct EnergyCostData
     {
@@ -12,7 +10,7 @@ namespace Auttobattler.Backend.RunLogic.Combat
     public class EnergySystem : CombatSystem
     {
         public EnergySystem(Fighter parent) : base(parent) { }
-       
+
 
         public bool TryPayCost(EnergyCostData cost)
         {

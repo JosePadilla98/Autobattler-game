@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Auttobattler.Backend.RunLogic.Management
+namespace Auttobattler.Backend
 {
     public class InventoryController : MonoBehaviour
     {

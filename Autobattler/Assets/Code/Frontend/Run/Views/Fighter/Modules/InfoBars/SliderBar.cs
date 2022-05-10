@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using Auttobattler.Backend.RunLogic.Management;
-using Assets.Code.Backend.RunLogic.Combat.Fighter;
 
-namespace Assets.Code.Frontend.UnitView.Unit.Components.InfoBars
+namespace Auttobattler.Frontend
 {
-    public class SliderBar : MonoBehaviour
+	public class SliderBar : MonoBehaviour
 	{
 		[SerializeField]
 		private Slider slider;

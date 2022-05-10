@@ -1,4 +1,4 @@
-﻿namespace Auttobattler
+﻿namespace Auttobattler.Backend
 {
     internal class PlayerData
     {

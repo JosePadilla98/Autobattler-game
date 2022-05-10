@@ -1,8 +1,4 @@
 using UnityEngine;
-using TMPro;
-using Auttobattler.Backend.RunLogic.Management;
-using Assets.Code.Frontend.Run.Views.InfoPanel.Components;
-using Assets.Code.Backend.RunLogic.Combat.Fighter;
 
 namespace Auttobattler.Frontend
 {
@@ -51,7 +47,8 @@ namespace Auttobattler.Frontend
         private StatText physicalFatigue;
 
         private ColorPalette ColorPalette { get => GameAssets.Instance.colorPalette; }
-        public static UnitInfoPanel Instance { 
+        public static UnitInfoPanel Instance
+        {
             get => instance;
             set
             {
@@ -62,7 +59,7 @@ namespace Auttobattler.Frontend
 
         public bool IsShowing { get => isShowing; }
         private bool isShowing;
-      
+
 
         private void Start()
         {
@@ -145,5 +142,5 @@ namespace Auttobattler.Frontend
         }
     }
 
-   
+
 }

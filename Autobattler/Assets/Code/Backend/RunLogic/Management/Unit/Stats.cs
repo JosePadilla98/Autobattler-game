@@ -1,9 +1,7 @@
-using System.Collections.Generic;
 using System;
-using Auttobattler.MutationsSystem;
-using Auttobattler.Backend.RunLogic.Combat;
+using System.Collections.Generic;
 
-namespace Auttobattler.Backend.RunLogic.Management
+namespace Auttobattler.Backend
 {
     public enum StatsNames
     {

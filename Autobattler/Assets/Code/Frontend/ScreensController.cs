@@ -1,7 +1,7 @@
-﻿using Assets.Code.Backend;
+﻿using Auttobattler.Backend;
 using UnityEngine;
 
-namespace Assets.Code.Frontend
+namespace Auttobattler.Frontend
 {
     public enum ScreensNames
     {

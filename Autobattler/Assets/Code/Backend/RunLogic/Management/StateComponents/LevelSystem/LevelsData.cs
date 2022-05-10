@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Code.Backend.RunLogic.Management.Controllers.LevelSystem
+namespace Auttobattler.Backend
 {
     public class LevelsData : ScriptableObject
     {

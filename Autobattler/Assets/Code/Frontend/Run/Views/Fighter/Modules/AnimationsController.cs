@@ -1,8 +1,7 @@
+using Auttobattler.Backend;
 using UnityEngine;
-using Auttobattler.Backend.RunLogic;
-using Assets.Code.Backend.RunLogic.Combat.Fighter;
 
-namespace Assets.Code.Frontend.UnitView.Unit.Components
+namespace Auttobattler.Frontend
 {
     [RequireComponent(typeof(Animator))]
     public class AnimationsController : MonoBehaviour

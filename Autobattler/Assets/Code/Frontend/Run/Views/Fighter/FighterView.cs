@@ -1,11 +1,9 @@
-﻿using Assets.Code.Frontend.UnitView.Unit.Components;
-using Assets.Code.Frontend.UnitView.Unit.Components.InfoBars;
-using Auttobattler.Frontend;
+﻿using Auttobattler.Backend;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Assets.Code.Frontend
+namespace Auttobattler.Frontend
 {
     class FighterView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {

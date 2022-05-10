@@ -1,10 +1,5 @@
-using Assets.Code.Backend.RunLogic.Combat.Fighter;
-using Auttobattler.Backend.RunLogic.Management;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace Auttobattler.Backend.RunLogic.Combat
+namespace Auttobattler.Backend
 {
     public class HealthSystem : CombatSystem
     {
@@ -12,7 +7,7 @@ namespace Auttobattler.Backend.RunLogic.Combat
 
         #region Properties
         public float MaxHealth { get => parent.Stats.GetStatValue(StatsNames.HEALTH); }
-        public float CurrentHealth { get => parent.combatValues.currentHealth.Value;  set => parent.combatValues.currentHealth.Value = value; }
+        public float CurrentHealth { get => parent.combatValues.currentHealth.Value; set => parent.combatValues.currentHealth.Value = value; }
         #endregion
 
         public void ReceiveDamage(float damage)

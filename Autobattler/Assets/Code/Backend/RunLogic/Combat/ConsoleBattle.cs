@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Code.Backend.RunLogic.Combat
+namespace Auttobattler.Backend
 {
     public class ConsoleBattle : MonoBehaviour
     {

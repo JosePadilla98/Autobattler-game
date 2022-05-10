@@ -1,9 +1,8 @@
-using Assets.Code.Backend.RunLogic.Combat.Fighter;
 using Auttobattler.Backend.MutationSystem;
 using System;
 using System.Collections.Generic;
 
-namespace Auttobattler.Backend.RunLogic.Management
+namespace Auttobattler.Backend
 {
     public class Unit : ICloneable
     {

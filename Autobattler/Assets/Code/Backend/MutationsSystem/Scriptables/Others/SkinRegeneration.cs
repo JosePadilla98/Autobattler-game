@@ -1,7 +1,5 @@
-using Assets.Code.Backend.RunLogic.Combat.Fighter;
-using Auttobattler.Backend.RunLogic.Management;
-using Auttobattler.MutationsSystem;
 using UnityEngine;
+
 
 namespace Auttobattler.Backend.MutationSystem
 {

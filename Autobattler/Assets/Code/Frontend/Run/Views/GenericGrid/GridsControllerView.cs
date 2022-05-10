@@ -1,10 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Auttobattler.Backend.RunLogic.Management
+namespace Auttobattler.Frontend
 {
     public class GridsControllerView<T> : MonoBehaviour
     {
-            
+
     }
 }

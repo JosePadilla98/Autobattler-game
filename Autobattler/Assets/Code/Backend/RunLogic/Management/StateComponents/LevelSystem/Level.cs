@@ -1,7 +1,6 @@
-using Auttobattler.Backend.RunLogic.Management;
 using UnityEngine;
 
-namespace Assets.Code.Backend.RunLogic.Management.Controllers.LevelSystem
+namespace Auttobattler.Backend
 {
     [CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/Level", order = 3)]
     public class Level : ScriptableObject

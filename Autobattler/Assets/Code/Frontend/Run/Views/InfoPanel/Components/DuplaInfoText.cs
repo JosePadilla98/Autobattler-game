@@ -1,7 +1,6 @@
-using UnityEngine;
+using Auttobattler.Backend;
 using TMPro;
-using Auttobattler.Backend.RunLogic.Management;
-using Assets.Code.Backend.RunLogic.Combat.Fighter;
+using UnityEngine;
 
 namespace Auttobattler.Frontend
 {

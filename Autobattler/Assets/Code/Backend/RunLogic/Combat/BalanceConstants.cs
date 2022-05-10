@@ -1,4 +1,4 @@
-namespace Auttobattler.Backend.RunLogic.Combat
+namespace Auttobattler.Backend
 {
     public class BalanceConstants
     {

@@ -1,9 +1,7 @@
-using Auttobattler.Backend.RunLogic.Combat;
-using Auttobattler.Backend.RunLogic.Management;
 using System;
 using UnityEngine;
 
-namespace Assets.Code.Backend.RunLogic
+namespace Auttobattler.Backend
 {
     public enum RunState
     {

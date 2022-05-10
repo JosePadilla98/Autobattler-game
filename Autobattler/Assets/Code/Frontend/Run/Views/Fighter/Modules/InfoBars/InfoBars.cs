@@ -1,8 +1,7 @@
-﻿using Assets.Code.Backend.RunLogic.Combat.Fighter;
-using Auttobattler.Backend.RunLogic.Management;
+﻿using Auttobattler.Backend;
 using UnityEngine;
 
-namespace Assets.Code.Frontend.UnitView.Unit.Components.InfoBars
+namespace Auttobattler.Frontend
 {
     [System.Serializable]
     public class UnitInfoBars

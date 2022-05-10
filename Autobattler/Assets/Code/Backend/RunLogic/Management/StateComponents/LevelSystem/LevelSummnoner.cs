@@ -1,8 +1,6 @@
-﻿using Assets.Code.Backend.RunLogic.GenericGrid;
-using Assets.Code.Backend.RunLogic.Management.Controllers.LevelSystem;
-using System;
+﻿using System;
 
-namespace Auttobattler.Backend.RunLogic.Management
+namespace Auttobattler.Backend
 {
     class LevelSummnoner
     {

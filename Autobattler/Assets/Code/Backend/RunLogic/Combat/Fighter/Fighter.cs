@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Auttobattler.Backend.MutationSystem;
+using System;
 using System.Collections.Generic;
-using Auttobattler.Backend.RunLogic.Management;
-using Auttobattler.Backend.MutationSystem;
-using Auttobattler.Backend.RunLogic;
-using Auttobattler.Backend.RunLogic.Combat;
 
-namespace Assets.Code.Backend.RunLogic.Combat.Fighter
+namespace Auttobattler.Backend
 {
     public class Fighter
     {

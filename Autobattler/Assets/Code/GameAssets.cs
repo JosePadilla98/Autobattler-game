@@ -1,5 +1,4 @@
-using Auttobattler.Frontend.CombatScreen;
-using Assets.Code.Frontend.Run.Views.Unit;
+using Auttobattler.Frontend;
 using UnityEngine;
 
 namespace Auttobattler

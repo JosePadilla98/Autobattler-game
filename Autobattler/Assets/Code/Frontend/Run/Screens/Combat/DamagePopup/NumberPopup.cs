@@ -1,13 +1,13 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 
-namespace Auttobattler.Frontend.CombatScreen
+namespace Auttobattler.Frontend
 {
     public enum NumberPopupTypes
     {
         DAMAGE, CRITICAL_DAMAGE, HEALTH
     }
-    
+
     [System.Serializable]
     public struct NumberPopupData
     {
@@ -36,7 +36,7 @@ namespace Auttobattler.Frontend.CombatScreen
         public static NumberPopup Create(Transform parent, int value, NumberPopupTypes type)
         {
             NumberPopup damagePopup = NumberPopupPool.Get();
-            damagePopup.Setup(parent ,value, type);
+            damagePopup.Setup(parent, value, type);
 
             return damagePopup;
         }
@@ -81,7 +81,7 @@ namespace Auttobattler.Frontend.CombatScreen
             float y = Random.Range(0.6f, 1);
             float x = Random.Range(-0.6f, 0.6f);
             Vector2 normalizedVector = new Vector2(x, y);
-            moveVector = normalizedVector * 600f; 
+            moveVector = normalizedVector * 600f;
             #endregion
 
             transform.SetParent(parent);

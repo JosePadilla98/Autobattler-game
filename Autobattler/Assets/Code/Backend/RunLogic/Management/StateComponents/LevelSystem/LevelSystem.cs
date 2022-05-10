@@ -1,11 +1,10 @@
-using UnityEngine;
 using System;
-using Assets.Code.Backend.RunLogic.Management.Controllers.LevelSystem;
+using UnityEngine;
 
-namespace Auttobattler.Backend.RunLogic.Management
+namespace Auttobattler.Backend
 {
     [Serializable]
-    public class LevelsSystem 
+    public class LevelsSystem
     {
         [SerializeField]
         private LevelsData data;
@@ -28,7 +27,7 @@ namespace Auttobattler.Backend.RunLogic.Management
         }
     }
 
-   
+
 
 }
 

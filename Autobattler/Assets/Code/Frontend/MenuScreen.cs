@@ -1,22 +1,21 @@
-﻿using Assets.Code.Backend;
-using Assets.Code.Backend.RunLogic;
+﻿using Auttobattler.Backend;
 using UnityEngine;
 
-namespace Assets.Code.Frontend
+namespace Auttobattler.Frontend
 {
     [ExecuteInEditMode]
     class MenuScreen : MonoBehaviour, Screen
     {
         private App app;
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         private void OnEnable()
         {
             var initializer = GameObject.Find("GameManager").gameObject.GetComponent<AppInitInEditor>();
             initializer.appState = AppState.MENU;
             initializer.runState = RunState.NONE;
         }
-        #endif
+#endif
 
         public void NewGame()
         {

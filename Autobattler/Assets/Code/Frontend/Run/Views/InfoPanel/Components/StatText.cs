@@ -1,8 +1,8 @@
-﻿using Auttobattler.Backend.RunLogic.Management;
+﻿using Auttobattler.Backend;
 using TMPro;
 using UnityEngine;
 
-namespace Assets.Code.Frontend.Run.Views.InfoPanel.Components
+namespace Auttobattler.Frontend
 {
     [System.Serializable]
     public class StatText

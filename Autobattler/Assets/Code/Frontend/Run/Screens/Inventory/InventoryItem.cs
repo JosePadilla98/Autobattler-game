@@ -1,7 +1,8 @@
+using Auttobattler.Backend;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Auttobattler.Frontend.ManagementState
+namespace Auttobattler.Frontend
 {
     public class InventoryItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
@@ -21,6 +22,6 @@ namespace Auttobattler.Frontend.ManagementState
         {
 
         }
-      
+
     }
 }

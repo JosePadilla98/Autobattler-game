@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Auttobattler.Frontend.ManagementState
+namespace Auttobattler.Frontend
 {
     public class InventoryView : MonoBehaviour
     {

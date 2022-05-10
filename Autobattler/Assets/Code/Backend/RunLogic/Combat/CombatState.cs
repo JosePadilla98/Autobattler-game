@@ -1,8 +1,5 @@
-using Assets.Code.Backend.RunLogic.Combat.Fighter;
-using Assets.Code.Backend.RunLogic.GenericGrid;
-using Auttobattler.Backend.RunLogic.Management;
 
-namespace Auttobattler.Backend.RunLogic.Combat
+namespace Auttobattler.Backend
 {
     public class CombatState
     {

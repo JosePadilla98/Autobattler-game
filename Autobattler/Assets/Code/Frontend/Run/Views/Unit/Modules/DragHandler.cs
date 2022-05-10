@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Auttobattler.Frontend.ManagementState
+namespace Auttobattler.Frontend
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class UnitDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -19,7 +17,7 @@ namespace Auttobattler.Frontend.ManagementState
         private PlayerGridSlot lastDropArea;
 
         public Transform TmpParent { get => null; }
-        public RectTransform Rect { get => rect;  }
+        public RectTransform Rect { get => rect; }
 
         private void Awake()
         {

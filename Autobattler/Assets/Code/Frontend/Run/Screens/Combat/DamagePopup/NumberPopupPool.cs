@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Auttobattler.Frontend.CombatScreen
+namespace Auttobattler.Frontend
 {
     //TODO Arreglar esto, hacerlo en condiciones
     public class NumberPopupPool : MonoBehaviour
@@ -11,13 +11,15 @@ namespace Auttobattler.Frontend.CombatScreen
 
         private void Awake()
         {
-            Func<NumberPopup> createFunc = () => {
+            Func<NumberPopup> createFunc = () =>
+            {
 
-                return Instantiate(GameAssets.Instance.damagePopup); 
+                return Instantiate(GameAssets.Instance.damagePopup);
             };
 
 
-            Action<NumberPopup> actionOnGet = (popup) => {
+            Action<NumberPopup> actionOnGet = (popup) =>
+            {
 
             };
 

@@ -1,9 +1,8 @@
 ﻿
-using Assets.Code.Backend.RunLogic.GenericGrid;
 using System;
 using UnityEngine;
 
-namespace Auttobattler.Backend.RunLogic.Management
+namespace Auttobattler.Backend
 {
     [Serializable]
     public class ManagementState

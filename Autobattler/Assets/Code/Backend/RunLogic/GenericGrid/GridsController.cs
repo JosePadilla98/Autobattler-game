@@ -1,7 +1,6 @@
-﻿using Auttobattler.Backend.RunLogic;
-using System;
+﻿using System;
 
-namespace Assets.Code.Backend.RunLogic.GenericGrid
+namespace Auttobattler.Backend
 {
     [Serializable]
     public class GridsController<T>

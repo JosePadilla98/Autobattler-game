@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Auttobattler
+namespace Auttobattler.Backend
 {
     [CreateAssetMenu(fileName = "MonsterCapsule", menuName = "ScriptableObjects/Items/MonsterCapsule")]
     public class MonsterCapsuleScriptable : ItemScriptable, Item

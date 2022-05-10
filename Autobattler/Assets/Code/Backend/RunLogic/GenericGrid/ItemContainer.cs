@@ -1,7 +1,6 @@
-﻿using Auttobattler.Backend.RunLogic;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Assets.Code.Backend.RunLogic.GenericGrid
+namespace Auttobattler.Backend
 {
     public class ItemContainer<T> : IGridSlot<T>
     {

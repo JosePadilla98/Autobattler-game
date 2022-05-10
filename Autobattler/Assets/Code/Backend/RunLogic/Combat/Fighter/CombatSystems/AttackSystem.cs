@@ -1,8 +1,6 @@
-using Assets.Code.Backend.RunLogic.Combat.Fighter;
-using Auttobattler.Backend.RunLogic.Management;
 using System;
 
-namespace Auttobattler.Backend.RunLogic.Combat
+namespace Auttobattler.Backend
 {
     public class AttackSystem : CombatSystem
     {

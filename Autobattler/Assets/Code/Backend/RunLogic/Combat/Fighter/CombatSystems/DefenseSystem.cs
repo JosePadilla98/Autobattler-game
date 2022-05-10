@@ -1,10 +1,5 @@
-using Assets.Code.Backend.RunLogic.Combat.Fighter;
-using Auttobattler.Backend.RunLogic.Management;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace Auttobattler.Backend.RunLogic.Combat
+namespace Auttobattler.Backend
 {
     public class DefenseSystem : CombatSystem
     {

@@ -1,6 +1,5 @@
-using Auttobattler.Backend.RunLogic.Management;
 
-namespace Auttobattler.MutationsSystem
+namespace Auttobattler.Backend
 {
     [System.Serializable]
     public class StatModifier

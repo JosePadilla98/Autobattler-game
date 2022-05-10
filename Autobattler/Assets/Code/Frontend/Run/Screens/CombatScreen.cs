@@ -1,22 +1,21 @@
-﻿using Assets.Code.Backend;
-using Assets.Code.Backend.RunLogic;
+﻿using Auttobattler.Backend;
 using UnityEngine;
 
-namespace Assets.Code.Frontend.Run.Screens.CombatScreen
+namespace Auttobattler.Frontend
 {
     [ExecuteInEditMode]
     class CombatScreen : MonoBehaviour, Screen
     {
         private App app;
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         private void OnEnable()
         {
             var initializer = GameObject.Find("GameManager").gameObject.GetComponent<AppInitInEditor>();
             initializer.appState = AppState.RUN;
             initializer.runState = RunState.COMBAT;
         }
-        #endif
+#endif
 
         public void Init(App app)
         {

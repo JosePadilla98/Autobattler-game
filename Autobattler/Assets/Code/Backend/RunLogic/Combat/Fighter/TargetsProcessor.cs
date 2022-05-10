@@ -1,8 +1,7 @@
-using Assets.Code.Backend.RunLogic.Combat.Fighter;
 using System;
 using System.Collections.Generic;
 
-namespace Auttobattler.Backend.RunLogic.Combat
+namespace Auttobattler.Backend
 {
     public enum TargetTypes
     {
@@ -12,8 +11,8 @@ namespace Auttobattler.Backend.RunLogic.Combat
     public static class TargetsProcessor
     {
         private static List<Fighter> objetives = new List<Fighter>(12);
-        private static CombatGrid LeftGrid { get => Battlefield.Instance.leftGrid; }
-        private static CombatGrid RightGrid { get => Battlefield.Instance.rightGrid; }
+        private static Grid<Fighter> LeftGrid { get => Battlefield.Instance.leftGrid; }
+        private static Grid<Fighter> RightGrid { get => Battlefield.Instance.rightGrid; }
 
         public static List<Fighter> GetObjetives(TargetTypes type, Position ownPos)
         {

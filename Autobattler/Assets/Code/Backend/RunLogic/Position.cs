@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Auttobattler.Backend.RunLogic
+﻿namespace Auttobattler.Backend
 {
     public enum Column
     {

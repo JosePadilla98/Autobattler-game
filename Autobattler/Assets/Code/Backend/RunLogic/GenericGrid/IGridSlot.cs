@@ -1,6 +1,4 @@
-﻿using Auttobattler.Backend.RunLogic;
-
-namespace Assets.Code.Backend.RunLogic.GenericGrid
+﻿namespace Auttobattler.Backend
 {
     public interface IGridSlot<T>
     {

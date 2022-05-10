@@ -1,10 +1,7 @@
-﻿using Assets.Code.Backend.RunLogic.Combat.Fighter;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace Auttobattler.Backend.RunLogic.Combat
+namespace Auttobattler.Backend
 {
     public enum Team { PLAYER, ENEMY }
 
