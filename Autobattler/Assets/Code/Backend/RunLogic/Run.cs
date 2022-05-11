@@ -15,6 +15,17 @@ namespace Auttobattler.Backend
     {
         private RunState state = RunState.NONE;
         private CombatState combatState;
+        public CombatState CombatState
+        {
+            get
+            {
+                if (state != RunState.COMBAT)
+                    throw new Exception("There is no combat running right now");
+
+                return combatState;
+            }
+        }
+
         [SerializeField]
         private ManagementState managementState;
 

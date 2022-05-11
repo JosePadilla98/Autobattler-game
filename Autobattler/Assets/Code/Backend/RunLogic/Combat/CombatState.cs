@@ -1,15 +1,20 @@
 
+using System;
+
 namespace Auttobattler.Backend
 {
     public class CombatState
     {
         private bool isActive;
         private TeamsController teamsController;
-        private GridsController<Fighter> gridsController;
+        private GridsController<Fighter> battlefield;
+        public GridsController<Fighter> Battlefield { get => battlefield; }
 
-        public void Init(GridsController<Unit> gridsData)
+        private Run parent;
+
+        public void Init(Run parent, GridsController<Unit> gridsData)
         {
-
+            this.parent = parent;
         }
 
         public void ConvertUnitsIntoFighters()

@@ -7,7 +7,7 @@ namespace Auttobattler.Backend
     public class Fighter
     {
         public Team Team { get => TeamsController.Instance.GetFighterTeam(this); }
-        public Position Position { get => Battlefield.Instance.GetFighterPosition(this); }
+        public Position Position { get => App.GetBattlefield().GetItemPosition(this); }
 
         private readonly Unit unit;
         public Stats Stats { get { return unit.stats; } }

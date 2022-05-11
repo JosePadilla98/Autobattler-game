@@ -10,15 +10,15 @@ namespace Auttobattler.Backend
 
         private void Start()
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
             if (appState == AppState.MENU)
                 return;
 
             app.NewGame();
             if (runState == RunState.COMBAT)
-                app.run.StartCombat();
+                app.Run.StartCombat();
 
-#endif
+            #endif
         }
     }
 }

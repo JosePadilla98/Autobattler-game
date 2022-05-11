@@ -10,35 +10,34 @@ namespace Auttobattler.Backend
 
     public static class TargetsProcessor
     {
-        private static List<Fighter> objetives = new List<Fighter>(12);
-        private static Grid<Fighter> LeftGrid { get => Battlefield.Instance.leftGrid; }
-        private static Grid<Fighter> RightGrid { get => Battlefield.Instance.rightGrid; }
+        private static List<Fighter> objetivesBuffer = new List<Fighter>(12);
+        private static GridsController<Fighter> Battlefield { get => InstancesProvider.GetBattlefield(); }
 
         public static List<Fighter> GetObjetives(TargetTypes type, Position ownPos)
         {
-            objetives.Clear();
+            objetivesBuffer.Clear();
 
             switch (type)
             {
                 case TargetTypes.CLOSEST_ENEMY:
 
-                    CombatGrid gridObjetive;
+                    Grid<Fighter> gridObjetive;
                     if (ownPos.side == Side.LEFT)
-                        gridObjetive = RightGrid;
+                        gridObjetive = Battlefield.rightGrid;
                     else
-                        gridObjetive = LeftGrid;
+                        gridObjetive = Battlefield.leftGrid;
 
                     Fighter creature = GetClosestEnemy(ownPos);
-                    objetives.Add(creature);
+                    objetivesBuffer.Add(creature);
                     break;
             }
 
-            return objetives;
+            return objetivesBuffer;
         }
 
         public static Fighter GetClosestEnemy(Position referencePosition)
         {
-            CombatGrid oppositeGrid = Battlefield.Instance.GetOppositeGrid(referencePosition.side);
+            Grid<Fighter> oppositeGrid = Battlefield.GetOppositeGrid(referencePosition.side);
 
             //Get the closest heigh
             int[] order = null;
@@ -64,11 +63,11 @@ namespace Auttobattler.Backend
             return unit;
         }
 
-        public static Fighter SearchUntilGetOne(int[] order, CombatSlot[] column)
+        public static Fighter SearchUntilGetOne(int[] order, IGridSlot<Fighter>[] column)
         {
             foreach (int i in order)
             {
-                Fighter combatInstance = column[i].Unit;
+                Fighter combatInstance = column[i].GetItem();
                 if (combatInstance != null) return combatInstance;
             }
 

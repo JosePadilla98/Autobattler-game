@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Auttobattler.Backend
 {
@@ -7,7 +8,25 @@ namespace Auttobattler.Backend
     public class App : MonoBehaviour
     {
         private AppState state = AppState.MENU;
-        public Run run;
+        private Run run;
+        public Run Run
+        {
+            get
+            {
+                if (state == AppState.MENU)
+                    throw new Exception("There is no run active right now");
+
+                return run;
+            }
+        }
+
+        private static App instance;
+        public static App Instance { get => instance; }
+
+        private void Awake()
+        {
+            instance = this;
+        }
 
         public void NewGame()
         {
@@ -34,5 +53,7 @@ namespace Auttobattler.Backend
                     break;
             }
         }
+
+       
     }
 }
