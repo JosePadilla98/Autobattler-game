@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Auttobattler.Testing
+namespace Autobattler.Scenes.Testing
 {
     public class Testing : MonoBehaviour
     {

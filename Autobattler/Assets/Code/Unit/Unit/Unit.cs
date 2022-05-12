@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using Autobattler.MutationsSystem.Mutations;
+
+namespace Autobattler.Unit.Unit
+{
+    public class Unit : ICloneable
+    {
+        public List<Mutation> baseMutations;
+        public List<Mutation> disabledMutations;
+        public List<Mutation> enabledMutations;
+        public Stats stats;
+
+        public Unit()
+        {
+            stats = new Stats();
+            baseMutations = new List<Mutation>();
+            enabledMutations = new List<Mutation>();
+            disabledMutations = new List<Mutation>();
+        }
+
+        public Unit(UnitBuild blueprint)
+        {
+            foreach (var mutationModel in blueprint.mutations) AddNewMutation(new Mutation(mutationModel));
+
+            foreach (var mutationModel in blueprint.mutations) AddNewMutation(new Mutation(mutationModel));
+        }
+
+        public object Clone()
+        {
+            var clone = (Unit)MemberwiseClone();
+            return clone;
+        }
+
+        public Fighter.Fighter BuildCombatInstance()
+        {
+            return new Fighter.Fighter(this);
+        }
+
+        #region MUTATIONS COLLECTIONS HANDLER
+
+        public void AddNewMutation(Mutation mutation)
+        {
+            enabledMutations.Add(mutation);
+            mutation.Model.ModifyStats(stats);
+        }
+
+        public void DisableMutation(Mutation mutation)
+        {
+            enabledMutations.Remove(mutation);
+            mutation.Model.UnmodifyStats(stats);
+            disabledMutations.Add(mutation);
+        }
+
+        public void EnableMutation(Mutation mutation)
+        {
+            enabledMutations.Add(mutation);
+            mutation.Model.ModifyStats(stats);
+            disabledMutations.Remove(mutation);
+        }
+
+        #endregion
+    }
+}

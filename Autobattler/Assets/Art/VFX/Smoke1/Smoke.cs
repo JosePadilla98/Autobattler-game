@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class Smoke : MonoBehaviour
+namespace Autobattler.Art.VFX.Smoke1
 {
-    public void End()
+    public class Smoke : MonoBehaviour
     {
-        Debug.Log("hola");
+        public void End()
+        {
+            Debug.Log("hola");
+        }
     }
 }
