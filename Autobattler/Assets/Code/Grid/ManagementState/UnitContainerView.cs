@@ -8,6 +8,11 @@ namespace Autobattler.Grid.ManagementState
         public UnitContainer unitContainer;
         public Battefield_U_View battlefieldView;
 
+        public Side Side
+        {
+            get => unitContainer.GetSide();
+        }
+
         public UnitView unitViewPrefab => battlefieldView.unitViewPrefab;
         public UnitView playerUnitViewPrefab => battlefieldView.playerUnitViewPrefab;
 
@@ -18,7 +23,13 @@ namespace Autobattler.Grid.ManagementState
 
         private void BuilUnitView(Unit unit)
         {
-            UnitView unitView = Instantiate(unitViewPrefab);
+            UnitView unitView = Instantiate(unitViewPrefab, transform);
+
+            if (Side == Side.RIGHT)
+            {
+                unitView.image.
+                    transform.localScale = new Vector3(-1, 1, 1);
+            }
         }
     }
 }
