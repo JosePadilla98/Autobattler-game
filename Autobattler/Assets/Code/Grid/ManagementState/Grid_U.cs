@@ -1,10 +1,12 @@
-﻿using Autobattler.Grid.Generic;
+﻿using System.Collections;
+using Autobattler.Grid.Generic;
 using Autobattler.Units;
 using UnityEngine;
 
-namespace Autobattler.Grid
+namespace Autobattler.Assets.Code.Grid.ManagementState
 {
-    public class Grid_U : Grid<Unit, UnitContainer>
+    [CreateAssetMenu(fileName = "Grid_U_Container", menuName = "ScriptableObjects/UnitsGrid/Grid")]
+    public class Grid_U : Grid<Unit>
     {
 
     }

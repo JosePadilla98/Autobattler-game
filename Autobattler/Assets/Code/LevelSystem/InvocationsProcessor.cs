@@ -9,7 +9,7 @@ namespace Autobattler.LevelSystem
     internal class InvocationsProcessor
     {
         [SerializeField]
-        private Battlefield_U battlefield_U;
+        //private Battlefield_U battlefield_U;
 
         public void SummonEnemies(InvocationsData data)
         {
@@ -27,7 +27,7 @@ namespace Autobattler.LevelSystem
                 var unit = new Unit(build);
                 var position = new Position(i, column, side);
 
-                battlefield_U.AttachItem(unit, position);
+                //battlefield_U.AttachItem(unit, position);
             }
         }
     }

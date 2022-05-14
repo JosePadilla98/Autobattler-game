@@ -2,13 +2,13 @@
 
 namespace Autobattler.Grid.Generic
 {
-    public class Grid<T1, TContainer> :MonoBehaviour where TContainer: ItemContainer<T1>
+    public class Grid<T> : ScriptableObject
     {
-        public TContainer[] back;
-        public TContainer[] front;
+        public ItemContainer<T>[] back;
+        public ItemContainer<T>[] front;
         public Side side;
 
-        public Position GetItemPosition(T1 item)
+        public Position GetItemPosition(T item)
         {
             var pos = SearchItemInColumn(item, Column.FRONT);
 
@@ -18,9 +18,9 @@ namespace Autobattler.Grid.Generic
             return pos;
         }
 
-        private Position SearchItemInColumn(T1 item, Column columnName)
+        private Position SearchItemInColumn(T item, Column columnName)
         {
-            IGridSlot<T1>[] column = null;
+            ItemContainer<T>[] column = null;
             if (columnName == Column.FRONT)
                 column = front;
             else if (columnName == Column.BACK)
@@ -31,7 +31,6 @@ namespace Autobattler.Grid.Generic
                 var gridSlot = column[i];
                 if (gridSlot.IsThereThisItem(item)) return new Position(i, columnName, side);
             }
-
             return new Position(0, Column.NONE, side);
         }
     }

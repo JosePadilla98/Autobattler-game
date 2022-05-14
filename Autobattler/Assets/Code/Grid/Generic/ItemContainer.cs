@@ -1,31 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Autobattler.Grid.Generic
 {
-    public abstract class ItemContainer<T1> : MonoBehaviour, IGridSlot<T1>
+    public class ItemContainer<T> : ScriptableObject
     {
-        private T1 myItem;
+        public Grid<T> parent;
+        private T myItem;
 
-        public bool IsThereThisItem(T1 item)
+        public bool IsThereThisItem(T item)
         {
             if (myItem == null)
                 return false;
 
-            return EqualityComparer<T1>.Default.Equals(item, myItem);
+            return EqualityComparer<T>.Default.Equals(item, myItem);
         }
 
-        public void AttachItem(T1 item)
+        public void AttachItem(T item)
         {
             myItem = item;
         }
 
         public Side GetSide()
         {
-            throw new System.NotImplementedException();
+            return parent.side;
         }
 
-        public T1 GetItem()
+        public T GetItem()
         {
             return myItem;
         }

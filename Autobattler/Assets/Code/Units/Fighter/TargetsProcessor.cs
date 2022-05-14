@@ -39,7 +39,7 @@ namespace Autobattler.Units
 
         public static Fighter GetClosestEnemy(Position referencePosition)
         {
-            var oppositeGrid = Battlefield.GetOppositeGrid(referencePosition.side);
+            //var oppositeGrid = Battlefield.GetOppositeGrid(referencePosition.side);
 
             //Get the closest heigh
             int[] order = null;
@@ -58,11 +58,11 @@ namespace Autobattler.Units
                     break;
             }
 
-            var unit = SearchUntilGetOne(order, oppositeGrid.front);
-            if (unit == null)
-                unit = SearchUntilGetOne(order, oppositeGrid.back);
+            //var unit = SearchUntilGetOne(order, oppositeGrid.front);
+            //if (unit == null)
+            //    unit = SearchUntilGetOne(order, oppositeGrid.back);
 
-            return unit;
+            return null;
         }
 
         public static Fighter SearchUntilGetOne(int[] order, IGridSlot<Fighter>[] column)

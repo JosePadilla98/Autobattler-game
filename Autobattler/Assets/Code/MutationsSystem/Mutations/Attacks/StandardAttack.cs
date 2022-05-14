@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Autobattler.MutationsSystem.Mutations.Attacks
 {
-    [CreateAssetMenu(fileName = "MutationsDatabase",
-        menuName = "ScriptableObjects/MutationsSystem/Mutations/Attacks/Standard")]
+    [CreateAssetMenu(fileName = "MutationsDatabase", menuName = "ScriptableObjects/MutationsSystem/Mutations/Attacks/Standard")]
+
     public class StandardAttack : MutationModel
     {
         [SerializeField] protected StatModifier[] statModifiers;
