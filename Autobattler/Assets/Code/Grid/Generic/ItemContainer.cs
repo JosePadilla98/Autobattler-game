@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace Autobattler.Grid.Generic
 {
-    public class ItemContainer<T> : ScriptableObject
+    public class ItemContainer<T> : ScriptableObject, IGridSlot<T>
     {
         public Grid<T> parent;
         private T myItem;
+        public Action onItemAttached;
 
         public bool IsThereThisItem(T item)
         {
@@ -20,6 +21,7 @@ namespace Autobattler.Grid.Generic
         public void AttachItem(T item)
         {
             myItem = item;
+            onItemAttached();
         }
 
         public Side GetSide()

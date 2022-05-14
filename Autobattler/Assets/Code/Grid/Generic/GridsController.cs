@@ -1,8 +1,9 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Autobattler.Grid.Generic
 {
-    public class GridsController<T>
+    public class GridsController<T> : ScriptableObject
     {
         public Grid<T> leftGrid;
         public Grid<T> rightGrid;
