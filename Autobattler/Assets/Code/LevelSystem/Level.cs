@@ -1,10 +1,10 @@
 using System;
-using Autobattler.Unit.Unit;
+using Autobattler.Units;
 using UnityEngine;
 
 namespace Autobattler.LevelSystem
 {
-    [CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/Level", order = 3)]
+    [CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/LevelSystem/Level")]
     public class Level : ScriptableObject
     {
         public InvocationsData enemies;

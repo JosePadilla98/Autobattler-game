@@ -3,26 +3,23 @@ using UnityEngine;
 
 namespace Autobattler.LevelSystem
 {
-    [Serializable]
-    public class LevelsSystem
+    [CreateAssetMenu(fileName = "LevelSystem", menuName = "ScriptableObjects/LevelSystem/LevelSystem")]
+    public class LevelsSystem : ScriptableObject
     {
-        [SerializeField] private int currentLevel = 1;
+        public int currentLevel = 1;
+        public LevelsData data;
 
-        [SerializeField] private LevelsData data;
+        [SerializeField] 
+        private InvocationsProcessor invocationsProcessor;
 
-        internal ManagementState parent;
-        private LevelSummnoner summoner;
-
-        public void Init(ManagementState parent)
+        public void Init()
         {
-            this.parent = parent;
-            summoner = new LevelSummnoner(this);
             LoadLevel(data.levels[currentLevel]);
         }
 
         private void LoadLevel(Level level)
         {
-            summoner.SummonEnemies(level.enemies);
+            invocationsProcessor.SummonEnemies(level.enemies);
         }
     }
 }

@@ -11,12 +11,12 @@ namespace Autobattler.DamagePopup
 
         private void Awake()
         {
-            Func<NumberPopup> createFunc = () => { return Instantiate(GameAssets.Instance.damagePopup); };
+            Func<NumberPopup> createFunc = () => { return null;/*Instantiate(GameAssets.Instance.damagePopup);*/ };
 
 
             Action<NumberPopup> actionOnGet = popup => { };
 
-            pool = new ObjectPool<NumberPopup>(() => { return Instantiate(GameAssets.Instance.damagePopup); });
+            pool = new ObjectPool<NumberPopup>(() => { return null; });
         }
 
         public static NumberPopup Get()

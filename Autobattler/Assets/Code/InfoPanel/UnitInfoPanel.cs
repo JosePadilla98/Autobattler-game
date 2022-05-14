@@ -1,6 +1,5 @@
 using Autobattler.Configs;
-using Autobattler.Unit.Fighter;
-using Autobattler.Unit.Unit;
+using Autobattler.Units;
 using UnityEngine;
 
 namespace Autobattler.InfoPanel
@@ -41,7 +40,7 @@ namespace Autobattler.InfoPanel
         [Space(10)] [Header("Column 4")] [SerializeField]
         private DuplaInfoText vigor;
 
-        private ColorPalette ColorPalette => GameAssets.Instance.colorPalette;
+        private ColorPalette ColorPalette => null;
 
         public static UnitInfoPanel Instance { get; set; }
 

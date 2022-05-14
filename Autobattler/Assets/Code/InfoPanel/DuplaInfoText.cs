@@ -1,6 +1,5 @@
 using System;
-using Autobattler.Unit.Fighter;
-using Autobattler.Unit.Unit;
+using Autobattler.Units;
 using TMPro;
 using UnityEngine;
 

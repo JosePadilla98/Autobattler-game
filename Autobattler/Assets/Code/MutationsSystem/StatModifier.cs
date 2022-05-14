@@ -1,5 +1,5 @@
 using System;
-using Autobattler.Unit.Unit;
+using Autobattler.Units;
 
 namespace Autobattler.MutationsSystem
 {
