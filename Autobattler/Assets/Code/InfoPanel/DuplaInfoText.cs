@@ -8,23 +8,24 @@ namespace Autobattler.InfoPanel
     [Serializable]
     public class DuplaInfoText : DuplaInfo
     {
-        [SerializeField] private TextMeshProUGUI text;
-
-        [SerializeField] private string textToShow;
+        [SerializeField] 
+        private TextMeshProUGUI text;
+        [SerializeField] 
+        private string textToShow;
 
         protected override void OnMaxChanged()
         {
             RefreshText();
         }
 
-        protected override void OnValueChanged(float value)
+        protected override void OnValueChanged()
         {
             RefreshText();
         }
 
         private void RefreshText()
         {
-            text.text = textToShow + ": " + (int)value.Value + "/" + (int)maxValue.Get();
+            text.text = textToShow + ": " + (int)value.Get() + "/" + (int)maxValue.Get();
         }
 
         public void SetColor(Color color)
@@ -32,7 +33,7 @@ namespace Autobattler.InfoPanel
             text.color = color;
         }
 
-        public override void AttachValues(Stat max, CombatValue v)
+        public override void AttachValues(IValueExpositor max, IValueExpositor v)
         {
             base.AttachValues(max, v);
             RefreshText();
@@ -41,27 +42,27 @@ namespace Autobattler.InfoPanel
 
     public abstract class DuplaInfo
     {
-        protected Stat maxValue;
-        protected CombatValue value;
+        protected IValueExpositor maxValue;
+        protected IValueExpositor value;
 
         protected abstract void OnMaxChanged();
-        protected abstract void OnValueChanged(float value);
+        protected abstract void OnValueChanged();
 
         #region EVENTS_ATTACHERS
 
-        public virtual void AttachValues(Stat max, CombatValue v)
+        public virtual void AttachValues(IValueExpositor max, IValueExpositor v)
         {
             maxValue = max;
-            maxValue.onValueChanged += OnMaxChanged;
+            maxValue.OnValueChanged += OnMaxChanged;
 
             value = v;
-            v.onValueChanged += OnValueChanged;
+            v.OnValueChanged += OnValueChanged;
         }
 
         public void Unattach()
         {
-            value.onValueChanged -= OnValueChanged;
-            maxValue.onValueChanged -= OnMaxChanged;
+            value.OnValueChanged -= OnValueChanged;
+            maxValue.OnValueChanged -= OnMaxChanged;
 
             value = null;
             maxValue = null;

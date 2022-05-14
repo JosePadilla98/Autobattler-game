@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Autobattler.Grid.ManagementState
 {
     [CreateAssetMenu(fileName = "UnitContainer", menuName = "ScriptableObjects/Grids/_Unit/Container")]
-    public class UnitContainer : ItemContainer<Unit>
+    public class Slot_U : ItemContainer<Unit>
     {
         [NonSerialized]
         private Grid_U parent; 

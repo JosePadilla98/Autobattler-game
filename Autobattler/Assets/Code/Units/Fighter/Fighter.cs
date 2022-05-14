@@ -60,9 +60,9 @@ namespace Autobattler.Units
         }
     }
 
-    public class CombatValue
+    public class CombatValue : IValueExpositor
     {
-        public Action<float> onValueChanged;
+        public Action OnValueChanged { get; set; }
         private float value;
 
         public CombatValue(float value)
@@ -76,8 +76,13 @@ namespace Autobattler.Units
             set
             {
                 this.value = value;
-                onValueChanged?.Invoke(this.value);
+                OnValueChanged?.Invoke();
             }
+        }
+
+        public float Get()
+        {
+            return value;
         }
     }
 

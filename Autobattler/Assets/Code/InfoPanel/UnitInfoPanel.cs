@@ -6,46 +6,52 @@ namespace Autobattler.InfoPanel
 {
     public class UnitInfoPanel : MonoBehaviour
     {
-        [SerializeField] private StatText defense;
+        [Header("Column 1")] 
+        [SerializeField] 
+        private DuplaInfoText health;
+        [SerializeField] 
+        private StatText healthRegen;
+        [SerializeField]
+        private StatText defense;
+        [SerializeField]
+        private StatText magicDefense;
 
-        [Header("Column 1")] [SerializeField] private DuplaInfoText health;
-
-        [SerializeField] private StatText healthRegen;
-
-        [SerializeField] private StatText intellect;
-
-        [SerializeField] private StatText magicalAttack;
-
-        [SerializeField] private StatText magicalFatigue;
-
-        [SerializeField] private StatText magicalSpeed;
-
-        [SerializeField] private StatText magicDefense;
-
-
-        [Space(10)] [Header("Column 3")] [SerializeField]
-        private DuplaInfoText mana;
-
-        [SerializeField] private StatText manaRegen;
-
-        [Space(10)] [Header("Column 2")] [SerializeField]
+        [Space(10)]
+        [Header("Column 2")]
+        [SerializeField]
         private StatText physicalAttack;
+        [SerializeField]
+        private StatText physicalSpeed;
+        [SerializeField]
+        private StatText magicalAttack;
+        [SerializeField]
+        private StatText magicalSpeed;
 
-        [SerializeField] private StatText physicalFatigue;
-
-        [SerializeField] private StatText physicalSpeed;
-
-        [SerializeField] private StatText reinvigoration;
-
-        [Space(10)] [Header("Column 4")] [SerializeField]
+        [Space(10)]
+        [Header("Column 3")]
+        [SerializeField]
+        private DuplaInfoText mana;
+        [SerializeField]
+        private StatText manaRegen;
+        [SerializeField]
+        private StatText magicalFatigue;
+        [SerializeField]
+        private StatText intellect;
+      
+        [Space(10)] [Header("Column 4")] 
+        [SerializeField]
         private DuplaInfoText vigor;
+        [SerializeField]
+        private StatText reinvigoration;
+        [SerializeField]
+        private StatText physicalFatigue;
+
 
         private ColorPalette ColorPalette => null;
 
         public static UnitInfoPanel Instance { get; set; }
 
         public bool IsShowing { get; private set; }
-
 
         private void Start()
         {
@@ -77,32 +83,46 @@ namespace Autobattler.InfoPanel
             physicalFatigue.SetColor(ColorPalette.vigor);
         }
 
-        public void AttachUnit(Fighter fighter)
+        public void AttachUnit(Stats stats, CombatValues combatValues = null)
         {
-            health.AttachValues(fighter.Stats.GetStat(StatsNames.HEALTH), fighter.combatValues.currentHealth);
-            healthRegen.Attach(fighter.Stats.GetStat(StatsNames.HEALTH_REGEN));
-            defense.Attach(fighter.Stats.GetStat(StatsNames.PHYSICAL_DEFENSE));
-            magicDefense.Attach(fighter.Stats.GetStat(StatsNames.MAGICAL_DEFENSE));
+            
+            healthRegen.Attach(stats.GetStat(StatsNames.HEALTH_REGEN));
+            defense.Attach(stats.GetStat(StatsNames.PHYSICAL_DEFENSE));
+            magicDefense.Attach(stats.GetStat(StatsNames.MAGICAL_DEFENSE));
 
-            physicalAttack.Attach(fighter.Stats.GetStat(StatsNames.PHYSICAL_ATTACK));
-            physicalSpeed.Attach(fighter.Stats.GetStat(StatsNames.PHYSICAL_SPEED));
-            magicalAttack.Attach(fighter.Stats.GetStat(StatsNames.MAGICAL_ATTACK));
-            magicalSpeed.Attach(fighter.Stats.GetStat(StatsNames.MAGICAL_SPEED));
+            physicalAttack.Attach(stats.GetStat(StatsNames.PHYSICAL_ATTACK));
+            physicalSpeed.Attach(stats.GetStat(StatsNames.PHYSICAL_SPEED));
+            magicalAttack.Attach(stats.GetStat(StatsNames.MAGICAL_ATTACK));
+            magicalSpeed.Attach(stats.GetStat(StatsNames.MAGICAL_SPEED));
 
-            mana.AttachValues(fighter.Stats.GetStat(StatsNames.MANA), fighter.combatValues.currentMana);
-            manaRegen.Attach(fighter.Stats.GetStat(StatsNames.MANA_REGEN));
-            magicalFatigue.Attach(fighter.Stats.GetStat(StatsNames.MAGICAL_FATIGUE));
-            intellect.Attach(fighter.Stats.GetStat(StatsNames.INTELLECT));
+          
+            manaRegen.Attach(stats.GetStat(StatsNames.MANA_REGEN));
+            magicalFatigue.Attach(stats.GetStat(StatsNames.MAGICAL_FATIGUE));
+            intellect.Attach(stats.GetStat(StatsNames.INTELLECT));
 
-            vigor.AttachValues(fighter.Stats.GetStat(StatsNames.VIGOR), fighter.combatValues.currentVigor);
-            reinvigoration.Attach(fighter.Stats.GetStat(StatsNames.REINVIGORATION));
-            physicalFatigue.Attach(fighter.Stats.GetStat(StatsNames.PHYSICAL_FATIGUE));
+           
+            reinvigoration.Attach(stats.GetStat(StatsNames.REINVIGORATION));
+            physicalFatigue.Attach(stats.GetStat(StatsNames.PHYSICAL_FATIGUE));
+
+            if (combatValues != null)
+            {
+                health.AttachValues(stats.GetStat(StatsNames.HEALTH), combatValues.currentHealth);
+                mana.AttachValues(stats.GetStat(StatsNames.MANA), combatValues.currentMana);
+                vigor.AttachValues(stats.GetStat(StatsNames.VIGOR), combatValues.currentVigor);
+            }
+            else
+            {
+                health.AttachValues(stats.GetStat(StatsNames.HEALTH), stats.GetStat(StatsNames.HEALTH));
+                mana.AttachValues(stats.GetStat(StatsNames.MANA), stats.GetStat(StatsNames.MANA));
+                vigor.AttachValues(stats.GetStat(StatsNames.VIGOR), stats.GetStat(StatsNames.VIGOR));
+            }
+          
 
             gameObject.SetActive(true);
             IsShowing = true;
         }
 
-        public void UnattachUnit()
+        public void Unattach()
         {
             health.Unattach();
             healthRegen.Unattach();
@@ -126,5 +146,7 @@ namespace Autobattler.InfoPanel
             gameObject.SetActive(false);
             IsShowing = false;
         }
+
+       
     }
 }

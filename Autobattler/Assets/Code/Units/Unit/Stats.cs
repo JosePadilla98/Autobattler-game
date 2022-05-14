@@ -103,33 +103,33 @@ namespace Autobattler.Units
         }
     }
 
-    public class Stat : ICloneable
+    public class Stat : ICloneable, IValueExpositor
     {
         private readonly float baseStat;
 
         /// <summary>
-        ///     This int is passed by reference
+        ///  Passed by reference
         /// </summary>
         private readonly int level;
+        public bool scalesByLevel;
 
         private List<float> linearModifiers = new();
-
-        public Action onValueChanged;
         private List<float> percentualModifiers = new();
-        public bool scalesByLevel;
+
+        public Action OnValueChanged { get; set; }
 
         public Stat(float baseStat)
         {
             this.baseStat = baseStat;
             scalesByLevel = false;
-            level = 0;
+            level = -1;
         }
 
         public Stat(float baseStat, ref int level)
         {
             this.baseStat = baseStat;
-            scalesByLevel = true;
             this.level = level;
+            scalesByLevel = true;
         }
 
         public object Clone()
@@ -145,7 +145,6 @@ namespace Autobattler.Units
         {
             var value = baseStat;
             foreach (var item in linearModifiers) value += item;
-
             foreach (var item in percentualModifiers) value *= item;
 
             return value;
@@ -170,7 +169,7 @@ namespace Autobattler.Units
             else
                 percentualModifiers.Add(modifier);
 
-            onValueChanged();
+            OnValueChanged();
         }
 
         public void RemoveModifier(ModifierType type, float modifier)
@@ -180,7 +179,7 @@ namespace Autobattler.Units
             else
                 percentualModifiers.Remove(modifier);
 
-            onValueChanged();
+            OnValueChanged();
         }
     }
 }

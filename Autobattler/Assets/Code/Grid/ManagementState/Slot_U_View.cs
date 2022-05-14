@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace Autobattler.Grid.ManagementState
 {
-    public class UnitContainerView : MonoBehaviour
+    public class Slot_U_View : MonoBehaviour
     {
-        public UnitContainer unitContainer;
+        public Slot_U logic;
         public Battefield_U_View battlefieldView;
 
         public Side Side
         {
-            get => unitContainer.GetSide();
+            get => logic.GetSide();
         }
 
         public UnitView unitViewPrefab => battlefieldView.unitViewPrefab;
@@ -18,12 +18,13 @@ namespace Autobattler.Grid.ManagementState
 
         private void Awake()
         {
-            unitContainer.onItemAttached += BuilUnitView;
+            logic.onItemAttached += BuilUnitView;
         }
 
         private void BuilUnitView(Unit unit)
         {
             UnitView unitView = Instantiate(unitViewPrefab, transform);
+            unitView.unit = unit;
 
             if (Side == Side.RIGHT)
             {

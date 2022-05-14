@@ -19,12 +19,12 @@ namespace Autobattler.Units
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            UnitInfoPanel.Instance?.AttachUnit(CombatInstance);
+            //UnitInfoPanel.Instance?.AttachUnit(comb);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            UnitInfoPanel.Instance?.UnattachUnit();
+            //UnitInfoPanel.Instance?.Unattach();
         }
 
         #endregion

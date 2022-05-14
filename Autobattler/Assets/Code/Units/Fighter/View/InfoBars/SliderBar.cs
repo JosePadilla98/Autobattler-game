@@ -5,51 +5,50 @@ namespace Autobattler.Units.InfoBars
 {
     public class SliderBar : MonoBehaviour
     {
-        [SerializeField] private Image fill;
+        [SerializeField] 
+        private Image fill;
+        [SerializeField] 
+        private Gradient gradient;
+        [SerializeField] 
+        private Slider slider;
 
-        [SerializeField] private Gradient gradient;
-
-        private Stat maxValue;
-
-        [SerializeField] private Slider slider;
-
-        private CombatValue value;
+        private IValueExpositor value;
+        private IValueExpositor maxValue;
 
         private void SetMaxValue()
         {
-            var value = maxValue.Get();
-            slider.maxValue = value;
+            slider.maxValue = maxValue.Get();
             fill.color = gradient.Evaluate(1f);
         }
 
-        private void SetValue(float value)
+        private void SetValue()
         {
-            slider.value = value;
+            slider.value = value.Get();
             fill.color = gradient.Evaluate(slider.normalizedValue);
         }
 
         #region EVENTS_ATTACHERS
 
-        public void AttachMaxValue(Stat stat)
+        public void AttachMaxValue(IValueExpositor maxValue)
         {
-            maxValue = stat;
-            stat.onValueChanged += SetMaxValue;
+            this.maxValue = maxValue;
+            this.maxValue.OnValueChanged += SetMaxValue;
 
             SetMaxValue();
         }
 
-        public void AttachValue(CombatValue v)
+        public void AttachValue(IValueExpositor v)
         {
             value = v;
-            v.onValueChanged += SetValue;
+            v.OnValueChanged += SetValue;
 
-            SetValue(v.Value);
+            SetValue();
         }
 
         public void Unnatach()
         {
-            value.onValueChanged -= SetValue;
-            maxValue.onValueChanged -= SetMaxValue;
+            value.OnValueChanged -= SetValue;
+            maxValue.OnValueChanged -= SetMaxValue;
 
             value = null;
             maxValue = null;

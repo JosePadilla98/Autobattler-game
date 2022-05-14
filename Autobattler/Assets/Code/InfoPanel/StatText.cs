@@ -8,7 +8,7 @@ namespace Autobattler.InfoPanel
     [Serializable]
     public class StatText
     {
-        private Stat stat;
+        private IValueExpositor valueExpositor;
         public TextMeshProUGUI text;
         public string textToShow;
 
@@ -17,21 +17,21 @@ namespace Autobattler.InfoPanel
             text.color = color;
         }
 
-        public void Attach(Stat stat)
+        public void Attach(IValueExpositor valueExpositor)
         {
-            this.stat = stat;
-            stat.onValueChanged += OnValueChanged;
-            ChangeText(stat.Get());
+            this.valueExpositor = valueExpositor;
+            valueExpositor.OnValueChanged += OnValueChanged;
+            ChangeText(valueExpositor.Get());
         }
 
         public void Unattach()
         {
-            stat.onValueChanged -= OnValueChanged;
+            valueExpositor.OnValueChanged -= OnValueChanged;
         }
 
         public void OnValueChanged()
         {
-            ChangeText(stat.Get());
+            ChangeText(valueExpositor.Get());
         }
 
         private void ChangeText(float f)
