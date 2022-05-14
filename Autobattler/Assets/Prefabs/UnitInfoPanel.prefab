@@ -729,8 +729,6 @@ GameObject:
   - component: {fileID: 7279437506705244805}
   - component: {fileID: 7279437506705244804}
   - component: {fileID: 7279437506705244826}
-  - component: {fileID: 8798967324786067176}
-  - component: {fileID: 7112114731013058750}
   m_Layer: 5
   m_Name: UnitInfoPanel
   m_TagString: Untagged
@@ -869,62 +867,6 @@ MonoBehaviour:
     text: {fileID: 7279437507832408494}
     textToShow: Fatigue
     colorModel: {fileID: 11400000, guid: b65d2d74cceab8e4c977cd02c3a77311, type: 2}
---- !u!114 &8798967324786067176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7279437506705244806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c0aeb4f27b373e44a20b0d960547aa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: f0f4496c970153243aaad88ac3089dd8, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7279437506705244826}
-        m_TargetAssemblyTypeName: Autobattler.InfoPanel.UnitInfoPanel, Assembly-CSharp
-        m_MethodName: AttachUnit
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7112114731013058750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7279437506705244806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c0aeb4f27b373e44a20b0d960547aa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: f39e08bf7e3519c469ba0d9f7b7f7137, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7279437506705244826}
-        m_TargetAssemblyTypeName: Autobattler.InfoPanel.UnitInfoPanel, Assembly-CSharp
-        m_MethodName: UnattachUnit
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7279437506741154977
 GameObject:
   m_ObjectHideFlags: 0
