@@ -1,11 +1,9 @@
 ﻿using System;
-using Autobattler.Assets.Code.Grid.ManagementState;
 using Autobattler.Grid.Generic;
 using Autobattler.Units;
 using UnityEngine;
-using UnityEngine.Animations;
 
-namespace Autobattler.Grid
+namespace Autobattler.Grid.ManagementState
 {
     [CreateAssetMenu(fileName = "UnitContainer", menuName = "ScriptableObjects/Grids/_Unit/Container")]
     public class UnitContainer : ItemContainer<Unit>

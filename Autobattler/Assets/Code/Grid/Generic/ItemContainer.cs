@@ -8,7 +8,7 @@ namespace Autobattler.Grid.Generic
     {
         public Grid<T> parent;
         private T myItem;
-        public Action onItemAttached;
+        public Action<T> onItemAttached;
 
         public bool IsThereThisItem(T item)
         {
@@ -21,7 +21,7 @@ namespace Autobattler.Grid.Generic
         public void AttachItem(T item)
         {
             myItem = item;
-            onItemAttached();
+            onItemAttached(item);
         }
 
         public Side GetSide()

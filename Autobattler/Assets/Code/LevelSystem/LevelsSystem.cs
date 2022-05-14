@@ -6,7 +6,7 @@ namespace Autobattler.LevelSystem
     [CreateAssetMenu(fileName = "LevelSystem", menuName = "ScriptableObjects/LevelSystem/LevelSystem")]
     public class LevelsSystem : ScriptableObject
     {
-        public int currentLevel = 1;
+        public int currentLevel = 0;
         public LevelsData data;
 
         [SerializeField] 

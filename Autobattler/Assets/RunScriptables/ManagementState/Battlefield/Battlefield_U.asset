@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a7c0f7be9827745b5b530e1a9a81b5, type: 3}
   m_Name: Battlefield_U
   m_EditorClassIdentifier: 
-  leftGrid: {fileID: 0}
-  rightGrid: {fileID: 0}
+  leftGrid: {fileID: 11400000, guid: bdcbda73c13d2154b87891bbfb5de134, type: 2}
+  rightGrid: {fileID: 11400000, guid: a91280ffeba962247b33cc31cb655032, type: 2}

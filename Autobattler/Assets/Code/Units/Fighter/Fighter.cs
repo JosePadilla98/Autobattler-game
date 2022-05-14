@@ -16,7 +16,7 @@ namespace Autobattler.Units
         public CombatValues combatValues;
 
         //public TeamsManager teamsManager;
-        //public Battlefield battlefield;
+        //public Battlefield battlefieldView;
 
         public Team Team => Team.PLAYER;
         public Position Position => new Position();

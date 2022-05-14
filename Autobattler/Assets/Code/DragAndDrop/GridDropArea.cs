@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Autobattler.Grid
+namespace Autobattler.DragAndDrop
 {
     public class GridDropArea<T> : MonoBehaviour, IDropHandler
     {
@@ -25,7 +25,7 @@ namespace Autobattler.Grid
 
         private void Awake()
         {
-            SlotView = GetComponent<T>();
+            //SlotView = GetComponent<T>();
         }
     }
 }
