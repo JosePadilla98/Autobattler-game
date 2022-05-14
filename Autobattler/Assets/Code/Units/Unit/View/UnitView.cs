@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -10,14 +11,17 @@ namespace Autobattler.Units
         public Image image;
         public Unit unit;
 
+        public UnityEvent<Unit> onPointerEnterEvent;
+        public UnityEvent<Unit> onPointerExitEvent;
+
         public void OnPointerEnter(PointerEventData eventData)
         {
-            //UnitInfoPanel.Instance?.AttachUnit(comb);
+            onPointerEnterEvent.Invoke(unit);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            //UnitInfoPanel.Instance?.Unattach();
+            onPointerExitEvent.Invoke(unit);
         }
     }
 }

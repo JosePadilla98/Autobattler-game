@@ -46,12 +46,9 @@ namespace Autobattler.InfoPanel
         [SerializeField]
         private StatText physicalFatigue;
 
+        public bool IsShowing { get; private set; }
 
         private ColorPalette ColorPalette => null;
-
-        public static UnitInfoPanel Instance { get; set; }
-
-        public bool IsShowing { get; private set; }
 
         private void Start()
         {
@@ -83,46 +80,26 @@ namespace Autobattler.InfoPanel
             physicalFatigue.SetColor(ColorPalette.vigor);
         }
 
-        public void AttachUnit(Stats stats, CombatValues combatValues = null)
+        #region EVENT METHODS
+
+        public void AttachUnit(Unit unit)
         {
-            
-            healthRegen.Attach(stats.GetStat(StatsNames.HEALTH_REGEN));
-            defense.Attach(stats.GetStat(StatsNames.PHYSICAL_DEFENSE));
-            magicDefense.Attach(stats.GetStat(StatsNames.MAGICAL_DEFENSE));
-
-            physicalAttack.Attach(stats.GetStat(StatsNames.PHYSICAL_ATTACK));
-            physicalSpeed.Attach(stats.GetStat(StatsNames.PHYSICAL_SPEED));
-            magicalAttack.Attach(stats.GetStat(StatsNames.MAGICAL_ATTACK));
-            magicalSpeed.Attach(stats.GetStat(StatsNames.MAGICAL_SPEED));
-
-          
-            manaRegen.Attach(stats.GetStat(StatsNames.MANA_REGEN));
-            magicalFatigue.Attach(stats.GetStat(StatsNames.MAGICAL_FATIGUE));
-            intellect.Attach(stats.GetStat(StatsNames.INTELLECT));
-
-           
-            reinvigoration.Attach(stats.GetStat(StatsNames.REINVIGORATION));
-            physicalFatigue.Attach(stats.GetStat(StatsNames.PHYSICAL_FATIGUE));
-
-            if (combatValues != null)
-            {
-                health.AttachValues(stats.GetStat(StatsNames.HEALTH), combatValues.currentHealth);
-                mana.AttachValues(stats.GetStat(StatsNames.MANA), combatValues.currentMana);
-                vigor.AttachValues(stats.GetStat(StatsNames.VIGOR), combatValues.currentVigor);
-            }
-            else
-            {
-                health.AttachValues(stats.GetStat(StatsNames.HEALTH), stats.GetStat(StatsNames.HEALTH));
-                mana.AttachValues(stats.GetStat(StatsNames.MANA), stats.GetStat(StatsNames.MANA));
-                vigor.AttachValues(stats.GetStat(StatsNames.VIGOR), stats.GetStat(StatsNames.VIGOR));
-            }
-          
-
-            gameObject.SetActive(true);
-            IsShowing = true;
+            FillTexts(unit.stats);
         }
 
-        public void Unattach()
+        public void UnattachUnit(Unit unit)
+        {
+            EmptyTexts();
+        }
+
+        public void AttachFighter()
+        {
+
+        }
+
+        #endregion
+
+        private void EmptyTexts()
         {
             health.Unattach();
             healthRegen.Unattach();
@@ -147,6 +124,43 @@ namespace Autobattler.InfoPanel
             IsShowing = false;
         }
 
-       
+        private void FillTexts(Stats stats, CombatValues combatValues = null)
+        {
+
+            healthRegen.Attach(stats.GetStat(StatsNames.HEALTH_REGEN));
+            defense.Attach(stats.GetStat(StatsNames.PHYSICAL_DEFENSE));
+            magicDefense.Attach(stats.GetStat(StatsNames.MAGICAL_DEFENSE));
+
+            physicalAttack.Attach(stats.GetStat(StatsNames.PHYSICAL_ATTACK));
+            physicalSpeed.Attach(stats.GetStat(StatsNames.PHYSICAL_SPEED));
+            magicalAttack.Attach(stats.GetStat(StatsNames.MAGICAL_ATTACK));
+            magicalSpeed.Attach(stats.GetStat(StatsNames.MAGICAL_SPEED));
+
+
+            manaRegen.Attach(stats.GetStat(StatsNames.MANA_REGEN));
+            magicalFatigue.Attach(stats.GetStat(StatsNames.MAGICAL_FATIGUE));
+            intellect.Attach(stats.GetStat(StatsNames.INTELLECT));
+
+
+            reinvigoration.Attach(stats.GetStat(StatsNames.REINVIGORATION));
+            physicalFatigue.Attach(stats.GetStat(StatsNames.PHYSICAL_FATIGUE));
+
+            if (combatValues != null)
+            {
+                health.AttachValues(stats.GetStat(StatsNames.HEALTH), combatValues.currentHealth);
+                mana.AttachValues(stats.GetStat(StatsNames.MANA), combatValues.currentMana);
+                vigor.AttachValues(stats.GetStat(StatsNames.VIGOR), combatValues.currentVigor);
+            }
+            else
+            {
+                health.AttachValues(stats.GetStat(StatsNames.HEALTH), stats.GetStat(StatsNames.HEALTH));
+                mana.AttachValues(stats.GetStat(StatsNames.MANA), stats.GetStat(StatsNames.MANA));
+                vigor.AttachValues(stats.GetStat(StatsNames.VIGOR), stats.GetStat(StatsNames.VIGOR));
+            }
+
+
+            gameObject.SetActive(true);
+            IsShowing = true;
+        }
     }
 }

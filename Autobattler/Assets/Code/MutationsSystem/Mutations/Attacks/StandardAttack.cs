@@ -5,10 +5,10 @@ using UnityEngine;
 namespace Autobattler.MutationsSystem.Mutations.Attacks
 {
     [CreateAssetMenu(fileName = "MutationsDatabase", menuName = "ScriptableObjects/MutationsSystem/Mutations/Attacks/Standard")]
-
     public class StandardAttack : MutationModel
     {
-        [SerializeField] protected StatModifier[] statModifiers;
+        [SerializeField] 
+        protected StatModifier[] statModifiers;
 
         public override void ModifyStats(Stats stats)
         {

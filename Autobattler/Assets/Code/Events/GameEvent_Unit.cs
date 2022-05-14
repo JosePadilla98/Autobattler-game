@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Autobattler.Events
 {
-    [CreateAssetMenu(fileName = "FILENAME", menuName = "MENUNAME", order = 0)]
+    [CreateAssetMenu(fileName = "GameEvent_Unit", menuName = "ScriptableObjects/Events/Unit")]
     public class GameEvent_Unit : ScriptableObject
     {
         /// <summary>
