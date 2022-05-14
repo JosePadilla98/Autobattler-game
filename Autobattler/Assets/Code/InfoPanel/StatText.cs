@@ -9,12 +9,16 @@ namespace Autobattler.InfoPanel
     public class StatText
     {
         private IValueExpositor valueExpositor;
-        public TextMeshProUGUI text;
-        public string textToShow;
+        [SerializeField]
+        private TextMeshProUGUI text;
+        [SerializeField]
+        private string textToShow;
+        [SerializeField]
+        private ColorModel colorModel;
 
-        public void SetColor(Color color)
+        public void SetColor()
         {
-            text.color = color;
+            text.color = colorModel.color;
         }
 
         public void Attach(IValueExpositor valueExpositor)

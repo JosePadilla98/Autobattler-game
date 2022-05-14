@@ -812,48 +812,63 @@ MonoBehaviour:
   health:
     text: {fileID: 7279437508194560044}
     textToShow: HP
+    colorModel: {fileID: 11400000, guid: 458d69b9465c0494883f10a58f7df601, type: 2}
   healthRegen:
     text: {fileID: 438078761840016422}
     textToShow: HP regen
+    colorModel: {fileID: 11400000, guid: b65d2d74cceab8e4c977cd02c3a77311, type: 2}
   defense:
     text: {fileID: 7279437506341388305}
     textToShow: Defense
+    colorModel: {fileID: 11400000, guid: 3d340c146d3dc4e4d8a56941caf2802f, type: 2}
   magicDefense:
     text: {fileID: 7279437507263869337}
     textToShow: MDefense
+    colorModel: {fileID: 11400000, guid: 880b5138cb8a8774196c39095f6c386b, type: 2}
   physicalAttack:
     text: {fileID: 7279437508069320197}
     textToShow: Attack
+    colorModel: {fileID: 11400000, guid: b0691e6c54731e74ab2dbe1ffa42900d, type: 2}
   physicalSpeed:
     text: {fileID: 7279437507542472937}
     textToShow: Speed
+    colorModel: {fileID: 11400000, guid: b0691e6c54731e74ab2dbe1ffa42900d, type: 2}
   magicalAttack:
     text: {fileID: 7279437507430454366}
     textToShow: Magic
+    colorModel: {fileID: 11400000, guid: 6a9773c4a3f6400478b324a179c2dbbe, type: 2}
   magicalSpeed:
     text: {fileID: 1277956771284796586}
     textToShow: MSpeed
+    colorModel: {fileID: 11400000, guid: 6a9773c4a3f6400478b324a179c2dbbe, type: 2}
   mana:
     text: {fileID: 7279437506220785310}
     textToShow: Mana
+    colorModel: {fileID: 11400000, guid: 4afefadee250afc44b7b31fb7a83b8bf, type: 2}
   manaRegen:
     text: {fileID: 7279437507469607077}
     textToShow: ManaRegen
+    colorModel: {fileID: 11400000, guid: 4afefadee250afc44b7b31fb7a83b8bf, type: 2}
   magicalFatigue:
     text: {fileID: 7279437507133831453}
     textToShow: M fatigue
+    colorModel: {fileID: 11400000, guid: 4afefadee250afc44b7b31fb7a83b8bf, type: 2}
   intellect:
     text: {fileID: 1926207806609842917}
     textToShow: Intellect
+    colorModel: {fileID: 11400000, guid: c677ed535f0682543b1b6975ece4fbe2, type: 2}
   vigor:
     text: {fileID: 7279437508109560808}
     textToShow: Vigor
+    colorModel: {fileID: 11400000, guid: b65d2d74cceab8e4c977cd02c3a77311, type: 2}
   reinvigoration:
     text: {fileID: 7279437508190862108}
     textToShow: Reinvigoration
+    colorModel: {fileID: 11400000, guid: b65d2d74cceab8e4c977cd02c3a77311, type: 2}
   physicalFatigue:
     text: {fileID: 7279437507832408494}
     textToShow: Fatigue
+    colorModel: {fileID: 11400000, guid: b65d2d74cceab8e4c977cd02c3a77311, type: 2}
 --- !u!114 &8798967324786067176
 MonoBehaviour:
   m_ObjectHideFlags: 0

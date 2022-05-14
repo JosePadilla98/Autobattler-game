@@ -48,36 +48,32 @@ namespace Autobattler.InfoPanel
 
         public bool IsShowing { get; private set; }
 
-        private ColorPalette ColorPalette => null;
+        private void SetColors()
+        {
+            health.SetColor();
+            healthRegen.SetColor();
+            defense.SetColor();
+            magicDefense.SetColor();
+
+            physicalAttack.SetColor();
+            physicalSpeed.SetColor();
+            magicalAttack.SetColor();
+            magicalSpeed.SetColor();
+
+            mana.SetColor();
+            manaRegen.SetColor();
+            magicalFatigue.SetColor();
+            intellect.SetColor();
+
+            vigor.SetColor();
+            reinvigoration.SetColor();
+            physicalFatigue.SetColor();
+        }
 
         private void Start()
         {
             SetColors();
             gameObject.SetActive(false);
-        }
-
-        private void SetColors()
-        {
-            //
-            health.SetColor(ColorPalette.health);
-            healthRegen.SetColor(ColorPalette.health);
-            defense.SetColor(ColorPalette.defense);
-            magicDefense.SetColor(ColorPalette.magicDefense);
-
-            //
-            physicalAttack.SetColor(ColorPalette.attack);
-            physicalSpeed.SetColor(ColorPalette.attack);
-            magicalAttack.SetColor(ColorPalette.magic);
-            magicalSpeed.SetColor(ColorPalette.magic);
-
-            mana.SetColor(ColorPalette.mana);
-            manaRegen.SetColor(ColorPalette.mana);
-            magicalFatigue.SetColor(ColorPalette.vigor);
-            intellect.SetColor(ColorPalette.intellect);
-
-            vigor.SetColor(ColorPalette.vigor);
-            reinvigoration.SetColor(ColorPalette.vigor);
-            physicalFatigue.SetColor(ColorPalette.vigor);
         }
 
         #region EVENT METHODS

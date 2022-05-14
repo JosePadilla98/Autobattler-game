@@ -12,6 +12,8 @@ namespace Autobattler.InfoPanel
         private TextMeshProUGUI text;
         [SerializeField] 
         private string textToShow;
+        [SerializeField]
+        private ColorModel colorModel;
 
         protected override void OnMaxChanged()
         {
@@ -28,9 +30,9 @@ namespace Autobattler.InfoPanel
             text.text = textToShow + ": " + (int)value.Get() + "/" + (int)maxValue.Get();
         }
 
-        public void SetColor(Color color)
+        public void SetColor()
         {
-            text.color = color;
+            text.color = colorModel.color;
         }
 
         public override void AttachValues(IValueExpositor max, IValueExpositor v)
