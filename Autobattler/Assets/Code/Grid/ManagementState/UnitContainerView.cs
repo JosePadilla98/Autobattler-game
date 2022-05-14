@@ -27,8 +27,7 @@ namespace Autobattler.Grid.ManagementState
 
             if (Side == Side.RIGHT)
             {
-                unitView.image.
-                    transform.localScale = new Vector3(-1, 1, 1);
+                unitView.image.transform.localScale = new Vector3(-1, 1, 1);
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿using System;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Autobattler.Units
 {
