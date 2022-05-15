@@ -22,9 +22,9 @@ namespace Autobattler.DragAndDrop
         {
             Rect = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-            dropArea = transform.parent.GetComponent<DropArea<T>>();
-            dropArea.Item = this;
             myTransform = transform;
+            dropArea = myTransform.parent.GetComponent<DropArea<T>>();
+            dropArea.Item = this;
         }
 
         protected abstract Transform ParentWhileDragging();

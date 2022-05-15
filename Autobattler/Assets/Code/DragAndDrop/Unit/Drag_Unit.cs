@@ -1,12 +1,11 @@
-﻿using System;
-using Autobattler.Units;
+﻿using Autobattler.Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Autobattler.DragAndDrop
+namespace Autobattler.DragAndDrop.Unit
 {
     [RequireComponent(typeof(UnitView))]
-    public class Drag_Unit : GenericDragObject<Unit>
+    public class Drag_Unit : GenericDragObject<Units.Unit>
     {
         private UnitView unitView;
         private Canvas Canvas { get => unitView.canvas;}
@@ -25,7 +24,7 @@ namespace Autobattler.DragAndDrop
 
         protected override Transform ParentWhileDragging()
         {
-            return unitView.transform;
+            return Canvas.transform;
         }
     }
 }

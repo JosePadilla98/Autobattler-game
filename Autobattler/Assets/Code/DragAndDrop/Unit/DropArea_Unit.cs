@@ -1,8 +1,6 @@
-using Autobattler.Units;
-
-namespace Autobattler.DragAndDrop
+namespace Autobattler.DragAndDrop.Unit
 {
-    public class DropArea_Unit : DropArea<Unit>
+    public class DropArea_Unit : DropArea<Units.Unit>
     {
 
     }

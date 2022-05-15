@@ -2,7 +2,7 @@
 using Autobattler.Units;
 using UnityEngine;
 
-namespace Autobattler.Player
+namespace Autobattler.ScriptableCollections
 {
     [CreateAssetMenu(fileName = "UnitsCollection", menuName = "ScriptableObjects/Collections/Units")]
     public class UnitsCollection : ScriptableObject

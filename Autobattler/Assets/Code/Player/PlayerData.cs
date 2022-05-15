@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Autobattler.ScriptableCollections;
+using UnityEngine;
 
 namespace Autobattler.Player
 {

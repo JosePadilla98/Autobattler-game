@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Autobattler
+namespace Autobattler.Colors
 {
     [CreateAssetMenu(fileName = "Color", menuName = "ScriptableObjects/Color")]
     public class ColorModel : ScriptableObject
