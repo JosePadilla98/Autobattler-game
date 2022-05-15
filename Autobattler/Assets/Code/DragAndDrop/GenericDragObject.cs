@@ -18,7 +18,7 @@ namespace Autobattler.DragAndDrop
         public Transform TmpParent => null;
         public RectTransform Rect { get; private set; }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             Rect = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();

@@ -23,13 +23,21 @@ namespace Autobattler.Grid.ManagementState
 
         private void BuildUnitView(Unit unit)
         {
-            UnitView unitView = Instantiate(unitViewPrefab, transform);
+            UnitView unitView = Instantiate(PrefabToInstantiate(), transform);
             unitView.InyectDependences(unit, battlefieldView.canvas);
 
             if (Side == Side.RIGHT)
             {
                 unitView.image.transform.localScale = new Vector3(-1, 1, 1);
             }
+        }
+
+        private UnitView PrefabToInstantiate()
+        {
+            if (Side == Side.LEFT)
+                return playerUnitViewPrefab;
+
+            return unitViewPrefab;
         }
     }
 }
