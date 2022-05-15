@@ -34,7 +34,7 @@ namespace Autobattler.LevelSystem
                 battlefield_U.AttachItem(unit, position);
 
                 if(side == Side.LEFT)
-                    playerData.teamInGrid.collection.Add(unit);
+                    playerData.teamInGrid.Collection.Add(unit);
             }
         }
     }

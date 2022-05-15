@@ -21,10 +21,7 @@ namespace Autobattler
 
         private void ShowUnits(UnitsCollection e)
         {
-            if (e.collection == null)
-                return;
-                
-            foreach (Unit unit in e.collection)
+            foreach (Unit unit in e.Collection)
             {
                 EditorGUILayout.LabelField(unit.name);
             }

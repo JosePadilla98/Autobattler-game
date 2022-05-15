@@ -10,6 +10,7 @@ namespace Autobattler.DragAndDrop
 
         private CanvasGroup canvasGroup;
         private DropArea<T> lastDropArea;
+        private Transform myTransform;
         private Transform startParent;
         private Vector3 startPosition;
 
@@ -23,6 +24,7 @@ namespace Autobattler.DragAndDrop
             canvasGroup = GetComponent<CanvasGroup>();
             dropArea = transform.parent.GetComponent<DropArea<T>>();
             dropArea.Item = this;
+            myTransform = transform;
         }
 
         protected abstract Transform ParentWhileDragging();
@@ -32,9 +34,9 @@ namespace Autobattler.DragAndDrop
         public void OnBeginDrag(PointerEventData eventData)
         {
             objBeingDragged = this;
-            startPosition = transform.position;
-            startParent = transform.parent;
-            transform.SetParent(ParentWhileDragging());
+            startPosition = myTransform.position;
+            startParent = myTransform.parent;
+            myTransform.SetParent(ParentWhileDragging());
 
             canvasGroup.alpha = .6f;
             canvasGroup.blocksRaycasts = false;
@@ -52,10 +54,10 @@ namespace Autobattler.DragAndDrop
             canvasGroup.blocksRaycasts = true;
 
             objBeingDragged = null;
-            if (transform.parent == ParentWhileDragging())
+            if (myTransform.parent == ParentWhileDragging())
             {
-                transform.position = startPosition;
-                transform.SetParent(startParent);
+                myTransform.position = startPosition;
+                myTransform.SetParent(startParent);
 
                 dropArea = lastDropArea;
             }
