@@ -6,6 +6,7 @@ namespace Autobattler.Units
 {
     public class Unit : ICloneable
     {
+        public String name = "NoName";
         public List<Mutation> baseMutations;
         public List<Mutation> disabledMutations;
         public List<Mutation> enabledMutations;
@@ -19,11 +20,13 @@ namespace Autobattler.Units
             disabledMutations = new List<Mutation>();
         }
 
-        public Unit(UnitBuild blueprint)
+        public Unit(UnitBuild blueprint) : this()
         {
-            foreach (var mutationModel in blueprint.mutations) AddNewMutation(new Mutation(mutationModel));
+            foreach (var mutationModel in blueprint.mutations) 
+                AddNewMutation(new Mutation(mutationModel));
 
-            foreach (var mutationModel in blueprint.mutations) AddNewMutation(new Mutation(mutationModel));
+            foreach (var mutationModel in blueprint.mutations) 
+                AddNewMutation(new Mutation(mutationModel));
         }
 
         public object Clone()

@@ -18,13 +18,13 @@ namespace Autobattler.Grid.ManagementState
 
         private void Awake()
         {
-            logic.onItemAttached += BuilUnitView;
+            logic.onItemAttached += BuildUnitView;
         }
 
-        private void BuilUnitView(Unit unit)
+        private void BuildUnitView(Unit unit)
         {
             UnitView unitView = Instantiate(unitViewPrefab, transform);
-            unitView.unit = unit;
+            unitView.InyectDependences(unit, battlefieldView.canvas);
 
             if (Side == Side.RIGHT)
             {

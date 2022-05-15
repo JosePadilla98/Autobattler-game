@@ -1,6 +1,7 @@
 ﻿using System;
 using Autobattler.Grid;
 using Autobattler.Grid.ManagementState;
+using Autobattler.Player;
 using Autobattler.Units;
 using UnityEngine;
 
@@ -11,11 +12,13 @@ namespace Autobattler.LevelSystem
     {
         [SerializeField]
         private Battlefield_U battlefield_U;
+        [SerializeField]
+        private PlayerData playerData;
 
-        public void SummonEnemies(InvocationsData data)
+        public void SummonUnits(InvocationsData data, Side side)
         {
-            IterateColumnAndSummon(data.frontColumn, Side.RIGHT, Column.FRONT);
-            IterateColumnAndSummon(data.backColumn, Side.RIGHT, Column.BACK);
+            IterateColumnAndSummon(data.frontColumn, side, Column.FRONT);
+            IterateColumnAndSummon(data.backColumn, side, Column.BACK);
         }
 
         private void IterateColumnAndSummon(UnitBuild[] builds, Side side, Column column)
@@ -29,6 +32,9 @@ namespace Autobattler.LevelSystem
                 var position = new Position(i, column, side);
 
                 battlefield_U.AttachItem(unit, position);
+
+                if(side == Side.RIGHT)
+                    playerData.teamInGrid.collection.Add(unit);
             }
         }
     }

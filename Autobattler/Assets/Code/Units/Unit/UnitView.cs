@@ -9,10 +9,18 @@ namespace Autobattler.Units
     public class UnitView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public Image image;
-        public Unit unit;
+        private Unit unit;
 
         public UnityEvent<Unit> onPointerEnterEvent;
         public UnityEvent<Unit> onPointerExitEvent;
+
+        public Canvas canvas { get; private set; }
+
+        public void InyectDependences(Unit unit, Canvas canvas)
+        {
+            this.unit = unit;
+            this.canvas = canvas;
+        }
 
         public void OnPointerEnter(PointerEventData eventData)
         {

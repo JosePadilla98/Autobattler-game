@@ -115,13 +115,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitViewPrefab: {fileID: 1889723963601898527, guid: 49472e97cd6ccd947b40c4889d5db5eb, type: 3}
-  playerUnitViewPrefab: {fileID: 1889723963601898527, guid: 49472e97cd6ccd947b40c4889d5db5eb, type: 3}
+  playerUnitViewPrefab: {fileID: 4977611224777771688, guid: f3d07af718b7f764a8c4865b664cd358, type: 3}
 --- !u!1 &8531450248405385725 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885459996645641, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
   m_PrefabInstance: {fileID: 2109732054619035892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8497073736752694634
+--- !u!114 &6889880983331975534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885460134494822, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
   m_PrefabInstance: {fileID: 2109732054619035892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6269000929029143927
+--- !u!114 &8772445896798616048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885461356678107, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
   m_PrefabInstance: {fileID: 2109732054619035892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7214121302377412459
+--- !u!114 &1944315357208018450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
---- !u!114 &899882684801321177
+--- !u!114 &7214121302377412459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
---- !u!114 &3779005909675352604
+--- !u!114 &6269000929029143927
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
---- !u!114 &3230971281972909716
+--- !u!114 &8497073736752694634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

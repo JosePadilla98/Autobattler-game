@@ -1,23 +1,20 @@
-﻿using Autobattler.DragAndDrop;
-using Autobattler.Grid;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Autobattler.Units
+namespace Autobattler.DragAndDrop
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public class UnitDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public abstract class GenericDragObject<T> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        public static UnitDragHandler objBeingDraged;
+        public static GenericDragObject<T> objBeingDragged;
 
         private CanvasGroup canvasGroup;
-        [HideInInspector] 
-        public GridDropArea<Unit> dropArea;
-
-        private GridDropArea<Unit> lastDropArea;
+        private DropArea<T> lastDropArea;
         private Transform startParent;
         private Vector3 startPosition;
 
+        [HideInInspector]
+        public DropArea<T> dropArea;
         public Transform TmpParent => null;
         public RectTransform Rect { get; private set; }
 
@@ -25,15 +22,15 @@ namespace Autobattler.Units
         {
             Rect = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-            //dropArea = transform.parent.GetComponent<PlayerGridSlot>();
-            dropArea.item = this;
+            dropArea = transform.parent.GetComponent<DropArea<T>>();
+            dropArea.Item = this;
         }
 
         #region DragFunctions
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            objBeingDraged = this;
+            objBeingDragged = this;
             startPosition = transform.position;
             startParent = transform.parent;
             transform.SetParent(TmpParent);
@@ -42,21 +39,18 @@ namespace Autobattler.Units
             canvasGroup.blocksRaycasts = false;
 
             lastDropArea = dropArea;
-            dropArea.item = null;
+            dropArea.Item = null;
             dropArea = null;
         }
 
-        public void OnDrag(PointerEventData eventData)
-        {
-            //Rect.anchoredPosition += eventData.delta / CanvasSingleton.Instance.scaleFactor;
-        }
+        public abstract void OnDrag(PointerEventData eventData);
 
         public void OnEndDrag(PointerEventData eventData)
         {
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
 
-            objBeingDraged = null;
+            objBeingDragged = null;
             if (transform.parent == TmpParent)
             {
                 transform.position = startPosition;

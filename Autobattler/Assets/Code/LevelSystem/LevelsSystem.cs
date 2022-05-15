@@ -1,4 +1,5 @@
 using System;
+using Autobattler.Grid;
 using UnityEngine;
 
 namespace Autobattler.LevelSystem
@@ -19,7 +20,9 @@ namespace Autobattler.LevelSystem
 
         private void LoadLevel(Level level)
         {
-            invocationsProcessor.SummonEnemies(level.enemies);
+            //You will only summon units in the player side to test
+            invocationsProcessor.SummonUnits(level.enemies, Side.LEFT);
+            invocationsProcessor.SummonUnits(level.enemies, Side.RIGHT);
         }
     }
 }
