@@ -20,11 +20,12 @@ namespace Autobattler.DragAndDrop
         public override void OnDrag(PointerEventData eventData)
         {
             Rect.anchoredPosition += eventData.delta / Canvas.scaleFactor;
+            Debug.Log(Rect.anchoredPosition);
         }
 
         protected override Transform ParentWhileDragging()
         {
-            return Canvas.transform;
+            return unitView.transform;
         }
     }
 }
