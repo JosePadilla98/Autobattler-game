@@ -15,7 +15,6 @@ namespace Autobattler.DragAndDrop
 
         [HideInInspector]
         public DropArea<T> dropArea;
-        public Transform TmpParent => null;
         public RectTransform Rect { get; private set; }
 
         protected virtual void Awake()
@@ -26,6 +25,8 @@ namespace Autobattler.DragAndDrop
             dropArea.Item = this;
         }
 
+        protected abstract Transform ParentWhileDragging();
+
         #region DragFunctions
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -33,7 +34,7 @@ namespace Autobattler.DragAndDrop
             objBeingDragged = this;
             startPosition = transform.position;
             startParent = transform.parent;
-            transform.SetParent(TmpParent);
+            transform.SetParent(ParentWhileDragging());
 
             canvasGroup.alpha = .6f;
             canvasGroup.blocksRaycasts = false;
@@ -51,7 +52,7 @@ namespace Autobattler.DragAndDrop
             canvasGroup.blocksRaycasts = true;
 
             objBeingDragged = null;
-            if (transform.parent == TmpParent)
+            if (transform.parent == ParentWhileDragging())
             {
                 transform.position = startPosition;
                 transform.SetParent(startParent);

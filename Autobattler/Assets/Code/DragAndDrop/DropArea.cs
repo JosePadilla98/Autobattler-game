@@ -21,13 +21,13 @@ namespace Autobattler.DragAndDrop
 
         public void OnDrop(PointerEventData eventData)
         {
-            if (!item)
+            if (!Item)
             {
-                item = GenericDragObject<T>.objBeingDragged;
-                item.dropArea = this;
+                Item = GenericDragObject<T>.objBeingDragged;
+                Item.dropArea = this;
                 itemTransform.SetParent(transform);
                 itemTransform.position = transform.position;
-                item.Rect.anchoredPosition = Vector3.zero;
+                Item.Rect.anchoredPosition = Vector3.zero;
             }
         }
     }

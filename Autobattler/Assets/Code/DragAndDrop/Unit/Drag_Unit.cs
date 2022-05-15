@@ -21,5 +21,10 @@ namespace Autobattler.DragAndDrop
         {
             Rect.anchoredPosition += eventData.delta / Canvas.scaleFactor;
         }
+
+        protected override Transform ParentWhileDragging()
+        {
+            return Canvas.transform;
+        }
     }
 }
