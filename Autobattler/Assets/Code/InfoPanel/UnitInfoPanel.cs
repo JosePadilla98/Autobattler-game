@@ -88,9 +88,14 @@ namespace Autobattler.InfoPanel
             EmptyTexts();
         }
 
-        public void AttachFighter()
+        public void AttachFighter(Fighter fighter)
         {
+            FillTexts(fighter.Stats, fighter.combatValues);
+        }
 
+        public void UnattachFighter(Fighter fighter)
+        {
+            EmptyTexts();
         }
 
         #endregion

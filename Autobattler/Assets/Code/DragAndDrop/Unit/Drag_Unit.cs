@@ -19,7 +19,6 @@ namespace Autobattler.DragAndDrop.Unit
         public override void OnDrag(PointerEventData eventData)
         {
             Rect.anchoredPosition += eventData.delta / Canvas.scaleFactor;
-            Debug.Log(Rect.anchoredPosition);
         }
 
         protected override Transform ParentWhileDragging()

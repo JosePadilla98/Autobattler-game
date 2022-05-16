@@ -115,3 +115,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropArea: {fileID: 0}
+--- !u!114 &6805044473620576278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4690737390985881015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cce7ec189c0454f9f58206f8626545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1709248146929451852, guid: 49472e97cd6ccd947b40c4889d5db5eb, type: 3}
+  onPointerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f0f4496c970153243aaad88ac3089dd8, type: 2}
+        m_TargetAssemblyTypeName: Autobattler.Events.GameEvent_Unit, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPointerExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f39e08bf7e3519c469ba0d9f7b7f7137, type: 2}
+        m_TargetAssemblyTypeName: Autobattler.Events.GameEvent_Unit, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

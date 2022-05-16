@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7719885460405327535, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
       propertyPath: m_Name
-      value: ManagementBattlefield
+      value: Battlefield
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
@@ -122,7 +122,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885459996645641, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
   m_PrefabInstance: {fileID: 2109732054619035892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4709440447292249081
+--- !u!114 &5230161258456641638
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885460134494822, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
   m_PrefabInstance: {fileID: 2109732054619035892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7871539545147021733
+--- !u!114 &5767639449006575919
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885461356678107, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
   m_PrefabInstance: {fileID: 2109732054619035892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1157675578867540184
+--- !u!114 &4499584232123255436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1944315357208018450
+--- !u!114 &1157675578867540184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8772445896798616048
+--- !u!114 &7871539545147021733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6889880983331975534
+--- !u!114 &4709440447292249081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -1,6 +1,7 @@
 ﻿using Autobattler.InfoPanel;
 using Autobattler.Units.InfoBars;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -8,23 +9,38 @@ namespace Autobattler.Units
 {
     internal class FighterView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        private AnimationsController animationsController;
+        [SerializeField]
         private Image image;
-
-        private UnitInfoBars infoBars;
+        [SerializeField]
         private Transform numberPopupsLocation;
-        public Fighter CombatInstance => null;
+        [SerializeField]
+        private AnimationsController animationsController;
+
+        [Space(10)]
+        [SerializeField]
+        private UnitInfoBars infoBars;
+
+        [Space(10)]
+        public UnityEvent<Fighter> onPointerEnterEvent;
+        public UnityEvent<Fighter> onPointerExitEvent;
+
+        private Fighter fighter;
+
+        public void InyectDependences(Fighter fighter)
+        {
+            this.fighter = fighter;
+        }
 
         #region MOUSE_INTERACTIONS
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            //UnitInfoPanel.Instance?.AttachUnit(comb);
+            onPointerEnterEvent.Invoke(fighter);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            //UnitInfoPanel.Instance?.Unattach();
+            onPointerExitEvent.Invoke(fighter);
         }
 
         #endregion
