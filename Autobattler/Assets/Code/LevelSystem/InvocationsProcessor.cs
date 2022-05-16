@@ -2,6 +2,7 @@
 using Autobattler.Grid;
 using Autobattler.Grid.ManagementState;
 using Autobattler.Player;
+using Autobattler.ScriptableCollections;
 using Autobattler.Units;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ namespace Autobattler.LevelSystem
         private Battlefield_U battlefield_U;
         [SerializeField]
         private PlayerData playerData;
+        [SerializeField]
+        private UnitsCollection enemies;
 
         public void SummonUnits(InvocationsData data, Side side)
         {
@@ -35,6 +38,8 @@ namespace Autobattler.LevelSystem
 
                 if(side == Side.LEFT)
                     playerData.teamInGrid.Collection.Add(unit);
+                else
+                    enemies.Collection.Add(unit);
             }
         }
     }

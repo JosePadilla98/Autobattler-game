@@ -17,3 +17,4 @@ MonoBehaviour:
   invocationsProcessor:
     battlefield_U: {fileID: 11400000, guid: c3ee1ab973d4ac34fa002080ef521cd9, type: 2}
     playerData: {fileID: 11400000, guid: a62f197455d8b3747ab4b7132e4fa1b3, type: 2}
+    enemies: {fileID: 11400000, guid: a49224322777bca4ea125369eaf56f65, type: 2}

@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: RightSide
   m_EditorClassIdentifier: 
   back:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 35b26c5c15133454da36a124cb2c19fb, type: 2}
+  - {fileID: 11400000, guid: 7090f5ea4b8962b4bbd2c9785c8672bb, type: 2}
+  - {fileID: 11400000, guid: 2fe58dcdc72e765439d3793841ee5738, type: 2}
   front:
-  - {fileID: 0}
-  side: 0
+  - {fileID: 11400000, guid: 0626893db15eb6e44a16e05ea3201a5f, type: 2}
+  - {fileID: 11400000, guid: 7dd659e4bf0df224d9c556bf3c78c1e0, type: 2}
+  - {fileID: 11400000, guid: c6e87c4c911800447858c905be5c5bf1, type: 2}
+  side: 1
