@@ -7,10 +7,9 @@ using UnityEngine.UI;
 
 namespace Autobattler.Units
 {
-    internal class FighterView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class FighterView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField]
-        private Image image;
+        public Image image;
         [SerializeField]
         private Transform numberPopupsLocation;
         [SerializeField]

@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace Autobattler.Grid.ManagementState
 {
-    [CreateAssetMenu(fileName = "Slot_U", menuName = "ScriptableObjects/Grids/_Unit/Container")]
-    public class Slot_U : ItemContainer<Unit>
+    [CreateAssetMenu(fileName = "Slot_F", menuName = "ScriptableObjects/Grids/_Fighter/Container")]
+    public class Slot_F : ItemContainer<Fighter>
     {
 
     }
