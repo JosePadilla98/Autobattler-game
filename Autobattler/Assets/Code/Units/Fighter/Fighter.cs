@@ -26,7 +26,6 @@ namespace Autobattler.Units
             this.unit = unit;
         }
 
-
         public Stats Stats => unit.stats;
         public List<Mutation> Mutations => unit.enabledMutations;
 

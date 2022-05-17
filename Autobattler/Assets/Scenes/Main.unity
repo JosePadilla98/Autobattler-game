@@ -505,6 +505,14 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1002072125}
+    - target: {fileID: 8244248559720668863, guid: f401198eae6b25e4ea9b1043407c90b4, type: 3}
+      propertyPath: unitViewPrefab
+      value: 
+      objectReference: {fileID: 8489279359288048098, guid: 9df2b92e090737a42aff824f1887c4e6, type: 3}
+    - target: {fileID: 8244248559720668863, guid: f401198eae6b25e4ea9b1043407c90b4, type: 3}
+      propertyPath: playerUnitViewPrefab
+      value: 
+      objectReference: {fileID: 6805044473620576278, guid: f3d07af718b7f764a8c4865b664cd358, type: 3}
     - target: {fileID: 8531450248235257432, guid: f401198eae6b25e4ea9b1043407c90b4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1109,7 +1117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &724874397
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1201,7 +1209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d86aa83b9801fd429c13dc9a98ab85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatScreen: {fileID: 1298348802}
+  runController: {fileID: 11400000, guid: 0781be15a2bf6ff48b114e6dcf0b20b7, type: 2}
 --- !u!1 &796047315 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1013619700708570087, guid: 1c72b78693b237b4a9e653b080697842, type: 3}
@@ -1355,12 +1363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee31c2febd03780449b8d15b09a88c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fighterViewPrefab: {fileID: 0}
-  managementData:
-    managementBattlefield: {fileID: 0}
-    enemies: {fileID: 0}
-    playerUnits: {fileID: 0}
-  battlefield: {fileID: 0}
+  fighterViewPrefab: {fileID: 4379147271232056308, guid: 1811c36299015d447993082f799e32ad, type: 3}
+  battlefield: {fileID: 11400000, guid: 813fbc114f8afdc4b937bac7494e35d1, type: 2}
 --- !u!1 &913782701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,6 +1921,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1256555041}
+  - component: {fileID: 1256555043}
+  - component: {fileID: 1256555042}
   m_Layer: 5
   m_Name: RunScreens
   m_TagString: Untagged
@@ -1948,6 +1954,47 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1256555042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256555040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c50b31777fd21934cb144d264358c1dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: ca60fbb9b7eccd643a87df47e7109082, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1256555043}
+        m_TargetAssemblyTypeName: Autobattler.Screens.ScreenControllers, Assembly-CSharp
+        m_MethodName: OnCombatInit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1256555043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256555040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603a46271dbed0249ad9b718fb92f02d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatScreen: {fileID: 1298348802}
 --- !u!114 &1293723306 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7279437506705244826, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
@@ -1976,7 +2023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1298348803
 RectTransform:
   m_ObjectHideFlags: 0
