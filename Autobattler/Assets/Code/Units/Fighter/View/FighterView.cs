@@ -1,4 +1,5 @@
-﻿using Autobattler.InfoPanel;
+﻿using System;
+using Autobattler.InfoPanel;
 using Autobattler.Units.InfoBars;
 using UnityEngine;
 using UnityEngine.Events;
@@ -43,5 +44,6 @@ namespace Autobattler.Units
         }
 
         #endregion
+
     }
 }

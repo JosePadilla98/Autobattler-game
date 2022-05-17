@@ -13,6 +13,9 @@ namespace Autobattler.LevelSystem
         [SerializeField] 
         private InvocationsProcessor invocationsProcessor;
 
+        [SerializeField]
+        private InvocationsData playerUnits;
+
         public void Init()
         {
             LoadLevel(data.levels[currentLevel]);
@@ -21,7 +24,7 @@ namespace Autobattler.LevelSystem
         private void LoadLevel(Level level)
         {
             //You will only summon units in the player side to test
-            invocationsProcessor.SummonUnits(level.enemies, Side.LEFT);
+            //invocationsProcessor.SummonUnits(playerUnits, Side.LEFT);
             invocationsProcessor.SummonUnits(level.enemies, Side.RIGHT);
         }
     }

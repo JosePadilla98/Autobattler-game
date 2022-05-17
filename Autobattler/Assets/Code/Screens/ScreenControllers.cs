@@ -17,7 +17,6 @@ namespace Autobattler.Screens
         public void OnCombatInit()
         {
             combatScreen.SetActive(true);
-            Debug.Log("hola");
         }
     }
 }

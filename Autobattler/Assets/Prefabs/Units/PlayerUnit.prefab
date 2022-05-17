@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5cce7ec189c0454f9f58206f8626545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 1709248146929451852, guid: 49472e97cd6ccd947b40c4889d5db5eb, type: 3}
+  image: {fileID: 5230327084627330555}
   onPointerEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -158,3 +158,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5230327084627330555 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1709248146929451852, guid: 49472e97cd6ccd947b40c4889d5db5eb, type: 3}
+  m_PrefabInstance: {fileID: 6858316923074545335}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
