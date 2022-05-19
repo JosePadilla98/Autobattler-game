@@ -1,10 +1,10 @@
 ﻿using Autobattler.ScriptableCollections;
 using UnityEngine;
 
-namespace Autobattler.States
+namespace Autobattler.GameControllers.Combat
 {
     [CreateAssetMenu(fileName = "TeamsController", menuName = "ScriptableObjects/TeamsController")]
-    public class TeamsController : ScriptableObject
+    public class FighterTeamsController : ScriptableObject
     {
         public FightersCollection enemies;
         public FightersCollection playerFighters;

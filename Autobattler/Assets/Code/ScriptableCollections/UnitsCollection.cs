@@ -7,9 +7,9 @@ namespace Autobattler.ScriptableCollections
     [CreateAssetMenu(fileName = "UnitsCollection", menuName = "ScriptableObjects/Collections/Units")]
     public class UnitsCollection : ScriptableObject
     {
-        private List<Unit> collection;
+        private List<_Unit> collection;
 
-        public List<Unit> Collection
+        public List<_Unit> Collection
         {
             get
             {

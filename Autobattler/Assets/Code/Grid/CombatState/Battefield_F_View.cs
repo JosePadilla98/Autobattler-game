@@ -2,7 +2,7 @@
 using Autobattler.Units;
 using UnityEngine;
 
-namespace Autobattler.Grid.ManagementState
+namespace Autobattler.Grid.CombatState
 {
     public class Battefield_F_View : MonoBehaviour
     {

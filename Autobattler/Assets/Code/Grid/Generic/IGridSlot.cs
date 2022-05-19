@@ -5,6 +5,6 @@
         public Side GetSide();
         public T GetItem();
         public bool IsThereThisItem(T item);
-        public void AttachItem(T item);
+        public void BuildNewItem(T item);
     }
 }

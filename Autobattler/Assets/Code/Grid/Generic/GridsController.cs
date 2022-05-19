@@ -11,7 +11,7 @@ namespace Autobattler.Grid.Generic
         public void AttachItem(T item, Position pos)
         {
             var slot = GetItemContainer(pos);
-            slot.AttachItem(item);
+            slot.BuildNewItem(item);
         }
 
         public ItemContainer<T> GetItemContainer(Position pos)

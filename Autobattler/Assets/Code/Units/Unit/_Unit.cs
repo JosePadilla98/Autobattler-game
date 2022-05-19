@@ -4,7 +4,7 @@ using Autobattler.MutationsSystem.Mutations;
 
 namespace Autobattler.Units
 {
-    public class Unit : ICloneable
+    public class _Unit : ICloneable
     {
         public String name = "NoName";
         public List<Mutation> baseMutations;
@@ -12,7 +12,7 @@ namespace Autobattler.Units
         public List<Mutation> enabledMutations;
         public Stats stats;
 
-        public Unit()
+        public _Unit()
         {
             stats = new Stats();
             baseMutations = new List<Mutation>();
@@ -20,7 +20,7 @@ namespace Autobattler.Units
             disabledMutations = new List<Mutation>();
         }
 
-        public Unit(UnitBuild blueprint) : this()
+        public _Unit(UnitBuild blueprint) : this()
         {
             foreach (var mutationModel in blueprint.mutations) 
                 AddNewMutation(new Mutation(mutationModel));
@@ -31,7 +31,7 @@ namespace Autobattler.Units
 
         public object Clone()
         {
-            var clone = (Unit)MemberwiseClone();
+            var clone = (_Unit)MemberwiseClone();
             return clone;
         }
 

@@ -1,16 +1,14 @@
 ﻿using System;
 using Autobattler.Grid.Generic;
-using Autobattler.Player;
 using Autobattler.ScriptableCollections;
 using Autobattler.Units;
-using UnityEngine;
 
-namespace Autobattler
+namespace Autobattler.GameControllers
 {
     [Serializable]
     public class ManagementStateData
     {
-        public GridsController<Unit> managementBattlefield;
+        public GridsController<_Unit> managementBattlefield;
         public UnitsCollection enemies;
         public PlayerData playerData;
     }

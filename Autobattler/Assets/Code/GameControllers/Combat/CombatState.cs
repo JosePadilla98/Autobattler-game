@@ -1,13 +1,13 @@
-﻿using Autobattler.Grid.ManagementState;
+﻿using Autobattler.Grid.CombatState;
 using UnityEngine;
 
-namespace Autobattler.States
+namespace Autobattler.GameControllers.Combat
 {
     [CreateAssetMenu(fileName = "CombatState", menuName = "ScriptableObjects/CombatState", order = 0)]
     public class CombatState : ScriptableObject
     {
         public Battlefield_F battlefield;
-        public TeamsController teamsController;
+        public FighterTeamsController teamsController;
 
         public void Init()
         {

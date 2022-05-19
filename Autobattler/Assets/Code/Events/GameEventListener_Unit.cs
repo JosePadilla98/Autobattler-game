@@ -10,7 +10,7 @@ namespace Autobattler.Events
         public GameEvent_Unit Event;
 
         [Tooltip("Response to invoke when Event is raised.")]
-        public UnityEvent<Unit> Response;
+        public UnityEvent<_Unit> Response;
 
         private void OnEnable()
         {
@@ -22,7 +22,7 @@ namespace Autobattler.Events
             Event.UnregisterListener(this);
         }
 
-        public void OnEventRaised(Unit unit)
+        public void OnEventRaised(_Unit unit)
         {
             Response.Invoke(unit);
         }

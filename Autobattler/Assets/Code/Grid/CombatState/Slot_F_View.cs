@@ -1,7 +1,7 @@
 ﻿using Autobattler.Units;
 using UnityEngine;
 
-namespace Autobattler.Grid.ManagementState
+namespace Autobattler.Grid.CombatState
 {
     public class Slot_F_View : MonoBehaviour
     {
@@ -17,7 +17,7 @@ namespace Autobattler.Grid.ManagementState
 
         private void Awake()
         {
-            logic.onItemAttached += BuildFighterView;
+            logic.OnNewItemBuilded += BuildFighterView;
         }
 
         private void BuildFighterView(Fighter fighter)

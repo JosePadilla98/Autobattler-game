@@ -1,4 +1,5 @@
-﻿using Autobattler.Units;
+﻿using System;
+using Autobattler.Units;
 using UnityEngine;
 
 namespace Autobattler.Grid.ManagementState
@@ -18,10 +19,10 @@ namespace Autobattler.Grid.ManagementState
 
         private void Awake()
         {
-            logic.onItemAttached += BuildUnitView;
+            logic.OnNewItemBuilded += BuildUnitView;
         }
 
-        private void BuildUnitView(Unit unit)
+        private void BuildUnitView(_Unit unit)
         {
             UnitView unitView = Instantiate(PrefabToInstantiate(), transform);
             unitView.InyectDependences(unit, battlefieldView.canvas);
@@ -30,6 +31,16 @@ namespace Autobattler.Grid.ManagementState
             {
                 unitView.image.transform.localScale = new Vector3(-1, 1, 1);
             }
+        }
+
+        internal void UnattachUnit()
+        {
+            logic.UnnatachItem();
+        }
+
+        public void AttachUnitView(UnitView unitView)
+        {
+            logic.AttachItem(unitView.unit);
         }
 
         private UnitView PrefabToInstantiate()

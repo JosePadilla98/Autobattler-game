@@ -1,4 +1,3 @@
-using Autobattler.Player;
 using Autobattler.ScriptableCollections;
 using Autobattler.Units;
 using UnityEditor;
@@ -22,7 +21,7 @@ namespace Autobattler
 
         private void ShowUnits(UnitsCollection e)
         {
-            foreach (Unit unit in e.Collection)
+            foreach (_Unit unit in e.Collection)
             {
                 EditorGUILayout.LabelField(unit.name);
             }

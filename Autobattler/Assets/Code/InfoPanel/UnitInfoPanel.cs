@@ -78,12 +78,12 @@ namespace Autobattler.InfoPanel
 
         #region EVENT METHODS
 
-        public void AttachUnit(Unit unit)
+        public void AttachUnit(_Unit unit)
         {
             FillTexts(unit.stats);
         }
 
-        public void UnattachUnit(Unit unit)
+        public void UnattachUnit(_Unit unit)
         {
             EmptyTexts();
         }

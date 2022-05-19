@@ -1,7 +1,7 @@
 ﻿using Autobattler.ScriptableCollections;
 using UnityEngine;
 
-namespace Autobattler.Player
+namespace Autobattler.GameControllers
 {
     [CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerData")]
     public class PlayerData : ScriptableObject

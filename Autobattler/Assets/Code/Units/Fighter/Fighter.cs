@@ -12,7 +12,7 @@ namespace Autobattler.Units
 
     public class Fighter
     {
-        private readonly Unit unit;
+        private readonly _Unit unit;
         public CombatValues combatValues;
 
         //public TeamsManager teamsManager;
@@ -21,7 +21,7 @@ namespace Autobattler.Units
         public Team Team => Team.PLAYER;
         public Position Position => new Position();
 
-        public Fighter(Unit unit)
+        public Fighter(_Unit unit)
         {
             this.unit = unit;
         }
@@ -51,7 +51,7 @@ namespace Autobattler.Units
         public CombatValue currentMana;
         public CombatValue currentVigor;
 
-        public CombatValues(Unit build)
+        public CombatValues(_Unit build)
         {
             currentHealth = new CombatValue(build.stats.GetStatValue(StatsNames.HEALTH));
             currentVigor = new CombatValue(build.stats.GetStatValue(StatsNames.VIGOR));

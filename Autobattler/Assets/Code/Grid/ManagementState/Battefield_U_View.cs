@@ -8,5 +8,6 @@ namespace Autobattler.Grid.ManagementState
         public UnitView unitViewPrefab;
         public UnitView playerUnitViewPrefab;
         public Canvas canvas;
+
     }
 }

@@ -24,7 +24,7 @@ namespace Autobattler.LevelSystem
         private void LoadLevel(Level level)
         {
             //You will only summon units in the player side to test
-            //invocationsProcessor.SummonUnits(playerUnits, Side.LEFT);
+            invocationsProcessor.SummonUnits(playerUnits, Side.LEFT);
             invocationsProcessor.SummonUnits(level.enemies, Side.RIGHT);
         }
     }

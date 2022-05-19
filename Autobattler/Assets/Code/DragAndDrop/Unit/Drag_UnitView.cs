@@ -5,16 +5,9 @@ using UnityEngine.EventSystems;
 namespace Autobattler.DragAndDrop.Unit
 {
     [RequireComponent(typeof(UnitView))]
-    public class Drag_Unit : GenericDragObject<Units.Unit>
+    public class Drag_UnitView : GenericDragObject<UnitView>
     {
-        private UnitView unitView;
-        private Canvas Canvas { get => unitView.canvas;}
-
-        private void Awake()
-        {
-            base.Awake();
-            unitView = GetComponent<UnitView>();
-        }
+        private Canvas Canvas { get => itemDragged.canvas;}
 
         public override void OnDrag(PointerEventData eventData)
         {

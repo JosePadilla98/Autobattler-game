@@ -1,4 +1,5 @@
-﻿using Autobattler.Units;
+﻿using System;
+using Autobattler.Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -6,14 +7,14 @@ namespace Autobattler.DragAndDrop
 {
     public class DropArea<T> : MonoBehaviour, IDropHandler
     {
-        private GenericDragObject<T> item;
-        public GenericDragObject<T> Item
+        private GenericDragObject<T> draggableComponent;
+        public GenericDragObject<T> DraggableComponent
         {
-            get => item;
+            get => draggableComponent;
             set
             {
-                item = value;
-                itemTransform = (item != null) ? item.transform : null;
+                draggableComponent = value;
+                itemTransform = (draggableComponent != null) ? draggableComponent.transform : null;
             }
         }
 
@@ -21,14 +22,25 @@ namespace Autobattler.DragAndDrop
 
         public void OnDrop(PointerEventData eventData)
         {
-            if (!Item)
+            if (!DraggableComponent)
             {
-                Item = GenericDragObject<T>.objBeingDragged;
-                Item.dropArea = this;
+                DraggableComponent = GenericDragObject<T>.objBeingDragged;
+                DraggableComponent.dropArea = this;
                 itemTransform.SetParent(transform);
                 itemTransform.position = transform.position;
-                Item.Rect.anchoredPosition = Vector3.zero;
+                DraggableComponent.Rect.anchoredPosition = Vector3.zero;
+                OnItemDropped(DraggableComponent.itemDragged);
             }
+        }
+
+        public virtual void OnItemDropped(T item)
+        {
+
+        }
+
+        internal virtual void UnattachUnit()
+        {
+            
         }
     }
 }

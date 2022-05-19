@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c65b26afdd6acc4a99ea14e0098e1cf, type: 3}
   m_Name: r-front-2
   m_EditorClassIdentifier: 
-  parent: {fileID: 11400000, guid: 8e7cb3540263e2f469bc6b09e7101294, type: 2}
+  parent: {fileID: 11400000, guid: 154d1157a3d9ad849a424e835f1d66e7, type: 2}

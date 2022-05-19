@@ -18,13 +18,16 @@ namespace Autobattler.DragAndDrop
         public DropArea<T> dropArea;
         public RectTransform Rect { get; private set; }
 
+        public T itemDragged;
+
         protected virtual void Awake()
         {
             Rect = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             myTransform = transform;
             dropArea = myTransform.parent.GetComponent<DropArea<T>>();
-            dropArea.Item = this;
+            dropArea.DraggableComponent = this;
+            itemDragged = GetComponent<T>();
         }
 
         protected abstract Transform ParentWhileDragging();
@@ -42,8 +45,10 @@ namespace Autobattler.DragAndDrop
             canvasGroup.blocksRaycasts = false;
 
             lastDropArea = dropArea;
-            dropArea.Item = null;
+            dropArea.DraggableComponent = null;
             dropArea = null;
+
+            lastDropArea.UnattachUnit();
         }
 
         public abstract void OnDrag(PointerEventData eventData);
