@@ -114,15 +114,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6285fc26e8cce574d93f821a5f881dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitViewPrefab: {fileID: 1889723963601898527, guid: 49472e97cd6ccd947b40c4889d5db5eb, type: 3}
-  playerUnitViewPrefab: {fileID: 4977611224777771688, guid: f3d07af718b7f764a8c4865b664cd358, type: 3}
+  unitViewPrefab: {fileID: 8489279359288048098, guid: 9df2b92e090737a42aff824f1887c4e6, type: 3}
+  playerUnitViewPrefab: {fileID: 6805044473620576278, guid: f3d07af718b7f764a8c4865b664cd358, type: 3}
   canvas: {fileID: 0}
 --- !u!1 &8531450248405385725 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885459996645641, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
   m_PrefabInstance: {fileID: 2109732054619035892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5230161258456641638
+--- !u!114 &1358649037538986109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885460134494822, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
   m_PrefabInstance: {fileID: 2109732054619035892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5767639449006575919
+--- !u!114 &8580927818974838282
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ff2d5b2341dc849b10b6cf323679a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logic: {fileID: 11400000, guid: c1bd5344c5e08e247ad8481ca9ab0861, type: 2}
+  logic: {fileID: 11400000, guid: 316b4c92cc369764ca86818e72419eee, type: 2}
   battlefieldView: {fileID: 8244248559720668863}
 --- !u!114 &7011254918308792903
 MonoBehaviour:
@@ -186,12 +186,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  slotView: {fileID: 0}
 --- !u!1 &8531450249159152431 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885461356678107, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
   m_PrefabInstance: {fileID: 2109732054619035892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4499584232123255436
+--- !u!114 &3683152351143322763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,7 +224,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1157675578867540184
+  canvas: {fileID: 0}
+  slotView: {fileID: 0}
+--- !u!114 &4499584232123255436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ff2d5b2341dc849b10b6cf323679a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logic: {fileID: 11400000, guid: c54688ea1c3ed184d84528cf7ac729cb, type: 2}
+  logic: {fileID: 11400000, guid: 173ca58c0a944ca46a2d9ac4e8163179, type: 2}
   battlefieldView: {fileID: 8244248559720668863}
 --- !u!1 &8531450249239181100 stripped
 GameObject:
@@ -272,7 +276,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7871539545147021733
+  canvas: {fileID: 0}
+  slotView: {fileID: 0}
+--- !u!114 &5767639449006575919
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ff2d5b2341dc849b10b6cf323679a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logic: {fileID: 11400000, guid: bd700ddc9d8852544b0320d9f6290272, type: 2}
+  logic: {fileID: 11400000, guid: 2a6b0ab9b38f1c34281d1a96f527a643, type: 2}
   battlefieldView: {fileID: 8244248559720668863}
 --- !u!1 &8531450249357845176 stripped
 GameObject:
@@ -303,6 +309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  slotView: {fileID: 0}
 --- !u!114 &7600949137681538446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ff2d5b2341dc849b10b6cf323679a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logic: {fileID: 11400000, guid: 2a6b0ab9b38f1c34281d1a96f527a643, type: 2}
+  logic: {fileID: 11400000, guid: bd700ddc9d8852544b0320d9f6290272, type: 2}
   battlefieldView: {fileID: 8244248559720668863}
 --- !u!1 &8531450249589787839 stripped
 GameObject:
@@ -334,7 +342,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4709440447292249081
+  canvas: {fileID: 0}
+  slotView: {fileID: 0}
+--- !u!114 &5230161258456641638
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ff2d5b2341dc849b10b6cf323679a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logic: {fileID: 11400000, guid: 316b4c92cc369764ca86818e72419eee, type: 2}
+  logic: {fileID: 11400000, guid: c1bd5344c5e08e247ad8481ca9ab0861, type: 2}
   battlefieldView: {fileID: 8244248559720668863}
 --- !u!1 &8531450249687571216 stripped
 GameObject:
@@ -384,7 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ff2d5b2341dc849b10b6cf323679a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logic: {fileID: 11400000, guid: 173ca58c0a944ca46a2d9ac4e8163179, type: 2}
+  logic: {fileID: 11400000, guid: c54688ea1c3ed184d84528cf7ac729cb, type: 2}
   battlefieldView: {fileID: 8244248559720668863}
 --- !u!114 &6233195359878560002
 MonoBehaviour:
@@ -398,6 +408,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  slotView: {fileID: 0}
 --- !u!1 &8531450249903788693 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885460884703841, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}

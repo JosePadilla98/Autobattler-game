@@ -20,7 +20,7 @@ namespace Autobattler.DragAndDrop.Unit
             slotView.AttachUnitView(item);
         }
 
-        internal override void UnattachUnit()
+        internal override void UnattachItem()
         {
             slotView.UnattachUnit();
         }

@@ -9,14 +9,18 @@ namespace Autobattler.DragAndDrop
         public static GenericDragObject<T> objBeingDragged;
 
         private CanvasGroup canvasGroup;
-        private DropArea<T> lastDropArea;
         private Transform myTransform;
         private Transform startParent;
         private Vector3 startPosition;
+        public Canvas canvas;
 
         [HideInInspector]
         public DropArea<T> dropArea;
+        [HideInInspector]
+        public DropArea<T> lastDropArea;
         public RectTransform Rect { get; private set; }
+      
+        public Transform ParentWhileDragging { get => canvas.transform; }
 
         public T itemDragged;
 
@@ -26,11 +30,10 @@ namespace Autobattler.DragAndDrop
             canvasGroup = GetComponent<CanvasGroup>();
             myTransform = transform;
             dropArea = myTransform.parent.GetComponent<DropArea<T>>();
-            dropArea.DraggableComponent = this;
+            dropArea.ItemContained = this;
+            canvas = dropArea.canvas;
             itemDragged = GetComponent<T>();
         }
-
-        protected abstract Transform ParentWhileDragging();
 
         #region DragFunctions
 
@@ -39,31 +42,34 @@ namespace Autobattler.DragAndDrop
             objBeingDragged = this;
             startPosition = myTransform.position;
             startParent = myTransform.parent;
-            myTransform.SetParent(ParentWhileDragging());
+            myTransform.SetParent(ParentWhileDragging);
 
             canvasGroup.alpha = .6f;
             canvasGroup.blocksRaycasts = false;
 
             lastDropArea = dropArea;
-            dropArea.DraggableComponent = null;
+            dropArea.ItemContained = null;
             dropArea = null;
 
-            lastDropArea.UnattachUnit();
+            lastDropArea.UnattachItem();
         }
 
-        public abstract void OnDrag(PointerEventData eventData);
+        public void OnDrag(PointerEventData eventData)
+        {
+            Rect.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        }
 
         public void OnEndDrag(PointerEventData eventData)
         {
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
-
             objBeingDragged = null;
-            if (myTransform.parent == ParentWhileDragging())
-            {
+
+            if (myTransform.parent == ParentWhileDragging)
+            {   
+                //This represent that element is not dropped anywhere
                 myTransform.position = startPosition;
                 myTransform.SetParent(startParent);
-
                 dropArea = lastDropArea;
             }
         }

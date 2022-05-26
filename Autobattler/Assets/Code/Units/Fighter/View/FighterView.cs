@@ -29,6 +29,7 @@ namespace Autobattler.Units
         public void InyectDependences(Fighter fighter)
         {
             this.fighter = fighter;
+            image.sprite = fighter.Sprite;
         }
 
         #region MOUSE_INTERACTIONS

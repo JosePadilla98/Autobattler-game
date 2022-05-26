@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Autobattler.MutationsSystem.Mutations;
+using UnityEngine;
 
 namespace Autobattler.Units
 {
@@ -11,6 +12,7 @@ namespace Autobattler.Units
         public List<Mutation> disabledMutations;
         public List<Mutation> enabledMutations;
         public Stats stats;
+        public Sprite sprite;
 
         public _Unit()
         {
@@ -27,6 +29,8 @@ namespace Autobattler.Units
 
             foreach (var mutationModel in blueprint.mutations) 
                 AddNewMutation(new Mutation(mutationModel));
+
+            sprite = blueprint.sprite;
         }
 
         public object Clone()

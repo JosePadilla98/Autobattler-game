@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99e2d731a0a69074fbac329da3ce7d52, type: 3}
-  m_Name: b_creature
+  m_Name: base_creature 1
   m_EditorClassIdentifier: 
+  baseMutations: []
   level: 1
-  baseBlueprint: {fileID: 11400000, guid: 8bd979d1c29c2b6478dc2ea668086480, type: 2}
-  ultimate: {fileID: 11400000, guid: f6db7457053a7554c831c65c7a1561c0, type: 2}
-  mutators:
-  - {fileID: 11400000, guid: 07fb9cc44ea16c24d9408676da2efb32, type: 2}
+  mutations: []
+  sprite: {fileID: 21300000, guid: 7064d5260e501ec4f94d9acf14477604, type: 3}

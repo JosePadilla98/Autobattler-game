@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Autobattler.Grid;
 using Autobattler.MutationsSystem.Mutations;
+using UnityEngine;
 
 namespace Autobattler.Units
 {
@@ -15,11 +16,10 @@ namespace Autobattler.Units
         private readonly _Unit unit;
         public CombatValues combatValues;
 
-        //public TeamsManager teamsManager;
-        //public Battlefield battlefieldView;
-
         public Team Team => Team.PLAYER;
         public Position Position => new Position();
+
+        public Sprite Sprite => unit.sprite;
 
         public Fighter(_Unit unit)
         {

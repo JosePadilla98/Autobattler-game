@@ -14,12 +14,10 @@ namespace Autobattler.Units
         public UnityEvent<_Unit> onPointerEnterEvent;
         public UnityEvent<_Unit> onPointerExitEvent;
 
-        public Canvas canvas { get; private set; }
-
         public void InyectDependences(_Unit unit, Canvas canvas)
         {
             this.unit = unit;
-            this.canvas = canvas;
+            image.sprite = unit.sprite;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
