@@ -22,7 +22,7 @@ namespace Autobattler.DragAndDrop
       
         public Transform ParentWhileDragging { get => canvas.transform; }
 
-        public T itemDragged;
+        public T item;
 
         protected virtual void Awake()
         {
@@ -30,9 +30,9 @@ namespace Autobattler.DragAndDrop
             canvasGroup = GetComponent<CanvasGroup>();
             myTransform = transform;
             dropArea = myTransform.parent.GetComponent<DropArea<T>>();
-            dropArea.ItemContained = this;
+            dropArea.DraggableObj = this;
             canvas = dropArea.canvas;
-            itemDragged = GetComponent<T>();
+            item = GetComponent<T>();
         }
 
         #region DragFunctions
@@ -48,10 +48,8 @@ namespace Autobattler.DragAndDrop
             canvasGroup.blocksRaycasts = false;
 
             lastDropArea = dropArea;
-            dropArea.ItemContained = null;
+            dropArea.OnItemUnnatached(item);
             dropArea = null;
-
-            lastDropArea.UnattachItem();
         }
 
         public void OnDrag(PointerEventData eventData)

@@ -6,8 +6,7 @@ using UnityEngine;
 
 namespace Autobattler.DragAndDrop.Unit
 {
-    [RequireComponent(typeof(Slot_U_View))]
-    public class DropArea_Unit_Inventory : DropArea<UnitView>
+    public class Inventory_Slot_Unit : DropArea<UnitView>
     {
         public Inventory_Units inventory;
 
@@ -16,19 +15,15 @@ namespace Autobattler.DragAndDrop.Unit
 
         }
 
-        public void InyectDependencies(Inventory_Units inventory)
+        public void InyectDependencies(Canvas canvas, Inventory_Units inventory)
         {
+            this.canvas = canvas;
             this.inventory = inventory;
         }
 
-        public override void OnItemDropped(UnitView item)
+        public override void OnItemDropped(UnitView view)
         {
-
-        }
-
-        internal override void UnattachItem()
-        {
-
+            inventory.AttachUnit(view.unit);
         }
     }
 }

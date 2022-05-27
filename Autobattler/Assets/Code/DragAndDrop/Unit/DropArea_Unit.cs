@@ -16,12 +16,12 @@ namespace Autobattler.DragAndDrop.Unit
             slotView = GetComponent<Slot_U_View>();
         }
 
-        public override void OnItemDropped(UnitView item)
+        public override void OnItemDropped(UnitView view)
         {
-            slotView.AttachUnitView(item);
+            slotView.AttachUnitView(view);
         }
 
-        internal override void UnattachItem()
+        public override void OnItemUnnatached(UnitView view)
         {
             slotView.UnattachUnit();
         }

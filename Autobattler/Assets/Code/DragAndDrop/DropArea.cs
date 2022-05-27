@@ -9,14 +9,14 @@ namespace Autobattler.DragAndDrop
     {
         public Canvas canvas;
 
-        private GenericDragObject<T> itemContained;
-        public GenericDragObject<T> ItemContained
+        private GenericDragObject<T> draggableObj;
+        public GenericDragObject<T> DraggableObj
         {
-            get => itemContained;
+            get => draggableObj;
             set
             {
-                itemContained = value;
-                itemTransform = (itemContained != null) ? itemContained.transform : null;
+                draggableObj = value;
+                itemTransform = (draggableObj != null) ? draggableObj.transform : null;
             }
         }
 
@@ -24,7 +24,7 @@ namespace Autobattler.DragAndDrop
 
         public void OnDrop(PointerEventData eventData)
         {
-            if (!ItemContained)
+            if (!DraggableObj)
             {
                 AttachItem(GenericDragObject<T>.objBeingDragged);
             }
@@ -36,28 +36,28 @@ namespace Autobattler.DragAndDrop
 
         private void AttachItem(GenericDragObject<T> item)
         {
-            ItemContained = item;
-            ItemContained.dropArea = this;
+            DraggableObj = item;
+            DraggableObj.dropArea = this;
             itemTransform.SetParent(transform);
             itemTransform.position = transform.position;
-            ItemContained.Rect.anchoredPosition = Vector3.zero;
-            OnItemDropped(ItemContained.itemDragged);
+            DraggableObj.Rect.anchoredPosition = Vector3.zero;
+            OnItemDropped(DraggableObj.item);
         }
 
         private void SwapPlaces(GenericDragObject<T> itemToSwap)
         {
-            itemToSwap.lastDropArea.AttachItem(ItemContained);
+            itemToSwap.lastDropArea.AttachItem(DraggableObj);
             AttachItem(itemToSwap);
         }
 
-        public virtual void OnItemDropped(T item)
+        public virtual void OnItemDropped(T view)
         {
 
         }
 
-        internal virtual void UnattachItem()
+        public virtual void OnItemUnnatached(T view)
         {
-            
+
         }
     }
 }
