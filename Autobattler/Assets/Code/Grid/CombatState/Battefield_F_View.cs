@@ -16,6 +16,4 @@ namespace Autobattler.Grid.CombatState
 
         }
     }
-
-    
 }

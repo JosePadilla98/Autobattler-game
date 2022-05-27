@@ -24,6 +24,6 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     frontColumn:
-    - {fileID: 11400000, guid: 5fc71234dfe20cb4e871c0610fbd50c1, type: 2}
+    - {fileID: 11400000, guid: 8731176104d276d4190b1afc0941a77c, type: 2}
     - {fileID: 11400000, guid: 5fc71234dfe20cb4e871c0610fbd50c1, type: 2}
     - {fileID: 0}

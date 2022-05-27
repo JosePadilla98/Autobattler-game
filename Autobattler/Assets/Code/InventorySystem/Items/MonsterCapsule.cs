@@ -7,7 +7,7 @@ namespace Autobattler.InventorySystem.Items
     {
         public override void OnClick()
         {
-            Debug.Log("hola");
+
         }
     }
 

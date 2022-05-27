@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 namespace Autobattler.DragAndDrop.Unit
 {
     [RequireComponent(typeof(UnitView))]
-    public class Drag_UnitView : GenericDragObject<UnitView>
+    public class Drag_Unit : GenericDragObject<UnitView>
     {
 
     }
