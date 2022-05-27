@@ -6,13 +6,13 @@ namespace Autobattler.Screens
     public class InventoryScreen : MonoBehaviour
     {
         public GameObject mainScreen;
-        public GameEvent goToMainScreen;
+        public GameEvent goToMainScreenEvent;
 
         public void Update()
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
-                goToMainScreen.Raise();
+                goToMainScreenEvent.Raise();
                 gameObject.SetActive(false);
             }
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Autobattler.GameControllers;
 using Autobattler.Grid;
-using Autobattler.Grid.ManagementState;
+using Autobattler.Grid.Logic;
 using Autobattler.ScriptableCollections;
 using Autobattler.Units;
 using UnityEngine;

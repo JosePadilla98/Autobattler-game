@@ -1,7 +1,7 @@
 ﻿using Autobattler.Units;
 using UnityEngine;
 
-namespace Autobattler.Grid.ManagementState
+namespace Autobattler.Grid.Views
 {
     public class Battefield_U_View : MonoBehaviour
     {

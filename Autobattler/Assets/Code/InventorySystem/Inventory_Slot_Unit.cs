@@ -1,10 +1,8 @@
-using System;
-using Autobattler.Grid.ManagementState;
-using Autobattler.InventorySystem;
+using Autobattler.DragAndDrop;
 using Autobattler.Units;
 using UnityEngine;
 
-namespace Autobattler.DragAndDrop.Unit
+namespace Autobattler.InventorySystem
 {
     public class Inventory_Slot_Unit : DropArea<UnitView>
     {

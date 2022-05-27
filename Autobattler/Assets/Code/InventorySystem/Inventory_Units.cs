@@ -35,9 +35,12 @@ namespace Autobattler.InventorySystem
 
         public void RemoveEmptySlot()
         {
+            if(slots.Count == 1)
+                return;
+
             var slotToRemove = slots[^1];
             slots.Remove(slotToRemove);
-            Destroy(slotToRemove);
+            Destroy(slotToRemove.gameObject);
         }
     }
 }

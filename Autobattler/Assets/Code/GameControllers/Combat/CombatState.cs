@@ -1,4 +1,4 @@
-﻿using Autobattler.Grid.CombatState;
+﻿using Autobattler.Grid.Logic;
 using UnityEngine;
 
 namespace Autobattler.GameControllers.Combat

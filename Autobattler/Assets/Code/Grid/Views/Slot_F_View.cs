@@ -1,7 +1,8 @@
-﻿using Autobattler.Units;
+﻿using Autobattler.Grid.Logic;
+using Autobattler.Units;
 using UnityEngine;
 
-namespace Autobattler.Grid.CombatState
+namespace Autobattler.Grid.Views
 {
     public class Slot_F_View : MonoBehaviour
     {

@@ -1,4 +1,6 @@
 ﻿using System;
+using Autobattler.Grid.Logic;
+using Autobattler.Grid.Views;
 using Autobattler.Units;
 using UnityEngine;
 
