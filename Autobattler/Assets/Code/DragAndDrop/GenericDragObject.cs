@@ -30,7 +30,7 @@ namespace Autobattler.DragAndDrop
             canvasGroup = GetComponent<CanvasGroup>();
             myTransform = transform;
             dropArea = myTransform.parent.GetComponent<DropArea<T>>();
-            dropArea.DraggableObj = this;
+            dropArea.SetDraggableObj(this);
             canvas = dropArea.canvas;
             item = GetComponent<T>();
         }
@@ -48,7 +48,7 @@ namespace Autobattler.DragAndDrop
             canvasGroup.blocksRaycasts = false;
 
             lastDropArea = dropArea;
-            dropArea.OnItemUnnatached(item);
+            dropArea.OnPlayerTakeAwayItem(item);
             dropArea = null;
         }
 

@@ -8,8 +8,7 @@ namespace Autobattler.DragAndDrop.Unit
     [RequireComponent(typeof(Slot_U_View))]
     public class DropArea_Unit : DropArea<UnitView>
     {
-        public Slot_U_View slotView;
-
+        private Slot_U_View slotView;
 
         private void Awake()
         {
@@ -18,11 +17,13 @@ namespace Autobattler.DragAndDrop.Unit
 
         public override void OnItemDropped(UnitView view)
         {
-            slotView.AttachUnitView(view);
+            base.OnItemDropped(view);
+            slotView.PlayerHasDroppedAUnitHere(view);
         }
 
-        public override void OnItemUnnatached(UnitView view)
+        public override void OnPlayerTakeAwayItem(UnitView view)
         {
+            base.OnPlayerTakeAwayItem(view);
             slotView.UnattachUnit();
         }
     }

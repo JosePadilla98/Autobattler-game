@@ -5,28 +5,26 @@ using UnityEngine.EventSystems;
 
 namespace Autobattler.DragAndDrop
 {
-    public class DropArea<T> : MonoBehaviour, IDropHandler
+    public abstract class DropArea<T> : MonoBehaviour, IDropHandler
     {
         public Canvas canvas;
 
         private GenericDragObject<T> draggableObj;
-        public GenericDragObject<T> DraggableObj
-        {
-            get => draggableObj;
-            set
-            {
-                draggableObj = value;
-                itemTransform = (draggableObj != null) ? draggableObj.transform : null;
-            }
-        }
 
-        private Transform itemTransform;
+        /// <summary>
+        /// Se llama sólo desde el awake del dragObject: Cuando la lógica instancia al item.
+        /// </summary>
+        /// <param name="draggableObj"></param>
+        public void SetDraggableObj(GenericDragObject<T> draggableObj)
+        {
+            this.draggableObj = draggableObj;
+        }
 
         public void OnDrop(PointerEventData eventData)
         {
-            if (!DraggableObj)
+            if (!draggableObj)
             {
-                AttachItem(GenericDragObject<T>.objBeingDragged);
+                Drop(GenericDragObject<T>.objBeingDragged);
             }
             else
             {
@@ -34,20 +32,26 @@ namespace Autobattler.DragAndDrop
             }
         }
 
-        private void AttachItem(GenericDragObject<T> item)
+        /// <summary>
+        /// Se llama sólo cuando el player dropea el item con el mouse
+        /// </summary>
+        /// <param name="item"></param>
+        private void Drop(GenericDragObject<T> item)
         {
-            DraggableObj = item;
-            DraggableObj.dropArea = this;
+            draggableObj = item;
+            draggableObj.dropArea = this;
+
+            Transform itemTransform = draggableObj.transform;
             itemTransform.SetParent(transform);
             itemTransform.position = transform.position;
-            DraggableObj.Rect.anchoredPosition = Vector3.zero;
-            OnItemDropped(DraggableObj.item);
+            draggableObj.Rect.anchoredPosition = Vector3.zero;
+            OnItemDropped(draggableObj.item);
         }
 
         private void SwapPlaces(GenericDragObject<T> itemToSwap)
         {
-            itemToSwap.lastDropArea.AttachItem(DraggableObj);
-            AttachItem(itemToSwap);
+            itemToSwap.lastDropArea.Drop(draggableObj);
+            Drop(itemToSwap);
         }
 
         public virtual void OnItemDropped(T view)
@@ -55,9 +59,13 @@ namespace Autobattler.DragAndDrop
 
         }
 
-        public virtual void OnItemUnnatached(T view)
+        /// <summary>
+        /// Se llama cuando el player se lleva el item con el mouse
+        /// </summary>
+        /// <param name="item"></param>
+        public virtual void OnPlayerTakeAwayItem(T view)
         {
-
+            draggableObj = null;
         }
     }
 }
