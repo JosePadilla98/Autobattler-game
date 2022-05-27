@@ -20,11 +20,5 @@ namespace Autobattler.DragAndDrop.Unit
             base.OnItemDropped(view);
             slotView.AttachUnit(view);
         }
-
-        public override void OnPlayerTakeAwayItem(UnitView view)
-        {
-            base.OnPlayerTakeAwayItem(view);
-            slotView.UnattachUnit();
-        }
     }
 }

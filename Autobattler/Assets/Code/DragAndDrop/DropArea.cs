@@ -9,7 +9,7 @@ namespace Autobattler.DragAndDrop
     {
         public Canvas canvas;
 
-        private GenericDragObject<T> draggableObj;
+        protected GenericDragObject<T> draggableObj;
 
         /// <summary>
         /// Se llama sólo desde el awake del dragObject: Cuando la lógica instancia al item.
@@ -45,6 +45,8 @@ namespace Autobattler.DragAndDrop
             itemTransform.SetParent(transform);
             itemTransform.position = transform.position;
             draggableObj.Rect.anchoredPosition = Vector3.zero;
+
+            draggableObj.onDropAction?.Invoke(this, draggableObj);
             OnItemDropped(draggableObj.item);
         }
 
@@ -63,7 +65,7 @@ namespace Autobattler.DragAndDrop
         /// Se llama cuando el player se lleva el item con el mouse
         /// </summary>
         /// <param name="item"></param>
-        public virtual void OnPlayerTakeAwayItem(T view)
+        public virtual void OnPlayerTakeAwayMyItem(GenericDragObject<T> draggable)
         {
             draggableObj = null;
         }

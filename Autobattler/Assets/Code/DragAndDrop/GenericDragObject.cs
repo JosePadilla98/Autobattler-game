@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 namespace Autobattler.DragAndDrop
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public abstract class GenericDragObject<T> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public abstract class GenericDragObject<T> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDragAndDropEvent
     {
         public static GenericDragObject<T> objBeingDragged;
 
@@ -19,8 +21,9 @@ namespace Autobattler.DragAndDrop
         [HideInInspector]
         public DropArea<T> lastDropArea;
         public RectTransform Rect { get; private set; }
-      
         public Transform ParentWhileDragging { get => canvas.transform; }
+
+        public Action<DropArea<T>, GenericDragObject<T>> onDropAction;
 
         public T item;
 
@@ -48,7 +51,7 @@ namespace Autobattler.DragAndDrop
             canvasGroup.blocksRaycasts = false;
 
             lastDropArea = dropArea;
-            dropArea.OnPlayerTakeAwayItem(item);
+            dropArea.OnPlayerTakeAwayMyItem(this);
             dropArea = null;
         }
 

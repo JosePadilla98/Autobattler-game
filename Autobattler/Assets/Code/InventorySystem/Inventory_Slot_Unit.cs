@@ -1,3 +1,4 @@
+using System.Data;
 using Autobattler.DragAndDrop;
 using Autobattler.Units;
 using UnityEngine;
@@ -20,10 +21,20 @@ namespace Autobattler.InventorySystem
             inventory.AttachUnit(view.unit);
         }
 
-        public override void OnPlayerTakeAwayItem(UnitView view)
+        public override void OnPlayerTakeAwayMyItem(GenericDragObject<UnitView> draggable)
         {
-            base.OnPlayerTakeAwayItem(view);
-            inventory.UnattachUnit(view.unit);
+            base.OnPlayerTakeAwayMyItem(draggable);
+            draggable.onDropAction += MyItemHasDropSomewhere;
+        }
+
+        private void MyItemHasDropSomewhere(DropArea<UnitView> dropArea, GenericDragObject<UnitView> obj)
+        {
+            if (dropArea is not Inventory_Slot_Unit)
+            {
+                inventory.UnattachUnit(obj.item.unit);
+            }
+
+            obj.onDropAction -= MyItemHasDropSomewhere;
         }
     }
 }
