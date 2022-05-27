@@ -38,7 +38,7 @@ namespace Autobattler.Grid.ManagementState
             logic.UnnatachItem();
         }
 
-        public void PlayerHasDroppedAUnitHere(UnitView unitView)
+        public void AttachUnit(UnitView unitView)
         {
             logic.AttachItem(unitView.unit);
         }
