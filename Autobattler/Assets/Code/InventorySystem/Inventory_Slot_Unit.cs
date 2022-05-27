@@ -10,11 +10,6 @@ namespace Autobattler.DragAndDrop.Unit
     {
         public Inventory_Units inventory;
 
-        private void Awake()
-        {
-
-        }
-
         public void InyectDependencies(Canvas canvas, Inventory_Units inventory)
         {
             this.canvas = canvas;
@@ -23,7 +18,14 @@ namespace Autobattler.DragAndDrop.Unit
 
         public override void OnItemDropped(UnitView view)
         {
+            base.OnItemDropped(view);
             inventory.AttachUnit(view.unit);
+        }
+
+        public override void OnPlayerTakeAwayItem(UnitView view)
+        {
+            base.OnPlayerTakeAwayItem(view);
+            inventory.UnattachUnit(view.unit);
         }
     }
 }

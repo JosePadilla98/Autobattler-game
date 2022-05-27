@@ -20,7 +20,7 @@ namespace Autobattler.InventorySystem
             AddNewSlot();
         }
 
-        public void OnUnitUnattached(_Unit unit)
+        public void UnattachUnit(_Unit unit)
         {
             unitsInBench.Collection.Remove(unit);
             RemoveEmptySlot();

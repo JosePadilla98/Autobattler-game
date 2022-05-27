@@ -18,7 +18,7 @@ namespace Autobattler.DragAndDrop.Unit
         public override void OnItemDropped(UnitView view)
         {
             base.OnItemDropped(view);
-            slotView.PlayerHasDroppedAUnitHere(view);
+            slotView.AttachUnit(view);
         }
 
         public override void OnPlayerTakeAwayItem(UnitView view)
