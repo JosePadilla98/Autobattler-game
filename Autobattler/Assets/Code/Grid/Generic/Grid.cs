@@ -4,6 +4,7 @@ namespace Autobattler.Grid.Generic
 {
     public class Grid<T> : ScriptableObject
     {
+        public GridsController<T> parent;
         public ItemContainer<T>[] back;
         public ItemContainer<T>[] front;
         public Side side;

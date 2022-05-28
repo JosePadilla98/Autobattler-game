@@ -8,7 +8,7 @@ namespace Autobattler.Grid.Generic
         public Grid<T> leftGrid;
         public Grid<T> rightGrid;
 
-        public void AttachItem(T item, Position pos)
+        public void BuildNewItem(T item, Position pos)
         {
             var slot = GetItemContainer(pos);
             slot.BuildNewItem(item);

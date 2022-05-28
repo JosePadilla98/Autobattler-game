@@ -34,7 +34,7 @@ namespace Autobattler.LevelSystem
                 var unit = new _Unit(build);
                 var position = new Position(i, column, side);
 
-                battlefield_U.AttachItem(unit, position);
+                battlefield_U.BuildNewItem(unit, position);
 
                 if(side == Side.LEFT)
                     playerData.teamInGrid.Collection.Add(unit);

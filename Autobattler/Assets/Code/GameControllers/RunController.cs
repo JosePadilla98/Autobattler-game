@@ -45,7 +45,7 @@ namespace Autobattler.GameControllers
                 playerFighters.Add(fighter);
 
                 Position pos = battlefield_U.GetItemPosition(unit);
-                battlefield_F.AttachItem(fighter, pos);
+                battlefield_F.BuildNewItem(fighter, pos);
             }
 
             //Pass enemies
@@ -58,7 +58,7 @@ namespace Autobattler.GameControllers
                 enemyFighters.Add(fighter);
 
                 Position pos = battlefield_U.GetItemPosition(unit);
-                battlefield_F.AttachItem(fighter, pos);
+                battlefield_F.BuildNewItem(fighter, pos);
             }
         }
     }

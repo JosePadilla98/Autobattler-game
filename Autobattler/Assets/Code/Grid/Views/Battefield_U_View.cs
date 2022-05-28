@@ -1,4 +1,5 @@
-﻿using Autobattler.Units;
+﻿using Autobattler.ScriptableCollections;
+using Autobattler.Units;
 using UnityEngine;
 
 namespace Autobattler.Grid.Views
@@ -9,5 +10,6 @@ namespace Autobattler.Grid.Views
         public UnitView playerUnitViewPrefab;
         public Canvas canvas;
 
+        public UnitsCollection playerUnitsInGrid; 
     }
 }

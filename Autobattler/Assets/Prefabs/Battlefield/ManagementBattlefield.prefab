@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7719885460405327535, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
       propertyPath: m_Name
-      value: Battlefield
+      value: ManagementBattlefield
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
@@ -117,6 +117,7 @@ MonoBehaviour:
   unitViewPrefab: {fileID: 8489279359288048098, guid: 9df2b92e090737a42aff824f1887c4e6, type: 3}
   playerUnitViewPrefab: {fileID: 6805044473620576278, guid: f3d07af718b7f764a8c4865b664cd358, type: 3}
   canvas: {fileID: 0}
+  playerUnitsInGrid: {fileID: 11400000, guid: a899abdbf7e040b4dbd7f7b5baa17acc, type: 2}
 --- !u!1 &8531450248405385725 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885459996645641, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}

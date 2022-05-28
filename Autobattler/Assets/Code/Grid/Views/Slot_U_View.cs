@@ -1,6 +1,7 @@
 ﻿using System;
 using Autobattler.Grid.Logic;
 using Autobattler.Grid.Views;
+using Autobattler.ScriptableCollections;
 using Autobattler.Units;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Autobattler.Grid.ManagementState
     {
         public Slot_U logic;
         public Battefield_U_View battlefieldView;
+        public UnitsCollection playerUnitsInGrid => battlefieldView.playerUnitsInGrid;
 
         public Side Side
         {
@@ -35,14 +37,16 @@ namespace Autobattler.Grid.ManagementState
             }
         }
 
-        internal void UnattachUnit()
+        internal void UnattachUnit(UnitView unitView)
         {
             logic.UnnatachItem();
+            playerUnitsInGrid.Collection.Remove(unitView.unit);
         }
 
         public void AttachUnit(UnitView unitView)
         {
             logic.AttachItem(unitView.unit);
+            playerUnitsInGrid.Collection.Add(unitView.unit);
         }
 
         private UnitView PrefabToInstantiate()
