@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Autobattler.DragAndDrop.Unit
 {
     [RequireComponent(typeof(Slot_U_View))]
-    public class DropArea_Unit : DropArea<UnitView>
+    public class DropArea_Unit : DropArea
     {
         private Slot_U_View slotView;
 
@@ -15,16 +15,21 @@ namespace Autobattler.DragAndDrop.Unit
             slotView = GetComponent<Slot_U_View>();
         }
 
-        public override void OnItemDropped(UnitView view)
+        protected override bool CanThisObjectBeDroppedHere(DraggableComponent draggable)
         {
-            base.OnItemDropped(view);
-            slotView.AttachUnit(view);
+            return draggable.item is UnitView;
         }
 
-        public override void OnPlayerTakeAwayMyItem(GenericDragObject<UnitView> draggable)
+        protected override void Drop(DraggableComponent draggable)
+        {
+            base.Drop(draggable);
+            slotView.AttachUnit(draggable.item as UnitView); 
+        }
+
+        public override void OnPlayerTakeAwayMyItem(DraggableComponent draggable)
         {
             base.OnPlayerTakeAwayMyItem(draggable);
-            slotView.UnattachUnit(draggable.item);
+            slotView.UnattachUnit(draggable.item as UnitView);
         }
     }
 }

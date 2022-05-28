@@ -2,10 +2,11 @@ using System.Data;
 using Autobattler.DragAndDrop;
 using Autobattler.Units;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Autobattler.InventorySystem
 {
-    public class Inventory_Slot_Unit : DropArea<UnitView>
+    public class Inventory_Slot_Unit : DropArea
     {
         public Inventory_Units inventory;
 
@@ -15,26 +16,36 @@ namespace Autobattler.InventorySystem
             this.inventory = inventory;
         }
 
-        public override void OnItemDropped(UnitView view)
+        protected override bool CanThisObjectBeDroppedHere(DraggableComponent draggable)
         {
-            base.OnItemDropped(view);
-            inventory.AttachUnit(view.unit);
+            return draggable.item is UnitView;
         }
 
-        public override void OnPlayerTakeAwayMyItem(GenericDragObject<UnitView> draggable)
+        protected override void Drop(DraggableComponent draggable)
+        {
+            base.Drop(draggable);
+            inventory.AttachUnit(GetUnitFromDraggable(draggable));
+        }
+
+        public override void OnPlayerTakeAwayMyItem(DraggableComponent draggable)
         {
             base.OnPlayerTakeAwayMyItem(draggable);
             draggable.onDropAction += MyItemHasDropSomewhere;
         }
 
-        private void MyItemHasDropSomewhere(DropArea<UnitView> dropArea, GenericDragObject<UnitView> obj)
+        private void MyItemHasDropSomewhere(DropArea dropArea, DraggableComponent draggable)
         {
             if (dropArea is not Inventory_Slot_Unit)
             {
-                inventory.UnattachUnit(obj.item.unit);
+                inventory.UnattachUnit(GetUnitFromDraggable(draggable));
             }
 
-            obj.onDropAction -= MyItemHasDropSomewhere;
+            draggable.onDropAction -= MyItemHasDropSomewhere;
+        }
+
+        private _Unit GetUnitFromDraggable(DraggableComponent draggable)
+        {
+            return (draggable.item as UnitView).unit;
         }
     }
 }

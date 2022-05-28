@@ -6,43 +6,46 @@ using UnityEngine.UIElements;
 namespace Autobattler.DragAndDrop
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public abstract class GenericDragObject<T> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDragAndDropEvent
+    public class DraggableComponent : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDragAndDropEvent
     {
-        public static GenericDragObject<T> objBeingDragged;
-
         private CanvasGroup canvasGroup;
         private Transform myTransform;
         private Transform startParent;
         private Vector3 startPosition;
-        public Canvas canvas;
+        private Canvas canvas;
 
         [HideInInspector]
-        public DropArea<T> dropArea;
+        public DropArea dropArea;
         [HideInInspector]
-        public DropArea<T> lastDropArea;
+        public DropArea lastDropArea;
         public RectTransform Rect { get; private set; }
         public Transform ParentWhileDragging { get => canvas.transform; }
 
-        public Action<DropArea<T>, GenericDragObject<T>> onDropAction;
+        public Action<DropArea, DraggableComponent> onDropAction;
 
-        public T item;
+        public DraggableComponent ObjBeingDragged
+        {
+            get => ObjectBeingDragged.obj;
+            private set => ObjectBeingDragged.obj = value;
+        }
+
+        public MonoBehaviour item;
 
         protected virtual void Awake()
         {
             Rect = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             myTransform = transform;
-            dropArea = myTransform.parent.GetComponent<DropArea<T>>();
+            dropArea = myTransform.parent.GetComponent<DropArea>();
             dropArea.SetDraggableObj(this);
             canvas = dropArea.canvas;
-            item = GetComponent<T>();
         }
 
         #region DragFunctions
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            objBeingDragged = this;
+            ObjBeingDragged = this;
             startPosition = myTransform.position;
             startParent = myTransform.parent;
             myTransform.SetParent(ParentWhileDragging);
@@ -64,10 +67,10 @@ namespace Autobattler.DragAndDrop
         {
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
-            objBeingDragged = null;
+            ObjBeingDragged = null;
 
             if (myTransform.parent == ParentWhileDragging)
-            {   
+            {
                 //This represent that element is not dropped anywhere
                 myTransform.position = startPosition;
                 myTransform.SetParent(startParent);
