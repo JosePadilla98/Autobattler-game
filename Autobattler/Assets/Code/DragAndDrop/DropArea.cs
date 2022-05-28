@@ -14,7 +14,7 @@ namespace Autobattler.DragAndDrop
         private DraggableComponent objBeingDragged => ObjectBeingDragged.obj;
 
         /// <summary>
-        /// Se llama sólo desde el awake del dragObject: Cuando la lógica instancia al item.
+        /// Se llama sólo desde el awake del draggableObj: Cuando la lógica lo instancia
         /// </summary>
         /// <param name="draggableObj"></param>
         public void SetDraggableObj(DraggableComponent draggableObj)

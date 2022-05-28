@@ -28,11 +28,11 @@ namespace Autobattler.InventorySystem
             switch (draggable.item)
             {
                 case UnitView unitView:
-                    inventory.AttachUnit(unitView.unit);
+                    inventory.CheckIfAttachUnit(unitView.unit);
                     break;
 
                 case Item item:
-                    inventory.AttachItem(item);
+                    inventory.CheckIfAttachItem(item);
                     break;
             }
         }

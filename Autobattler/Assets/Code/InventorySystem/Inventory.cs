@@ -9,20 +9,22 @@ namespace Autobattler.InventorySystem
     public class Inventory : MonoBehaviour
     {
         public UnitsCollection unitsInBench;
-
+        public ItemsColecttions items;
 
         public Inventory_Slot slotPrefab;
         public Canvas canvas;
         public List<Inventory_Slot> slots;
 
-        public void AttachUnit(_Unit unit)
+        public void CheckIfAttachUnit(_Unit unit)
         {
-            if(unitsInBench.Collection.Contains(unit))
-               return;
-
+            if (unitsInBench.Collection.Contains(unit))
+            {
+                //Player has only change the item's cell
+                return;
+            }
+              
             unitsInBench.Collection.Add(unit);
             CheckToAddNewSlot();
-
 
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
 
@@ -46,7 +48,7 @@ namespace Autobattler.InventorySystem
             #endif
         }
 
-        public void AttachItem(Item item)
+        public void CheckIfAttachItem(Item item)
         {
 
         }
@@ -54,6 +56,11 @@ namespace Autobattler.InventorySystem
         public void UnattachItem(Item item)
         {
 
+        }
+
+        public void AttachNewBuildedItem(Item item)
+        {
+            slots[^1].Set
         }
 
         public void CheckToAddNewSlot()
