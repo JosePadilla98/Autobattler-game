@@ -16,3 +16,4 @@ MonoBehaviour:
   level: 1
   mutations: []
   sprite: {fileID: 21300000, guid: 7064d5260e501ec4f94d9acf14477604, type: 3}
+  name: Yeti
