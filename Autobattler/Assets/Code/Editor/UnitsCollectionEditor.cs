@@ -1,3 +1,4 @@
+using System;
 using Autobattler.ScriptableCollections;
 using Autobattler.Units;
 using UnityEditor;
@@ -25,6 +26,11 @@ namespace Autobattler
             {
                 EditorGUILayout.LabelField(unit.name);
             }
+        }
+
+        public override bool RequiresConstantRepaint()
+        {
+            return true;
         }
     }
 }

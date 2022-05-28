@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
+using Autobattler.InventorySystem;
 using Autobattler.Units;
 using UnityEngine;
 
 namespace Autobattler.ScriptableCollections
 {
-    [CreateAssetMenu(fileName = "UnitsCollection", menuName = "ScriptableObjects/Collections/Units")]
-    public class UnitsCollection : ScriptableObject
+    [CreateAssetMenu(fileName = "ItemsColecttions", menuName = "ScriptableObjects/Collections/Items")]
+    public class ItemsColecttions : ScriptableObject
     {
-        private List<_Unit> collection;
+        private List<Item> collection;
 
-        public List<_Unit> Collection
+        public List<Item> Collection
         {
             get
             {

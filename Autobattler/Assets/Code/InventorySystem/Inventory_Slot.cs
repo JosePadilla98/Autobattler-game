@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 namespace Autobattler.InventorySystem
 {
-    public class Inventory_Slot_Unit : DropArea
+    public class Inventory_Slot : DropArea
     {
-        public Inventory_Units inventory;
+        public Inventory inventory;
 
-        public void InyectDependencies(Canvas canvas, Inventory_Units inventory)
+        public void InyectDependencies(Canvas canvas, Inventory inventory)
         {
             this.canvas = canvas;
             this.inventory = inventory;
@@ -18,13 +18,22 @@ namespace Autobattler.InventorySystem
 
         protected override bool CanThisObjectBeDroppedHere(DraggableComponent draggable)
         {
-            return draggable.item is UnitView;
+            return (draggable.item is UnitView or Item);
         }
 
         protected override void Drop(DraggableComponent draggable)
         {
             base.Drop(draggable);
-            inventory.AttachUnit(GetUnitFromDraggable(draggable));
+
+            if (draggable.item is UnitView unitView)
+            {
+                inventory.AttachUnit(unitView.unit);
+            }
+
+            if (draggable.item is Item item)
+            {
+                inventory.AttachItem(item);
+            }
         }
 
         public override void OnPlayerTakeAwayMyItem(DraggableComponent draggable)
@@ -35,17 +44,21 @@ namespace Autobattler.InventorySystem
 
         private void MyItemHasDropSomewhere(DropArea dropArea, DraggableComponent draggable)
         {
-            if (dropArea is not Inventory_Slot_Unit)
+            if (dropArea is not Inventory_Slot)
             {
-                inventory.UnattachUnit(GetUnitFromDraggable(draggable));
+
+                if (draggable.item is UnitView unitView)
+                {
+                    inventory.UnattachUnit(unitView.unit);
+                }
+
+                if (draggable.item is Item item)
+                {
+                    inventory.UnattachItem(item);
+                }
             }
 
             draggable.onDropAction -= MyItemHasDropSomewhere;
-        }
-
-        private _Unit GetUnitFromDraggable(DraggableComponent draggable)
-        {
-            return (draggable.item as UnitView).unit;
         }
     }
 }

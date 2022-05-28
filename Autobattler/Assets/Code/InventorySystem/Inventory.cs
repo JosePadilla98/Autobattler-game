@@ -6,13 +6,14 @@ using UnityEngine;
 
 namespace Autobattler.InventorySystem
 {
-    public class Inventory_Units : MonoBehaviour
+    public class Inventory : MonoBehaviour
     {
         public UnitsCollection unitsInBench;
-        public Inventory_Slot_Unit slotPrefab;
-        public Canvas canvas;
 
-        public List<Inventory_Slot_Unit> slots;
+
+        public Inventory_Slot slotPrefab;
+        public Canvas canvas;
+        public List<Inventory_Slot> slots;
 
         public void AttachUnit(_Unit unit)
         {
@@ -20,11 +21,7 @@ namespace Autobattler.InventorySystem
                 return;
 
             unitsInBench.Collection.Add(unit);
-
-            if (unitsInBench.Collection.Count == slots.Count)
-            {
-                AddNewSlot();
-            }
+            CheckToAddNewSlot();
         }
 
         public void UnattachUnit(_Unit unit)
@@ -33,9 +30,22 @@ namespace Autobattler.InventorySystem
             RemoveEmptySlot();
         }
 
-        public void AddNewSlot()
+        public void AttachItem(Item item)
         {
-            Inventory_Slot_Unit slot = Instantiate<Inventory_Slot_Unit>(slotPrefab, transform);
+
+        }
+
+        public void UnattachItem(Item item)
+        {
+
+        }
+
+        public void CheckToAddNewSlot()
+        {
+            if(ElementsCount() != slots.Count)
+                return;
+
+            Inventory_Slot slot = Instantiate<Inventory_Slot>(slotPrefab, transform);
             slot.InyectDependencies(canvas, this);
             slots.Add(slot);
         }
@@ -48,6 +58,11 @@ namespace Autobattler.InventorySystem
             var slotToRemove = slots[^1];
             slots.Remove(slotToRemove);
             Destroy(slotToRemove.gameObject);
+        }
+
+        private int ElementsCount()
+        {
+            return unitsInBench.Collection.Count;
         }
     }
 }
