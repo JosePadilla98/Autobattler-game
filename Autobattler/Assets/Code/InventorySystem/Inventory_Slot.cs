@@ -21,7 +21,7 @@ namespace Autobattler.InventorySystem
             return (draggable.item is UnitView or Item);
         }
 
-        protected override void Drop(DraggableComponent draggable)
+        public override void Drop(DraggableComponent draggable)
         {
             base.Drop(draggable);
 
@@ -39,26 +39,21 @@ namespace Autobattler.InventorySystem
         public override void OnPlayerTakeAwayMyItem(DraggableComponent draggable)
         {
             base.OnPlayerTakeAwayMyItem(draggable);
-            draggable.onDropAction += MyItemHasDropSomewhere;
+
+            if (draggable.item is UnitView unitView)
+            {
+                inventory.UnattachUnit(unitView.unit);
+            }
+
+            if (draggable.item is Item item)
+            {
+                inventory.UnattachItem(item);
+            }
         }
 
         private void MyItemHasDropSomewhere(DropArea dropArea, DraggableComponent draggable)
         {
-            if (dropArea is not Inventory_Slot)
-            {
-
-                if (draggable.item is UnitView unitView)
-                {
-                    inventory.UnattachUnit(unitView.unit);
-                }
-
-                if (draggable.item is Item item)
-                {
-                    inventory.UnattachItem(item);
-                }
-            }
-
-            draggable.onDropAction -= MyItemHasDropSomewhere;
+            
         }
     }
 }

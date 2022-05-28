@@ -63,6 +63,10 @@ namespace Autobattler.DragAndDrop
             Rect.anchoredPosition += eventData.delta / canvas.scaleFactor;
         }
 
+        /// <summary>
+        /// Se llama antes del OnDrop de DropArea
+        /// </summary>
+        /// <param name="eventData"></param>
         public void OnEndDrag(PointerEventData eventData)
         {
             canvasGroup.alpha = 1f;
@@ -75,6 +79,7 @@ namespace Autobattler.DragAndDrop
                 myTransform.position = startPosition;
                 myTransform.SetParent(startParent);
                 dropArea = lastDropArea;
+                dropArea.Drop(this);
             }
         }
 

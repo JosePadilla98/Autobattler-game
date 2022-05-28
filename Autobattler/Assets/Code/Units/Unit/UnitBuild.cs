@@ -1,3 +1,4 @@
+using System;
 using Autobattler.MutationsSystem.Mutations;
 using UnityEngine;
 
@@ -10,5 +11,6 @@ namespace Autobattler.Units
         public int level;
         public MutationModel[] mutations;
         public Sprite sprite;
+        public String name = "NoName";
     }
 }

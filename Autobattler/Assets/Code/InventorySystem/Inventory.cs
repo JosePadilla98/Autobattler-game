@@ -17,15 +17,14 @@ namespace Autobattler.InventorySystem
 
         public void AttachUnit(_Unit unit)
         {
-            if(unitsInBench.Collection.Contains(unit))
-                return;
-
+            Debug.Log("attach : " + unit.name);
             unitsInBench.Collection.Add(unit);
             CheckToAddNewSlot();
         }
 
         public void UnattachUnit(_Unit unit)
         {
+            Debug.Log("Unattach " + unit.name);
             unitsInBench.Collection.Remove(unit);
             RemoveEmptySlot();
         }

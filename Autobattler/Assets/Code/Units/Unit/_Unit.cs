@@ -7,12 +7,12 @@ namespace Autobattler.Units
 {
     public class _Unit : ICloneable
     {
-        public String name = "NoName";
+        public String name;
+        public Sprite sprite;
+        public Stats stats;
         public List<Mutation> baseMutations;
         public List<Mutation> disabledMutations;
         public List<Mutation> enabledMutations;
-        public Stats stats;
-        public Sprite sprite;
 
         public _Unit()
         {
@@ -24,13 +24,14 @@ namespace Autobattler.Units
 
         public _Unit(UnitBuild blueprint) : this()
         {
-            foreach (var mutationModel in blueprint.mutations) 
-                AddNewMutation(new Mutation(mutationModel));
-
-            foreach (var mutationModel in blueprint.mutations) 
-                AddNewMutation(new Mutation(mutationModel));
-
+            name = blueprint.name;
             sprite = blueprint.sprite;
+
+            foreach (var mutationModel in blueprint.mutations) 
+                AddNewMutation(new Mutation(mutationModel));
+
+            foreach (var mutationModel in blueprint.mutations) 
+                AddNewMutation(new Mutation(mutationModel));
         }
 
         public object Clone()

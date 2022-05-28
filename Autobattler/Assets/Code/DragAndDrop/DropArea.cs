@@ -44,8 +44,13 @@ namespace Autobattler.DragAndDrop
 
         private void SwapPlaces(DraggableComponent itemToSwap)
         {
-            itemToSwap.lastDropArea.Drop(draggableObj);
+            var itemWhoWhasHere = draggableObj;
+            var newAreaForOldItem = itemToSwap.lastDropArea;
+
+            OnPlayerTakeAwayMyItem(itemWhoWhasHere);
             Drop(itemToSwap);
+
+            newAreaForOldItem.Drop(itemWhoWhasHere);
         }
 
         /// <summary>
@@ -58,10 +63,10 @@ namespace Autobattler.DragAndDrop
         }
 
         /// <summary>
-        /// Se llama sólo cuando el player dropea el item con el mouse
+        /// Se llama sólo cuando el player dropea el item con el mouse o cuando vuelve por no haber sido arrastrado a ningún sitio
         /// </summary>
         /// <param name="draggable"></param>
-        protected virtual void Drop(DraggableComponent draggable)
+        public virtual void Drop(DraggableComponent draggable)
         {
             draggableObj = draggable;
             draggable.dropArea = this;
