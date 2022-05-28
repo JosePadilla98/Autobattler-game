@@ -7,9 +7,7 @@ namespace Autobattler
     public class DebugController : ScriptableObject
     {
         public DragAndDropDebug dragAndDrop;
-
-
-
+        public InventoryDebug inventory;
 
 
 
@@ -19,6 +17,12 @@ namespace Autobattler
         public class DragAndDropDebug
         {
             public bool unitsInGrid;
+        }
+
+        [Serializable]
+        public class InventoryDebug
+        {
+            public bool thingsAttached;
         }
     }
 }

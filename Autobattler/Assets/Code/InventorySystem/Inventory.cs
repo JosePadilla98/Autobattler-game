@@ -17,16 +17,33 @@ namespace Autobattler.InventorySystem
 
         public void AttachUnit(_Unit unit)
         {
-            Debug.Log("attach : " + unit.name);
+            if(unitsInBench.Collection.Contains(unit))
+               return;
+
             unitsInBench.Collection.Add(unit);
             CheckToAddNewSlot();
+
+
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
+
+            if (App.DebugController != null && App.DebugController.inventory.thingsAttached)
+                Debug.Log(unit.name + " attached in inventory");
+
+            #endif
         }
 
         public void UnattachUnit(_Unit unit)
         {
-            Debug.Log("Unattach " + unit.name);
             unitsInBench.Collection.Remove(unit);
             RemoveEmptySlot();
+
+
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
+
+            if (App.DebugController != null && App.DebugController.inventory.thingsAttached)
+                Debug.Log(unit.name + " unattached in inventory");
+
+            #endif
         }
 
         public void AttachItem(Item item)
