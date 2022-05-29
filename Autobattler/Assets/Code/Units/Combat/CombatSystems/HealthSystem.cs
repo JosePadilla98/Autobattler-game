@@ -1,4 +1,6 @@
-namespace Autobattler.Units
+using Autobattler.Units.Management;
+
+namespace Autobattler.Units.Combat.CombatSystems
 {
     public class HealthSystem : CombatSystem
     {

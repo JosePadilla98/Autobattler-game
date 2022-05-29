@@ -1,9 +1,8 @@
-using System;
-using Autobattler.Grid.ManagementState;
-using Autobattler.Units;
+using Autobattler.DragAndDrop;
+using Autobattler.Units.Management;
 using UnityEngine;
 
-namespace Autobattler.DragAndDrop.Unit
+namespace Autobattler.Grid.Views
 {
     [RequireComponent(typeof(Slot_U_View))]
     public class Slot_U_DropArea : DropArea

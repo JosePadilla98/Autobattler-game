@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Autobattler.DragAndDrop.Unit;
 using Autobattler.ScriptableCollections;
 using Autobattler.Units;
+using Autobattler.Units.Management;
 using UnityEngine;
 
 namespace Autobattler.InventorySystem
@@ -15,7 +15,7 @@ namespace Autobattler.InventorySystem
         public Canvas canvas;
         public List<Inventory_Slot> slots;
 
-        public void CheckIfAttachUnit(_Unit unit)
+        public void CheckIfAttachUnit(Unit unit)
         {
             if (unitsInBench.Collection.Contains(unit))
             {
@@ -34,7 +34,7 @@ namespace Autobattler.InventorySystem
             #endif
         }
 
-        public void UnattachUnit(_Unit unit)
+        public void UnattachUnit(Unit unit)
         {
             unitsInBench.Collection.Remove(unit);
             RemoveEmptySlot();
@@ -60,7 +60,7 @@ namespace Autobattler.InventorySystem
 
         public void AttachNewBuildedItem(Item item)
         {
-            slots[^1].Set
+            //slots[^1].Set
         }
 
         public void CheckToAddNewSlot()

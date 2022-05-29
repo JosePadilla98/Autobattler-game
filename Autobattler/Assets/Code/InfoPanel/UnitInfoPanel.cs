@@ -1,5 +1,7 @@
 using Autobattler.Configs;
 using Autobattler.Units;
+using Autobattler.Units.Combat;
+using Autobattler.Units.Management;
 using UnityEngine;
 
 namespace Autobattler.InfoPanel
@@ -78,12 +80,12 @@ namespace Autobattler.InfoPanel
 
         #region EVENT METHODS
 
-        public void AttachUnit(_Unit unit)
+        public void AttachUnit(Unit unit)
         {
             FillTexts(unit.stats);
         }
 
-        public void UnattachUnit(_Unit unit)
+        public void UnattachUnit(Unit unit)
         {
             EmptyTexts();
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Autobattler.Units;
+using Autobattler.Units.Management;
 using UnityEngine;
 
 namespace Autobattler.ScriptableCollections
@@ -7,9 +8,9 @@ namespace Autobattler.ScriptableCollections
     [CreateAssetMenu(fileName = "UnitsCollection", menuName = "ScriptableObjects/Collections/Units")]
     public class UnitsCollection : ScriptableObject
     {
-        private List<_Unit> collection;
+        private List<Unit> collection;
 
-        public List<_Unit> Collection
+        public List<Unit> Collection
         {
             get
             {

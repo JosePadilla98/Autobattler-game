@@ -1,6 +1,6 @@
 using Autobattler.MutationsSystem.Mutations;
 
-namespace Autobattler.Units
+namespace Autobattler.Units.Management
 {
     public class UnitRunData
     {

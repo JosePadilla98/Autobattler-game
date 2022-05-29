@@ -1,7 +1,8 @@
 ﻿using System;
+using Autobattler.Units.Management;
 using UnityEngine;
 
-namespace Autobattler.Units.InfoBars
+namespace Autobattler.Units.Combat.View.InfoBars
 {
     [Serializable]
     public class UnitInfoBars

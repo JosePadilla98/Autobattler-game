@@ -5,6 +5,8 @@ using Autobattler.Grid;
 using Autobattler.Grid.Generic;
 using Autobattler.LevelSystem;
 using Autobattler.Units;
+using Autobattler.Units.Combat;
+using Autobattler.Units.Management;
 using UnityEngine;
 
 namespace Autobattler.GameControllers
@@ -33,13 +35,13 @@ namespace Autobattler.GameControllers
         public void PassManagementDataToCombatState()
         {
             //Pass player units
-            List<_Unit> playerUnits = managementData.playerData.teamInGrid.Collection;
+            List<Unit> playerUnits = managementData.playerData.teamInGrid.Collection;
             List<Fighter> playerFighters = combatState.teamsController.playerFighters.Collection;
 
-            GridsController<_Unit> battlefield_U = managementData.managementBattlefield;
+            GridsController<Unit> battlefield_U = managementData.managementBattlefield;
             GridsController<Fighter> battlefield_F = combatState.battlefield;
 
-            foreach (_Unit unit in playerUnits)
+            foreach (Unit unit in playerUnits)
             {
                 Fighter fighter = new Fighter(unit);
                 playerFighters.Add(fighter);
@@ -49,10 +51,10 @@ namespace Autobattler.GameControllers
             }
 
             //Pass enemies
-            List<_Unit> enemyUnits = managementData.enemies.Collection;
+            List<Unit> enemyUnits = managementData.enemies.Collection;
             List<Fighter> enemyFighters = combatState.teamsController.enemies.Collection;
 
-            foreach (_Unit unit in enemyUnits)
+            foreach (Unit unit in enemyUnits)
             {
                 Fighter fighter = new Fighter(unit);
                 enemyFighters.Add(fighter);

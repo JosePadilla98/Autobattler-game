@@ -1,20 +1,19 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Autobattler.Units
+namespace Autobattler.Units.Management
 {
     public class UnitView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public Image image;
-        public _Unit unit;
+        public Unit unit;
 
-        public UnityEvent<_Unit> onPointerEnterEvent;
-        public UnityEvent<_Unit> onPointerExitEvent;
+        public UnityEvent<Unit> onPointerEnterEvent;
+        public UnityEvent<Unit> onPointerExitEvent;
 
-        public void InyectDependences(_Unit unit, Canvas canvas)
+        public void InyectDependences(Unit unit, Canvas canvas)
         {
             this.unit = unit;
             image.sprite = unit.sprite;

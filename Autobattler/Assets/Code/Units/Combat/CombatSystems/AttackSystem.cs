@@ -1,7 +1,8 @@
 using System;
 using Autobattler.Configs;
+using Autobattler.Units.Management;
 
-namespace Autobattler.Units
+namespace Autobattler.Units.Combat.CombatSystems
 {
     public class AttackSystem : CombatSystem
     {

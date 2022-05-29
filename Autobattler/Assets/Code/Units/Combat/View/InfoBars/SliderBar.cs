@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Autobattler.Units.InfoBars
+namespace Autobattler.Units.Combat.View.InfoBars
 {
     public class SliderBar : MonoBehaviour
     {

@@ -9,11 +9,6 @@ namespace Autobattler.InventorySystem
     {
         private List<ItemScriptable> initialItems;
 
-        private void Start()
-        {
-
-        }
-
-
+        
     }
 }

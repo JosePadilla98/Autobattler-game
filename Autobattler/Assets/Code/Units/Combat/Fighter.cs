@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using Autobattler.Grid;
 using Autobattler.MutationsSystem.Mutations;
+using Autobattler.Units.Combat.CombatSystems;
+using Autobattler.Units.Management;
 using UnityEngine;
 
-namespace Autobattler.Units
+namespace Autobattler.Units.Combat
 {
     public enum Team
     {
@@ -13,7 +15,7 @@ namespace Autobattler.Units
 
     public class Fighter
     {
-        private readonly _Unit unit;
+        private readonly Unit unit;
         public CombatValues combatValues;
 
         public Team Team => Team.PLAYER;
@@ -21,7 +23,7 @@ namespace Autobattler.Units
 
         public Sprite Sprite => unit.sprite;
 
-        public Fighter(_Unit unit)
+        public Fighter(Unit unit)
         {
             this.unit = unit;
         }
@@ -51,7 +53,7 @@ namespace Autobattler.Units
         public CombatValue currentMana;
         public CombatValue currentVigor;
 
-        public CombatValues(_Unit build)
+        public CombatValues(Unit build)
         {
             currentHealth = new CombatValue(build.stats.GetStatValue(StatsNames.HEALTH));
             currentVigor = new CombatValue(build.stats.GetStatValue(StatsNames.VIGOR));

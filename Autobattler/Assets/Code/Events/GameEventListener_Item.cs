@@ -1,17 +1,16 @@
-﻿using Autobattler.Units;
-using Autobattler.Units.Management;
+﻿using Autobattler.InventorySystem;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Autobattler.Events
 {
-    public class GameEventListener_Unit : MonoBehaviour
+    public class GameEventListener_Item : MonoBehaviour
     {
         [Tooltip("Event to register with.")]
-        public GameEvent_Unit Event;
+        public GameEvent_Item Event;
 
         [Tooltip("Response to invoke when Event is raised.")]
-        public UnityEvent<Unit> Response;
+        public UnityEvent<Item> Response;
 
         private void OnEnable()
         {
@@ -23,9 +22,9 @@ namespace Autobattler.Events
             Event.UnregisterListener(this);
         }
 
-        public void OnEventRaised(Unit unit)
+        public void OnEventRaised(Item item)
         {
-            Response.Invoke(unit);
+            Response.Invoke(item);
         }
     }
 }

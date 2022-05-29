@@ -2,7 +2,7 @@ using System;
 using Autobattler.MutationsSystem.Mutations;
 using UnityEngine;
 
-namespace Autobattler.Units
+namespace Autobattler.Units.Management
 {
     [CreateAssetMenu(fileName = "Build", menuName = "ScriptableObjects/Unit/BuildedUnitBlueprint", order = 2)]
     public class UnitBuild : ScriptableObject

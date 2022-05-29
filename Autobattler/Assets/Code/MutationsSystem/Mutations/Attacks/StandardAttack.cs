@@ -1,5 +1,8 @@
 using System;
 using Autobattler.Units;
+using Autobattler.Units.Combat;
+using Autobattler.Units.Combat.CombatSystems;
+using Autobattler.Units.Management;
 using UnityEngine;
 
 namespace Autobattler.MutationsSystem.Mutations.Attacks

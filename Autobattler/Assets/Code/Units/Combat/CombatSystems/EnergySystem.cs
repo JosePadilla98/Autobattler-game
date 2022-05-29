@@ -1,4 +1,4 @@
-namespace Autobattler.Units
+namespace Autobattler.Units.Combat.CombatSystems
 {
     public struct EnergyCostData
     {

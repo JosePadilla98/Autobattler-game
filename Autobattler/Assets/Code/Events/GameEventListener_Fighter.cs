@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Autobattler.Units.Combat;
+using UnityEngine;
 using UnityEngine.Events;
 
-namespace Autobattler.Events.Fighter
+namespace Autobattler.Events
 {
     public class GameEventListener_Fighter : MonoBehaviour
     {
@@ -9,7 +10,7 @@ namespace Autobattler.Events.Fighter
         public GameEvent_Fighter Event;
 
         [Tooltip("Response to invoke when Event is raised.")]
-        public UnityEvent<Units.Fighter> Response;
+        public UnityEvent<Fighter> Response;
 
         private void OnEnable()
         {
@@ -21,7 +22,7 @@ namespace Autobattler.Events.Fighter
             Event.UnregisterListener(this);
         }
 
-        public void OnEventRaised(Units.Fighter fighter)
+        public void OnEventRaised(Fighter fighter)
         {
             Response.Invoke(fighter);
         }

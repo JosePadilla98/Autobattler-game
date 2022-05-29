@@ -1,12 +1,10 @@
-﻿using System;
-using Autobattler.InfoPanel;
-using Autobattler.Units.InfoBars;
+﻿using Autobattler.Units.Combat.View.InfoBars;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Autobattler.Units
+namespace Autobattler.Units.Combat.View
 {
     public class FighterView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {

@@ -2,6 +2,7 @@ using System;
 using Autobattler.Grid.Logic;
 using Autobattler.ScriptableCollections;
 using Autobattler.Units;
+using Autobattler.Units.Management;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace Autobattler
 
             Slot_U slot = target as Slot_U;
 
-            _Unit unitContained = slot.myItem;
+            Unit unitContained = slot.myItem;
             if (unitContained != null)
             {
                 EditorGUILayout.LabelField(unitContained.name);

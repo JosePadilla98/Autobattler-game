@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Autobattler.Grid;
 using Autobattler.Grid.Generic;
 
-namespace Autobattler.Units
+namespace Autobattler.Units.Combat
 {
     public enum TargetTypes
     {

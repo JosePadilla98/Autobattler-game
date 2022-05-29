@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using Autobattler.MutationsSystem.Mutations;
+using Autobattler.Units.Combat;
 using UnityEngine;
 
-namespace Autobattler.Units
+namespace Autobattler.Units.Management
 {
-    public class _Unit : ICloneable
+    public class Unit : ICloneable
     {
         public String name;
         public Sprite sprite;
@@ -14,7 +15,7 @@ namespace Autobattler.Units
         public List<Mutation> disabledMutations;
         public List<Mutation> enabledMutations;
 
-        public _Unit()
+        public Unit()
         {
             stats = new Stats();
             baseMutations = new List<Mutation>();
@@ -22,7 +23,7 @@ namespace Autobattler.Units
             disabledMutations = new List<Mutation>();
         }
 
-        public _Unit(UnitBuild blueprint) : this()
+        public Unit(UnitBuild blueprint) : this()
         {
             name = blueprint.name;
             sprite = blueprint.sprite;
@@ -36,7 +37,7 @@ namespace Autobattler.Units
 
         public object Clone()
         {
-            var clone = (_Unit)MemberwiseClone();
+            var clone = (Unit)MemberwiseClone();
             return clone;
         }
 

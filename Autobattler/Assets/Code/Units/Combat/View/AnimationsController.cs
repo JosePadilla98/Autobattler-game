@@ -1,7 +1,7 @@
 using Autobattler.Grid;
 using UnityEngine;
 
-namespace Autobattler.Units
+namespace Autobattler.Units.Combat.View
 {
     [RequireComponent(typeof(Animator))]
     public class AnimationsController : MonoBehaviour

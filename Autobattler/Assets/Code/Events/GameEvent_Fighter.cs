@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using Autobattler.Units.Combat;
 using UnityEngine;
 
-namespace Autobattler.Events.Fighter
+namespace Autobattler.Events
 {
     [CreateAssetMenu(fileName = "GameEvent_Fighter", menuName = "ScriptableObjects/Events/Fighter")]
     public class GameEvent_Fighter : ScriptableObject
@@ -11,7 +12,7 @@ namespace Autobattler.Events.Fighter
         /// </summary>
         private readonly List<GameEventListener_Fighter> eventListeners = new List<GameEventListener_Fighter>();
 
-        public void Raise(Units.Fighter fighter)
+        public void Raise(Fighter fighter)
         {
             for (int i = eventListeners.Count - 1; i >= 0; i--)
                 eventListeners[i].OnEventRaised(fighter);

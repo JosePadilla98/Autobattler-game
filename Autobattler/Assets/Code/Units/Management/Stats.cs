@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Autobattler.Configs;
 using Autobattler.MutationsSystem;
 
-namespace Autobattler.Units
+namespace Autobattler.Units.Management
 {
     public enum StatsNames
     {

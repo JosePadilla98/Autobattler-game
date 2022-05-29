@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Autobattler.Units.Management;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Autobattler.Units
+namespace Autobattler.Units.Combat.CombatSystems
 {
     public class ChargerSystem : CombatSystem
     {
