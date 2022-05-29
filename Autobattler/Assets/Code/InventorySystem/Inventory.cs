@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Autobattler.ScriptableCollections;
 using Autobattler.Units;
 using Autobattler.Units.Management;
@@ -8,12 +9,22 @@ namespace Autobattler.InventorySystem
 {
     public class Inventory : MonoBehaviour
     {
+        [Header("Collections")]
         public UnitsCollection unitsInBench;
         public ItemsColecttions items;
 
+        [Header("Prefabs")]
+        [SerializeField]
+        private ItemView itemPrefab;
         public Inventory_Slot slotPrefab;
-        public Canvas canvas;
+
+        [Header("Scene things")]
+        [Space(20)]
         public List<Inventory_Slot> slots;
+        [SerializeField]
+        private Transform slotsParent;
+        public Canvas canvas;
+
 
         public void CheckIfAttachUnit(Unit unit)
         {
@@ -24,7 +35,7 @@ namespace Autobattler.InventorySystem
             }
               
             unitsInBench.Collection.Add(unit);
-            CheckToAddNewSlot();
+            CheckIfAddNewSlot();
 
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
 
@@ -58,19 +69,23 @@ namespace Autobattler.InventorySystem
 
         }
 
-        public void AttachNewBuildedItem(Item item)
-        {
-            //slots[^1].Set
-        }
-
-        public void CheckToAddNewSlot()
+        public void CheckIfAddNewSlot()
         {
             if(ElementsCount() != slots.Count)
                 return;
 
-            Inventory_Slot slot = Instantiate<Inventory_Slot>(slotPrefab, transform);
-            slot.InyectDependencies(canvas, this);
-            slots.Add(slot);
+            AddNewSlot();
+        }
+
+        /// <summary>
+        /// Launched when event is raised, so the item is already in the collection
+        /// </summary>
+        /// <param name="item"></param>
+        public void OnNewItemAdded(Item item)
+        {
+            Inventory_Slot slotToAttachNewItem = GetFirstEmptySlot();
+            Instantiate<ItemView>(itemPrefab, slotToAttachNewItem.transform);
+            AddNewSlot();
         }
 
         public void RemoveEmptySlot()
@@ -81,6 +96,24 @@ namespace Autobattler.InventorySystem
             var slotToRemove = slots[^1];
             slots.Remove(slotToRemove);
             Destroy(slotToRemove.gameObject);
+        }
+
+        private Inventory_Slot GetFirstEmptySlot()
+        {
+            foreach (var slot in slots)
+            {
+                if(!slot.HasItem)
+                    return slot;
+            }
+
+            throw new Exception("There is no empty slot in the inventory and you are requesting one");
+        }
+
+        private void AddNewSlot()
+        {
+            Inventory_Slot slot = Instantiate<Inventory_Slot>(slotPrefab, slotsParent);
+            slot.InyectDependencies(canvas, this);
+            slots.Add(slot);
         }
 
         private int ElementsCount()

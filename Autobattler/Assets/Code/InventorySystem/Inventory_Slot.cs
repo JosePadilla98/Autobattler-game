@@ -10,6 +10,7 @@ namespace Autobattler.InventorySystem
     public class Inventory_Slot : DropArea
     {
         public Inventory inventory;
+        public bool HasItem => transform.childCount > 0;
 
         public void InyectDependencies(Canvas canvas, Inventory inventory)
         {
@@ -19,7 +20,7 @@ namespace Autobattler.InventorySystem
 
         protected override bool CanThisObjectBeDroppedHere(DraggableComponent draggable)
         {
-            return (draggable.item is UnitView or Item);
+            return (draggable.item is UnitView or ItemView);
         }
 
         public override void Drop(DraggableComponent draggable)
@@ -32,8 +33,8 @@ namespace Autobattler.InventorySystem
                     inventory.CheckIfAttachUnit(unitView.unit);
                     break;
 
-                case Item item:
-                    inventory.CheckIfAttachItem(item);
+                case ItemView itemView:
+                    inventory.CheckIfAttachItem(itemView.item);
                     break;
             }
         }
@@ -57,8 +58,8 @@ namespace Autobattler.InventorySystem
                     inventory.UnattachUnit(unitView.unit);
                     break;
 
-                case Item item:
-                    inventory.UnattachItem(item);
+                case ItemView itemView:
+                    inventory.UnattachItem(itemView.item);
                     break;
             }
         }

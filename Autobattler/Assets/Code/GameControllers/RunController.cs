@@ -14,15 +14,16 @@ namespace Autobattler.GameControllers
     [CreateAssetMenu(fileName = "RunController", menuName = "ScriptableObjects/RunController")]
     public class RunController : ScriptableObject
     {
-        public LevelsSystem levelsSystem;
-        public ManagementStateData managementData;
+        [Space(20)]
+        public ManagementState managementState;
 
+        [Space(20)]
         public CombatState combatState;
         public GameEvent combatStarted;
 
         public void Init()
         {
-            levelsSystem.Init();
+            managementState.Init();
         }
 
         public void InitCombat()
@@ -35,10 +36,10 @@ namespace Autobattler.GameControllers
         public void PassManagementDataToCombatState()
         {
             //Pass player units
-            List<Unit> playerUnits = managementData.playerData.teamInGrid.Collection;
+            List<Unit> playerUnits = managementState.playerData.teamInGrid.Collection;
             List<Fighter> playerFighters = combatState.teamsController.playerFighters.Collection;
 
-            GridsController<Unit> battlefield_U = managementData.managementBattlefield;
+            GridsController<Unit> battlefield_U = managementState.managementBattlefield;
             GridsController<Fighter> battlefield_F = combatState.battlefield;
 
             foreach (Unit unit in playerUnits)
@@ -51,7 +52,7 @@ namespace Autobattler.GameControllers
             }
 
             //Pass enemies
-            List<Unit> enemyUnits = managementData.enemies.Collection;
+            List<Unit> enemyUnits = managementState.enemies.Collection;
             List<Fighter> enemyFighters = combatState.teamsController.enemies.Collection;
 
             foreach (Unit unit in enemyUnits)

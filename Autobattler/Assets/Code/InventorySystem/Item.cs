@@ -1,9 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Autobattler.InventorySystem
 {
-    public class Item : MonoBehaviour
+    [Serializable]
+    public class Item 
     {
-        
+        public ItemScriptable Scriptable;
+
+        public Item(ItemScriptable scriptable)
+        {
+            Scriptable = scriptable;
+        }
     }
 }

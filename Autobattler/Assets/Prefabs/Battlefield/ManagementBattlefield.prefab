@@ -93,7 +93,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7719885460405327535, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
       propertyPath: m_Name
-      value: ManagementBattlefield
+      value: Battlefield
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719885460970073870, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
+      propertyPath: m_Name
+      value: EnemyGrid
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719885461684970517, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
+      propertyPath: m_Name
+      value: PlayerGrid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
@@ -161,7 +169,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885461516773283, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
   m_PrefabInstance: {fileID: 2109732054619035892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4988641424448892533
+--- !u!114 &5364198209713624629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8531450249002778455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+--- !u!114 &5252063871986408532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,19 +196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 11400000, guid: 316b4c92cc369764ca86818e72419eee, type: 2}
   battlefieldView: {fileID: 8244248559720668863}
---- !u!114 &7011254918308792903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8531450249002778455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
 --- !u!1 &8531450249159152431 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885461356678107, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
@@ -327,20 +335,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885461231309899, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
   m_PrefabInstance: {fileID: 2109732054619035892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &549079774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8531450249589787839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
---- !u!114 &473889585620155027
+--- !u!114 &4336644785799887323
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -354,6 +349,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 11400000, guid: c1bd5344c5e08e247ad8481ca9ab0861, type: 2}
   battlefieldView: {fileID: 8244248559720668863}
+--- !u!114 &3811091730870395956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8531450249589787839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
 --- !u!1 &8531450249687571216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885461129855972, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}

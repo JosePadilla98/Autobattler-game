@@ -18,7 +18,7 @@ namespace Autobattler.LevelSystem
         [SerializeField]
         private InvocationsData playerTestingUnits;
 
-        public void Init()
+        public void LoadNextLevel()
         {
             LoadLevel(data.levels[currentLevel]);
         }
