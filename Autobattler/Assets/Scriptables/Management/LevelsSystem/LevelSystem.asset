@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682ebdd611fc8b448c1a0ccffde4220, type: 3}
+  m_Name: LevelSystem
+  m_EditorClassIdentifier: 
+  currentLevel: 0
+  data: {fileID: 11400000, guid: 8e4675b008b7abd498f8b14db82fd053, type: 2}
+  invocationsProcessor:
+    battlefield_U: {fileID: 11400000, guid: c3ee1ab973d4ac34fa002080ef521cd9, type: 2}
+    playerData: {fileID: 11400000, guid: a62f197455d8b3747ab4b7132e4fa1b3, type: 2}
+    enemies: {fileID: 11400000, guid: a49224322777bca4ea125369eaf56f65, type: 2}
+  playerTestingUnits:
+    backColumn:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    frontColumn:
+    - {fileID: 11400000, guid: 8731176104d276d4190b1afc0941a77c, type: 2}
+    - {fileID: 11400000, guid: 5fc71234dfe20cb4e871c0610fbd50c1, type: 2}
+    - {fileID: 0}

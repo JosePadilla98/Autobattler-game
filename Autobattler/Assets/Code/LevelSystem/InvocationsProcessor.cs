@@ -4,6 +4,7 @@ using Autobattler.Grid;
 using Autobattler.Grid.Logic;
 using Autobattler.ScriptableCollections;
 using Autobattler.Units;
+using Autobattler.Units.Management;
 using UnityEngine;
 
 namespace Autobattler.LevelSystem
@@ -31,7 +32,7 @@ namespace Autobattler.LevelSystem
                 var build = builds[i];
                 if (build == null) continue;
 
-                var unit = new _Unit(build);
+                var unit = new Unit(build);
                 var position = new Position(i, column, side);
 
                 battlefield_U.BuildNewItem(unit, position);

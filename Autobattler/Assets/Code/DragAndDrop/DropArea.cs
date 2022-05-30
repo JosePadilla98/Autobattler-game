@@ -14,7 +14,7 @@ namespace Autobattler.DragAndDrop
         private DraggableComponent objBeingDragged => ObjectBeingDragged.obj;
 
         /// <summary>
-        /// Se llama sólo desde el awake del dragObject: Cuando la lógica instancia al item.
+        /// Se llama sólo desde el awake del draggableObj: Cuando la lógica lo instancia
         /// </summary>
         /// <param name="draggableObj"></param>
         public void SetDraggableObj(DraggableComponent draggableObj)
@@ -33,7 +33,7 @@ namespace Autobattler.DragAndDrop
             }
             else
             {
-                SwapPlaces(objBeingDragged);
+                CheckIfSwapPlaces(draggableObj, objBeingDragged);
             }
         }
 
@@ -42,10 +42,24 @@ namespace Autobattler.DragAndDrop
             return true;
         }
 
+        private void CheckIfSwapPlaces(DraggableComponent itemContainedHere, DraggableComponent itemToSwap)
+        {
+            var slotToMaybeGo = itemToSwap.lastDropArea;
+            if (!slotToMaybeGo.CanThisObjectBeDroppedHere(itemContainedHere))
+                return;
+
+            SwapPlaces(itemToSwap);
+        }
+
         private void SwapPlaces(DraggableComponent itemToSwap)
         {
-            itemToSwap.lastDropArea.Drop(draggableObj);
+            var itemWhoWhasHere = draggableObj;
+            var newAreaForOldItem = itemToSwap.lastDropArea;
+
+            OnPlayerTakeAwayMyItem(itemWhoWhasHere);
             Drop(itemToSwap);
+
+            newAreaForOldItem.Drop(itemWhoWhasHere);
         }
 
         /// <summary>
@@ -58,10 +72,10 @@ namespace Autobattler.DragAndDrop
         }
 
         /// <summary>
-        /// Se llama sólo cuando el player dropea el item con el mouse
+        /// Se llama sólo cuando el player dropea el item con el mouse o cuando vuelve por no haber sido arrastrado a ningún sitio
         /// </summary>
         /// <param name="draggable"></param>
-        protected virtual void Drop(DraggableComponent draggable)
+        public virtual void Drop(DraggableComponent draggable)
         {
             draggableObj = draggable;
             draggable.dropArea = this;

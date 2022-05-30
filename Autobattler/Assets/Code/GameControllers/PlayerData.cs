@@ -1,4 +1,5 @@
-﻿using Autobattler.ScriptableCollections;
+﻿using Autobattler.InventorySystem;
+using Autobattler.ScriptableCollections;
 using UnityEngine;
 
 namespace Autobattler.GameControllers
@@ -8,5 +9,6 @@ namespace Autobattler.GameControllers
     {
         public UnitsCollection teamInGrid;
         public UnitsCollection teamInBench;
+      
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Autobattler.Grid.Logic;
 using Autobattler.Units;
+using Autobattler.Units.Combat;
+using Autobattler.Units.Combat.View;
 using UnityEngine;
 
 namespace Autobattler.Grid.Views

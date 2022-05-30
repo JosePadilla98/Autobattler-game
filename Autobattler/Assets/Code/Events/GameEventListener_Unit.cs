@@ -1,4 +1,5 @@
 ﻿using Autobattler.Units;
+using Autobattler.Units.Management;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,7 +11,7 @@ namespace Autobattler.Events
         public GameEvent_Unit Event;
 
         [Tooltip("Response to invoke when Event is raised.")]
-        public UnityEvent<_Unit> Response;
+        public UnityEvent<Unit> Response;
 
         private void OnEnable()
         {
@@ -22,7 +23,7 @@ namespace Autobattler.Events
             Event.UnregisterListener(this);
         }
 
-        public void OnEventRaised(_Unit unit)
+        public void OnEventRaised(Unit unit)
         {
             Response.Invoke(unit);
         }

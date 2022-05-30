@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Autobattler.Units;
+using Autobattler.Units.Management;
 using UnityEngine;
 
 namespace Autobattler.Events
@@ -12,7 +13,7 @@ namespace Autobattler.Events
         /// </summary>
         private readonly List<GameEventListener_Unit> eventListeners = new List<GameEventListener_Unit>();
 
-        public void Raise(_Unit unit)
+        public void Raise(Unit unit)
         {
             for (int i = eventListeners.Count - 1; i >= 0; i--)
                 eventListeners[i].OnEventRaised(unit);

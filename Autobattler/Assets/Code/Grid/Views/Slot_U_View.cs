@@ -1,11 +1,9 @@
-﻿using System;
-using Autobattler.Grid.Logic;
-using Autobattler.Grid.Views;
+﻿using Autobattler.Grid.Logic;
 using Autobattler.ScriptableCollections;
-using Autobattler.Units;
+using Autobattler.Units.Management;
 using UnityEngine;
 
-namespace Autobattler.Grid.ManagementState
+namespace Autobattler.Grid.Views
 {
     public class Slot_U_View : MonoBehaviour
     {
@@ -26,7 +24,7 @@ namespace Autobattler.Grid.ManagementState
             logic.OnNewItemBuilded += BuildUnitView;
         }
 
-        private void BuildUnitView(_Unit unit)
+        private void BuildUnitView(Unit unit)
         {
             UnitView unitView = Instantiate(PrefabToInstantiate(), transform);
             unitView.InyectDependences(unit, battlefieldView.canvas);

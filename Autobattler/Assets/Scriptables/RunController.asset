@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1359a2eefa0aa494e87407b9dbf6abcf, type: 3}
+  m_Name: RunController
+  m_EditorClassIdentifier: 
+  managementState:
+    itemsController: {fileID: 11400000, guid: 86157f1b8004ca5449bcd5ed0aec09dc, type: 2}
+    managementBattlefield: {fileID: 11400000, guid: c3ee1ab973d4ac34fa002080ef521cd9, type: 2}
+    enemies: {fileID: 11400000, guid: a49224322777bca4ea125369eaf56f65, type: 2}
+    playerData: {fileID: 11400000, guid: a62f197455d8b3747ab4b7132e4fa1b3, type: 2}
+    levelsSystem: {fileID: 11400000, guid: 9d4ccdb5f1105aa4190cf2a2126ae597, type: 2}
+  combatState: {fileID: 11400000, guid: 5fb778d0c00c2a246bbb6607bbf289ae, type: 2}
+  combatStarted: {fileID: 11400000, guid: ca60fbb9b7eccd643a87df47e7109082, type: 2}

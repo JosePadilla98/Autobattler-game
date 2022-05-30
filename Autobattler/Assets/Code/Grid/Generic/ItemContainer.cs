@@ -7,11 +7,11 @@ namespace Autobattler.Grid.Generic
     public class ItemContainer<T> : ScriptableObject, IGridSlot<T>
     {
         public Grid<T> parent;
-        protected T myItem;
+        public T myItem;
         public Action<T> OnNewItemBuilded;
         protected GridsController<T> Grandpa => parent.parent;
 
-    public bool IsThereThisItem(T item)
+        public bool IsThereThisItem(T item)
         {
             if (myItem == null)
                 return false;
