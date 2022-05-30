@@ -7,5 +7,6 @@ namespace Autobattler
     public class ControlsConfig : ScriptableObject
     {
         public KeyCode openInventory;
+        public KeyCode openUnitsList;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Autobattler.Events;
+﻿using System;
+using Autobattler.Events;
 using UnityEngine;
 
 namespace Autobattler.Screens

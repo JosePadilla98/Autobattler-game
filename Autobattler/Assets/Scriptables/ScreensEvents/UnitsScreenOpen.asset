@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e2d731a0a69074fbac329da3ce7d52, type: 3}
-  m_Name: Creature2
+  m_Script: {fileID: 11500000, guid: faf0621cd046dd543b0b3ee474bc1487, type: 3}
+  m_Name: UnitsScreenOpen
   m_EditorClassIdentifier: 
-  baseMutations: []
-  level: 1
-  mutations: []
-  sprite: {fileID: 21300000, guid: c1cab03833af6a44cb4a916bc6565ab8, type: 3}
-  name: Ogro
