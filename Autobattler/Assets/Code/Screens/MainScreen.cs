@@ -8,6 +8,7 @@ namespace Autobattler.Screens
     {
         public RunController runController;
         public GameEvent openInventory;
+        public ControlsConfig controlsConfig;
 
         public void InitCombat()
         {
@@ -17,7 +18,7 @@ namespace Autobattler.Screens
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(controlsConfig.openInventory))
             {
                 openInventory.Raise();
                 gameObject.SetActive(false);

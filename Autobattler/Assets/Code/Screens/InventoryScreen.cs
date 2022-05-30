@@ -7,10 +7,11 @@ namespace Autobattler.Screens
     {
         public GameObject mainScreen;
         public GameEvent goToMainScreenEvent;
+        public ControlsConfig controlsConfig;
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(controlsConfig.openInventory))
             {
                 goToMainScreenEvent.Raise();
                 gameObject.SetActive(false);
