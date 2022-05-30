@@ -8,7 +8,7 @@ namespace Autobattler.InventorySystem
     [CreateAssetMenu(fileName = "ItemsController", menuName = "ScriptableObjects/Inventory/ItemsController")]
     public class ItemsController : ScriptableObject
     {
-        public ItemsColecttions itemsInBag;
+        public ItemsCollection itemsInBag;
 
         [SerializeField]
         private GameEvent_Item onItemCreated;
@@ -23,7 +23,13 @@ namespace Autobattler.InventorySystem
             onItemCreated.Raise(item);
         }
 
-        public void CreateInitialItems()
+        public void Init()
+        {
+            itemsInBag.Collection.Clear();
+            CreateInitialItems();
+        }
+
+        private void CreateInitialItems()
         {
             foreach (var scriptable in initialItems)
             {

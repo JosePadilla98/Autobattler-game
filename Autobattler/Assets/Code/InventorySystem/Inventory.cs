@@ -11,7 +11,7 @@ namespace Autobattler.InventorySystem
     {
         [Header("Collections")]
         public UnitsCollection unitsInBench;
-        public ItemsColecttions items;
+        public ItemsCollection items;
 
         [Header("Prefabs")]
         [SerializeField]
@@ -24,7 +24,6 @@ namespace Autobattler.InventorySystem
         [SerializeField]
         private Transform slotsParent;
         public Canvas canvas;
-
 
         public void CheckIfAttachUnit(Unit unit)
         {
@@ -95,7 +94,7 @@ namespace Autobattler.InventorySystem
             if(slots.Count == 1)
                 return;
 
-            var slotToRemove = slots[^1];
+            var slotToRemove = GetFirstEmptySlot();
             slots.Remove(slotToRemove);
             Destroy(slotToRemove.gameObject);
         }
@@ -120,7 +119,8 @@ namespace Autobattler.InventorySystem
 
         private int ElementsCount()
         {
-            return unitsInBench.Collection.Count;
+            Debug.Log(unitsInBench.Collection.Count + items.Collection.Count);
+            return unitsInBench.Collection.Count + items.Collection.Count;
         }
     }
 }

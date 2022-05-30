@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Autobattler.ScriptableCollections
 {
     [CreateAssetMenu(fileName = "ItemsColecttions", menuName = "ScriptableObjects/Collections/Items")]
-    public class ItemsColecttions : ScriptableObject
+    public class ItemsCollection : ScriptableObject
     {
         private List<Item> collection;
 

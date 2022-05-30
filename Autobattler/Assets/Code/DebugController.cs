@@ -9,10 +9,6 @@ namespace Autobattler
         public DragAndDropDebug dragAndDrop;
         public InventoryDebug inventory;
 
-
-
-
-
         [Serializable]
         public class DragAndDropDebug
         {
