@@ -69,6 +69,13 @@ namespace Autobattler.DragAndDrop
         public virtual void OnPlayerTakeAwayMyItem(DraggableComponent draggable)
         {
             draggableObj = null;
+
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
+
+            if (App.DebugController != null && App.DebugController.dragAndDrop.units)
+                Debug.Log(draggable.name + " take away from (" + name + ")");
+
+            #endif
         }
 
         /// <summary>
@@ -86,6 +93,13 @@ namespace Autobattler.DragAndDrop
             draggable.Rect.anchoredPosition = Vector3.zero;
 
             draggable.onDropAction?.Invoke(this, draggableObj);
+
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
+
+            if (App.DebugController != null && App.DebugController.dragAndDrop.units)
+                Debug.Log(draggable.name + " dropped in (" + name + ")");
+
+            #endif
         }
     }
 }

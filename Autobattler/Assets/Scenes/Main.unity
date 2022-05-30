@@ -132,13 +132,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 11078997}
+  - component: {fileID: 11078998}
   m_Layer: 5
   m_Name: UnitsScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &11078997
 RectTransform:
   m_ObjectHideFlags: 0
@@ -151,9 +152,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1493636364}
   - {fileID: 7279437507362939100}
   - {fileID: 2105782442}
-  - {fileID: 1493636364}
   - {fileID: 1261635373}
   - {fileID: 1230785454}
   - {fileID: 2105047315}
@@ -166,6 +167,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00009918213, y: 0}
   m_SizeDelta: {x: 1820.3398, y: 980.1829}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &11078998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11078996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910480acbde73b94ba9ed0cb2a941ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlsConfig: {fileID: 11400000, guid: d69135a9113f48e4ea33ef3319315c19, type: 2}
 --- !u!224 &63036109 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7279437506705244807, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
@@ -744,17 +758,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8531450248235257432, guid: f401198eae6b25e4ea9b1043407c90b4, type: 3}
   m_PrefabInstance: {fileID: 421310984}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &421310986 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8244248559720668863, guid: f401198eae6b25e4ea9b1043407c90b4, type: 3}
-  m_PrefabInstance: {fileID: 421310984}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6285fc26e8cce574d93f821a5f881dce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &453258999
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,8 +906,6 @@ GameObject:
   - component: {fileID: 465260410}
   - component: {fileID: 465260414}
   - component: {fileID: 465260413}
-  - component: {fileID: 465260412}
-  - component: {fileID: 465260411}
   m_Layer: 5
   m_Name: Square
   m_TagString: Untagged
@@ -927,38 +928,11 @@ RectTransform:
   m_Father: {fileID: 1848740536}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: -75}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &465260411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465260409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34ff2d5b2341dc849b10b6cf323679a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logic: {fileID: 11400000, guid: 2a6b0ab9b38f1c34281d1a96f527a643, type: 2}
-  battlefieldView: {fileID: 421310986}
---- !u!114 &465260412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465260409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b3377d70d83e0a49b63fceb47c3a954, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 1002072125}
 --- !u!114 &465260413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,8 +1339,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainScreen: {fileID: 724874396}
-  goToMainScreenEvent: {fileID: 11400000, guid: 25ed356e63cdc3c4282f388f8c3aaf8d, type: 2}
-  controlsConfig: {fileID: 0}
+  controlsConfig: {fileID: 11400000, guid: d69135a9113f48e4ea33ef3319315c19, type: 2}
+  goToUnitsScreen: {fileID: 11400000, guid: e82c04308ea0b374fbb6b7fc116d4c3c, type: 2}
+  goToMainScreen: {fileID: 11400000, guid: 25ed356e63cdc3c4282f388f8c3aaf8d, type: 2}
+  comeBackHere: {fileID: 11400000, guid: 218f4a58bcc17e94383fd852b3fe3f4b, type: 2}
 --- !u!114 &526862728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1443,8 +1419,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runController: {fileID: 11400000, guid: 0781be15a2bf6ff48b114e6dcf0b20b7, type: 2}
+  controlsConfig: {fileID: 11400000, guid: d69135a9113f48e4ea33ef3319315c19, type: 2}
   openInventory: {fileID: 11400000, guid: 218f4a58bcc17e94383fd852b3fe3f4b, type: 2}
-  controlsConfig: {fileID: 0}
+  openUnitsScreen: {fileID: 11400000, guid: e82c04308ea0b374fbb6b7fc116d4c3c, type: 2}
+  comeBackHere: {fileID: 11400000, guid: 25ed356e63cdc3c4282f388f8c3aaf8d, type: 2}
 --- !u!1001 &735090303
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2449,6 +2427,7 @@ GameObject:
   - component: {fileID: 1256555042}
   - component: {fileID: 1256555044}
   - component: {fileID: 1256555045}
+  - component: {fileID: 1256555046}
   m_Layer: 5
   m_Name: RunScreens
   m_TagString: Untagged
@@ -2497,17 +2476,17 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1256555043}
-        m_TargetAssemblyTypeName: Autobattler.Screens.ScreenControllers, Assembly-CSharp
-        m_MethodName: OnCombatInit
-        m_Mode: 1
+      - m_Target: {fileID: 1298348802}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1256555043
 MonoBehaviour:
@@ -2521,7 +2500,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603a46271dbed0249ad9b718fb92f02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatScreen: {fileID: 1298348802}
+  mainScreen: {fileID: 724874396}
+  otherScreens:
+  - {fileID: 1298348802}
+  - {fileID: 526862725}
+  - {fileID: 11078996}
 --- !u!114 &1256555044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2603,6 +2586,34 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &1256555046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256555040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6b233d63e102344aa82743653f0f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: e82c04308ea0b374fbb6b7fc116d4c3c, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11078998}
+        m_TargetAssemblyTypeName: Autobattler.Screens.UnitsScreen, Assembly-CSharp
+        m_MethodName: Enable
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1261635372
 GameObject:
@@ -2860,7 +2871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1493636364
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2874,7 +2885,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 11078997}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3704,7 +3715,7 @@ RectTransform:
   - {fileID: 404954253}
   - {fileID: 1068964048}
   m_Father: {fileID: 11078997}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5759,7 +5770,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7279437507362939101}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1793617379e67394dbc6a045c0a9e42b, type: 3}
   m_Name: 
@@ -5838,7 +5849,7 @@ RectTransform:
   m_Children:
   - {fileID: 7279437507202780246}
   m_Father: {fileID: 11078997}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

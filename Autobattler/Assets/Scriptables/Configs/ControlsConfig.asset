@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bcce63b88b2bac48b0afe39b816f853, type: 3}
   m_Name: ControlsConfig
   m_EditorClassIdentifier: 
-  openInventory: 105
+  openInventory: 113
+  openUnitsList: 101

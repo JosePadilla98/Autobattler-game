@@ -35,7 +35,7 @@ namespace Autobattler.Grid.Views
             }
         }
 
-        internal void UnattachUnit(UnitView unitView)
+        public void UnattachUnit(UnitView unitView)
         {
             logic.UnnatachItem();
             playerUnitsInGrid.Collection.Remove(unitView.unit);

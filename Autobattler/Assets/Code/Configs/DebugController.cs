@@ -12,7 +12,7 @@ namespace Autobattler
         [Serializable]
         public class DragAndDropDebug
         {
-            public bool unitsInGrid;
+            public bool units;
         }
 
         [Serializable]
