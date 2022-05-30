@@ -11,10 +11,7 @@ namespace Autobattler.Grid.Views
         public Battefield_U_View battlefieldView;
         public UnitsCollection playerUnitsInGrid => battlefieldView.playerUnitsInGrid;
 
-        public Side Side
-        {
-            get => logic.GetSide();
-        }
+        public Side Side => logic.GetSide();
 
         public UnitView unitViewPrefab => battlefieldView.unitViewPrefab;
         public UnitView playerUnitViewPrefab => battlefieldView.playerUnitViewPrefab;

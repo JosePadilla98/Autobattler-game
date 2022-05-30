@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Autobattler
 {
-    [CreateAssetMenu(fileName = "ControlsConfig", menuName = "ScriptableObjects/ControlsConfig")]
+    [CreateAssetMenu(fileName = "ControlsConfig", menuName = "ScriptableObjects/Config/Controls")]
     public class ControlsConfig : ScriptableObject
     {
         public KeyCode openInventory;

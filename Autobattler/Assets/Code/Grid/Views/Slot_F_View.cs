@@ -11,10 +11,7 @@ namespace Autobattler.Grid.Views
         public Slot_F logic;
         public Battefield_F_View battlefieldView;
 
-        public Side Side
-        {
-            get => logic.GetSide();
-        }
+        public Side Side => logic.GetSide();
 
         public FighterView fighterViewPrefab => battlefieldView.fighterViewPrefab;
 

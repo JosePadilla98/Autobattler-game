@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Autobattler.Grid.Logic
 {
-    [CreateAssetMenu(fileName = "Battlefield_U", menuName = "ScriptableObjects/Grids/_Unit/Battlefield")]
+    [CreateAssetMenu(fileName = "Battlefield_U", menuName = "ScriptableObjects/Grids/Unit/Battlefield")]
     public class Battlefield_U : GridsController<Unit>
     {
 

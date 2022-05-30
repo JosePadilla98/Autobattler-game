@@ -7,10 +7,9 @@ namespace Autobattler.DragAndDrop
 {
     public abstract class DropArea : MonoBehaviour, IDropHandler
     {
-        public Canvas canvas;
-
+        [SerializeField]
+        protected Canvas canvas;
         protected DraggableComponent draggableObj;
-
         private DraggableComponent objBeingDragged => ObjectBeingDragged.obj;
 
         /// <summary>

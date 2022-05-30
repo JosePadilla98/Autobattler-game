@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Autobattler.Grid.Logic
 {
-    [CreateAssetMenu(fileName = "Grid_F_Container", menuName = "ScriptableObjects/Grids/_Fighter/Grid")]
+    [CreateAssetMenu(fileName = "Grid_F_Container", menuName = "ScriptableObjects/Grids/Fighter/Grid")]
     public class Grid_F : Grid<Fighter>
     {
 

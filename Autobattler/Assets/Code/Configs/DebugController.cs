@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Autobattler
 {
-    [CreateAssetMenu(fileName = "DebugController", menuName = "ScriptableObjects/DebugController")]
+    [CreateAssetMenu(fileName = "DebugController", menuName = "ScriptableObjects/Config/DebugController")]
     public class DebugController : ScriptableObject
     {
         public DragAndDropDebug dragAndDrop;

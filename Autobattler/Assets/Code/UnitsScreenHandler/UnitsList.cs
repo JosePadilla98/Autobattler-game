@@ -7,7 +7,17 @@ namespace Autobattler.UnitsScreenHandler
     {
         [SerializeField]
         private UnitView playerUnitPrefab;
-        
-        //public Inventory_Slot slotPrefab;
+        [SerializeField]
+        private UnitsList_Slot slotPrefab;
+        [SerializeField]
+        private Transform slotsParent;
+        [SerializeField]
+        private Canvas canvas;
+
+        private void AddNewSlot()
+        {
+            UnitsList_Slot slot = Instantiate<UnitsList_Slot>(slotPrefab, slotsParent);
+            slot.InyectDependencies(canvas);
+        }
     }
 }
