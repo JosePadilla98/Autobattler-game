@@ -32,8 +32,6 @@ namespace Autobattler.Grid.Views
             base.OnPlayerTakeAwayMyItem(draggable);
             var unitView = draggable.item as UnitView;
             onItemTaken.Invoke(unitView);
-
-            
         }
     }
 }
