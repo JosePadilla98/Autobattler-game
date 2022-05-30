@@ -119,7 +119,6 @@ namespace Autobattler.InventorySystem
 
         private int ElementsCount()
         {
-            Debug.Log(unitsInBench.Collection.Count + items.Collection.Count);
             return unitsInBench.Collection.Count + items.Collection.Count;
         }
     }
