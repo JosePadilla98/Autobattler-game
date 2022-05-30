@@ -33,13 +33,22 @@ namespace Autobattler.DragAndDrop
             }
             else
             {
-                SwapPlaces(objBeingDragged);
+                CheckIfSwapPlaces(draggableObj, objBeingDragged);
             }
         }
 
         protected virtual bool CanThisObjectBeDroppedHere(DraggableComponent draggable)
         {
             return true;
+        }
+
+        private void CheckIfSwapPlaces(DraggableComponent itemContainedHere, DraggableComponent itemToSwap)
+        {
+            var slotToMaybeGo = itemToSwap.lastDropArea;
+            if (!slotToMaybeGo.CanThisObjectBeDroppedHere(itemContainedHere))
+                return;
+
+            SwapPlaces(itemToSwap);
         }
 
         private void SwapPlaces(DraggableComponent itemToSwap)
