@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Autobattler.InfoPanel
 {
-    public class UnitInfoPanel : MonoBehaviour
+    public class InfoPanel_Unit : MonoBehaviour
     {
         [Header("Column 1")] 
         [SerializeField] 
@@ -49,7 +49,7 @@ namespace Autobattler.InfoPanel
         [SerializeField]
         private StatText physicalFatigue;
 
-        public bool IsShowing { get; private set; }
+        private bool isShowing;
 
         private void SetColors()
         {
@@ -83,36 +83,36 @@ namespace Autobattler.InfoPanel
 
         public void AttachUnit(Unit unit)
         {
-            FillTexts(unit.stats);
+            FillPanel(unit.stats);
         }
 
         public void UnattachUnit(Unit unit)
         {
-            gameObject.SetActive(false);
+            EmptyPanel();
         }
 
         public void AttachFighter(Fighter fighter)
         {
-            FillTexts(fighter.Stats, fighter.combatValues);
+            FillPanel(fighter.Stats, fighter.combatValues);
         }
 
         public void UnattachFighter(Fighter fighter)
         {
-            EmptyTexts();
+            EmptyPanel();
         }
 
         #endregion
 
         private void OnDisable()
         {
-            EmptyTexts();
+            if (!isShowing)
+                return;
+            
+            EmptyPanel();
         }
 
-        private void EmptyTexts()
+        private void EmptyPanel()
         {
-            if (!IsShowing)
-                return;
-
             health.Unattach();
             healthRegen.Unattach();
             defense.Unattach();
@@ -131,14 +131,13 @@ namespace Autobattler.InfoPanel
             vigor.Unattach();
             reinvigoration.Unattach();
             physicalFatigue.Unattach();
-            gameObject.SetActive(false);
+            isShowing = false;
 
-            IsShowing = false;
+            gameObject.SetActive(false);
         }
 
-        private void FillTexts(Stats stats, CombatValues combatValues = null)
+        private void FillPanel(Stats stats, CombatValues combatValues = null)
         {
-
             healthRegen.Attach(stats.GetStat(StatsNames.HEALTH_REGEN));
             defense.Attach(stats.GetStat(StatsNames.PHYSICAL_DEFENSE));
             magicDefense.Attach(stats.GetStat(StatsNames.MAGICAL_DEFENSE));
@@ -170,9 +169,8 @@ namespace Autobattler.InfoPanel
                 vigor.AttachValues(stats.GetStat(StatsNames.VIGOR), stats.GetStat(StatsNames.VIGOR));
             }
 
-
+            isShowing = true;
             gameObject.SetActive(true);
-            IsShowing = true;
         }
     }
 }

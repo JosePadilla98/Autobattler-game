@@ -84,7 +84,9 @@ namespace Autobattler.InventorySystem
         public void OnNewItemAdded(Item item)
         {
             Inventory_Slot slotToAttachNewItem = GetFirstEmptySlot();
-            Instantiate<ItemView>(itemPrefab, slotToAttachNewItem.transform);
+            ItemView itemView = Instantiate<ItemView>(itemPrefab, slotToAttachNewItem.transform);
+            itemView.InyectDependencies(item);
+
             AddNewSlot();
         }
 
