@@ -15,6 +15,13 @@ namespace Autobattler.Screens
         public GameEvent_Action openUnitsScreen;
         public GameEvent comeBackHere;
 
+        private Action comeBackHereAction;
+
+        private void Awake()
+        {
+            comeBackHereAction = () => comeBackHere.Raise();
+        }
+
         public void InitCombat()
         {
             gameObject.SetActive(false);
@@ -31,7 +38,7 @@ namespace Autobattler.Screens
 
             if (Input.GetKeyDown(controlsConfig.openUnitsList))
             {
-                openUnitsScreen.Raise(() => comeBackHere.Raise());
+                openUnitsScreen.Raise(comeBackHereAction);
                 gameObject.SetActive(false);
             }
         }
