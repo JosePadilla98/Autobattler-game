@@ -1,3 +1,4 @@
+using System;
 using Autobattler.Configs;
 using Autobattler.Units;
 using Autobattler.Units.Combat;
@@ -87,7 +88,7 @@ namespace Autobattler.InfoPanel
 
         public void UnattachUnit(Unit unit)
         {
-            EmptyTexts();
+            gameObject.SetActive(false);
         }
 
         public void AttachFighter(Fighter fighter)
@@ -102,8 +103,16 @@ namespace Autobattler.InfoPanel
 
         #endregion
 
+        private void OnDisable()
+        {
+            EmptyTexts();
+        }
+
         private void EmptyTexts()
         {
+            if (!IsShowing)
+                return;
+
             health.Unattach();
             healthRegen.Unattach();
             defense.Unattach();
@@ -122,8 +131,8 @@ namespace Autobattler.InfoPanel
             vigor.Unattach();
             reinvigoration.Unattach();
             physicalFatigue.Unattach();
-
             gameObject.SetActive(false);
+
             IsShowing = false;
         }
 
