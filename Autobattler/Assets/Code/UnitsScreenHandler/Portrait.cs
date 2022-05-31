@@ -12,16 +12,10 @@ namespace Autobattler.UnitsScreenHandler
         [SerializeField]
         private TextMeshProUGUI nameText;
 
-        public void OnUnitSlotSelected(MonoBehaviour monoBehaviour)
+        public void AttachUnit(Unit unit)
         {
-            var slot = monoBehaviour as UnitsList_Slot;
-            AttachUnitView(slot.getItemContained<UnitView>());
-        }
-
-        public void AttachUnitView(UnitView unitView)
-        {
-            image.sprite = unitView.unit.sprite;
-            nameText.text = unitView.unit.name;
+            image.sprite = unit.sprite;
+            nameText.text = unit.name;
         }
     }
 }

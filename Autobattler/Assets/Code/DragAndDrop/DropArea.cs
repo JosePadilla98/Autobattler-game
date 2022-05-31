@@ -1,6 +1,7 @@
 ﻿using System;
 using Autobattler.Units;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace Autobattler.DragAndDrop
@@ -10,6 +11,10 @@ namespace Autobattler.DragAndDrop
         public Canvas canvas;
         protected DraggableComponent draggableObj;
         private DraggableComponent objBeingDragged => ObjectBeingDragged.obj;
+
+        [Space(20)]
+        [SerializeField]
+        private UnityEvent onDropEvent;
 
         /// <summary>
         /// Se llama sólo desde el awake del draggableObj: Cuando la lógica lo instancia
@@ -55,9 +60,9 @@ namespace Autobattler.DragAndDrop
             var newAreaForOldItem = itemToSwap.lastDropArea;
 
             OnPlayerTakeAwayMyItem(itemWhoWhasHere);
-            Drop(itemToSwap);
 
             newAreaForOldItem.Drop(itemWhoWhasHere);
+            Drop(itemToSwap);
         }
 
         /// <summary>
@@ -70,7 +75,7 @@ namespace Autobattler.DragAndDrop
 
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
 
-            if (App.DebugController != null && App.DebugController.dragAndDrop.units)
+            if (App.DebugController != null && App.DebugController.dragAndDrop)
                 Debug.Log(draggable.name + " take away from (" + name + ")");
 
             #endif
@@ -91,10 +96,11 @@ namespace Autobattler.DragAndDrop
             draggable.Rect.anchoredPosition = Vector3.zero;
 
             draggable.onDropAction?.Invoke(this, draggableObj);
+            onDropEvent?.Invoke();
 
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
 
-            if (App.DebugController != null && App.DebugController.dragAndDrop.units)
+            if (App.DebugController != null && App.DebugController.dragAndDrop)
                 Debug.Log(draggable.name + " dropped in (" + name + ")");
 
             #endif

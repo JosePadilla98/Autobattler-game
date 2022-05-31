@@ -6,14 +6,8 @@ namespace Autobattler.Configs
     [CreateAssetMenu(fileName = "DebugController", menuName = "ScriptableObjects/Config/DebugController")]
     public class DebugController : ScriptableObject
     {
-        public DragAndDropDebug dragAndDrop;
+        public bool dragAndDrop;
         public InventoryDebug inventory;
-
-        [Serializable]
-        public class DragAndDropDebug
-        {
-            public bool units;
-        }
 
         [Serializable]
         public class InventoryDebug

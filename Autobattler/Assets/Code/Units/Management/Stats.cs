@@ -169,7 +169,7 @@ namespace Autobattler.Units.Management
             else
                 percentualModifiers.Add(modifier);
 
-            OnValueChanged();
+            OnValueChanged?.Invoke();
         }
 
         public void RemoveModifier(ModifierType type, float modifier)
@@ -179,7 +179,7 @@ namespace Autobattler.Units.Management
             else
                 percentualModifiers.Remove(modifier);
 
-            OnValueChanged();
+            OnValueChanged?.Invoke();
         }
     }
 }

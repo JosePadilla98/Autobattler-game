@@ -23,19 +23,27 @@ namespace Autobattler.SelectionSystem
             unselectedColor = image.color;
         }
 
-        public void Select()
+        public void WhenSelected()
         {
             image.color = selectedColor.color;
         }
 
-        public void Unselect()
+        public void WhenUnselect()
         {
             image.color = unselectedColor;
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        /// <summary>
+        /// Not call this from his controller!! 
+        /// </summary>
+        public void Select()
         {
             onSelected.Invoke(this);
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            Select();
         }
     }
 }

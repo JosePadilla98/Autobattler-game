@@ -44,12 +44,12 @@ namespace Autobattler.SelectionSystem
                 if (s == selected)
                 {
                     selectedIndex = i;
-                    s.Select();
+                    s.WhenSelected();
                     onComponentSelected.Invoke(selected.target);
                 }
                 else
                 {
-                    s.Unselect();
+                    s.WhenUnselect();
                 }
             }
 

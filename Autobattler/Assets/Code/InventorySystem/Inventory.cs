@@ -115,6 +115,8 @@ namespace Autobattler.InventorySystem
             Inventory_Slot slot = Instantiate<Inventory_Slot>(slotPrefab, slotsParent);
             slot.InyectDependencies(canvas, this);
             slots.Add(slot);
+            
+            slot.name = slots.Count.ToString();
         }
 
         private int ElementsCount()

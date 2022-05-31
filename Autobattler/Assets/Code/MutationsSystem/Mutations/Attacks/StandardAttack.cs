@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Autobattler.MutationsSystem.Mutations.Attacks
 {
-    [CreateAssetMenu(fileName = "MutationsDatabase", menuName = "ScriptableObjects/MutationsSystem/Mutations/Attacks/Standard")]
+    [CreateAssetMenu(fileName = "StandardAttack", menuName = "ScriptableObjects/MutationsSystem/Mutations/Attacks/Standard")]
     public class StandardAttack : MutationModel
     {
         [SerializeField] 

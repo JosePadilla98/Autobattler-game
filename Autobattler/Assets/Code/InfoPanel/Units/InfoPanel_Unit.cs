@@ -1,5 +1,6 @@
 using Autobattler.Units.Combat;
 using Autobattler.Units.Management;
+using Autobattler.UnitsScreenHandler;
 using UnityEngine;
 
 namespace Autobattler.InfoPanel.Units
@@ -96,6 +97,17 @@ namespace Autobattler.InfoPanel.Units
         public void UnattachFighter(Fighter fighter)
         {
             EmptyPanel();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="unitList_Slot"></param>
+        public void AttachUnitFromUnitList(MonoBehaviour unitList_Slot)
+        {
+            var slot = (UnitsList_Slot)unitList_Slot;
+
+            AttachUnit(((UnitView)unitList_Slot).unit);
         }
 
         #endregion

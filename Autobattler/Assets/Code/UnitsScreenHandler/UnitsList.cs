@@ -16,6 +16,8 @@ namespace Autobattler.UnitsScreenHandler
         private Transform slotsParent;
         [SerializeField]
         private Canvas canvas;
+        [SerializeField]
+        private GameEvent_Unit onUnitSelectedEvent;
 
         public void OnPlayerUnitCreated(Unit unit)
         {
@@ -28,8 +30,16 @@ namespace Autobattler.UnitsScreenHandler
         {
             UnitsList_Slot slot = Instantiate<UnitsList_Slot>(slotPrefab, slotsParent);
             slot.InyectDependencies(canvas);
+            slot.name = transform.parent.childCount.ToString();
 
             return slot;
+        }
+
+        public void OnUnitSlotSelected(MonoBehaviour unitsList_slot)
+        {
+           var slot = (UnitsList_Slot)unitsList_slot;
+           Unit unit = slot.getItemContained<UnitView>().unit;
+           onUnitSelectedEvent.Raise(unit);
         }
     }
 }
