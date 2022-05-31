@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Autobattler.SelectionSystem
 {
@@ -13,10 +14,19 @@ namespace Autobattler.SelectionSystem
         public List<SelectableComponent> selectables;
         [Space(20)]
         public UnityEvent<MonoBehaviour> onComponentSelected;
+        [Space(20)]
+        public UnityEvent OnOneOfMyChildrenSelected;
+
+        private int selectedIndex;
 
         private void Awake()
         {
             selectablesParent.onNewChildAdded += AddNewSelectable;
+        }
+
+        private void Start()
+        {
+            OnOneChildSelected(selectables[0]);
         }
 
         public void AddNewSelectable(SelectableComponent selectable)
@@ -25,16 +35,45 @@ namespace Autobattler.SelectionSystem
             selectable.onSelected += OnOneChildSelected;
         }
 
-        public void OnOneChildSelected(SelectableComponent selectable)
+        public void OnOneChildSelected(SelectableComponent selected)
         {
-            foreach (var s in selectables)
+            for (int i = 0; i < selectables.Count; i++)
             {
-                s.Unselect();
+                var s = selectables[i];
+
+                if (s == selected)
+                {
+                    selectedIndex = i;
+                    s.Select();
+                    onComponentSelected.Invoke(selected.target);
+                }
+                else
+                {
+                    s.Unselect();
+                }
             }
 
-            selectable.Select();
+            OnOneOfMyChildrenSelected?.Invoke();
+        }
 
-            Debug.Log("selected");
+        public void SelectToTheRight()
+        {
+            selectedIndex++;
+            if (selectedIndex == selectables.Count)
+                selectedIndex = 0;
+
+            SelectableComponent newSelected = selectables[selectedIndex];
+            OnOneChildSelected(newSelected);
+        }
+
+        public void SelectToTheLeft()
+        {
+            selectedIndex--;
+            if (selectedIndex == -1)
+                selectedIndex = selectables.Count - 1;
+
+            SelectableComponent newSelected = selectables[selectedIndex];
+            OnOneChildSelected(newSelected);
         }
     }
 }
