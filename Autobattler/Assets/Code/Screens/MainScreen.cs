@@ -1,4 +1,5 @@
 ﻿using System;
+using Autobattler.Configs;
 using Autobattler.Events;
 using Autobattler.GameControllers;
 using UnityEngine;
@@ -7,13 +8,22 @@ namespace Autobattler.Screens
 {
     public class MainScreen : MonoBehaviour
     {
-        public RunController runController;
-        public ControlsConfig controlsConfig;
+        [SerializeField]
+        private RunController runController;
 
         [Header("Events")]
-        public GameEvent openInventory;
-        public GameEvent_Action openUnitsScreen;
-        public GameEvent comeBackHere;
+        [SerializeField]
+        private GameEvent openInventory;
+        [SerializeField]
+        private GameEvent_Action openUnitsScreen;
+        [SerializeField]
+        private GameEvent comeBackHere;
+
+        [Header("Keys")]
+        [SerializeField]
+        private Key openInventoryKey;
+        [SerializeField]
+        private Key openUnitListKey;
 
         private Action comeBackHereAction;
 
@@ -30,13 +40,13 @@ namespace Autobattler.Screens
 
         public void Update()
         {
-            if (Input.GetKeyDown(controlsConfig.openInventory))
+            if (Input.GetKeyDown(openInventoryKey.key))
             {
                 openInventory.Raise();
                 gameObject.SetActive(false);
             }
 
-            if (Input.GetKeyDown(controlsConfig.openUnitsList))
+            if (Input.GetKeyDown(openUnitListKey.key))
             {
                 openUnitsScreen.Raise(comeBackHereAction);
                 gameObject.SetActive(false);

@@ -63,5 +63,6 @@ namespace Autobattler.InventorySystem
                     break;
             }
         }
+
     }
 }

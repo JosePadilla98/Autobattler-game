@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Autobattler
+namespace Autobattler.Configs
 {
     [CreateAssetMenu(fileName = "DebugController", menuName = "ScriptableObjects/Config/DebugController")]
     public class DebugController : ScriptableObject

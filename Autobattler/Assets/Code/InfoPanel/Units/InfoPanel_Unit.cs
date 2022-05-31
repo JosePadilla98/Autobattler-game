@@ -1,11 +1,8 @@
-using System;
-using Autobattler.Configs;
-using Autobattler.Units;
 using Autobattler.Units.Combat;
 using Autobattler.Units.Management;
 using UnityEngine;
 
-namespace Autobattler.InfoPanel
+namespace Autobattler.InfoPanel.Units
 {
     public class InfoPanel_Unit : MonoBehaviour
     {

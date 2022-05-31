@@ -1,4 +1,5 @@
 ﻿using System;
+using Autobattler.Configs;
 using Autobattler.Events;
 using UnityEngine;
 
@@ -6,12 +7,14 @@ namespace Autobattler.Screens
 {
     public class UnitsScreen : MonoBehaviour
     {
-        public ControlsConfig controlsConfig;
+        [SerializeField]
+        private Key openUnitsScreenKey;
+
         private Action comeBackToLastScreen;
 
         public void Update()
         {
-            if (Input.GetKeyDown(controlsConfig.openUnitsList))
+            if (Input.GetKeyDown(openUnitsScreenKey.key))
             {
                 comeBackToLastScreen.Invoke();
                 gameObject.SetActive(false);

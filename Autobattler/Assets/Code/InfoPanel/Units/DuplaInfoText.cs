@@ -1,10 +1,9 @@
 using System;
-using Autobattler.Colors;
-using Autobattler.Units;
+using Autobattler.Configs;
 using TMPro;
 using UnityEngine;
 
-namespace Autobattler.InfoPanel
+namespace Autobattler.InfoPanel.Units
 {
     [Serializable]
     public class DuplaInfoText : DuplaInfo

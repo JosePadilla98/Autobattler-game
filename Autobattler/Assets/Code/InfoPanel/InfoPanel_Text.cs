@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Autobattler.InfoPanel;
 using TMPro;
 using UnityEngine;
 
-namespace Autobattler
+namespace Autobattler.InfoPanel
 {
     public class InfoPanel_Text : MonoBehaviour
     {
