@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: +Defense
   m_EditorClassIdentifier: 
   canBeDisabledByPlayer: 0
-  canBeStacked: 0
-  sprite: {fileID: 0}
-  statModifiers: []
+  canBeStacked: 1
+  sprite: {fileID: 749827705, guid: c8f20aefb408a7d4f9127e09d170e86c, type: 3}
+  statModifiers:
+  - statName: 4
+    type: 0
+    value: 2
+  description: 

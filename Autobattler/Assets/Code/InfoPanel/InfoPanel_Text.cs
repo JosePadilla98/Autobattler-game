@@ -10,8 +10,6 @@ namespace Autobattler.InfoPanel
         [SerializeField]
         private TextMeshProUGUI content;
 
-        private bool isShowing;
-
         public void AttachInfo(TextPanelData info)
         {
             FillPanel(info);
@@ -27,7 +25,6 @@ namespace Autobattler.InfoPanel
             title.text = info.title;
             content.text = info.content;
 
-            isShowing = true;
             gameObject.SetActive(true);
         }
 
@@ -36,14 +33,7 @@ namespace Autobattler.InfoPanel
             title.text = "";
             content.text = "";
 
-            isShowing = false;
             gameObject.SetActive(false);
-        }
-
-        private void OnDisable()
-        {
-            if (isShowing)
-                EmptyPanel();
         }
     }
 }
