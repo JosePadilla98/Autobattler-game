@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2452266832158852355
+--- !u!1 &3891708716342023370
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2452266832158852352}
-  - component: {fileID: 2452266832158852356}
-  - component: {fileID: 2452266832158852359}
-  - component: {fileID: 2029461304989092360}
-  - component: {fileID: 7403702114112564482}
+  - component: {fileID: 3891708716342023369}
+  - component: {fileID: 3891708716342023375}
+  - component: {fileID: 3891708716342023368}
+  - component: {fileID: 9005529316372004752}
   m_Layer: 5
-  m_Name: UnitsScreen_Slot
+  m_Name: PermanentMutation_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &2452266832158852352
+--- !u!224 &3891708716342023369
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452266832158852355}
+  m_GameObject: {fileID: 3891708716342023370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -39,22 +38,22 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0.5}
---- !u!222 &2452266832158852356
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3891708716342023375
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452266832158852355}
-  m_CullTransparentMesh: 0
---- !u!114 &2452266832158852359
+  m_GameObject: {fileID: 3891708716342023370}
+  m_CullTransparentMesh: 1
+--- !u!114 &3891708716342023368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452266832158852355}
+  m_GameObject: {fileID: 3891708716342023370}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -77,48 +76,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!114 &2029461304989092360
+  m_PixelsPerUnitMultiplier: 2
+--- !u!114 &9005529316372004752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452266832158852355}
+  m_GameObject: {fileID: 3891708716342023370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 869b835b668a4574693305aecb40e229, type: 3}
+  m_Script: {fileID: 11500000, guid: cb6de16f62f185c44b1daf0067697239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   onDropEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7403702114112564482}
-        m_TargetAssemblyTypeName: Autobattler.SelectionSystem.SelectableComponent,
-          Assembly-CSharp
-        m_MethodName: Select
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7403702114112564482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452266832158852355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d569e747ed0c2448a38fa6696156fd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 2452266832158852359}
-  selectedColor: {fileID: 11400000, guid: e5093abd0e774d34ca0c553bea897321, type: 2}
-  target: {fileID: 2029461304989092360}
+      m_Calls: []

@@ -22,6 +22,7 @@ namespace Autobattler.SelectionSystem
         private void Awake()
         {
             selectablesParent.onNewChildAdded += AddNewSelectable;
+            selectedIndex = 0;
         }
 
         private void Start()

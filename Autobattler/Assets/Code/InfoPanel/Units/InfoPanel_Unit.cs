@@ -47,8 +47,6 @@ namespace Autobattler.InfoPanel.Units
         [SerializeField]
         private StatText physicalFatigue;
 
-        private bool isShowing;
-
         private void SetColors()
         {
             health.SetColor();
@@ -112,14 +110,6 @@ namespace Autobattler.InfoPanel.Units
 
         #endregion
 
-        private void OnDisable()
-        {
-            if (!isShowing)
-                return;
-            
-            EmptyPanel();
-        }
-
         private void EmptyPanel()
         {
             health.Unattach();
@@ -140,7 +130,6 @@ namespace Autobattler.InfoPanel.Units
             vigor.Unattach();
             reinvigoration.Unattach();
             physicalFatigue.Unattach();
-            isShowing = false;
 
             gameObject.SetActive(false);
         }
@@ -178,7 +167,6 @@ namespace Autobattler.InfoPanel.Units
                 vigor.AttachValues(stats.GetStat(StatsNames.VIGOR), stats.GetStat(StatsNames.VIGOR));
             }
 
-            isShowing = true;
             gameObject.SetActive(true);
         }
     }

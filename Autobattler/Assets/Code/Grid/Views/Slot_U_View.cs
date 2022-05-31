@@ -24,7 +24,7 @@ namespace Autobattler.Grid.Views
         private void BuildUnitView(Unit unit)
         {
             UnitView unitView = Instantiate(PrefabToInstantiate(), transform);
-            unitView.InyectDependences(unit, battlefieldView.canvas);
+            unitView.InyectDependences(unit);
 
             if (Side == Side.RIGHT)
             {

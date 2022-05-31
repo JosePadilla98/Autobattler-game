@@ -8,17 +8,15 @@ namespace Autobattler.MutationsSystem.Mutations
 {
     public abstract class MutationModel : ScriptableObject
     {
-        [SerializeField] protected bool canBeDisabledByPlayer;
+        public bool canBeDisabledByPlayer;
 
-        [SerializeField] protected bool canBeStacked;
+        public bool canBeStacked;
 
-        [SerializeField] protected string mutationName;
-
-        [SerializeField] protected Sprite sprite;
+        public Sprite sprite;
 
         public string GetName()
         {
-            return mutationName;
+            return name;
         }
 
         public abstract void ModifyStats(Stats stats);

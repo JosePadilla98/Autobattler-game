@@ -23,14 +23,14 @@ namespace Autobattler.UnitsScreenHandler
         {
             var slot = AddNewSlot();
             var unitView = Instantiate<UnitView>(playerUnitPrefab, slot.transform);
-            unitView.InyectDependences(unit, canvas);
+            unitView.InyectDependences(unit);
         }
 
         private UnitsList_Slot AddNewSlot()
         {
             UnitsList_Slot slot = Instantiate<UnitsList_Slot>(slotPrefab, slotsParent);
             slot.InyectDependencies(canvas);
-            slot.name = transform.parent.childCount.ToString();
+            slot.name = slotsParent.childCount.ToString();
 
             return slot;
         }

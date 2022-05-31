@@ -11,14 +11,14 @@ namespace Autobattler.Units.Management
         public String name;
         public Sprite sprite;
         public Stats stats;
-        public List<Mutation> baseMutations;
+        public List<Mutation> permanentMutations;
         public List<Mutation> disabledMutations;
         public List<Mutation> enabledMutations;
 
         public Unit()
         {
             stats = new Stats();
-            baseMutations = new List<Mutation>();
+            permanentMutations = new List<Mutation>();
             enabledMutations = new List<Mutation>();
             disabledMutations = new List<Mutation>();
         }
@@ -28,7 +28,7 @@ namespace Autobattler.Units.Management
             name = blueprint.name;
             sprite = blueprint.sprite;
 
-            foreach (var mutationModel in blueprint.mutations) 
+            foreach (var mutationModel in blueprint.permanentMutations) 
                 AddNewMutation(new Mutation(mutationModel));
 
             foreach (var mutationModel in blueprint.mutations) 
@@ -50,7 +50,19 @@ namespace Autobattler.Units.Management
 
         public void AddNewMutation(Mutation mutation)
         {
-            enabledMutations.Add(mutation);
+            if (mutation.Model.canBeDisabledByPlayer)
+            {
+                EnableMutation(mutation);
+            }
+            else
+            {
+                AddPermanentMutation(mutation);
+            }
+        }
+
+        private void AddPermanentMutation(Mutation mutation)
+        {
+            permanentMutations.Add(mutation);
             mutation.Model.ModifyStats(stats);
         }
 
