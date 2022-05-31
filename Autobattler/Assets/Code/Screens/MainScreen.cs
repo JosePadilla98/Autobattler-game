@@ -21,9 +21,9 @@ namespace Autobattler.Screens
 
         [Header("Keys")]
         [SerializeField]
-        private Key openInventoryKey;
+        private KeyModel openInventoryKeyModel;
         [SerializeField]
-        private Key openUnitListKey;
+        private KeyModel openUnitListKeyModel;
 
         private Action comeBackHereAction;
 
@@ -40,13 +40,13 @@ namespace Autobattler.Screens
 
         public void Update()
         {
-            if (Input.GetKeyDown(openInventoryKey.key))
+            if (Input.GetKeyDown(openInventoryKeyModel.key))
             {
                 openInventory.Raise();
                 gameObject.SetActive(false);
             }
 
-            if (Input.GetKeyDown(openUnitListKey.key))
+            if (Input.GetKeyDown(openUnitListKeyModel.key))
             {
                 openUnitsScreen.Raise(comeBackHereAction);
                 gameObject.SetActive(false);

@@ -10,9 +10,9 @@ namespace Autobattler.Screens
         [SerializeField]
         public GameObject mainScreen;
         [SerializeField]
-        private Key openInventoryKey;
+        private KeyModel openInventoryKeyModel;
         [SerializeField]
-        private Key openUnitListKey;
+        private KeyModel openUnitListKeyModel;
 
         [Header("Events")]
         [SerializeField]
@@ -30,13 +30,13 @@ namespace Autobattler.Screens
 
         public void Update()
         {
-            if (Input.GetKeyDown(openInventoryKey.key))
+            if (Input.GetKeyDown(openInventoryKeyModel.key))
             {
                 goToMainScreen.Raise();
                 gameObject.SetActive(false);
             }
 
-            if (Input.GetKeyDown(openUnitListKey.key))
+            if (Input.GetKeyDown(openUnitListKeyModel.key))
             {
                 goToUnitsScreen.Raise(comeBackHereAction);
                 gameObject.SetActive(false);

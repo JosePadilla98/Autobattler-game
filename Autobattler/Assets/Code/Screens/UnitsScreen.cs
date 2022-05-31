@@ -8,13 +8,13 @@ namespace Autobattler.Screens
     public class UnitsScreen : MonoBehaviour
     {
         [SerializeField]
-        private Key openUnitsScreenKey;
+        private KeyModel openUnitsScreenKeyModel;
 
         private Action comeBackToLastScreen;
 
         public void Update()
         {
-            if (Input.GetKeyDown(openUnitsScreenKey.key))
+            if (Input.GetKeyDown(openUnitsScreenKeyModel.key))
             {
                 comeBackToLastScreen.Invoke();
                 gameObject.SetActive(false);

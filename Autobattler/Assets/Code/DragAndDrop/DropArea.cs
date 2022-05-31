@@ -99,5 +99,15 @@ namespace Autobattler.DragAndDrop
 
             #endif
         }
+
+        public T getItemContained<T>() where T : MonoBehaviour
+        {
+            var item = draggableObj.item;
+
+            if (item == null)
+                throw new Exception("There is no item contained");
+
+            return item is T ? item as T : throw new Exception("There is an item, but is not of that type");
+        }
     }
 }
