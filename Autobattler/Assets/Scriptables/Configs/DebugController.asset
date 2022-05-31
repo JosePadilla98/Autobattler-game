@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5d45e91e12ffc478003aa10bd05db8, type: 3}
   m_Name: DebugController
   m_EditorClassIdentifier: 
-  dragAndDrop:
-    unitsInGrid: 0
+  dragAndDrop: 0
+  inventory:
+    thingsAttached: 0
