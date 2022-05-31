@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291659f104470424b8a1839dffd5b779, type: 3}
   m_Name: UnitsCreator
   m_EditorClassIdentifier: 
-  playerUnitCreated: {fileID: 0}
-  playerData: {fileID: 0}
-  enemies: {fileID: 0}
+  playerUnitCreated: {fileID: 11400000, guid: 4894ed34ab65dac45a68caf89f58da59, type: 2}
+  playerData: {fileID: 11400000, guid: a62f197455d8b3747ab4b7132e4fa1b3, type: 2}
+  enemies: {fileID: 11400000, guid: a49224322777bca4ea125369eaf56f65, type: 2}
