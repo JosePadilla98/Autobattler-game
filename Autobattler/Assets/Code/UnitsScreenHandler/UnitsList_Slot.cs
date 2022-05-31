@@ -11,7 +11,7 @@ namespace Autobattler.UnitsScreenHandler
             this.canvas = canvas;
         }
 
-        protected virtual bool CanThisObjectBeDroppedHere(DraggableComponent draggable)
+        protected override bool CanThisObjectBeDroppedHere(DraggableComponent draggable)
         {
             return draggable.item is UnitView;
         }

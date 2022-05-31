@@ -1,4 +1,5 @@
-﻿using Autobattler.Units.Management;
+﻿using Autobattler.Events;
+using Autobattler.Units.Management;
 using UnityEngine;
 
 namespace Autobattler.UnitsScreenHandler
@@ -14,10 +15,19 @@ namespace Autobattler.UnitsScreenHandler
         [SerializeField]
         private Canvas canvas;
 
-        private void AddNewSlot()
+        public void OnPlayerUnitCreated(Unit unit)
+        {
+            var slot = AddNewSlot();
+            var unitView = Instantiate<UnitView>(playerUnitPrefab, slot.transform);
+            unitView.InyectDependences(unit, canvas);
+        }
+
+        private UnitsList_Slot AddNewSlot()
         {
             UnitsList_Slot slot = Instantiate<UnitsList_Slot>(slotPrefab, slotsParent);
             slot.InyectDependencies(canvas);
+
+            return slot;
         }
     }
 }

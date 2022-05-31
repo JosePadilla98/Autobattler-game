@@ -24,13 +24,13 @@ namespace Autobattler.Units.Management
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            onPointerEnterEvent.Invoke(unit);
+            onPointerEnterEvent?.Invoke(unit);
             mouseIsOverMe = true;
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            onPointerExitEvent.Invoke(unit);
+            onPointerExitEvent?.Invoke(unit);
             mouseIsOverMe = false;
         }
 
