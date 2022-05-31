@@ -30,7 +30,7 @@ namespace Autobattler.UnitsScreenHandler
         {
             UnitsList_Slot slot = Instantiate<UnitsList_Slot>(slotPrefab, slotsParent);
             slot.InyectDependencies(canvas);
-            slot.name = slotsParent.childCount.ToString();
+            slot.name = "UnitsList_Slot_" + slotsParent.childCount.ToString();
 
             return slot;
         }

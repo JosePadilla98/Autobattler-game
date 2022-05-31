@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 899770216044556965}
   - component: {fileID: 899770216044556964}
   - component: {fileID: -7303867842928793494}
+  - component: {fileID: -4486074973921945267}
+  - component: {fileID: -5275679545607844647}
   m_Layer: 5
   m_Name: MutationView
   m_TagString: Untagged
@@ -90,3 +92,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 899770216044556964}
+--- !u!225 &-4486074973921945267
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899770216044556962}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &-5275679545607844647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899770216044556962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a05c38ace60c95419be88f297441039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropArea: {fileID: 0}
+  lastDropArea: {fileID: 0}
+  item: {fileID: -7303867842928793494}

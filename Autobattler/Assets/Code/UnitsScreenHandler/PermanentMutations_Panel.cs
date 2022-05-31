@@ -1,4 +1,5 @@
-﻿using Autobattler.MutationsSystem;
+﻿using System.Collections.Generic;
+using Autobattler.MutationsSystem;
 using Autobattler.MutationsSystem.Mutations;
 using Autobattler.Units.Management;
 using UnityEngine;
@@ -18,15 +19,44 @@ namespace Autobattler.UnitsScreenHandler
         [SerializeField]
         private MutationView mutationViewPrefab;
 
+        private Unit currentUnitAttached;
+        private PermanentsMutations_Slot[] slots;
+
+
         public void AttachUnit(Unit unit)
         {
+            if (currentUnitAttached != null)
+                SaveChanges(currentUnitAttached);
+
             DestroyAllChildren();
 
-            foreach (var mutation in unit.permanentMutations)
+            LoadUnitData(unit);
+            currentUnitAttached = unit;
+        }
+
+        public void LoadUnitData(Unit unitToLoad)
+        {
+            List<Mutation> mutationsList = unitToLoad.permanentMutations;
+            slots = new PermanentsMutations_Slot[mutationsList.Count];
+
+            for (int i = 0; i < mutationsList.Count; i++)
             {
                 var slot = AddNewSlot();
+                slots[i] = slot;
+
+                var mutation = mutationsList[i];
                 AddNewMutationView(mutation, slot);
-                AddNewSlot();
+            }
+        }
+
+        private void SaveChanges(Unit unitModified)
+        {
+            List<Mutation> mutationsList = unitModified.permanentMutations;
+            mutationsList.Clear();
+
+            foreach (var slot in slots)
+            {
+                mutationsList.Add(slot.MutationContained);
             }
         }
 
@@ -34,6 +64,8 @@ namespace Autobattler.UnitsScreenHandler
         {
             var slot = Instantiate<PermanentsMutations_Slot>(slotPrefab, slotsParent);
             slot.InyectDependencies(canvas);
+            slot.gameObject.name = "PermanentMutations_Slot_" + slotsParent.childCount;
+
             return slot;
         }
 

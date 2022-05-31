@@ -19,6 +19,11 @@ namespace Autobattler.MutationsSystem.Mutations
             return name;
         }
 
+        public virtual string GetDescription()
+        {
+            return "Not implemented";
+        }
+
         public abstract void ModifyStats(Stats stats);
 
         public abstract void UnmodifyStats(Stats stats);

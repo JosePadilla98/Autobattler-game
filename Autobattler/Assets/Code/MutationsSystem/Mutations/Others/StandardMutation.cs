@@ -13,6 +13,15 @@ namespace Autobattler.MutationsSystem.Mutations.Attacks
         [SerializeField] 
         protected StatModifier[] statModifiers;
 
+        [TextArea]
+        [SerializeField]
+        private String description;
+
+        public override string GetDescription()
+        {
+            return description;
+        }
+
         public override void ModifyStats(Stats stats)
         {
             Stats.ApplyStatsModifiers(statModifiers, stats);
