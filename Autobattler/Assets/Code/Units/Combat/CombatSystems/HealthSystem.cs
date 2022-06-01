@@ -18,7 +18,7 @@ namespace Autobattler.Units.Combat.CombatSystems
 
         #region Properties
 
-        public float MaxHealth => parent.Stats.GetStatValue(StatsNames.HEALTH);
+        public float MaxHealth => parent.StatsContainer.GetStatValue(StatsNames.HEALTH);
 
         public float CurrentHealth
         {

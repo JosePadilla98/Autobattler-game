@@ -4,42 +4,29 @@ using Autobattler.Units.Combat;
 using Autobattler.Units.Combat.CombatSystems;
 using Autobattler.Units.Management;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Autobattler.MutationsSystem.Mutations.Attacks
 {
     [CreateAssetMenu(fileName = "StandardMutation", menuName = "ScriptableObjects/MutationsSystem/Mutations/Standard")]
-    public class StandardMutation : MutationModel
+    public class StandardMutation : MutationModel, IModifyStats
     {
         [SerializeField] 
-        protected StatModifier[] statModifiers;
+        protected StatsModifier statModifiers;
 
-        [TextArea]
-        [SerializeField]
-        private String description;
-
-        public override string GetDescription()
+        public override string GetDescription(int timesStacked)
         {
-            return description;
+            return statModifiers.GetDescription(timesStacked, colorsConfig);
         }
 
-        public override void ModifyStats(Stats stats)
+        public void ModifyStats(StatsContainer statsContainer)
         {
-            Stats.ApplyStatsModifiers(statModifiers, stats);
+            statModifiers.ApplyStatsModifiers(statsContainer);
         }
 
-        public override void UnmodifyStats(Stats stats)
+        public void UnmodifyStats(StatsContainer statsContainer)
         {
-            Stats.UnapplyStatsModifiers(statModifiers, stats);
-        }
-
-        public override void AttachToCombatModules(int order, int key, Fighter unit)
-        {
-
-        }
-        
-        public override void UnattachToCombatModules(int key, Fighter unit)
-        {
-
+            statModifiers.UnapplyStatsModifiers(statsContainer);
         }
     }
 }

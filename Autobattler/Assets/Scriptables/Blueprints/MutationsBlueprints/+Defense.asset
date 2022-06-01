@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee275c450db26a141a0f45d0f17a59bc, type: 3}
   m_Name: +Defense
   m_EditorClassIdentifier: 
+  colorsConfig: {fileID: 0}
   canBeDisabledByPlayer: 0
-  canBeStacked: 1
+  stackBehaviourTypes: 1
   sprite: {fileID: 749827705, guid: c8f20aefb408a7d4f9127e09d170e86c, type: 3}
   statModifiers:
-  - statName: 4
-    type: 0
-    value: 2
-  description: 
+    modifiers:
+    - statName: 4
+      type: 0
+      value: 2

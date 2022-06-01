@@ -16,13 +16,13 @@ namespace Autobattler.Units.Combat.View.InfoBars
 
         public void AttachUnit(Fighter fighter)
         {
-            healthBar.AttachMaxValue(fighter.Stats.GetStat(StatsNames.HEALTH));
+            healthBar.AttachMaxValue(fighter.StatsContainer.GetStat(StatsNames.HEALTH));
             healthBar.AttachValue(fighter.combatValues.currentHealth);
 
-            vigorBar.AttachMaxValue(fighter.Stats.GetStat(StatsNames.VIGOR));
+            vigorBar.AttachMaxValue(fighter.StatsContainer.GetStat(StatsNames.VIGOR));
             vigorBar.AttachValue(fighter.combatValues.currentVigor);
 
-            manaBar.AttachMaxValue(fighter.Stats.GetStat(StatsNames.MANA));
+            manaBar.AttachMaxValue(fighter.StatsContainer.GetStat(StatsNames.MANA));
             manaBar.AttachValue(fighter.combatValues.currentMana);
         }
 

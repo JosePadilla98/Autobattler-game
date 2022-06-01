@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 3891708716342023375}
   - component: {fileID: 3891708716342023368}
   - component: {fileID: 9005529316372004752}
+  - component: {fileID: 6201809214016108864}
   m_Layer: 5
-  m_Name: PermanentMutation_Slot
+  m_Name: UnitsScreen_PermanentMutation_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,3 +94,18 @@ MonoBehaviour:
   onDropEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6201809214016108864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3891708716342023370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d569e747ed0c2448a38fa6696156fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 3891708716342023368}
+  selectedColor: {fileID: 11400000, guid: e5093abd0e774d34ca0c553bea897321, type: 2}
+  target: {fileID: 9005529316372004752}

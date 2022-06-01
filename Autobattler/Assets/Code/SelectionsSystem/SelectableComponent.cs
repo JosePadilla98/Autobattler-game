@@ -16,6 +16,7 @@ namespace Autobattler.SelectionSystem
         private Color unselectedColor;
 
         public Action<SelectableComponent> onSelected;
+        public Action<SelectableComponent> onDestroy;
         public MonoBehaviour target;
 
         private void Awake()
@@ -44,6 +45,11 @@ namespace Autobattler.SelectionSystem
         public void OnPointerClick(PointerEventData eventData)
         {
             Select();
+        }
+
+        private void OnDestroy()
+        {
+            onDestroy.Invoke(this);
         }
     }
 }

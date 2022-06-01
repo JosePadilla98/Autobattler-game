@@ -9,7 +9,15 @@ namespace Autobattler.SelectionSystem
 
         private void OnTransformChildrenChanged()
         {
-            onNewChildAdded.Invoke(GetLastChild().GetComponent<SelectableComponent>());
+            if (transform.childCount == 0)
+                return;
+
+            SelectableComponent selectable = GetLastChild().GetComponent<SelectableComponent>();
+
+            if (selectable == null)
+                throw new Exception("You are adding children to 'selectablesParent' that not have selectableComponent");
+
+            onNewChildAdded.Invoke(selectable);
         }
 
         private Transform GetLastChild()

@@ -10,14 +10,14 @@ namespace Autobattler.Units.Management
     {
         public String name;
         public Sprite sprite;
-        public Stats stats;
+        public StatsContainer statsContainer;
         public List<Mutation> permanentMutations;
         public List<Mutation> disabledMutations;
         public List<Mutation> enabledMutations;
 
         public Unit()
         {
-            stats = new Stats();
+            statsContainer = new StatsContainer();
             permanentMutations = new List<Mutation>();
             enabledMutations = new List<Mutation>();
             disabledMutations = new List<Mutation>();
@@ -63,21 +63,37 @@ namespace Autobattler.Units.Management
         private void AddPermanentMutation(Mutation mutation)
         {
             permanentMutations.Add(mutation);
-            mutation.Model.ModifyStats(stats);
+            CheckIfModifyStats(mutation);
         }
 
         public void DisableMutation(Mutation mutation)
         {
             enabledMutations.Remove(mutation);
-            mutation.Model.UnmodifyStats(stats);
+            CheckIfUnmodifyStats(mutation);
             disabledMutations.Add(mutation);
         }
 
         public void EnableMutation(Mutation mutation)
         {
             enabledMutations.Add(mutation);
-            mutation.Model.ModifyStats(stats);
+            CheckIfModifyStats(mutation);
             disabledMutations.Remove(mutation);
+        }
+
+        private void CheckIfModifyStats(Mutation mutation)
+        {
+            if (mutation.Model is IModifyStats)
+            {
+                (mutation.Model as IModifyStats).ModifyStats(statsContainer);
+            }
+        }
+
+        private void CheckIfUnmodifyStats(Mutation mutation)
+        {
+            if (mutation.Model is IModifyStats)
+            {
+                (mutation.Model as IModifyStats).UnmodifyStats(statsContainer);
+            }
         }
 
         #endregion

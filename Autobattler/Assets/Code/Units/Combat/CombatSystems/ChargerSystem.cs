@@ -9,7 +9,7 @@ namespace Autobattler.Units.Combat.CombatSystems
     public class ChargerSystem : CombatSystem
     {
         public Dictionary<int, ChargeableItem> rechargingItems = new();
-        private List<ChargeableItem> waiting;
+        private List<ChargeableItem> waitingToBeRecharged;
 
         private ChargerSystem(Fighter parent) : base(parent)
         {
@@ -19,25 +19,25 @@ namespace Autobattler.Units.Combat.CombatSystems
 
         public void Refresh()
         {
-            //Try to pay the costs of waiting items, and then put it in the recharging collection
-            for (var i = waiting.Count; i > 0; i--)
+            //Try to pay the costs of waitingToBeRecharged items, and then put it in the recharging collection
+            for (var i = waitingToBeRecharged.Count; i > 0; i--)
             {
-                var waitingItem = waiting[i];
+                var waitingItem = waitingToBeRecharged[i];
 
                 if (energySystem.TryPayCost(waitingItem.Cost))
                 {
                     rechargingItems.Add(waitingItem.MutationID, waitingItem);
-                    waiting.RemoveAt(i);
+                    waitingToBeRecharged.RemoveAt(i);
                 }
             }
 
-            foreach (var RechargingItem in rechargingItems.Values) RechargingItem.Refresh(parent.Stats);
+            foreach (var RechargingItem in rechargingItems.Values) RechargingItem.Refresh(parent.StatsContainer);
         }
 
         public void AddToWaitingList(ChargeableItem item)
         {
-            waiting.Add(item);
-            waiting.Sort((a, b) => a.CompareTo(b));
+            waitingToBeRecharged.Add(item);
+            waitingToBeRecharged.Sort((a, b) => a.CompareTo(b));
         }
     }
 
@@ -97,10 +97,10 @@ namespace Autobattler.Units.Combat.CombatSystems
             return this;
         }
 
-        public void Refresh(Stats stats)
+        public void Refresh(StatsContainer statsContainer)
         {
-            progress += Time.fixedDeltaTime * PhysicalSpeedFactor * stats.GetStatValue(StatsNames.PHYSICAL_SPEED);
-            progress += Time.fixedDeltaTime * MagicalSpeedFactor * stats.GetStatValue(StatsNames.MAGICAL_SPEED);
+            progress += Time.fixedDeltaTime * PhysicalSpeedFactor * statsContainer.GetStatValue(StatsNames.PHYSICAL_SPEED);
+            progress += Time.fixedDeltaTime * MagicalSpeedFactor * statsContainer.GetStatValue(StatsNames.MAGICAL_SPEED);
 
             while (progress >= Duration)
             {

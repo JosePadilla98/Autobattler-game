@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Autobattler.Events;
+using Autobattler.InfoPanel;
 using Autobattler.MutationsSystem;
 using Autobattler.MutationsSystem.Mutations;
 using Autobattler.Units.Management;
@@ -19,9 +21,12 @@ namespace Autobattler.UnitsScreenHandler
         [SerializeField]
         private MutationView mutationViewPrefab;
 
+        [Header("Events")]
+        [SerializeField]
+        private GameEvent_Info onMutationSelected;
+
         private Unit currentUnitAttached;
         private PermanentsMutations_Slot[] slots;
-
 
         public void AttachUnit(Unit unit)
         {
@@ -81,6 +86,15 @@ namespace Autobattler.UnitsScreenHandler
             {
                 Destroy(child.gameObject);
             }
+        }
+
+        public void OnPermanentMutationSlotSelected(MonoBehaviour permanentMutation_Slot)
+        {
+            var slot = (PermanentsMutations_Slot)permanentMutation_Slot;
+            Mutation mutation = slot.getItemContained<MutationView>().mutation;
+
+            TextPanelData infoToSend = new TextPanelData(mutation.Name, mutation.Description);
+            onMutationSelected.Raise(infoToSend);
         }
     }
 }

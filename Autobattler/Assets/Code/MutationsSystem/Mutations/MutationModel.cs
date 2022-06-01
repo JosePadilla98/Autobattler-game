@@ -1,4 +1,4 @@
-using System;
+using Autobattler.Configs;
 using Autobattler.Units;
 using Autobattler.Units.Combat;
 using Autobattler.Units.Management;
@@ -8,96 +8,25 @@ namespace Autobattler.MutationsSystem.Mutations
 {
     public abstract class MutationModel : ScriptableObject
     {
+        [SerializeField]
+        protected StatsColorsConfig colorsConfig;
+
         public bool canBeDisabledByPlayer;
-
-        public bool canBeStacked;
-
+        public StackBehaviourTypes stackBehaviourTypes;
         public Sprite sprite;
 
-        public string GetName()
-        {
-            return name;
-        }
+        public string Name() => name;
 
-        public virtual string GetDescription()
+        public virtual string GetDescription(int timesStaked)
         {
             return "Not implemented";
         }
-
-        public abstract void ModifyStats(Stats stats);
-
-        public abstract void UnmodifyStats(Stats stats);
-
-        /// <summary>
-        /// </summary>
-        /// <param name="order">
-        ///     The mutation instance index in the unit's collection. Some mutations need to know this (see the
-        ///     chargerSystem)
-        /// </param>
-        /// <param name="key">The mutation instance ID of a fighter</param>
-        /// <param name="unit"></param>
-        public abstract void AttachToCombatModules(int order, int key, Fighter unit);
-
-        public abstract void UnattachToCombatModules(int key, Fighter unit);
     }
 
-    public class Mutation : IMutation
+    public enum StackBehaviourTypes
     {
-        private int key;
-
-        public Mutation(MutationModel model)
-        {
-            Model = model;
-            key = UniqueKeysDispenser.GetNewKey();
-        }
-
-        public MutationModel Model { get; }
-
-        public string GetName()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ModifyStats(Stats stats)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UnmodifyStats(Stats stats)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// </summary>
-        /// <param name="order">
-        ///     This mutation instance index in the unit's collection. Some mutations need to know this (see the
-        ///     chargerSystem)
-        /// </param>
-        /// <param name="key">This instance key (ID)</param>
-        /// <param name="unit"></param>
-        public void AttachToCombatModules(int order, int key, Fighter unit)
-        {
-            Model.AttachToCombatModules(order, key, unit);
-        }
-
-        public void UnattachToCombatModules(int key, Fighter unit)
-        {
-            throw new NotImplementedException();
-        }
-
-        #region POOL
-
-        #endregion
-    }
-
-    public interface IMutation
-    {
-        public string GetName();
-        public void ModifyStats(Stats stats);
-        public void UnmodifyStats(Stats stats);
-
-        public void AttachToCombatModules(int order, int key, Fighter unit);
-        public void UnattachToCombatModules(int key, Fighter unit);
+        NONE,
+        CAN_BE_STACKED,
+        CAN_BE_OWN_MULTIPLE_TIMES
     }
 }

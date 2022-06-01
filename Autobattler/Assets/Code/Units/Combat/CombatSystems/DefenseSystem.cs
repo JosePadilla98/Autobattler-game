@@ -17,8 +17,8 @@ namespace Autobattler.Units.Combat.CombatSystems
 
         #region Properties
 
-        public float PhysicalDefense => parent.Stats.GetStatValue(StatsNames.PHYSICAL_DEFENSE);
-        public float MagicalDefense => parent.Stats.GetStatValue(StatsNames.MAGICAL_DEFENSE);
+        public float PhysicalDefense => parent.StatsContainer.GetStatValue(StatsNames.PHYSICAL_DEFENSE);
+        public float MagicalDefense => parent.StatsContainer.GetStatValue(StatsNames.MAGICAL_DEFENSE);
 
         #endregion
     }

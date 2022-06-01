@@ -10,14 +10,17 @@ namespace Autobattler.SelectionSystem
     {
         [SerializeField]
         private SelectablesParent selectablesParent;
+        [SerializeField]
+        private bool selectFirstAtBeginning;
         [Space(20)]
         public List<SelectableComponent> selectables;
         [Space(20)]
-        public UnityEvent<MonoBehaviour> onComponentSelected;
+        public UnityEvent<MonoBehaviour> onTargetSelected;
         [Space(20)]
         public UnityEvent OnOneOfMyChildrenSelected;
 
         private int selectedIndex;
+      
 
         private void Awake()
         {
@@ -27,13 +30,15 @@ namespace Autobattler.SelectionSystem
 
         private void Start()
         {
-            OnOneChildSelected(selectables[0]);
+            if(selectFirstAtBeginning)
+                OnOneChildSelected(selectables[0]);
         }
 
         public void AddNewSelectable(SelectableComponent selectable)
         {
             selectables.Add(selectable);
             selectable.onSelected += OnOneChildSelected;
+            selectable.onDestroy += BeforeChildGetDestroyed;
         }
 
         public void OnOneChildSelected(SelectableComponent selected)
@@ -46,7 +51,7 @@ namespace Autobattler.SelectionSystem
                 {
                     selectedIndex = i;
                     s.WhenSelected();
-                    onComponentSelected.Invoke(selected.target);
+                    onTargetSelected.Invoke(selected.target);
                 }
                 else
                 {
@@ -55,6 +60,14 @@ namespace Autobattler.SelectionSystem
             }
 
             OnOneOfMyChildrenSelected?.Invoke();
+        }
+
+        private void BeforeChildGetDestroyed(SelectableComponent selectable)
+        {
+            selectables.Remove(selectable);
+            selectable.onSelected -= OnOneChildSelected;
+            selectable.onDestroy -= BeforeChildGetDestroyed;
+
         }
 
         public void SelectToTheRight()
