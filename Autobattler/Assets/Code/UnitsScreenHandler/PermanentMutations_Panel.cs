@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Autobattler.Events;
 using Autobattler.InfoPanel;
 using Autobattler.MutationsSystem;
@@ -95,6 +96,12 @@ namespace Autobattler.UnitsScreenHandler
 
             TextPanelData infoToSend = new TextPanelData(mutation.Name, mutation.Description);
             onMutationSelected.Raise(infoToSend);
+        }
+
+        private void OnDisable()
+        {
+            if (currentUnitAttached != null)
+                SaveChanges(currentUnitAttached);
         }
     }
 }

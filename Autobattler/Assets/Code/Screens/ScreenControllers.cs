@@ -13,6 +13,7 @@ namespace Autobattler.Screens
         {
             foreach (var screen in otherScreens)
             {
+                screen.SetActive(false);
                 screen.SetActive(true);
                 screen.SetActive(false);
             }
