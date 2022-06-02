@@ -18,7 +18,7 @@ namespace Autobattler.UnitsScreenHandler
 
         [Header("Prefabs")]
         [SerializeField]
-        private PermanentsMutations_Slot slotPrefab;
+        private PermanentMutation_Slot slotPrefab;
         [SerializeField]
         private MutationView mutationViewPrefab;
 
@@ -27,7 +27,7 @@ namespace Autobattler.UnitsScreenHandler
         private GameEvent_Info onMutationSelected;
 
         private Unit currentUnitAttached;
-        private PermanentsMutations_Slot[] slots;
+        private PermanentMutation_Slot[] slots;
 
         public void AttachUnit(Unit unit)
         {
@@ -43,7 +43,7 @@ namespace Autobattler.UnitsScreenHandler
         public void LoadUnitData(Unit unitToLoad)
         {
             List<Mutation> mutationsList = unitToLoad.permanentMutations;
-            slots = new PermanentsMutations_Slot[mutationsList.Count];
+            slots = new PermanentMutation_Slot[mutationsList.Count];
 
             for (int i = 0; i < mutationsList.Count; i++)
             {
@@ -66,16 +66,16 @@ namespace Autobattler.UnitsScreenHandler
             }
         }
 
-        private PermanentsMutations_Slot AddNewSlot()
+        private PermanentMutation_Slot AddNewSlot()
         {
-            var slot = Instantiate<PermanentsMutations_Slot>(slotPrefab, slotsParent);
+            var slot = Instantiate<PermanentMutation_Slot>(slotPrefab, slotsParent);
             slot.InyectDependencies(canvas);
             slot.gameObject.name = "PermanentMutations_Slot_" + slotsParent.childCount;
 
             return slot;
         }
 
-        private void AddNewMutationView(Mutation mutation, PermanentsMutations_Slot slot)
+        private void AddNewMutationView(Mutation mutation, PermanentMutation_Slot slot)
         {
             var mutationView = Instantiate<MutationView>(mutationViewPrefab, slot.transform);
             mutationView.InyectDependences(mutation);
@@ -91,7 +91,7 @@ namespace Autobattler.UnitsScreenHandler
 
         public void OnPermanentMutationSlotSelected(MonoBehaviour permanentMutation_Slot)
         {
-            var slot = (PermanentsMutations_Slot)permanentMutation_Slot;
+            var slot = (PermanentMutation_Slot)permanentMutation_Slot;
             Mutation mutation = slot.getItemContained<MutationView>().mutation;
 
             TextPanelData infoToSend = new TextPanelData(mutation.Name, mutation.Description);

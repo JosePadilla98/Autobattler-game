@@ -8,11 +8,18 @@ namespace Autobattler.Configs
     {
         public bool dragAndDrop;
         public InventoryDebug inventory;
+        public UnitsScreenDebug unitsScreenDebug;
 
         [Serializable]
         public class InventoryDebug
         {
-            public bool thingsAttached;
+            public bool elementsHandler;
+        }
+
+        [Serializable]
+        public class UnitsScreenDebug
+        {
+            public bool mutationsHandler;
         }
     }
 }

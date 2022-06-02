@@ -5,14 +5,8 @@ using UnityEngine;
 
 namespace Autobattler.UnitsScreenHandler
 {
-    public class PermanentsMutations_Slot : DropArea
+    public class Mutation_Slot : Mutation_BaseSlot
     {
-        public Mutation MutationContained => (draggableObj.item as MutationView).mutation;
-
-        public void InyectDependencies(Canvas canvas)
-        {
-            this.canvas = canvas;
-        }
 
         protected override bool CanThisObjectBeDroppedHere(DraggableComponent draggable)
         {
@@ -20,7 +14,7 @@ namespace Autobattler.UnitsScreenHandler
                 return false;
 
             var mutation = ((MutationView)draggable.item).mutation;
-            return !mutation.Model.canBeDisabledByPlayer;
+            return mutation.Model.canBeDisabledByPlayer;
         }
     }
 }
