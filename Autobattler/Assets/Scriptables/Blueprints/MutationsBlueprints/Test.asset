@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   colorsConfig: {fileID: 0}
-  canBeDisabledByPlayer: 0
+  canBeDisabledByPlayer: 1
   stackBehaviourTypes: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: -875002907, guid: c8f20aefb408a7d4f9127e09d170e86c, type: 3}
   statModifiers:
-    modifiers: []
+    modifiers:
+    - statName: 8
+      type: 1
+      value: 100

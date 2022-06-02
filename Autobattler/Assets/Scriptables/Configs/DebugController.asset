@@ -16,4 +16,4 @@ MonoBehaviour:
   inventory:
     elementsHandler: 0
   unitsScreenDebug:
-    mutationsHandler: 1
+    mutationsHandler: 0
