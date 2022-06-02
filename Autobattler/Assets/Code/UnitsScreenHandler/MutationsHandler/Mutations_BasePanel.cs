@@ -21,7 +21,7 @@ namespace Autobattler.UnitsScreenHandler
 
         [Header("Prefabs")]
         [SerializeField]
-        private Mutation_Slot slotPrefab;
+        private Mutation_BaseSlot slotPrefab;
         [SerializeField]
         private MutationView mutationViewPrefab;
 
@@ -29,10 +29,10 @@ namespace Autobattler.UnitsScreenHandler
         [SerializeField]
         private GameEvent_Info onMutationSelected;
 
-        private Unit currentUnitAttached;
-        private List<Mutation_Slot> slots;
+        protected Unit currentUnitAttached;
+        private List<Mutation_BaseSlot> slots;
 
-        public List<Mutation_Slot> Slots
+        public List<Mutation_BaseSlot> Slots
         {
             get
             {
@@ -51,39 +51,40 @@ namespace Autobattler.UnitsScreenHandler
             currentUnitAttached = unit;
         }
 
-        public void LoadUnitData(Unit unitToLoad)
+        public virtual void LoadUnitData(Unit unitToLoad)
         {
             List<Mutation> mutationsList = GetMutationList(unitToLoad);
 
             foreach (var mutation in mutationsList)
             {
                 var slot = AddNewSlot();
-                Slots.Add(slot);
                 AddNewMutationView(mutation, slot);
             }
         }
 
-        private Mutation_Slot AddNewSlot()
+        protected Mutation_BaseSlot AddNewSlot()
         {
-            var slot = Instantiate<Mutation_Slot>(slotPrefab, slotsParent);
-            slot.InyectDependencies(canvas);
+            var slot = Instantiate<Mutation_BaseSlot>(slotPrefab, slotsParent);
+            slot.InyectDependencies(canvas, this);
             slot.gameObject.name = "Mutations_Slot_" + slotsParent.childCount;
+            Slots.Add(slot);
 
             return slot;
         }
 
-        private void SaveChanges(Unit unitModified)
+        public virtual void SaveChanges()
         {
-            List<Mutation> mutationsList = GetMutationList(unitModified);
+            List<Mutation> mutationsList = GetMutationList(currentUnitAttached);
             mutationsList.Clear();
 
             foreach (var slot in Slots)
             {
-                mutationsList.Add(slot.MutationContained);
+                if(slot.HasItem)
+                    mutationsList.Add(slot.MutationContained);
             }
         }
 
-        private void AddNewMutationView(Mutation mutation, Mutation_Slot slot)
+        private void AddNewMutationView(Mutation mutation, Mutation_BaseSlot slot)
         {
             var mutationView = Instantiate<MutationView>(mutationViewPrefab, slot.transform);
             mutationView.InyectDependences(mutation);
@@ -91,6 +92,8 @@ namespace Autobattler.UnitsScreenHandler
 
         private void DestroyAllChildren()
         {
+            Slots.Clear();
+
             foreach (Transform child in slotsParent)
             {
                 Destroy(child.gameObject);
@@ -99,28 +102,17 @@ namespace Autobattler.UnitsScreenHandler
 
         public void OnMutationSlotSelected(MonoBehaviour mutation_Slot)
         {
-            var slot = (Mutation_Slot)mutation_Slot;
+            var slot = (Mutation_BaseSlot)mutation_Slot;
             Mutation mutation = slot.getItemContained<MutationView>().mutation;
 
             TextPanelData infoToSend = new TextPanelData(mutation.Name, mutation.Description);
             onMutationSelected.Raise(infoToSend);
         }
 
-        public void CheckIfAttachMutation(Mutation mutation)
-        {
-            if (GetMutationList(currentUnitAttached).Contains(mutation))
-            {
-                //Player has only change the mutation's cell
-                return;
-            }
-
-            AttachMutation(mutation);
-        }
-
-        private void AttachMutation(Mutation mutation)
+        public virtual void AttachMutation(Mutation mutation)
         {
             CheckIfAddNewSlot();
-            SaveChanges(currentUnitAttached);
+            SaveChanges();
 
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
 
@@ -130,14 +122,20 @@ namespace Autobattler.UnitsScreenHandler
             #endif
         }
 
-        public void UnattachMutation(Mutation mutation)
+        public void CheckIfAttachMutation(Mutation mutation)
+        {
+            if(!GetMutationList(currentUnitAttached).Contains(mutation))
+                AttachMutation(mutation);
+        }
+
+        public virtual void UnattachMutation(Mutation mutation)
         {
             RemoveEmptySlot();
-            SaveChanges(currentUnitAttached);
+            SaveChanges();
 
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
 
-            if (App.DebugController != null && App.DebugController.inventory.elementsHandler)
+            if (App.DebugController != null && App.DebugController.unitsScreenDebug.mutationsHandler)
                 Debug.Log(mutation.Name + " unattached in in " + gameObject.name);
 
             #endif
@@ -161,7 +159,7 @@ namespace Autobattler.UnitsScreenHandler
             Destroy(slotToRemove.gameObject);
         }
 
-        private Mutation_Slot GetFirstEmptySlot()
+        private Mutation_BaseSlot GetFirstEmptySlot()
         {
             foreach (var slot in Slots)
             {

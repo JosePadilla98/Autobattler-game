@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragAndDrop: 0
   inventory:
-    thingsAttached: 0
+    elementsHandler: 0
+  unitsScreenDebug:
+    mutationsHandler: 1

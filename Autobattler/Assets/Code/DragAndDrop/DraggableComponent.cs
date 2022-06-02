@@ -69,6 +69,11 @@ namespace Autobattler.DragAndDrop
         /// <param name="eventData"></param>
         public void OnEndDrag(PointerEventData eventData)
         {
+            EndDrag();
+        }
+
+        public void EndDrag()
+        {
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
             ObjBeingDragged = null;

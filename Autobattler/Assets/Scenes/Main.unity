@@ -4265,7 +4265,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1790888895}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6420c32fac1c1854896d4ab316438903, type: 3}
+  m_Script: {fileID: 11500000, guid: d49577131c1f80341868cd87b777753a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slotsParent: {fileID: 1495862260}
@@ -4292,9 +4292,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1790888899}
-        m_TargetAssemblyTypeName: Autobattler.UnitsScreenHandler.PermanentMutations_Panel,
+        m_TargetAssemblyTypeName: Autobattler.UnitsScreenHandler.Mutations_BasePanel,
           Assembly-CSharp
-        m_MethodName: OnPermanentMutationSlotSelected
+        m_MethodName: OnMutationSlotSelected
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

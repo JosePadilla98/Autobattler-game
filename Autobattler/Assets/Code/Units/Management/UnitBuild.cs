@@ -9,8 +9,6 @@ namespace Autobattler.Units.Management
     {
         public int level;
         [Space(20)]
-        public MutationModel[] permanentMutations;
-        [Space(20)]
         public MutationModel[] mutations;
         public Sprite sprite;
         public String name = "NoName";

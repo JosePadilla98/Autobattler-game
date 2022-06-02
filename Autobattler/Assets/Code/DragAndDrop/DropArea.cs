@@ -13,8 +13,9 @@ namespace Autobattler.DragAndDrop
         private DraggableComponent objBeingDragged => ObjectBeingDragged.obj;
 
         [Space(20)]
-        [SerializeField]
-        private UnityEvent onDropEvent;
+        public UnityEvent onDropEvent;
+        [Space(20)]
+        public UnityEvent onItemTakenAwayEvent;
 
         /// <summary>
         /// Se llama sólo desde el awake del draggableObj: Cuando la lógica lo instancia
@@ -54,14 +55,14 @@ namespace Autobattler.DragAndDrop
             SwapPlaces(itemToSwap);
         }
 
-        private void SwapPlaces(DraggableComponent itemToSwap)
+        protected virtual void SwapPlaces(DraggableComponent itemToSwap)
         {
-            var itemWhoWhasHere = draggableObj;
+            var itemWhoWasHere = draggableObj;
             var newAreaForOldItem = itemToSwap.lastDropArea;
 
-            OnPlayerTakeAwayMyItem(itemWhoWhasHere);
+            OnPlayerTakeAwayMyItem(itemWhoWasHere);
 
-            newAreaForOldItem.Drop(itemWhoWhasHere);
+            newAreaForOldItem.Drop(itemWhoWasHere);
             Drop(itemToSwap);
         }
 
@@ -72,6 +73,8 @@ namespace Autobattler.DragAndDrop
         public virtual void OnPlayerTakeAwayMyItem(DraggableComponent draggable)
         {
             draggableObj = null;
+            draggable.onDropAction += MyLastItemHasBeenPlacedSomewhere;
+            onItemTakenAwayEvent?.Invoke();
 
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
 
@@ -104,6 +107,11 @@ namespace Autobattler.DragAndDrop
                 Debug.Log(draggable.name + " dropped in (" + name + ")");
 
             #endif
+        }
+
+        protected virtual void MyLastItemHasBeenPlacedSomewhere(DropArea dropAreaWherePlaced, DraggableComponent draggable)
+        {
+            draggable.onDropAction -= MyLastItemHasBeenPlacedSomewhere;
         }
 
         public T getItemContained<T>() where T : MonoBehaviour

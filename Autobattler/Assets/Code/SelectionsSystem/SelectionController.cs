@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Autobattler.DragAndDrop;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -72,6 +73,8 @@ namespace Autobattler.SelectionSystem
 
         public void SelectToTheRight()
         {
+            ObjectBeingDragged.CancelDragging();
+
             selectedIndex++;
             if (selectedIndex == selectables.Count)
                 selectedIndex = 0;
@@ -82,6 +85,8 @@ namespace Autobattler.SelectionSystem
 
         public void SelectToTheLeft()
         {
+            ObjectBeingDragged.CancelDragging();
+
             selectedIndex--;
             if (selectedIndex == -1)
                 selectedIndex = selectables.Count - 1;

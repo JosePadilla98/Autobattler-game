@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bcce63b88b2bac48b0afe39b816f853, type: 3}
-  m_Name: ControlsConfig
+  m_Script: {fileID: 11500000, guid: ee275c450db26a141a0f45d0f17a59bc, type: 3}
+  m_Name: Test
   m_EditorClassIdentifier: 
-  openInventory: 113
-  openUnitsList: 101
+  colorsConfig: {fileID: 0}
+  canBeDisabledByPlayer: 0
+  stackBehaviourTypes: 0
+  sprite: {fileID: 0}
+  statModifiers:
+    modifiers: []

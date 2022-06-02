@@ -7,7 +7,6 @@ namespace Autobattler.UnitsScreenHandler
 {
     public class Mutation_Slot : Mutation_BaseSlot
     {
-
         protected override bool CanThisObjectBeDroppedHere(DraggableComponent draggable)
         {
             if (draggable.item is not MutationView)

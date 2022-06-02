@@ -28,9 +28,6 @@ namespace Autobattler.Units.Management
             name = blueprint.name;
             sprite = blueprint.sprite;
 
-            foreach (var mutationModel in blueprint.permanentMutations) 
-                AddNewMutation(new Mutation(mutationModel));
-
             foreach (var mutationModel in blueprint.mutations) 
                 AddNewMutation(new Mutation(mutationModel));
         }
@@ -70,14 +67,21 @@ namespace Autobattler.Units.Management
         {
             enabledMutations.Remove(mutation);
             CheckIfUnmodifyStats(mutation);
-            disabledMutations.Add(mutation);
+        }
+
+        public void DisableAllMutations()
+        {
+            foreach (var mutation in enabledMutations)
+            {
+                CheckIfUnmodifyStats(mutation);
+            }
+            enabledMutations.Clear();
         }
 
         public void EnableMutation(Mutation mutation)
         {
             enabledMutations.Add(mutation);
             CheckIfModifyStats(mutation);
-            disabledMutations.Remove(mutation);
         }
 
         private void CheckIfModifyStats(Mutation mutation)

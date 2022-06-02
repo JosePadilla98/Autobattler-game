@@ -47,7 +47,7 @@ namespace Autobattler.Units.Management
         {
             var value = baseStat;
             foreach (var item in linearModifiers) value += item;
-            foreach (var item in percentualModifiers) value *= item;
+            foreach (var item in percentualModifiers) value += item * value/100;
 
             return value;
         }
