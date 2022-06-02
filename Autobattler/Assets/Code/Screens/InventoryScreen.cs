@@ -1,5 +1,6 @@
 ﻿using System;
 using Autobattler.Configs;
+using Autobattler.DragAndDrop;
 using Autobattler.Events;
 using UnityEngine;
 
@@ -34,12 +35,14 @@ namespace Autobattler.Screens
             {
                 goToMainScreen.Raise();
                 gameObject.SetActive(false);
+                ObjectBeingDragged.CancelDragging();
             }
 
             if (Input.GetKeyDown(openUnitListKeyModel.key))
             {
                 goToUnitsScreen.Raise(comeBackHereAction);
                 gameObject.SetActive(false);
+                ObjectBeingDragged.CancelDragging();
             }
         }
     }

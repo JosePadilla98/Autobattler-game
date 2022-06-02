@@ -28,6 +28,9 @@ namespace Autobattler.DragAndDrop
 
         public void OnDrop(PointerEventData eventData)
         {
+            if (ObjectBeingDragged.dragHasBeenCanceled)
+                return;
+
             if (!CanThisObjectBeDroppedHere(objBeingDragged))
                 return;
 

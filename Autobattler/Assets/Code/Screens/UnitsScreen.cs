@@ -1,5 +1,6 @@
 ﻿using System;
 using Autobattler.Configs;
+using Autobattler.DragAndDrop;
 using Autobattler.Events;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ namespace Autobattler.Screens
             {
                 comeBackToLastScreen.Invoke();
                 gameObject.SetActive(false);
+                ObjectBeingDragged.CancelDragging();
             }
         }
 
