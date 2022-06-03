@@ -3157,7 +3157,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1230785458}
         m_TargetAssemblyTypeName: Autobattler.UnitsScreenHandler.Mutations_BasePanel,
           Assembly-CSharp
-        m_MethodName: OnMutationSlotSelected
+        m_MethodName: OnSlotSelected
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4522,7 +4522,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1790888899}
         m_TargetAssemblyTypeName: Autobattler.UnitsScreenHandler.Mutations_BasePanel,
           Assembly-CSharp
-        m_MethodName: OnMutationSlotSelected
+        m_MethodName: OnSlotSelected
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5154,7 +5154,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2105047318}
         m_TargetAssemblyTypeName: Autobattler.UnitsScreenHandler.Mutations_BasePanel,
           Assembly-CSharp
-        m_MethodName: OnMutationSlotSelected
+        m_MethodName: OnSlotSelected
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

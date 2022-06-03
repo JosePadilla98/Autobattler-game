@@ -20,18 +20,16 @@ namespace Autobattler.SelectionSystem
         [Space(20)]
         public UnityEvent OnOneOfMyChildrenSelected;
 
-        private int selectedIndex;
-      
+        private SelectableComponent currentlySelected;
 
         private void Awake()
         {
             selectablesParent.onNewChildAdded += AddNewSelectable;
-            selectedIndex = 0;
         }
 
         private void Start()
         {
-            if(selectFirstAtBeginning)
+            if(selectFirstAtBeginning && selectables.Count > 0)
                 OnOneChildSelected(selectables[0]);
         }
 
@@ -44,19 +42,22 @@ namespace Autobattler.SelectionSystem
 
         public void OnOneChildSelected(SelectableComponent selected)
         {
-            for (int i = 0; i < selectables.Count; i++)
+            if (currentlySelected != null && currentlySelected == selected)
             {
-                var s = selectables[i];
+                Unselect();
+                return;
+            }
 
-                if (s == selected)
+            if(currentlySelected != null)
+                Unselect();
+
+            foreach (var selectableChild in selectables)
+            {
+                if (selectableChild == selected)
                 {
-                    selectedIndex = i;
-                    s.WhenSelected();
+                    currentlySelected = selected;
+                    selectableChild.WhenSelected();
                     onTargetSelected.Invoke(selected.target);
-                }
-                else
-                {
-                    s.WhenUnselect();
                 }
             }
 
@@ -68,12 +69,19 @@ namespace Autobattler.SelectionSystem
             selectables.Remove(selectable);
             selectable.onSelected -= OnOneChildSelected;
             selectable.onDestroy -= BeforeChildGetDestroyed;
+        }
 
+        public void Unselect()
+        {
+            currentlySelected.WhenUnselect();
+            currentlySelected = null;
         }
 
         public void SelectToTheRight()
         {
             ObjectBeingDragged.CancelDragging();
+
+            var selectedIndex = selectables.IndexOf(currentlySelected);
 
             selectedIndex++;
             if (selectedIndex == selectables.Count)
@@ -86,6 +94,8 @@ namespace Autobattler.SelectionSystem
         public void SelectToTheLeft()
         {
             ObjectBeingDragged.CancelDragging();
+
+            var selectedIndex = selectables.IndexOf(currentlySelected);
 
             selectedIndex--;
             if (selectedIndex == -1)

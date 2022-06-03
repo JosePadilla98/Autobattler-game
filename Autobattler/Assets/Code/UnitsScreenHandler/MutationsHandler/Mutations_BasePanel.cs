@@ -100,12 +100,15 @@ namespace Autobattler.UnitsScreenHandler
             }
         }
 
-        public void OnMutationSlotSelected(MonoBehaviour mutation_Slot)
+        public void OnSlotSelected(MonoBehaviour mutation_Slot)
         {
             var slot = (Mutation_BaseSlot)mutation_Slot;
+            if (!slot.HasItem)
+                return;
+
             Mutation mutation = slot.getItemContained<MutationView>().mutation;
 
-            TextPanelData infoToSend = new TextPanelData(mutation.Name, mutation.Description);
+            TextPanelData infoToSend = new TextPanelData(mutation.Name, mutation.Description, mutation.Sprite);
             onMutationSelected.Raise(infoToSend);
         }
 

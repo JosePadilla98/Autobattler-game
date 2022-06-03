@@ -1,6 +1,8 @@
 ﻿using System;
 using Autobattler.Units.Combat;
 using Autobattler.Units.Management;
+using UnityEditor.SceneManagement;
+using UnityEngine;
 
 namespace Autobattler.MutationsSystem.Mutations
 {
@@ -9,6 +11,7 @@ namespace Autobattler.MutationsSystem.Mutations
         public MutationModel Model { get; }
         public String Name => Model.name;
         public String Description => Model.GetDescription(timesStacked);
+        public Sprite Sprite => Model.sprite;
 
         private int key;
         private int timesStacked = 1;

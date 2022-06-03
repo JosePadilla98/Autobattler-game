@@ -97,7 +97,7 @@ MonoBehaviour:
       - m_Target: {fileID: 7403702114112564482}
         m_TargetAssemblyTypeName: Autobattler.SelectionSystem.SelectableComponent,
           Assembly-CSharp
-        m_MethodName: Select
+        m_MethodName: SendInfoThatImSelected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

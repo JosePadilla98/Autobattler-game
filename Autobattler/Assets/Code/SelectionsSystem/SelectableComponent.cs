@@ -37,14 +37,14 @@ namespace Autobattler.SelectionSystem
         /// <summary>
         /// Not call this from his controller!! 
         /// </summary>
-        public void Select()
+        public void SendInfoThatImSelected()
         {
             onSelected.Invoke(this);
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Select();
+            SendInfoThatImSelected();
         }
 
         private void OnDestroy()
