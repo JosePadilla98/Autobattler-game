@@ -16,14 +16,13 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 8e4675b008b7abd498f8b14db82fd053, type: 2}
   invocationsProcessor:
     battlefield_U: {fileID: 11400000, guid: c3ee1ab973d4ac34fa002080ef521cd9, type: 2}
-    playerData: {fileID: 11400000, guid: a62f197455d8b3747ab4b7132e4fa1b3, type: 2}
-    enemies: {fileID: 11400000, guid: a49224322777bca4ea125369eaf56f65, type: 2}
+    unitsCreator: {fileID: 11400000, guid: 9bd57630ff487a14b94c746db45fecbc, type: 2}
   playerTestingUnits:
     backColumn:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    frontColumn:
     - {fileID: 11400000, guid: 8731176104d276d4190b1afc0941a77c, type: 2}
     - {fileID: 11400000, guid: 5fc71234dfe20cb4e871c0610fbd50c1, type: 2}
+    - {fileID: 0}
+    frontColumn:
+    - {fileID: 0}
+    - {fileID: 0}
     - {fileID: 0}

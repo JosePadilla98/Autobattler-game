@@ -1,4 +1,5 @@
 ﻿using System;
+using Autobattler.Configs;
 using Autobattler.GameControllers;
 using UnityEngine;
 

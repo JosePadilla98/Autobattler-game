@@ -28,7 +28,7 @@ namespace Autobattler.Units.Combat
             this.unit = unit;
         }
 
-        public Stats Stats => unit.stats;
+        public StatsContainer StatsContainer => unit.statsContainer;
         public List<Mutation> Mutations => unit.enabledMutations;
 
         public void Refresh()
@@ -55,9 +55,9 @@ namespace Autobattler.Units.Combat
 
         public CombatValues(Unit build)
         {
-            currentHealth = new CombatValue(build.stats.GetStatValue(StatsNames.HEALTH));
-            currentVigor = new CombatValue(build.stats.GetStatValue(StatsNames.VIGOR));
-            currentMana = new CombatValue(build.stats.GetStatValue(StatsNames.MANA));
+            currentHealth = new CombatValue(build.statsContainer.GetStatValue(StatsNames.HEALTH));
+            currentVigor = new CombatValue(build.statsContainer.GetStatValue(StatsNames.VIGOR));
+            currentMana = new CombatValue(build.statsContainer.GetStatValue(StatsNames.MANA));
         }
     }
 

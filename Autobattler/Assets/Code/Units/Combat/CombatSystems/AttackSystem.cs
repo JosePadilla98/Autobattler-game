@@ -13,11 +13,11 @@ namespace Autobattler.Units.Combat.CombatSystems
         {
         }
 
-        public Stats Stats => parent.Stats;
+        public StatsContainer StatsContainer => parent.StatsContainer;
 
         public void LaunchSimpleAttack(AttackData attack)
         {
-            var value = attack.scaleFactor * Stats.GetStatValue(attack.statScaler) * BalanceConstants.DAMAGE_MULTIPLIER;
+            var value = attack.scaleFactor * StatsContainer.GetStatValue(attack.statScaler) * BalanceConstants.DAMAGE_MULTIPLIER;
             var objetive = TargetsProcessor.GetClosestEnemy(parent.Position);
             objetive.defenseSys.BeAttacked(new DamageData(value, attack.damageType));
 

@@ -38,7 +38,7 @@ namespace Autobattler.InventorySystem
 
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
 
-            if (App.DebugController != null && App.DebugController.inventory.thingsAttached)
+            if (App.DebugController != null && App.DebugController.inventory.elementsHandler)
                 Debug.Log(unit.name + " attached in inventory");
 
             #endif
@@ -52,7 +52,7 @@ namespace Autobattler.InventorySystem
 
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
 
-            if (App.DebugController != null && App.DebugController.inventory.thingsAttached)
+            if (App.DebugController != null && App.DebugController.inventory.elementsHandler)
                 Debug.Log(unit.name + " unattached in inventory");
 
             #endif
@@ -115,6 +115,8 @@ namespace Autobattler.InventorySystem
             Inventory_Slot slot = Instantiate<Inventory_Slot>(slotPrefab, slotsParent);
             slot.InyectDependencies(canvas, this);
             slots.Add(slot);
+            
+            slot.name = slots.Count.ToString();
         }
 
         private int ElementsCount()

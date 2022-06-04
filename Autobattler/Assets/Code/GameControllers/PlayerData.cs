@@ -9,6 +9,5 @@ namespace Autobattler.GameControllers
     {
         public UnitsCollection teamInGrid;
         public UnitsCollection teamInBench;
-      
     }
 }

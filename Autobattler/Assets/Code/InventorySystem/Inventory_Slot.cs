@@ -38,18 +38,11 @@ namespace Autobattler.InventorySystem
                     break;
             }
         }
-
-        public override void OnPlayerTakeAwayMyItem(DraggableComponent draggable)
+        protected override void MyLastItemHasBeenPlacedSomewhere(DropArea dropAreaWherePlaced, DraggableComponent draggable)
         {
-            base.OnPlayerTakeAwayMyItem(draggable);
-            draggable.onDropAction += MyItemHasDropSomewhere;
-        }
+            base.MyLastItemHasBeenPlacedSomewhere(dropAreaWherePlaced, draggable);
 
-        private void MyItemHasDropSomewhere(DropArea dropArea, DraggableComponent draggable)
-        {
-            draggable.onDropAction -= MyItemHasDropSomewhere;
-
-            if (dropArea is Inventory_Slot)
+            if (dropAreaWherePlaced is Inventory_Slot)
                 return;
 
             switch (draggable.item)

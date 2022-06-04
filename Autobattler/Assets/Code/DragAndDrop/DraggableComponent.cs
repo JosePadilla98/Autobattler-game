@@ -21,6 +21,8 @@ namespace Autobattler.DragAndDrop
         public RectTransform Rect { get; private set; }
         public Transform ParentWhileDragging { get => canvas.transform; }
 
+        public bool DragHasBeenCanceled => ObjectBeingDragged.dragHasBeenCanceled;
+
         public Action<DropArea, DraggableComponent> onDropAction;
 
         public DraggableComponent ObjBeingDragged
@@ -56,10 +58,15 @@ namespace Autobattler.DragAndDrop
             lastDropArea = dropArea;
             dropArea.OnPlayerTakeAwayMyItem(this);
             dropArea = null;
+
+            ObjectBeingDragged.dragHasBeenCanceled = false;
         }
 
         public void OnDrag(PointerEventData eventData)
         {
+            if(DragHasBeenCanceled)
+                return;
+
             Rect.anchoredPosition += eventData.delta / canvas.scaleFactor;
         }
 
@@ -68,6 +75,12 @@ namespace Autobattler.DragAndDrop
         /// </summary>
         /// <param name="eventData"></param>
         public void OnEndDrag(PointerEventData eventData)
+        {
+            if(!DragHasBeenCanceled)
+                EndDrag();
+        }
+
+        public void EndDrag()
         {
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;

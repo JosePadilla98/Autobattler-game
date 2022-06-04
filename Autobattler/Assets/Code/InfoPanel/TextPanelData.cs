@@ -7,7 +7,14 @@ namespace Autobattler.InfoPanel
     public struct TextPanelData
     {
         public string title;
-        [TextArea]
         public string content;
+        public Sprite sprite;
+
+        public TextPanelData(string title, string content, Sprite sprite)
+        {
+            this.title = title;
+            this.content = content;
+            this.sprite = sprite;
+        }
     }
 }

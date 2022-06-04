@@ -1,11 +1,9 @@
-using System;
-using Autobattler.Configs;
-using Autobattler.Units;
 using Autobattler.Units.Combat;
 using Autobattler.Units.Management;
+using Autobattler.UnitsScreenHandler;
 using UnityEngine;
 
-namespace Autobattler.InfoPanel
+namespace Autobattler.InfoPanel.Units
 {
     public class InfoPanel_Unit : MonoBehaviour
     {
@@ -49,8 +47,6 @@ namespace Autobattler.InfoPanel
         [SerializeField]
         private StatText physicalFatigue;
 
-        private bool isShowing;
-
         private void SetColors()
         {
             health.SetColor();
@@ -83,7 +79,7 @@ namespace Autobattler.InfoPanel
 
         public void AttachUnit(Unit unit)
         {
-            FillPanel(unit.stats);
+            FillPanel(unit.statsContainer);
         }
 
         public void UnattachUnit(Unit unit)
@@ -93,7 +89,7 @@ namespace Autobattler.InfoPanel
 
         public void AttachFighter(Fighter fighter)
         {
-            FillPanel(fighter.Stats, fighter.combatValues);
+            FillPanel(fighter.StatsContainer, fighter.combatValues);
         }
 
         public void UnattachFighter(Fighter fighter)
@@ -101,15 +97,18 @@ namespace Autobattler.InfoPanel
             EmptyPanel();
         }
 
-        #endregion
-
-        private void OnDisable()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="unitList_Slot"></param>
+        public void AttachUnitFromUnitList(MonoBehaviour unitList_Slot)
         {
-            if (!isShowing)
-                return;
-            
-            EmptyPanel();
+            var slot = (UnitsList_Slot)unitList_Slot;
+
+            AttachUnit(((UnitView)unitList_Slot).unit);
         }
+
+        #endregion
 
         private void EmptyPanel()
         {
@@ -131,45 +130,43 @@ namespace Autobattler.InfoPanel
             vigor.Unattach();
             reinvigoration.Unattach();
             physicalFatigue.Unattach();
-            isShowing = false;
 
             gameObject.SetActive(false);
         }
 
-        private void FillPanel(Stats stats, CombatValues combatValues = null)
+        private void FillPanel(StatsContainer statsContainer, CombatValues combatValues = null)
         {
-            healthRegen.Attach(stats.GetStat(StatsNames.HEALTH_REGEN));
-            defense.Attach(stats.GetStat(StatsNames.PHYSICAL_DEFENSE));
-            magicDefense.Attach(stats.GetStat(StatsNames.MAGICAL_DEFENSE));
+            healthRegen.Attach(statsContainer.GetStat(StatsNames.HEALTH_REGEN));
+            defense.Attach(statsContainer.GetStat(StatsNames.PHYSICAL_DEFENSE));
+            magicDefense.Attach(statsContainer.GetStat(StatsNames.MAGICAL_DEFENSE));
 
-            physicalAttack.Attach(stats.GetStat(StatsNames.PHYSICAL_ATTACK));
-            physicalSpeed.Attach(stats.GetStat(StatsNames.PHYSICAL_SPEED));
-            magicalAttack.Attach(stats.GetStat(StatsNames.MAGICAL_ATTACK));
-            magicalSpeed.Attach(stats.GetStat(StatsNames.MAGICAL_SPEED));
-
-
-            manaRegen.Attach(stats.GetStat(StatsNames.MANA_REGEN));
-            magicalFatigue.Attach(stats.GetStat(StatsNames.MAGICAL_FATIGUE));
-            intellect.Attach(stats.GetStat(StatsNames.INTELLECT));
+            physicalAttack.Attach(statsContainer.GetStat(StatsNames.PHYSICAL_ATTACK));
+            physicalSpeed.Attach(statsContainer.GetStat(StatsNames.PHYSICAL_SPEED));
+            magicalAttack.Attach(statsContainer.GetStat(StatsNames.MAGICAL_ATTACK));
+            magicalSpeed.Attach(statsContainer.GetStat(StatsNames.MAGICAL_SPEED));
 
 
-            reinvigoration.Attach(stats.GetStat(StatsNames.REINVIGORATION));
-            physicalFatigue.Attach(stats.GetStat(StatsNames.PHYSICAL_FATIGUE));
+            manaRegen.Attach(statsContainer.GetStat(StatsNames.MANA_REGEN));
+            magicalFatigue.Attach(statsContainer.GetStat(StatsNames.MAGICAL_FATIGUE));
+            intellect.Attach(statsContainer.GetStat(StatsNames.INTELLECT));
+
+
+            reinvigoration.Attach(statsContainer.GetStat(StatsNames.REINVIGORATION));
+            physicalFatigue.Attach(statsContainer.GetStat(StatsNames.PHYSICAL_FATIGUE));
 
             if (combatValues != null)
             {
-                health.AttachValues(stats.GetStat(StatsNames.HEALTH), combatValues.currentHealth);
-                mana.AttachValues(stats.GetStat(StatsNames.MANA), combatValues.currentMana);
-                vigor.AttachValues(stats.GetStat(StatsNames.VIGOR), combatValues.currentVigor);
+                health.AttachValues(statsContainer.GetStat(StatsNames.HEALTH), combatValues.currentHealth);
+                mana.AttachValues(statsContainer.GetStat(StatsNames.MANA), combatValues.currentMana);
+                vigor.AttachValues(statsContainer.GetStat(StatsNames.VIGOR), combatValues.currentVigor);
             }
             else
             {
-                health.AttachValues(stats.GetStat(StatsNames.HEALTH), stats.GetStat(StatsNames.HEALTH));
-                mana.AttachValues(stats.GetStat(StatsNames.MANA), stats.GetStat(StatsNames.MANA));
-                vigor.AttachValues(stats.GetStat(StatsNames.VIGOR), stats.GetStat(StatsNames.VIGOR));
+                health.AttachValues(statsContainer.GetStat(StatsNames.HEALTH), statsContainer.GetStat(StatsNames.HEALTH));
+                mana.AttachValues(statsContainer.GetStat(StatsNames.MANA), statsContainer.GetStat(StatsNames.MANA));
+                vigor.AttachValues(statsContainer.GetStat(StatsNames.VIGOR), statsContainer.GetStat(StatsNames.VIGOR));
             }
 
-            isShowing = true;
             gameObject.SetActive(true);
         }
     }

@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99e2d731a0a69074fbac329da3ce7d52, type: 3}
-  m_Name: creature2
+  m_Name: Creature2
   m_EditorClassIdentifier: 
-  baseMutations: []
   level: 1
-  mutations: []
+  mutations:
+  - {fileID: 11400000, guid: 1f722212d69d3b54f8776fdb2706fc14, type: 2}
+  - {fileID: 11400000, guid: 7cbaaa9e56507ae41a609223a8bf715f, type: 2}
+  - {fileID: 11400000, guid: c6f652834f2877a4fafbdcf716b0258e, type: 2}
   sprite: {fileID: 21300000, guid: c1cab03833af6a44cb4a916bc6565ab8, type: 3}
   name: Ogro

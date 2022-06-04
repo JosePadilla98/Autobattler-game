@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Autobattler.InfoPanel;
 using TMPro;
 using UnityEngine;
 
-namespace Autobattler
+namespace Autobattler.InfoPanel
 {
     public class InfoPanel_Text : MonoBehaviour
     {
@@ -13,8 +9,6 @@ namespace Autobattler
         private TextMeshProUGUI title;
         [SerializeField]
         private TextMeshProUGUI content;
-
-        private bool isShowing;
 
         public void AttachInfo(TextPanelData info)
         {
@@ -26,28 +20,20 @@ namespace Autobattler
             EmptyPanel();
         }
 
-        private void FillPanel(TextPanelData info)
+        protected virtual void FillPanel(TextPanelData info)
         {
             title.text = info.title;
             content.text = info.content;
 
-            isShowing = true;
             gameObject.SetActive(true);
         }
 
-        private void EmptyPanel()
+        public virtual void EmptyPanel()
         {
             title.text = "";
             content.text = "";
 
-            isShowing = false;
             gameObject.SetActive(false);
-        }
-
-        private void OnDisable()
-        {
-            if (isShowing)
-                EmptyPanel();
         }
     }
 }

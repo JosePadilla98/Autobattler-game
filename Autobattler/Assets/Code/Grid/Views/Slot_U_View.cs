@@ -11,10 +11,7 @@ namespace Autobattler.Grid.Views
         public Battefield_U_View battlefieldView;
         public UnitsCollection playerUnitsInGrid => battlefieldView.playerUnitsInGrid;
 
-        public Side Side
-        {
-            get => logic.GetSide();
-        }
+        public Side Side => logic.GetSide();
 
         public UnitView unitViewPrefab => battlefieldView.unitViewPrefab;
         public UnitView playerUnitViewPrefab => battlefieldView.playerUnitViewPrefab;
@@ -27,7 +24,7 @@ namespace Autobattler.Grid.Views
         private void BuildUnitView(Unit unit)
         {
             UnitView unitView = Instantiate(PrefabToInstantiate(), transform);
-            unitView.InyectDependences(unit, battlefieldView.canvas);
+            unitView.InyectDependences(unit);
 
             if (Side == Side.RIGHT)
             {
@@ -35,7 +32,7 @@ namespace Autobattler.Grid.Views
             }
         }
 
-        internal void UnattachUnit(UnitView unitView)
+        public void UnattachUnit(UnitView unitView)
         {
             logic.UnnatachItem();
             playerUnitsInGrid.Collection.Remove(unitView.unit);
