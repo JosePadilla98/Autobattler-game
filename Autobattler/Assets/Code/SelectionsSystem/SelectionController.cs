@@ -83,6 +83,14 @@ namespace Autobattler.SelectionSystem
             onTargedUnselected?.Invoke();
         }
 
+        public void TryUnselect()
+        {
+            if (currentlySelected == null)
+                return;
+
+            Unselect();
+        }
+
         public void SelectToTheRight()
         {
             ObjectBeingDragged.CancelDragging();

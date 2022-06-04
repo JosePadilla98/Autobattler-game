@@ -4043,6 +4043,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 220843256}
+        m_TargetAssemblyTypeName: Autobattler.SelectionSystem.SelectionController,
+          Assembly-CSharp
+        m_MethodName: TryUnselect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1574936076
 GameObject:
   m_ObjectHideFlags: 0
