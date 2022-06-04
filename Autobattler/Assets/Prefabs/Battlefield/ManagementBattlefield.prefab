@@ -93,7 +93,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7719885460405327535, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
       propertyPath: m_Name
-      value: ManagementBattlefield
+      value: Battlefield
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719885460970073870, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
+      propertyPath: m_Name
+      value: EnemyGrid
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719885461684970517, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
+      propertyPath: m_Name
+      value: PlayerGrid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
@@ -161,7 +169,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885461516773283, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
   m_PrefabInstance: {fileID: 2109732054619035892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4988641424448892533
+--- !u!114 &5389124910929415456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 11400000, guid: 316b4c92cc369764ca86818e72419eee, type: 2}
   battlefieldView: {fileID: 8244248559720668863}
---- !u!114 &7011254918308792903
+--- !u!114 &3894846492715953158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,6 +196,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  onItemDropped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5389124910929415456}
+        m_TargetAssemblyTypeName: Autobattler.Grid.Views.Slot_U_View, Assembly-CSharp
+        m_MethodName: AttachUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onItemTaken:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5389124910929415456}
+        m_TargetAssemblyTypeName: Autobattler.Grid.Views.Slot_U_View, Assembly-CSharp
+        m_MethodName: AttachUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8531450249159152431 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885461356678107, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
@@ -225,6 +263,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  onItemDropped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1343916408509008770}
+        m_TargetAssemblyTypeName: Autobattler.Grid.Views.Slot_U_View, Assembly-CSharp
+        m_MethodName: AttachUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onItemTaken:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1343916408509008770}
+        m_TargetAssemblyTypeName: Autobattler.Grid.Views.Slot_U_View, Assembly-CSharp
+        m_MethodName: UnattachUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1343916408509008770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +344,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  onItemDropped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8580927818974838282}
+        m_TargetAssemblyTypeName: Autobattler.Grid.Views.Slot_U_View, Assembly-CSharp
+        m_MethodName: AttachUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onItemTaken:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8580927818974838282}
+        m_TargetAssemblyTypeName: Autobattler.Grid.Views.Slot_U_View, Assembly-CSharp
+        m_MethodName: UnattachUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8580927818974838282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +406,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  onItemDropped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7600949137681538446}
+        m_TargetAssemblyTypeName: Autobattler.Grid.Views.Slot_U_View, Assembly-CSharp
+        m_MethodName: AttachUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onItemTaken:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7600949137681538446}
+        m_TargetAssemblyTypeName: Autobattler.Grid.Views.Slot_U_View, Assembly-CSharp
+        m_MethodName: UnattachUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7600949137681538446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,7 +455,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885461231309899, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}
   m_PrefabInstance: {fileID: 2109732054619035892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &549079774
+--- !u!114 &5364198209713624629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -340,7 +468,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
---- !u!114 &473889585620155027
+  onItemDropped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5252063871986408532}
+        m_TargetAssemblyTypeName: Autobattler.Grid.Views.Slot_U_View, Assembly-CSharp
+        m_MethodName: AttachUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onItemTaken:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5252063871986408532}
+        m_TargetAssemblyTypeName: Autobattler.Grid.Views.Slot_U_View, Assembly-CSharp
+        m_MethodName: UnattachUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5252063871986408532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -405,6 +563,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  onItemDropped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3836115154208390716}
+        m_TargetAssemblyTypeName: Autobattler.Grid.Views.Slot_U_View, Assembly-CSharp
+        m_MethodName: AttachUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onItemTaken:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3836115154208390716}
+        m_TargetAssemblyTypeName: Autobattler.Grid.Views.Slot_U_View, Assembly-CSharp
+        m_MethodName: UnattachUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8531450249903788693 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7719885460884703841, guid: cecf51fed26c0f64f98f7675c73c72f3, type: 3}

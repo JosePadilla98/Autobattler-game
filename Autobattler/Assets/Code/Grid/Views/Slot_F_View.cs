@@ -1,5 +1,7 @@
 ﻿using Autobattler.Grid.Logic;
 using Autobattler.Units;
+using Autobattler.Units.Combat;
+using Autobattler.Units.Combat.View;
 using UnityEngine;
 
 namespace Autobattler.Grid.Views
@@ -9,10 +11,7 @@ namespace Autobattler.Grid.Views
         public Slot_F logic;
         public Battefield_F_View battlefieldView;
 
-        public Side Side
-        {
-            get => logic.GetSide();
-        }
+        public Side Side => logic.GetSide();
 
         public FighterView fighterViewPrefab => battlefieldView.fighterViewPrefab;
 

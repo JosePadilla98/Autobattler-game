@@ -6,17 +6,19 @@ namespace Autobattler.Screens
 {
     public class ScreenControllers : MonoBehaviour
     {
-        public GameObject combatScreen;
+        public GameObject mainScreen;
+        public GameObject[] otherScreens;
 
         private void Awake()
         {
-            combatScreen.SetActive(true);
-            combatScreen.SetActive(false);
-        }
+            foreach (var screen in otherScreens)
+            {
+                screen.SetActive(false);
+                screen.SetActive(true);
+                screen.SetActive(false);
+            }
 
-        public void OnCombatInit()
-        {
-            combatScreen.SetActive(true);
+            mainScreen.SetActive(true);
         }
     }
 }

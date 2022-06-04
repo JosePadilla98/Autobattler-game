@@ -1,4 +1,5 @@
-﻿using Autobattler.ScriptableCollections;
+﻿using Autobattler.InventorySystem;
+using Autobattler.ScriptableCollections;
 using UnityEngine;
 
 namespace Autobattler.GameControllers

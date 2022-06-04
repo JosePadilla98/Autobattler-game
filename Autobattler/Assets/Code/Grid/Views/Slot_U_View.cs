@@ -1,11 +1,9 @@
-﻿using System;
-using Autobattler.Grid.Logic;
-using Autobattler.Grid.Views;
+﻿using Autobattler.Grid.Logic;
 using Autobattler.ScriptableCollections;
-using Autobattler.Units;
+using Autobattler.Units.Management;
 using UnityEngine;
 
-namespace Autobattler.Grid.ManagementState
+namespace Autobattler.Grid.Views
 {
     public class Slot_U_View : MonoBehaviour
     {
@@ -13,10 +11,7 @@ namespace Autobattler.Grid.ManagementState
         public Battefield_U_View battlefieldView;
         public UnitsCollection playerUnitsInGrid => battlefieldView.playerUnitsInGrid;
 
-        public Side Side
-        {
-            get => logic.GetSide();
-        }
+        public Side Side => logic.GetSide();
 
         public UnitView unitViewPrefab => battlefieldView.unitViewPrefab;
         public UnitView playerUnitViewPrefab => battlefieldView.playerUnitViewPrefab;
@@ -26,10 +21,10 @@ namespace Autobattler.Grid.ManagementState
             logic.OnNewItemBuilded += BuildUnitView;
         }
 
-        private void BuildUnitView(_Unit unit)
+        private void BuildUnitView(Unit unit)
         {
             UnitView unitView = Instantiate(PrefabToInstantiate(), transform);
-            unitView.InyectDependences(unit, battlefieldView.canvas);
+            unitView.InyectDependences(unit);
 
             if (Side == Side.RIGHT)
             {
@@ -37,7 +32,7 @@ namespace Autobattler.Grid.ManagementState
             }
         }
 
-        internal void UnattachUnit(UnitView unitView)
+        public void UnattachUnit(UnitView unitView)
         {
             logic.UnnatachItem();
             playerUnitsInGrid.Collection.Remove(unitView.unit);

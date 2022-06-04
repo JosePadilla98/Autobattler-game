@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee275c450db26a141a0f45d0f17a59bc, type: 3}
+  m_Name: +Defense
+  m_EditorClassIdentifier: 
+  colorsConfig: {fileID: 0}
+  canBeDisabledByPlayer: 0
+  stackBehaviourTypes: 1
+  sprite: {fileID: 749827705, guid: c8f20aefb408a7d4f9127e09d170e86c, type: 3}
+  statModifiers:
+    modifiers:
+    - statName: 4
+      type: 0
+      value: 2

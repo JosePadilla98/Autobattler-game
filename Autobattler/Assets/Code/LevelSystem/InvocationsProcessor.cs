@@ -4,6 +4,7 @@ using Autobattler.Grid;
 using Autobattler.Grid.Logic;
 using Autobattler.ScriptableCollections;
 using Autobattler.Units;
+using Autobattler.Units.Management;
 using UnityEngine;
 
 namespace Autobattler.LevelSystem
@@ -13,10 +14,9 @@ namespace Autobattler.LevelSystem
     {
         [SerializeField]
         private Battlefield_U battlefield_U;
+
         [SerializeField]
-        private PlayerData playerData;
-        [SerializeField]
-        private UnitsCollection enemies;
+        private UnitsCreator unitsCreator;
 
         public void SummonUnits(InvocationsData data, Side side)
         {
@@ -31,15 +31,10 @@ namespace Autobattler.LevelSystem
                 var build = builds[i];
                 if (build == null) continue;
 
-                var unit = new _Unit(build);
+                var unit = unitsCreator.CreateUnit(build, side, true);
                 var position = new Position(i, column, side);
 
                 battlefield_U.BuildNewItem(unit, position);
-
-                if(side == Side.LEFT)
-                    playerData.teamInGrid.Collection.Add(unit);
-                else
-                    enemies.Collection.Add(unit);
             }
         }
     }

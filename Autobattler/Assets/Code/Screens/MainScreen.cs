@@ -1,4 +1,7 @@
-﻿using Autobattler.Events;
+﻿using System;
+using Autobattler.Configs;
+using Autobattler.DragAndDrop;
+using Autobattler.Events;
 using Autobattler.GameControllers;
 using UnityEngine;
 
@@ -6,8 +9,29 @@ namespace Autobattler.Screens
 {
     public class MainScreen : MonoBehaviour
     {
-        public RunController runController;
-        public GameEvent openInventory;
+        [SerializeField]
+        private RunController runController;
+
+        [Header("Events")]
+        [SerializeField]
+        private GameEvent openInventory;
+        [SerializeField]
+        private GameEvent_Action openUnitsScreen;
+        [SerializeField]
+        private GameEvent comeBackHere;
+
+        [Header("Keys")]
+        [SerializeField]
+        private KeyModel openInventoryKeyModel;
+        [SerializeField]
+        private KeyModel openUnitListKeyModel;
+
+        private Action comeBackHereAction;
+
+        private void Awake()
+        {
+            comeBackHereAction = () => comeBackHere.Raise();
+        }
 
         public void InitCombat()
         {
@@ -17,10 +41,18 @@ namespace Autobattler.Screens
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(openInventoryKeyModel.key))
             {
                 openInventory.Raise();
                 gameObject.SetActive(false);
+                ObjectBeingDragged.CancelDragging();
+            }
+
+            if (Input.GetKeyDown(openUnitListKeyModel.key))
+            {
+                openUnitsScreen.Raise(comeBackHereAction);
+                gameObject.SetActive(false);
+                ObjectBeingDragged.CancelDragging();
             }
         }
     }
