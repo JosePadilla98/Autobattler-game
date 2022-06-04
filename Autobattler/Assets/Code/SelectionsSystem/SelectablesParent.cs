@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Autobattler.SelectionSystem
@@ -6,23 +7,38 @@ namespace Autobattler.SelectionSystem
     public class SelectablesParent : MonoBehaviour
     {
         public Action<SelectableComponent> onNewChildAdded;
+        private List<SelectableComponent> childs;
+
+        public List<SelectableComponent> Childs
+        {
+            get
+            {
+                if (childs == null)
+                    childs = new();
+
+                return childs;
+            }
+        }
 
         private void OnTransformChildrenChanged()
         {
             if (transform.childCount == 0)
                 return;
 
-            SelectableComponent selectable = GetLastChild().GetComponent<SelectableComponent>();
-
-            if (selectable == null)
-                throw new Exception("You are adding children to 'selectablesParent' that not have selectableComponent");
-
-            onNewChildAdded.Invoke(selectable);
+            foreach (var selectable in GetComponentsInChildren<SelectableComponent>())
+            {
+                if(!Childs.Contains(selectable))
+                {
+                    Childs.Add(selectable);
+                    selectable.onDestroy += OnChildDestroyed;
+                    onNewChildAdded.Invoke(selectable);
+                }
+            }
         }
 
-        private Transform GetLastChild()
+        private void OnChildDestroyed(SelectableComponent child)
         {
-            return transform.GetChild(transform.childCount - 1);
+            childs.Remove(child);
         }
     }
 }

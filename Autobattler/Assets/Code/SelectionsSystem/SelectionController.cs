@@ -10,7 +10,7 @@ namespace Autobattler.SelectionSystem
     public class SelectionController : MonoBehaviour
     {
         [SerializeField]
-        private SelectablesParent selectablesParent;
+        private SelectablesParent[] selectablesParents;
         [SerializeField]
         private bool selectFirstAtBeginning;
         [Space(20)]
@@ -18,13 +18,18 @@ namespace Autobattler.SelectionSystem
         [Space(20)]
         public UnityEvent<MonoBehaviour> onTargetSelected;
         [Space(20)]
+        public UnityEvent onTargedUnselected;
+        [Space(20)]
         public UnityEvent OnOneOfMyChildrenSelected;
 
         private SelectableComponent currentlySelected;
 
         private void Awake()
         {
-            selectablesParent.onNewChildAdded += AddNewSelectable;
+            foreach (var parent in selectablesParents)
+            {
+                parent.onNewChildAdded += AddNewSelectable;
+            }
         }
 
         private void Start()
@@ -75,6 +80,7 @@ namespace Autobattler.SelectionSystem
         {
             currentlySelected.WhenUnselect();
             currentlySelected = null;
+            onTargedUnselected?.Invoke();
         }
 
         public void SelectToTheRight()

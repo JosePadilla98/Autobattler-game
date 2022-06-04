@@ -155,9 +155,9 @@ RectTransform:
   m_Children:
   - {fileID: 137339732}
   - {fileID: 2105782442}
+  - {fileID: 220843253}
   - {fileID: 7279437507362939100}
   - {fileID: 1790888896}
-  - {fileID: 1261635373}
   - {fileID: 2105047315}
   - {fileID: 1230785454}
   - {fileID: 1518030390}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 40270089}
   - component: {fileID: 40270088}
   m_Layer: 5
-  m_Name: List
+  m_Name: DisabledMutations_List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 48900659}
   - component: {fileID: 48900660}
   m_Layer: 5
-  m_Name: List
+  m_Name: EnabledMutations_List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -638,6 +638,135 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 11400000, guid: ed561a33a5cc01e479b528336a3179c6, type: 2}
   battlefieldView: {fileID: 913608877}
+--- !u!1 &220843252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 220843253}
+  - component: {fileID: 220843255}
+  - component: {fileID: 220843254}
+  - component: {fileID: 220843256}
+  m_Layer: 5
+  m_Name: InfoPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &220843253
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220843252}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1261635373}
+  m_Father: {fileID: 11078997}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -522.9396, y: -78.75}
+  m_SizeDelta: {x: 800, y: 462.68}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &220843254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220843252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a689281f545979940b5cedad12ec31a8, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &220843255
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220843252}
+  m_CullTransparentMesh: 1
+--- !u!114 &220843256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220843252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2a92f05e56fba43a0c10266ebead0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectablesParents:
+  - {fileID: 1495862262}
+  - {fileID: 48900660}
+  - {fileID: 40270089}
+  selectFirstAtBeginning: 0
+  selectables: []
+  onTargetSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1261635376}
+        m_TargetAssemblyTypeName: Autobattler.InfoPanel.InfoPanel_Mutation, Assembly-CSharp
+        m_MethodName: OnMutationSlotSelected
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTargedUnselected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1261635376}
+        m_TargetAssemblyTypeName: Autobattler.InfoPanel.InfoPanel_Mutation, Assembly-CSharp
+        m_MethodName: EmptyPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnOneOfMyChildrenSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &299835540
 GameObject:
   m_ObjectHideFlags: 0
@@ -3068,7 +3197,6 @@ GameObject:
   - component: {fileID: 1230785456}
   - component: {fileID: 1230785455}
   - component: {fileID: 1230785458}
-  - component: {fileID: 1230785457}
   m_Layer: 5
   m_Name: DisabledMutations
   m_TagString: Untagged
@@ -3083,7 +3211,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230785453}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3136,40 +3264,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230785453}
   m_CullTransparentMesh: 1
---- !u!114 &1230785457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230785453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba2a92f05e56fba43a0c10266ebead0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectablesParent: {fileID: 40270089}
-  selectFirstAtBeginning: 0
-  selectables: []
-  onTargetSelected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1230785458}
-        m_TargetAssemblyTypeName: Autobattler.UnitsScreenHandler.Mutations_BasePanel,
-          Assembly-CSharp
-        m_MethodName: OnSlotSelected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnOneOfMyChildrenSelected:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1230785458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3186,7 +3280,6 @@ MonoBehaviour:
   canvas: {fileID: 1002072125}
   slotPrefab: {fileID: -2235277812052161949, guid: 1c47e6718c94f974ab7756bb74749f4f, type: 3}
   mutationViewPrefab: {fileID: -7303867842928793494, guid: 7435ec6996560bf458d6f14c6e0895d7, type: 3}
-  onMutationSelected: {fileID: 11400000, guid: 5257bbc226aa2f54d8f6491123cf98f0, type: 2}
 --- !u!1 &1256555040
 GameObject:
   m_ObjectHideFlags: 0
@@ -3400,7 +3493,6 @@ GameObject:
   - component: {fileID: 1261635375}
   - component: {fileID: 1261635374}
   - component: {fileID: 1261635376}
-  - component: {fileID: 1261635377}
   m_Layer: 5
   m_Name: InfoPanel_Mutation
   m_TagString: Untagged
@@ -3415,7 +3507,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261635372}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3423,12 +3515,12 @@ RectTransform:
   - {fileID: 399334136}
   - {fileID: 625704677}
   - {fileID: 346925840}
-  m_Father: {fileID: 11078997}
-  m_RootOrder: 4
+  m_Father: {fileID: 220843253}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -522.9396, y: -78.75}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 462.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1261635374
@@ -3478,39 +3570,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1261635372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4694eb884b889614b933194a702f0ecd, type: 3}
+  m_Script: {fileID: 11500000, guid: 9926dda63d213da45a265811fb39283c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   title: {fileID: 399334137}
   content: {fileID: 625704678}
---- !u!114 &1261635377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261635372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73eb755c72d20764e81fc0f6e8d1d1e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 5257bbc226aa2f54d8f6491123cf98f0, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1261635376}
-        m_TargetAssemblyTypeName: Autobattler.InfoPanel.InfoPanel_Text, Assembly-CSharp
-        m_MethodName: AttachInfo
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  image: {fileID: 346925841}
 --- !u!114 &1293723306 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7279437506705244826, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
@@ -3762,7 +3827,7 @@ GameObject:
   - component: {fileID: 1495862261}
   - component: {fileID: 1495862262}
   m_Layer: 5
-  m_Name: List
+  m_Name: PermanentMutations_List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3929,7 +3994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2a92f05e56fba43a0c10266ebead0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectablesParent: {fileID: 1518030393}
+  selectablesParents:
+  - {fileID: 1518030393}
   selectFirstAtBeginning: 1
   selectables: []
   onTargetSelected:
@@ -3947,6 +4013,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onTargedUnselected:
+    m_PersistentCalls:
+      m_Calls: []
   OnOneOfMyChildrenSelected:
     m_PersistentCalls:
       m_Calls:
@@ -4416,7 +4485,6 @@ GameObject:
   - component: {fileID: 1790888898}
   - component: {fileID: 1790888897}
   - component: {fileID: 1790888899}
-  - component: {fileID: 1790888901}
   m_Layer: 5
   m_Name: PermanentMutations
   m_TagString: Untagged
@@ -4439,7 +4507,7 @@ RectTransform:
   - {fileID: 299835541}
   - {fileID: 1495862260}
   m_Father: {fileID: 11078997}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4500,41 +4568,6 @@ MonoBehaviour:
   canvas: {fileID: 1002072125}
   slotPrefab: {fileID: 9005529316372004752, guid: cd912e026e4718c45a08de252b472253, type: 3}
   mutationViewPrefab: {fileID: -7303867842928793494, guid: 7435ec6996560bf458d6f14c6e0895d7, type: 3}
-  onMutationSelected: {fileID: 11400000, guid: 5257bbc226aa2f54d8f6491123cf98f0, type: 2}
---- !u!114 &1790888901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790888895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba2a92f05e56fba43a0c10266ebead0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectablesParent: {fileID: 1495862262}
-  selectFirstAtBeginning: 0
-  selectables: []
-  onTargetSelected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1790888899}
-        m_TargetAssemblyTypeName: Autobattler.UnitsScreenHandler.Mutations_BasePanel,
-          Assembly-CSharp
-        m_MethodName: OnSlotSelected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnOneOfMyChildrenSelected:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1838263044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1013619699709569290, guid: 1c72b78693b237b4a9e653b080697842, type: 3}
@@ -5048,7 +5081,6 @@ GameObject:
   - component: {fileID: 2105047317}
   - component: {fileID: 2105047316}
   - component: {fileID: 2105047318}
-  - component: {fileID: 2105047319}
   m_Layer: 5
   m_Name: EnabledMutations
   m_TagString: Untagged
@@ -5063,7 +5095,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105047314}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5132,41 +5164,6 @@ MonoBehaviour:
   canvas: {fileID: 1002072125}
   slotPrefab: {fileID: -2235277812052161949, guid: 1c47e6718c94f974ab7756bb74749f4f, type: 3}
   mutationViewPrefab: {fileID: -7303867842928793494, guid: 7435ec6996560bf458d6f14c6e0895d7, type: 3}
-  onMutationSelected: {fileID: 11400000, guid: 5257bbc226aa2f54d8f6491123cf98f0, type: 2}
---- !u!114 &2105047319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2105047314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba2a92f05e56fba43a0c10266ebead0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectablesParent: {fileID: 48900660}
-  selectFirstAtBeginning: 0
-  selectables: []
-  onTargetSelected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2105047318}
-        m_TargetAssemblyTypeName: Autobattler.UnitsScreenHandler.Mutations_BasePanel,
-          Assembly-CSharp
-        m_MethodName: OnSlotSelected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnOneOfMyChildrenSelected:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2105782441
 GameObject:
   m_ObjectHideFlags: 0
@@ -7349,7 +7346,7 @@ RectTransform:
   m_Children:
   - {fileID: 7279437507202780246}
   m_Father: {fileID: 11078997}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

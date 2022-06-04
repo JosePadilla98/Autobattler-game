@@ -28,7 +28,7 @@ namespace Autobattler.InfoPanel
             gameObject.SetActive(true);
         }
 
-        protected virtual void EmptyPanel()
+        public virtual void EmptyPanel()
         {
             title.text = "";
             content.text = "";

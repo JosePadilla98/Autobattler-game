@@ -15,7 +15,7 @@ namespace Autobattler.InfoPanel
             image.sprite = info.sprite;
         }
 
-        protected override void EmptyPanel()
+        public override void EmptyPanel()
         {
             image.sprite = null;
             base.EmptyPanel();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Autobattler.Events;
 using Autobattler.InfoPanel;
@@ -25,10 +26,6 @@ namespace Autobattler.UnitsScreenHandler
         [SerializeField]
         private MutationView mutationViewPrefab;
 
-        [Header("Events")]
-        [SerializeField]
-        private GameEvent_Info onMutationSelected;
-
         protected Unit currentUnitAttached;
         private List<Mutation_BaseSlot> slots;
 
@@ -45,7 +42,14 @@ namespace Autobattler.UnitsScreenHandler
 
         public void AttachUnit(Unit unit)
         {
+            StartCoroutine(AttachUnitCoroutine(unit));
+        }
+
+        private IEnumerator AttachUnitCoroutine(Unit unit)
+        {
             DestroyAllChildren();
+
+            yield return null;
 
             LoadUnitData(unit);
             currentUnitAttached = unit;
@@ -66,7 +70,7 @@ namespace Autobattler.UnitsScreenHandler
         {
             var slot = Instantiate<Mutation_BaseSlot>(slotPrefab, slotsParent);
             slot.InyectDependencies(canvas, this);
-            slot.gameObject.name = "Mutations_Slot_" + slotsParent.childCount;
+            slot.gameObject.name = this.gameObject.name + "_Slot_" + slotsParent.childCount;
             Slots.Add(slot);
 
             return slot;
@@ -98,18 +102,6 @@ namespace Autobattler.UnitsScreenHandler
             {
                 Destroy(child.gameObject);
             }
-        }
-
-        public void OnSlotSelected(MonoBehaviour mutation_Slot)
-        {
-            var slot = (Mutation_BaseSlot)mutation_Slot;
-            if (!slot.HasItem)
-                return;
-
-            Mutation mutation = slot.getItemContained<MutationView>().mutation;
-
-            TextPanelData infoToSend = new TextPanelData(mutation.Name, mutation.Description, mutation.Sprite);
-            onMutationSelected.Raise(infoToSend);
         }
 
         public virtual void AttachMutation(Mutation mutation)
