@@ -13,6 +13,8 @@ namespace Autobattler.SelectionSystem
         private SelectablesParent[] selectablesParents;
         [SerializeField]
         private bool selectFirstAtBeginning;
+        [SerializeField]
+        private bool canBeChildrenUnselectedWithMouse = true;
         [Space(20)]
         public List<SelectableComponent> selectables;
         [Space(20)]
@@ -49,7 +51,9 @@ namespace Autobattler.SelectionSystem
         {
             if (currentlySelected != null && currentlySelected == selected)
             {
-                Unselect();
+                if(canBeChildrenUnselectedWithMouse)
+                    Unselect();
+
                 return;
             }
 
