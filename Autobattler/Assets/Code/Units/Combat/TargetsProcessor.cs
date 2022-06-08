@@ -41,7 +41,7 @@ namespace Autobattler.Units.Combat
         {
             //var oppositeGrid = Battlefield.GetOppositeGrid(referencePosition.side);
 
-            //Get the closest heigh
+            //InitialValues the closest heigh
             int[] order = null;
             switch (referencePosition.heigh)
             {

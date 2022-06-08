@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Autobattler.InventorySystem.Items
 {
-    [CreateAssetMenu(fileName = "MonsterCapsule", menuName = "ScriptableObjects/Items/MonsterCapsule")]
-    public class MonsterCapsule : ItemScriptable
+    [CreateAssetMenu(fileName = "MonsterCapsuleModel", menuName = "ScriptableObjects/Items/MonsterCapsuleModel")]
+    public class MonsterCapsuleModel : ItemScriptable
     {
         public override TextPanelData GetDescription()
         {

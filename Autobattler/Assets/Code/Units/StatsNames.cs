@@ -1,5 +1,9 @@
 ﻿namespace Autobattler.Units.Management
 {
+    ///
+    /// Regenerations represents "regenerations" each 4 seconds
+    /// 
+
     public enum StatsNames
     {
         HEALTH,
@@ -22,3 +26,4 @@
         MAGICAL_FATIGUE
     }
 }
+
