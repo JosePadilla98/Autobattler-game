@@ -16,3 +16,5 @@ MonoBehaviour:
   info:
     title: Monster capsule
     content: When open, a new monster born.
+    sprite: {fileID: 0}
+  unitsCreator: {fileID: 11400000, guid: 9bd57630ff487a14b94c746db45fecbc, type: 2}

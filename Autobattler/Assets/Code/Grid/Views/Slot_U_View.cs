@@ -36,7 +36,6 @@ namespace Autobattler.Grid.Views
         {
             UnitView unitView = target as UnitView;
 
-            Debug.Log("hola");
             logic.UnnatachItem();
             playerUnitsInGrid.Collection.Remove(unitView.unit);
 
