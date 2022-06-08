@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee275c450db26a141a0f45d0f17a59bc, type: 3}
-  m_Name: Test
+  m_Name: +50%Vigor
   m_EditorClassIdentifier: 
   colorsConfig: {fileID: 0}
   canBeDisabledByPlayer: 1

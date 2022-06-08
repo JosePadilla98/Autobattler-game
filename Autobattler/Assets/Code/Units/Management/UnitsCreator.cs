@@ -13,32 +13,39 @@ namespace Autobattler.Units
     {
         [SerializeField]
         private GameEvent_Unit playerUnitCreated;
+        [SerializeField]
+        private GameEvent_Unit newPlayerUnitBuildInInventory;
 
         [SerializeField]
         private PlayerData playerData;
         [SerializeField]
         private UnitsCollection enemies;
+        [SerializeField] 
+        private UnitBuild defaultUnitBuild;
 
-        public Unit CreateUnit(UnitBuild blueprint, Side side, bool inGrid = true)
+        public Unit CreateUnitInGrid(UnitBuild blueprint, Side side)
         {
             var unit = new Unit(blueprint);
 
             if (side == Side.LEFT)
             {
-                if(inGrid)
-                    playerData.teamInGrid.Collection.Add(unit);
-                else
-                    playerData.teamInBench.Collection.Add(unit); 
-
+                playerData.teamInGrid.Collection.Add(unit);
                 playerUnitCreated.Raise(unit);
             }
             else
             {
-                if (!inGrid)
-                    throw new Exception("Due to the design of this game, this cannot happen");
-
                 enemies.Collection.Add(unit);
             }
+
+            return unit;
+        }
+
+        public Unit CreateNewPlayerUnit()
+        {
+            var unit = new Unit(defaultUnitBuild);
+            playerData.teamInBench.Collection.Add(unit);
+            playerUnitCreated.Raise(unit);
+            newPlayerUnitBuildInInventory.Raise(unit);
 
             return unit;
         }

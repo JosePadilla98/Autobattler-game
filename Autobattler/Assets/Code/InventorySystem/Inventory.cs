@@ -16,7 +16,10 @@ namespace Autobattler.InventorySystem
         [Header("Prefabs")]
         [SerializeField]
         private ItemView itemPrefab;
-        public Inventory_Slot slotPrefab;
+        [SerializeField]
+        private UnitView playerUnitPrefab;
+        [SerializeField]
+        private Inventory_Slot slotPrefab;
 
         [Header("Scene things")]
         [Space(20)]
@@ -49,7 +52,6 @@ namespace Autobattler.InventorySystem
             unitsInBench.Collection.Remove(unit);
             RemoveEmptySlot();
 
-
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
 
             if (App.DebugController != null && App.DebugController.inventory.elementsHandler)
@@ -65,7 +67,20 @@ namespace Autobattler.InventorySystem
 
         public void UnattachItem(Item item)
         {
+            items.Collection.Remove(item);
+            RemoveEmptySlot();
 
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
+
+            if (App.DebugController != null && App.DebugController.inventory.elementsHandler)
+                Debug.Log(item.Scriptable.name + " unattached in inventory");
+
+            #endif
+        }
+
+        public void OnItemViewDestroyed(ItemView itemView)
+        {
+            UnattachItem(itemView.item);
         }
 
         public void CheckIfAddNewSlot()
@@ -85,6 +100,21 @@ namespace Autobattler.InventorySystem
             Inventory_Slot slotToAttachNewItem = GetFirstEmptySlot();
             ItemView itemView = Instantiate<ItemView>(itemPrefab, slotToAttachNewItem.transform);
             itemView.InyectDependencies(item);
+
+            itemView.beforeDestroy += OnItemViewDestroyed;
+
+            AddNewSlot();
+        }
+
+        /// <summary>
+        /// Launched when event is raised, so the unit is already in the collection
+        /// </summary>
+        /// <param name="item"></param>
+        public void OnNewPlayerUnitCreated(Unit unit)
+        {
+            Inventory_Slot slotToAttachUnit = GetFirstEmptySlot();
+            var unitView = Instantiate<UnitView>(playerUnitPrefab, slotToAttachUnit.transform);
+            unitView.InyectDependences(unit);
 
             AddNewSlot();
         }

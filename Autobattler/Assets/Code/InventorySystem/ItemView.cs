@@ -1,6 +1,7 @@
 ﻿using System;
 using Autobattler.Events;
 using Autobattler.InfoPanel;
+using Autobattler.Units.Management;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -8,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Autobattler.InventorySystem
 {
-    public class ItemView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class ItemView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         [SerializeField]
         private Image image;
@@ -17,8 +18,10 @@ namespace Autobattler.InventorySystem
 
         public UnityEvent<TextPanelData> onPointerEnterEvent;
         public UnityEvent onPointerExitEvent;
+        public Action<ItemView> beforeDestroy;
 
         private bool mouseIsOverMe;
+
         public void InyectDependencies(Item item)
         {
             this.item = item;
@@ -46,6 +49,21 @@ namespace Autobattler.InventorySystem
         {
             if(mouseIsOverMe)
                 onPointerExitEvent.Invoke();
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            item.Scriptable.OnClick(this);
+        }
+
+        public void DestroyItem()
+        {
+            Destroy(gameObject);
+        }
+
+        private void OnDestroy()
+        {
+            beforeDestroy?.Invoke(this);
         }
     }
 }

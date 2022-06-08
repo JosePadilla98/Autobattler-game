@@ -7,8 +7,10 @@ namespace Autobattler.Configs
     public class DebugController : ScriptableObject
     {
         public bool dragAndDrop;
+        public bool unitsGridDebug;
         public InventoryDebug inventory;
         public UnitsScreenDebug unitsScreenDebug;
+
 
         [Serializable]
         public class InventoryDebug

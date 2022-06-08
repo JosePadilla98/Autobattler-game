@@ -46,7 +46,6 @@ namespace Autobattler.Screens
 
         public void GoToMainScreen()
         {
-            Debug.Log("hola");
             goToMainScreen.Raise();
             gameObject.SetActive(false);
             ObjectBeingDragged.CancelDragging();

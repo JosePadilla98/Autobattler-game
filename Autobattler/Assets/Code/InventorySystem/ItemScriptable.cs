@@ -10,7 +10,7 @@ namespace Autobattler.InventorySystem
         [Space(20)]
         public TextPanelData info;
 
-        public abstract void OnClick();
+        public abstract void OnClick(ItemView itemView);
 
         public abstract TextPanelData GetDescription();
     }

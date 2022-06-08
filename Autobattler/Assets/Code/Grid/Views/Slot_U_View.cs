@@ -32,16 +32,35 @@ namespace Autobattler.Grid.Views
             }
         }
 
-        public void UnattachUnit(UnitView unitView)
+        public void UnattachUnit(MonoBehaviour target)
         {
+            UnitView unitView = target as UnitView;
+
+            Debug.Log("hola");
             logic.UnnatachItem();
             playerUnitsInGrid.Collection.Remove(unitView.unit);
+
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
+
+            if (App.DebugController != null && App.DebugController.unitsGridDebug)
+                Debug.Log(unitView.unit.name + " unattached in grid");
+
+            #endif
         }
 
-        public void AttachUnit(UnitView unitView)
+        public void AttachUnit(MonoBehaviour target)
         {
+            UnitView unitView = target as UnitView;
+
             logic.AttachItem(unitView.unit);
             playerUnitsInGrid.Collection.Add(unitView.unit);
+
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
+
+            if (App.DebugController != null && App.DebugController.unitsGridDebug)
+                Debug.Log(unitView.unit.name + " attached in grid");
+
+            #endif
         }
 
         private UnitView PrefabToInstantiate()

@@ -13,9 +13,9 @@ namespace Autobattler.DragAndDrop
         private DraggableComponent objBeingDragged => ObjectBeingDragged.obj;
 
         [Space(20)]
-        public UnityEvent onDropEvent;
+        public UnityEvent<MonoBehaviour> onDropEvent;
         [Space(20)]
-        public UnityEvent onItemTakenAwayEvent;
+        public UnityEvent<MonoBehaviour> onItemTakenAwayEvent;
 
         /// <summary>
         /// Se llama sólo desde el awake del draggableObj: Cuando la lógica lo instancia
@@ -77,7 +77,7 @@ namespace Autobattler.DragAndDrop
         {
             draggableObj = null;
             draggable.onDropAction += MyLastItemHasBeenPlacedSomewhere;
-            onItemTakenAwayEvent?.Invoke();
+            onItemTakenAwayEvent?.Invoke(draggable.item);
 
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
 
@@ -102,7 +102,7 @@ namespace Autobattler.DragAndDrop
             draggable.Rect.anchoredPosition = Vector3.zero;
 
             draggable.onDropAction?.Invoke(this, draggableObj);
-            onDropEvent?.Invoke();
+            onDropEvent?.Invoke(draggable.item);
 
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
 

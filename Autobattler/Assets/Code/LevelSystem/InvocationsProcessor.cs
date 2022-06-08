@@ -31,7 +31,7 @@ namespace Autobattler.LevelSystem
                 var build = builds[i];
                 if (build == null) continue;
 
-                var unit = unitsCreator.CreateUnit(build, side, true);
+                var unit = unitsCreator.CreateUnitInGrid(build, side);
                 var position = new Position(i, column, side);
 
                 battlefield_U.BuildNewItem(unit, position);
