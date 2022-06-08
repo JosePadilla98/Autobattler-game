@@ -40,18 +40,26 @@ namespace Autobattler.EditUnit
 
         public void OnDisable()
         {
-            for (int i = children.Count -1; i > 0; i--)
+            for (int i = children.Count -1; i >= 0; i--)
             {
                 var selectableChild = children[i];
                 selectableChild.onSelected -= OnChildSelected;
+                children.RemoveAt(i);
                 Destroy(selectableChild.gameObject);
             }
         }
 
-        private void OnChildSelected(MonoBehaviour mono)
+        public void OnChildSelected(MonoBehaviour mono)
         {
-            Sprite selectedSprite = ((mono as SelectableComponent).target as Image).sprite;
+            SelectableComponent selectedSelectable = (mono as SelectableComponent);
+            Sprite selectedSprite = (selectedSelectable.target as Image).sprite;
             onSpriteSelected.Invoke(selectedSprite);
+          
+            foreach (var selectable in children)
+            {
+                selectable.WhenUnselect();
+            }
+            selectedSelectable.WhenSelected();
         }
     }
 }

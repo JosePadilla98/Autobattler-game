@@ -42,5 +42,10 @@ namespace Autobattler.Units.Management
             onPointerExitEvent.Invoke(unit);
             mouseIsOverMe = false;
         }
+
+        public void Refresh()
+        {
+            image.sprite = unit.sprite;
+        }
     }
 }

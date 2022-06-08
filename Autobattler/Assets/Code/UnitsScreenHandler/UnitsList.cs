@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Autobattler.Events;
 using Autobattler.SelectionSystem;
 using Autobattler.Units.Management;
@@ -19,11 +20,15 @@ namespace Autobattler.UnitsScreenHandler
         [SerializeField]
         private GameEvent_Unit onUnitSelectedEvent;
 
+        public List<UnitView> unitViews = new();
+
         public void OnPlayerUnitCreated(Unit unit)
         {
             var slot = AddNewSlot();
             var unitView = Instantiate<UnitView>(playerUnitPrefab, slot.transform);
             unitView.InyectDependences(unit);
+
+            unitViews.Add(unitView);
         }
 
         private UnitsList_Slot AddNewSlot()
@@ -40,6 +45,14 @@ namespace Autobattler.UnitsScreenHandler
            var slot = (UnitsList_Slot)unitsList_slot;
            Unit unit = slot.getItemContained<UnitView>().unit;
            onUnitSelectedEvent.Raise(unit);
+        }
+
+        public void Refresh()
+        {
+            foreach (var unitView in unitViews)
+            {
+                unitView.Refresh();
+            }
         }
     }
 }
