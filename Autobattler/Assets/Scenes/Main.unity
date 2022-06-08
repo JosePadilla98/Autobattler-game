@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &11078997
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3317,6 +3317,8 @@ GameObject:
   - component: {fileID: 562224408}
   - component: {fileID: 562224410}
   - component: {fileID: 562224409}
+  - component: {fileID: 562224411}
+  - component: {fileID: 562224412}
   m_Layer: 5
   m_Name: SpritesList
   m_TagString: Untagged
@@ -3351,7 +3353,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562224407}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3382,6 +3384,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562224407}
   m_CullTransparentMesh: 1
+--- !u!114 &562224411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562224407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 150, y: 150}
+  m_Spacing: {x: 25, y: 25}
+  m_Constraint: 0
+  m_ConstraintCount: 2
+--- !u!114 &562224412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562224407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab5203c35659824389f00704297337f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spritesUnlocked: {fileID: 11400000, guid: c5d983090fce7344bac9c4ea1965edf5, type: 2}
+  spriteViewPrefab: {fileID: 7217426491334245299, guid: 6b69abf34fdd0e84b858f9d0df509432, type: 3}
+  spritesTransform: {fileID: 562224408}
+  children: []
+  onSpriteSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 930880853}
+        m_TargetAssemblyTypeName: Autobattler.Screens.EditUnitScreen, Assembly-CSharp
+        m_MethodName: ChangeUnitSprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &564734946 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8580927818974838282, guid: f401198eae6b25e4ea9b1043407c90b4, type: 3}
@@ -4718,7 +4775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &930880849
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4810,6 +4867,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 706945704}
   nameText: {fileID: 976513788}
+  RefreshItems:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 562224412}
+        m_TargetAssemblyTypeName: Autobattler.EditUnit.SpritesList, Assembly-CSharp
+        m_MethodName: Enable
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &976513786
 GameObject:
   m_ObjectHideFlags: 0
@@ -6765,7 +6837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1493636364
 RectTransform:
   m_ObjectHideFlags: 0
