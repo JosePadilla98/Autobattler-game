@@ -49,7 +49,7 @@ namespace Autobattler.SelectionSystem
 
         private void OnDestroy()
         {
-            onDestroy.Invoke(this);
+            onDestroy?.Invoke(this);
         }
     }
 }
