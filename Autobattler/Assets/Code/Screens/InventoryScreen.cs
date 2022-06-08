@@ -3,6 +3,7 @@ using Autobattler.Configs;
 using Autobattler.DragAndDrop;
 using Autobattler.Events;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Autobattler.Screens
 {
@@ -10,10 +11,6 @@ namespace Autobattler.Screens
     {
         [SerializeField]
         public GameObject mainScreen;
-        [SerializeField]
-        private KeyModel openInventoryKeyModel;
-        [SerializeField]
-        private KeyModel openUnitListKeyModel;
 
         [Header("Events")]
         [SerializeField]
@@ -29,19 +26,33 @@ namespace Autobattler.Screens
             comeBackHereAction = () => comeBackHere.Raise();
         }
 
-        public void Update()
-        {
-            if (Input.GetKeyDown(openInventoryKeyModel.key))
-            {
-                GoToMainScreen();
-            }
+        #region INPUT
 
-            if (Input.GetKeyDown(openUnitListKeyModel.key))
-            {
-                goToUnitsScreen.Raise(comeBackHereAction);
-                gameObject.SetActive(false);
-                ObjectBeingDragged.CancelDragging();
-            }
+        public void Input_GoToMainScreen(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+                return;
+
+            GoToMainScreen();
+        }
+
+
+        public void Input_GoToUnitsList(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+                return;
+
+            GoToUnitsListScreen();
+        }
+
+        #endregion
+
+
+        public void GoToUnitsListScreen()
+        {
+            goToUnitsScreen.Raise(comeBackHereAction);
+            gameObject.SetActive(false);
+            ObjectBeingDragged.CancelDragging();
         }
 
         public void GoToMainScreen()

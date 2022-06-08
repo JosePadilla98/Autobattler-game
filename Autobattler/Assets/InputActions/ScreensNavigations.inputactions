@@ -1,0 +1,74 @@
+{
+    "name": "ScreensNavigations",
+    "maps": [
+        {
+            "name": "ScreenNavigations",
+            "id": "7dd4f81c-1d72-4bbf-baf6-c74c225b68ab",
+            "actions": [
+                {
+                    "name": "GoToMain",
+                    "type": "Button",
+                    "id": "fa834b76-5901-47fc-bf01-e5352b744975",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GoToInventory",
+                    "type": "Button",
+                    "id": "ff01266e-ad1f-41bd-97d7-9dbfa3336db8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GoToUnits",
+                    "type": "Button",
+                    "id": "e3837c76-b1ef-401d-9a98-20f8f87f593b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f581c2b0-4f39-4db9-94cc-80087a28c58a",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GoToMain",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "924e1a39-d0b7-4758-875d-16f079259849",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GoToInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4821865-b48a-4516-bdaa-49ef8cb3e4cc",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GoToUnits",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

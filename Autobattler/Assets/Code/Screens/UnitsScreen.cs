@@ -5,15 +5,21 @@ using Autobattler.Events;
 using Autobattler.Units.Management;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 namespace Autobattler.Screens
 {
     public class UnitsScreen : MonoBehaviour
     {
+
+        [Header("Events")]
         [SerializeField]
-        private KeyModel openUnitsScreenKeyModel;
+        private GameEvent openInventoryEvent;
+        [SerializeField]
+        private GameEvent goToMainScreenEvent;
         [SerializeField]
         private GameEvent_Generic editUnitEvent;
+
         [Space(20)]
         [SerializeField]
         public UnityEvent<Unit> OnRefreshItems;
@@ -21,19 +27,55 @@ namespace Autobattler.Screens
         private Action comeBackToLastScreen;
         private Unit attachedUnit;
 
-        public void Update()
-        {
-            if (Input.GetKeyDown(openUnitsScreenKeyModel.key))
-            {
-                ComebackToLastScreen();
-            }
-        }
-
         public void Enable(Action comeBackToLastScreen)
         {
             this.comeBackToLastScreen = comeBackToLastScreen;
             gameObject.SetActive(true);
         }
+
+        public void AttachUnit(Unit unit)
+        {
+            attachedUnit = unit;
+            RefreshItems();
+        }
+
+        public void RefreshItems()
+        {
+            OnRefreshItems?.Invoke(attachedUnit);
+        }
+
+        #region INPUT
+
+        public void Input_GoToMainScreen(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+                return;
+
+            goToMainScreenEvent.Raise();
+            gameObject.SetActive(false);
+            ObjectBeingDragged.CancelDragging();
+        }
+
+
+        public void Input_Inventory(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+                return;
+
+            openInventoryEvent.Raise();
+            gameObject.SetActive(false);
+            ObjectBeingDragged.CancelDragging();
+        }
+
+        public void Input_Close(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+                return;
+
+            ComebackToLastScreen();
+        }
+
+        #endregion
 
         public void ComebackToLastScreen()
         {
@@ -51,18 +93,7 @@ namespace Autobattler.Screens
 
         public void GoToEditScreen()
         {
-            editUnitEvent?.Raise(new EditScreenInfo(attachedUnit, ComeBackHere));
-        }
-
-        public void AttachUnit(Unit unit)
-        {
-            attachedUnit = unit;
-            RefreshItems();
-        }
-
-        public void RefreshItems()
-        {
-            OnRefreshItems?.Invoke(attachedUnit);
+            editUnitEvent.Raise(new EditScreenInfo(attachedUnit, ComeBackHere));
         }
     }
 }

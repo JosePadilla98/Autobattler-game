@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Autobattler.DragAndDrop;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Autobattler.SelectionSystem
@@ -95,8 +96,11 @@ namespace Autobattler.SelectionSystem
             Unselect();
         }
 
-        public void SelectToTheRight()
+        public void SelectToTheRight(InputAction.CallbackContext context)
         {
+            if (!context.performed)
+                return;
+
             ObjectBeingDragged.CancelDragging();
 
             var selectedIndex = selectables.IndexOf(currentlySelected);
@@ -109,8 +113,11 @@ namespace Autobattler.SelectionSystem
             OnOneChildSelected(newSelected);
         }
 
-        public void SelectToTheLeft()
+        public void SelectToTheLeft(InputAction.CallbackContext context)
         {
+            if (!context.performed)
+                return;
+
             ObjectBeingDragged.CancelDragging();
 
             var selectedIndex = selectables.IndexOf(currentlySelected);

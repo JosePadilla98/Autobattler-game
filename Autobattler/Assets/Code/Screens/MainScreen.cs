@@ -4,6 +4,7 @@ using Autobattler.DragAndDrop;
 using Autobattler.Events;
 using Autobattler.GameControllers;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Autobattler.Screens
 {
@@ -20,12 +21,6 @@ namespace Autobattler.Screens
         [SerializeField]
         private GameEvent comeBackHere;
 
-        [Header("Keys")]
-        [SerializeField]
-        private KeyModel openInventoryKeyModel;
-        [SerializeField]
-        private KeyModel openUnitListKeyModel;
-
         private Action comeBackHereAction;
 
         private void Awake()
@@ -39,21 +34,28 @@ namespace Autobattler.Screens
             runController.InitCombat();
         }
 
-        public void Update()
-        {
-            if (Input.GetKeyDown(openInventoryKeyModel.key))
-            {
-                openInventory.Raise();
-                gameObject.SetActive(false);
-                ObjectBeingDragged.CancelDragging();
-            }
+        #region INPUT
 
-            if (Input.GetKeyDown(openUnitListKeyModel.key))
-            {
-                openUnitsScreen.Raise(comeBackHereAction);
-                gameObject.SetActive(false);
-                ObjectBeingDragged.CancelDragging();
-            }
+        public void Input_GoToInventory(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+                return;
+
+            openInventory.Raise();
+            gameObject.SetActive(false);
+            ObjectBeingDragged.CancelDragging();
         }
+
+        public void Input_GoToUnits(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+                return;
+
+            openUnitsScreen.Raise(comeBackHereAction);
+            gameObject.SetActive(false);
+            ObjectBeingDragged.CancelDragging();
+        }
+
+        #endregion
     }
 }

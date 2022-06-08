@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 11078997}
   - component: {fileID: 11078998}
+  - component: {fileID: 11079000}
   - component: {fileID: 11078999}
   m_Layer: 5
   m_Name: UnitsScreen
@@ -140,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &11078997
 RectTransform:
   m_ObjectHideFlags: 0
@@ -153,7 +154,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 137339732}
   - {fileID: 2105782442}
   - {fileID: 220843253}
   - {fileID: 7279437507362939100}
@@ -182,7 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910480acbde73b94ba9ed0cb2a941ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openUnitsScreenKeyModel: {fileID: 11400000, guid: 7c69eed46a19b8949bb38fdd6d62caa6, type: 2}
+  openInventoryEvent: {fileID: 11400000, guid: 218f4a58bcc17e94383fd852b3fe3f4b, type: 2}
+  goToMainScreenEvent: {fileID: 11400000, guid: 25ed356e63cdc3c4282f388f8c3aaf8d, type: 2}
   editUnitEvent: {fileID: 11400000, guid: da6d405c548e92c49be9a1772d3103a2, type: 2}
   OnRefreshItems:
     m_PersistentCalls:
@@ -278,6 +279,84 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &11079000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11078996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: bc83122053ecb5445b64bdb0ee4b7a5e, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11078998}
+        m_TargetAssemblyTypeName: Autobattler.Screens.UnitsScreen, Assembly-CSharp
+        m_MethodName: Input_GoToMainScreen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fa834b76-5901-47fc-bf01-e5352b744975
+    m_ActionName: ScreenNavigations/GoToMain[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11078998}
+        m_TargetAssemblyTypeName: Autobattler.Screens.UnitsScreen, Assembly-CSharp
+        m_MethodName: Input_Inventory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ff01266e-ad1f-41bd-97d7-9dbfa3336db8
+    m_ActionName: ScreenNavigations/GoToInventory[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11078998}
+        m_TargetAssemblyTypeName: Autobattler.Screens.UnitsScreen, Assembly-CSharp
+        m_MethodName: Input_Close
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e3837c76-b1ef-401d-9a98-20f8f87f593b
+    m_ActionName: ScreenNavigations/GoToUnits[/Keyboard/3]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: ScreenNavigations
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &40270086
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 111044828}
   - component: {fileID: 111044827}
-  - component: {fileID: 111044826}
+  - component: {fileID: 111044829}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -544,25 +623,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &111044826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111044825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &111044827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,63 +653,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &112245148 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8531450249103670510, guid: f401198eae6b25e4ea9b1043407c90b4, type: 3}
-  m_PrefabInstance: {fileID: 421310984}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &137339730
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 137339732}
-  - component: {fileID: 137339731}
-  m_Layer: 5
-  m_Name: InputListeners
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &137339731
+--- !u!114 &111044829
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 137339730}
+  m_GameObject: {fileID: 111044825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2348ed603e0add342bb66f5b8783814d, type: 3}
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  children:
-  - {fileID: 1706905927}
---- !u!224 &137339732
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+--- !u!224 &112245148 stripped
 RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8531450249103670510, guid: f401198eae6b25e4ea9b1043407c90b4, type: 3}
+  m_PrefabInstance: {fileID: 421310984}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 137339730}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1706905929}
-  m_Father: {fileID: 11078997}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &162268469
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,7 +840,7 @@ RectTransform:
   m_Children:
   - {fileID: 1261635373}
   m_Father: {fileID: 11078997}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2802,6 +2838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526862726}
   - component: {fileID: 526862727}
+  - component: {fileID: 526862729}
   - component: {fileID: 526862728}
   m_Layer: 5
   m_Name: InventoryScreen
@@ -2844,8 +2881,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainScreen: {fileID: 724874396}
-  openInventoryKeyModel: {fileID: 11400000, guid: d280dad011d0464489d7fc3107574680, type: 2}
-  openUnitListKeyModel: {fileID: 11400000, guid: 7c69eed46a19b8949bb38fdd6d62caa6, type: 2}
   goToUnitsScreen: {fileID: 11400000, guid: e82c04308ea0b374fbb6b7fc116d4c3c, type: 2}
   goToMainScreen: {fileID: 11400000, guid: 25ed356e63cdc3c4282f388f8c3aaf8d, type: 2}
   comeBackHere: {fileID: 11400000, guid: 218f4a58bcc17e94383fd852b3fe3f4b, type: 2}
@@ -2872,6 +2907,84 @@ MonoBehaviour:
     nextState:
       parent: {fileID: 526862726}
       position: {x: -428, y: -404, z: 0}
+--- !u!114 &526862729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526862725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: bc83122053ecb5445b64bdb0ee4b7a5e, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 526862727}
+        m_TargetAssemblyTypeName: Autobattler.Screens.InventoryScreen, Assembly-CSharp
+        m_MethodName: Input_GoToMainScreen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fa834b76-5901-47fc-bf01-e5352b744975
+    m_ActionName: ScreenNavigations/GoToMain[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 526862727}
+        m_TargetAssemblyTypeName: Autobattler.Screens.InventoryScreen, Assembly-CSharp
+        m_MethodName: Input_GoToMainScreen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ff01266e-ad1f-41bd-97d7-9dbfa3336db8
+    m_ActionName: ScreenNavigations/GoToInventory[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 526862727}
+        m_TargetAssemblyTypeName: Autobattler.Screens.InventoryScreen, Assembly-CSharp
+        m_MethodName: Input_GoToUnitsList
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e3837c76-b1ef-401d-9a98-20f8f87f593b
+    m_ActionName: ScreenNavigations/GoToUnits[/Keyboard/3]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: ScreenNavigations
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &534461403
 GameObject:
   m_ObjectHideFlags: 0
@@ -3071,7 +3184,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 11078997}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3537,6 +3650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 724874397}
   - component: {fileID: 724874400}
+  - component: {fileID: 724874401}
   m_Layer: 5
   m_Name: MainScreen
   m_TagString: Untagged
@@ -3583,8 +3697,72 @@ MonoBehaviour:
   openInventory: {fileID: 11400000, guid: 218f4a58bcc17e94383fd852b3fe3f4b, type: 2}
   openUnitsScreen: {fileID: 11400000, guid: e82c04308ea0b374fbb6b7fc116d4c3c, type: 2}
   comeBackHere: {fileID: 11400000, guid: 25ed356e63cdc3c4282f388f8c3aaf8d, type: 2}
-  openInventoryKeyModel: {fileID: 11400000, guid: d280dad011d0464489d7fc3107574680, type: 2}
-  openUnitListKeyModel: {fileID: 11400000, guid: 7c69eed46a19b8949bb38fdd6d62caa6, type: 2}
+--- !u!114 &724874401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724874396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: bc83122053ecb5445b64bdb0ee4b7a5e, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fa834b76-5901-47fc-bf01-e5352b744975
+    m_ActionName: ScreenNavigations/GoToMain[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 724874400}
+        m_TargetAssemblyTypeName: Autobattler.Screens.MainScreen, Assembly-CSharp
+        m_MethodName: Input_GoToInventory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ff01266e-ad1f-41bd-97d7-9dbfa3336db8
+    m_ActionName: ScreenNavigations/GoToInventory[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 724874400}
+        m_TargetAssemblyTypeName: Autobattler.Screens.MainScreen, Assembly-CSharp
+        m_MethodName: Input_GoToUnits
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e3837c76-b1ef-401d-9a98-20f8f87f593b
+    m_ActionName: ScreenNavigations/GoToUnits[/Keyboard/3]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: ScreenNavigations
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &735090303
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4027,7 +4205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &930880849
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5334,7 +5512,7 @@ RectTransform:
   - {fileID: 1926763082}
   - {fileID: 40270087}
   m_Father: {fileID: 11078997}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6217,6 +6395,7 @@ GameObject:
   - component: {fileID: 1518030394}
   - component: {fileID: 1518030393}
   - component: {fileID: 1518030392}
+  - component: {fileID: 1518030395}
   m_Layer: 5
   m_Name: PlayerUnitsList
   m_TagString: Untagged
@@ -6237,7 +6416,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 11078997}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6335,30 +6514,6 @@ MonoBehaviour:
   OnOneOfMyChildrenSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 137339731}
-        m_TargetAssemblyTypeName: Autobattler.SelectionSystem.Disabler, Assembly-CSharp
-        m_MethodName: DisableAll
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1706905927}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 220843256}
         m_TargetAssemblyTypeName: Autobattler.SelectionSystem.SelectionController,
           Assembly-CSharp
@@ -6372,6 +6527,70 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &1518030395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518030389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0250e9052cee9ed43981cf2a14c953b1, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1518030394}
+        m_TargetAssemblyTypeName: Autobattler.SelectionSystem.SelectionController,
+          Assembly-CSharp
+        m_MethodName: SelectToTheLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ac0312a9-f9f5-4c8d-8e00-9d9bf85ce371
+    m_ActionName: Selection/Left[/Keyboard/a,/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1518030394}
+        m_TargetAssemblyTypeName: Autobattler.SelectionSystem.SelectionController,
+          Assembly-CSharp
+        m_MethodName: SelectToTheRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d2d8bf4a-a71c-42f7-ac8f-dea32450afc4
+    m_ActionName: Selection/Right[/Keyboard/d,/Keyboard/rightArrow]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Selection
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1574936076
 GameObject:
   m_ObjectHideFlags: 0
@@ -6575,90 +6794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ff2d5b2341dc849b10b6cf323679a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1706905927
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1706905929}
-  - component: {fileID: 1706905928}
-  m_Layer: 5
-  m_Name: UnitsList
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1706905928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706905927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1486a93c1ce907447ad5560607bae3e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  capturers:
-  - keyModelModel: {fileID: 11400000, guid: a0299c02d3733144bb7a6509621bad6f, type: 2}
-    gameEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1518030394}
-          m_TargetAssemblyTypeName: Autobattler.SelectionSystem.SelectionController,
-            Assembly-CSharp
-          m_MethodName: SelectToTheLeft
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - keyModelModel: {fileID: 11400000, guid: 024e128804237394db51d0655d3213cd, type: 2}
-    gameEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1518030394}
-          m_TargetAssemblyTypeName: Autobattler.SelectionSystem.SelectionController,
-            Assembly-CSharp
-          m_MethodName: SelectToTheRight
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!224 &1706905929
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706905927}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 137339732}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -210.10999, y: -425.18143}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1756892518
 GameObject:
   m_ObjectHideFlags: 0
@@ -6847,7 +6982,7 @@ RectTransform:
   - {fileID: 299835541}
   - {fileID: 1495862260}
   m_Father: {fileID: 11078997}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7726,7 +7861,7 @@ RectTransform:
   - {fileID: 1756892519}
   - {fileID: 48900658}
   m_Father: {fileID: 11078997}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7822,7 +7957,7 @@ RectTransform:
   - {fileID: 404954253}
   - {fileID: 1068964048}
   m_Father: {fileID: 11078997}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10083,7 +10218,7 @@ RectTransform:
   m_Children:
   - {fileID: 7279437507202780246}
   m_Father: {fileID: 11078997}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
