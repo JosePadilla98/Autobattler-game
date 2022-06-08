@@ -93,7 +93,7 @@ namespace Autobattler.Screens
 
         public void GoToEditScreen()
         {
-            editUnitEvent.Raise(new EditScreenInfo(attachedUnit, ComeBackHere));
+            editUnitEvent.Raise(new EditUnitInfo(attachedUnit, ComeBackHere));
         }
     }
 }

@@ -12,11 +12,11 @@ namespace Autobattler.Screens
         public Image image;
         public TMP_InputField nameText;
 
-        private EditScreenInfo info;
+        private EditUnitInfo info;
 
         public void Enable(object obj)
         {
-            info = (EditScreenInfo)obj;
+            info = (EditUnitInfo)obj;
             AttachUnit(info.unitToEdit);
         }
 
