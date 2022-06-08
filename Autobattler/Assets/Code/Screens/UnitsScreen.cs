@@ -17,9 +17,7 @@ namespace Autobattler.Screens
         {
             if (Input.GetKeyDown(openUnitsScreenKeyModel.key))
             {
-                comeBackToLastScreen.Invoke();
-                gameObject.SetActive(false);
-                ObjectBeingDragged.CancelDragging();
+                ComebackToLastScreen();
             }
         }
 
@@ -27,6 +25,13 @@ namespace Autobattler.Screens
         {
             this.comeBackToLastScreen = comeBackToLastScreen;
             gameObject.SetActive(true);
+        }
+
+        public void ComebackToLastScreen()
+        {
+            comeBackToLastScreen.Invoke();
+            gameObject.SetActive(false);
+            ObjectBeingDragged.CancelDragging();
         }
     }
 }

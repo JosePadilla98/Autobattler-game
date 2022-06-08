@@ -33,9 +33,7 @@ namespace Autobattler.Screens
         {
             if (Input.GetKeyDown(openInventoryKeyModel.key))
             {
-                goToMainScreen.Raise();
-                gameObject.SetActive(false);
-                ObjectBeingDragged.CancelDragging();
+                GoToMainScreen();
             }
 
             if (Input.GetKeyDown(openUnitListKeyModel.key))
@@ -44,6 +42,14 @@ namespace Autobattler.Screens
                 gameObject.SetActive(false);
                 ObjectBeingDragged.CancelDragging();
             }
+        }
+
+        public void GoToMainScreen()
+        {
+            Debug.Log("hola");
+            goToMainScreen.Raise();
+            gameObject.SetActive(false);
+            ObjectBeingDragged.CancelDragging();
         }
     }
 }
