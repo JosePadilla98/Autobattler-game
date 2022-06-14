@@ -10,9 +10,9 @@ namespace Autobattler.Units.Management
         public int level;
         public readonly Dictionary<StatsNames, Stat> valuePairs;
 
-        public StatsContainer()
+        public StatsContainer(int initialLevel)
         {
-            level = 1;
+            level = initialLevel;
             valuePairs = StatsInitialValues.GetInitialStats(ref level);
         }
 

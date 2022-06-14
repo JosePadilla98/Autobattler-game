@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Autobattler.Events;
 using Autobattler.GameControllers.Combat;
@@ -24,6 +25,7 @@ namespace Autobattler.GameControllers
         public void Init()
         {
             managementState.Init();
+            RandomController.Init();
         }
 
         public void InitCombat()

@@ -22,20 +22,25 @@ namespace Autobattler.DamagePopup
     //TODO: Hacer este sistema en condiciones
     public class NumberPopup : MonoBehaviour
     {
-        [SerializeField] private NumberPopupData criticalData;
+        [SerializeField] 
+        private NumberPopupData criticalData;
 
-        [SerializeField] private NumberPopupData damageData;
+        [SerializeField] 
+        private NumberPopupData damageData;
 
-        [SerializeField] private readonly float DISAPPEAR_TIME = 0.7f;
+        [SerializeField] 
+        private readonly float DISAPPEAR_TIME = 0.7f;
 
         private float disappearTimer;
 
-        [SerializeField] private NumberPopupData healthData;
+        [SerializeField] 
+        private NumberPopupData healthData;
 
         private Vector2 moveVector;
         private RectTransform rect;
 
         private TMP_Text textMesh;
+
 
         public static NumberPopup Create(Transform parent, int value, NumberPopupTypes type)
         {
@@ -101,19 +106,19 @@ namespace Autobattler.DamagePopup
         private void Update()
         {
             rect.anchoredPosition += moveVector * Time.deltaTime;
-            moveVector -= moveVector * 8f * Time.deltaTime;
+            moveVector -= 8f * Time.deltaTime * moveVector;
 
             if (disappearTimer > DISAPPEAR_TIME * .5f)
             {
                 // First half of the popup lifetime
                 var increaseScaleAmount = 1f;
-                transform.localScale += Vector3.one * increaseScaleAmount * Time.deltaTime;
+                transform.localScale += increaseScaleAmount * Time.deltaTime * Vector3.one;
             }
             else
             {
                 // Second half of the popup lifetime
                 var decreaseScaleAmount = 1f;
-                transform.localScale -= Vector3.one * decreaseScaleAmount * Time.deltaTime;
+                transform.localScale -= decreaseScaleAmount * Time.deltaTime * Vector3.one;
             }
 
             disappearTimer -= Time.deltaTime;

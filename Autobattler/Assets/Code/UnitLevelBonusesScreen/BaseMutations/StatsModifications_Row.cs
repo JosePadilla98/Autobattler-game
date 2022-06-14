@@ -8,8 +8,6 @@ namespace Autobattler
 {
     public class StatsModifications_Row
     {
-        private readonly Random random;
-
         public static void CreateRow()
         {
 
@@ -19,14 +17,14 @@ namespace Autobattler
 
         private float GetRandomModValue(float max, float min)
         {
-            return (float)(random.NextDouble() * (max - min) + min);
+            return (float)(RandomController.random.NextDouble() * (max - min) + min);
         }
 
-        private void GetChoice(Dictionary<StatsNames, float> baseStats, Random random)
+        private void GetChoice(Dictionary<StatsNames, float> baseStats, RandomController randomController)
         {
-            KeyValuePair<StatsNames, float> statToSubstractPoints = SelectRandomStat(baseStats, random);
+            KeyValuePair<StatsNames, float> statToSubstractPoints = SelectRandomStat(baseStats, randomController);
             Dictionary<StatsNames, float> possibleStatsToAddPoints = SubstractStatAndGetCopy(baseStats, statToSubstractPoints.Key);
-            KeyValuePair<StatsNames, float> statToAddPoints = SelectRandomStat(possibleStatsToAddPoints, random);
+            KeyValuePair<StatsNames, float> statToAddPoints = SelectRandomStat(possibleStatsToAddPoints, randomController);
 
             //CalculateMaxValueYouCanSubstract
         }
@@ -47,9 +45,9 @@ namespace Autobattler
             return copy;
         }
 
-        private KeyValuePair<StatsNames, float> SelectRandomStat(Dictionary<StatsNames, float> statsToChoose, Random random)
+        private KeyValuePair<StatsNames, float> SelectRandomStat(Dictionary<StatsNames, float> statsToChoose, RandomController randomController)
         {
-            int randomIndex = random.Next(statsToChoose.Count);
+            int randomIndex = RandomController.random.Next(statsToChoose.Count);
             var pair = statsToChoose.ElementAt(randomIndex);
             return pair;
         }

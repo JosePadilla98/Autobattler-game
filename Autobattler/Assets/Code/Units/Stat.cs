@@ -7,6 +7,7 @@ namespace Autobattler.Units.Management
 {
     public class Stat : ICloneable, IValueExpositor
     {
+        private const bool SOME_STATS_SCALES_BY_LEVEL = false;
         private readonly float baseStat;
 
         /// <summary>
@@ -94,6 +95,9 @@ namespace Autobattler.Units.Management
 
         public static bool CheckIfScalesByLevel(StatsNames statName)
         {
+            if (!SOME_STATS_SCALES_BY_LEVEL)
+                return false;
+
             switch (statName)
             {
                 case StatsNames.PHYSICAL_ATTACK:

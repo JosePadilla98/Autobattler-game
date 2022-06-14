@@ -17,18 +17,25 @@ namespace Autobattler.Units.Management
 
         public Unit()
         {
-            statsContainer = new StatsContainer();
+
+        }
+
+        public Unit(UnitBuild blueprint)
+        {
+            UnitInitialization(blueprint);
+        }
+
+        protected void UnitInitialization(UnitBuild blueprint)
+        {
+            statsContainer = new StatsContainer(blueprint.level);
             permanentMutations = new List<Mutation>();
             enabledMutations = new List<Mutation>();
             disabledMutations = new List<Mutation>();
-        }
 
-        public Unit(UnitBuild blueprint) : this()
-        {
             name = blueprint.name;
             sprite = blueprint.sprite;
 
-            foreach (var mutationModel in blueprint.mutations) 
+            foreach (var mutationModel in blueprint.mutations)
                 AddNewMutation(new Mutation(mutationModel));
         }
 

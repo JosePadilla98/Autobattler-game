@@ -23,17 +23,22 @@ namespace Autobattler.Units
         [SerializeField] 
         private UnitBuild defaultUnitBuild;
 
+        [SerializeField]
+        private LevelsBonificationsModel levelBonificationsModel;
+
         public Unit CreateUnitInGrid(UnitBuild blueprint, Side side)
         {
-            var unit = new Unit(blueprint);
+            Unit unit;
 
             if (side == Side.LEFT)
             {
+                unit = new PlayerUnit(blueprint, levelBonificationsModel);
                 playerData.teamInGrid.Collection.Add(unit);
                 playerUnitCreated.Raise(unit);
             }
             else
             {
+                unit = new Unit(blueprint);
                 enemies.Collection.Add(unit);
             }
 
@@ -42,7 +47,7 @@ namespace Autobattler.Units
 
         public Unit CreateNewPlayerUnit()
         {
-            var unit = new Unit(defaultUnitBuild);
+            var unit = new PlayerUnit(defaultUnitBuild, levelBonificationsModel);
             playerData.teamInBench.Collection.Add(unit);
             playerUnitCreated.Raise(unit);
             newPlayerUnitBuildInInventory.Raise(unit);
