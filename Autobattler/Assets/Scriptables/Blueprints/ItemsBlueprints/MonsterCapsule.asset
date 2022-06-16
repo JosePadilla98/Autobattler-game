@@ -19,3 +19,5 @@ MonoBehaviour:
     sprite: {fileID: 0}
   unitsCreator: {fileID: 11400000, guid: 9bd57630ff487a14b94c746db45fecbc, type: 2}
   openEditUnitScreen: {fileID: 11400000, guid: da6d405c548e92c49be9a1772d3103a2, type: 2}
+  openMutationsHandler: {fileID: 11400000, guid: 6d11070a7dc1f0741b1f686379f8d2f5, type: 2}
+  openInventory: {fileID: 11400000, guid: 218f4a58bcc17e94383fd852b3fe3f4b, type: 2}

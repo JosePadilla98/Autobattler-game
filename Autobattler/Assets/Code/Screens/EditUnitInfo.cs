@@ -5,12 +5,12 @@ namespace Autobattler.Screens
 {
     public struct EditUnitInfo
     {
-        public Unit unitToEdit;
+        public Unit unit;
         public Action onClose;
 
-        public EditUnitInfo(Unit unitToEdit, Action onClose)
+        public EditUnitInfo(Unit unit, Action onClose)
         {
-            this.unitToEdit = unitToEdit;
+            this.unit = unit;
             this.onClose = onClose;
         }
     }

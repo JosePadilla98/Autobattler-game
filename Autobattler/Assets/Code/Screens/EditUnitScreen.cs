@@ -19,7 +19,7 @@ namespace Autobattler.Screens
         public void Enable(object obj)
         {
             info = (EditUnitInfo)obj;
-            AttachUnit(info.unitToEdit);
+            AttachUnit(info.unit);
         }
 
         private void AttachUnit(Unit unit)

@@ -4288,6 +4288,8 @@ GameObject:
   - component: {fileID: 486337023}
   - component: {fileID: 486337025}
   - component: {fileID: 486337024}
+  - component: {fileID: 486337026}
+  - component: {fileID: 486337027}
   m_Layer: 5
   m_Name: Portrait
   m_TagString: Untagged
@@ -4355,6 +4357,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486337022}
   m_CullTransparentMesh: 1
+--- !u!114 &486337026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486337022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e791f4b14b1c7443a77b4806220ee5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 273949380}
+  nameText: {fileID: 881465505}
+  screenParent: {fileID: 1917817183}
+  unitsScreen: {fileID: 11078998}
+  comeBackEvent: {fileID: 11400000, guid: e553098144bccc04c8eeee5d74151b72, type: 2}
+--- !u!114 &486337027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486337022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 486337024}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 486337026}
+        m_TargetAssemblyTypeName: Autobattler.UnitLevelBonusesScreen.LevelBonusPortrait,
+          Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &487733433
 GameObject:
   m_ObjectHideFlags: 0
@@ -4488,8 +4564,9 @@ GameObject:
   - component: {fileID: 503003981}
   - component: {fileID: 503003983}
   - component: {fileID: 503003982}
+  - component: {fileID: 503003984}
   m_Layer: 5
-  m_Name: MutationsHandler
+  m_Name: MutationsBonus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4559,6 +4636,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503003980}
   m_CullTransparentMesh: 1
+--- !u!114 &503003984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503003980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4b90951646bd744a1450f53a4d52e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goToStatsModsScreen: {fileID: 11400000, guid: e553098144bccc04c8eeee5d74151b72, type: 2}
+  refreshItems:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1460403564}
+        m_TargetAssemblyTypeName: Autobattler.UnitLevelBonusesScreen.LevelBonusPortrait,
+          Assembly-CSharp
+        m_MethodName: AttachData
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &512138280
 GameObject:
   m_ObjectHideFlags: 0
@@ -6355,7 +6461,7 @@ GameObject:
   - component: {fileID: 824880040}
   - component: {fileID: 824880039}
   m_Layer: 5
-  m_Name: BackBtn
+  m_Name: CloseBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7443,7 +7549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Back
+  m_text: 'Close
 
 '
   m_isRightToLeft: 0
@@ -8904,6 +9010,8 @@ GameObject:
   - component: {fileID: 1171861057}
   - component: {fileID: 1171861058}
   - component: {fileID: 1171861059}
+  - component: {fileID: 1171861060}
+  - component: {fileID: 1171861061}
   m_Layer: 5
   m_Name: EventsListener
   m_TagString: Untagged
@@ -9033,6 +9141,64 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 930880853}
         m_TargetAssemblyTypeName: Autobattler.Screens.EditUnitScreen, Assembly-CSharp
+        m_MethodName: Enable
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1171861060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171861053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c54e4a15f2cba74c8f7dc308b598d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 6d11070a7dc1f0741b1f686379f8d2f5, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 503003984}
+        m_TargetAssemblyTypeName: Autobattler.UnitLevelBonusesScreen.MutationsBonusScreen,
+          Assembly-CSharp
+        m_MethodName: Enable
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1171861061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171861053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c54e4a15f2cba74c8f7dc308b598d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: e553098144bccc04c8eeee5d74151b72, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1917817187}
+        m_TargetAssemblyTypeName: Autobattler.UnitLevelBonusesScreen.StatsModsScreen,
+          Assembly-CSharp
         m_MethodName: Enable
         m_Mode: 0
         m_Arguments:
@@ -9232,7 +9398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7279437506793503621, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 390.99994
+      value: 373
       objectReference: {fileID: 0}
     - target: {fileID: 7279437506793503621, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -9336,7 +9502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7279437507832408494, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
       propertyPath: m_margin.z
-      value: -43.9657
+      value: -85.30176
       objectReference: {fileID: 0}
     - target: {fileID: 7279437507832408494, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
       propertyPath: m_fontSizeBase
@@ -9360,7 +9526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7279437508109560808, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
       propertyPath: m_margin.z
-      value: -59.250366
+      value: -73.459595
       objectReference: {fileID: 0}
     - target: {fileID: 7279437508109560808, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
       propertyPath: m_fontSizeBase
@@ -9372,7 +9538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7279437508190862108, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
       propertyPath: m_margin.z
-      value: -65.13257
+      value: -93.551025
       objectReference: {fileID: 0}
     - target: {fileID: 7279437508190862108, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
       propertyPath: m_fontSizeBase
@@ -10471,7 +10637,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1422792333}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1917817187}
+        m_TargetAssemblyTypeName: Autobattler.UnitLevelBonusesScreen.StatsModsScreen,
+          Assembly-CSharp
+        m_MethodName: GoToStatsModsHandler
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1422792333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10778,6 +10957,8 @@ GameObject:
   - component: {fileID: 1460403560}
   - component: {fileID: 1460403562}
   - component: {fileID: 1460403561}
+  - component: {fileID: 1460403564}
+  - component: {fileID: 1460403563}
   m_Layer: 5
   m_Name: Portrait
   m_TagString: Untagged
@@ -10845,6 +11026,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460403559}
   m_CullTransparentMesh: 1
+--- !u!114 &1460403563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460403559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1460403561}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1460403564}
+        m_TargetAssemblyTypeName: Autobattler.UnitLevelBonusesScreen.LevelBonusPortrait,
+          Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1460403564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460403559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e791f4b14b1c7443a77b4806220ee5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1502744449}
+  nameText: {fileID: 1250717156}
+  screenParent: {fileID: 503003980}
+  unitsScreen: {fileID: 11078998}
+  comeBackEvent: {fileID: 11400000, guid: 6d11070a7dc1f0741b1f686379f8d2f5, type: 2}
 --- !u!1 &1473854201
 GameObject:
   m_ObjectHideFlags: 0
@@ -12614,7 +12869,7 @@ GameObject:
   - component: {fileID: 1767442871}
   - component: {fileID: 1767442870}
   m_Layer: 5
-  m_Name: BackBtn
+  m_Name: CloseBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12685,7 +12940,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1767442871}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 503003984}
+        m_TargetAssemblyTypeName: Autobattler.UnitLevelBonusesScreen.MutationsBonusScreen,
+          Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1767442871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13130,7 +13398,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Back
+  m_text: 'Close
 
 '
   m_isRightToLeft: 0
@@ -13234,7 +13502,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886569269}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13543,8 +13811,9 @@ GameObject:
   - component: {fileID: 1917817184}
   - component: {fileID: 1917817186}
   - component: {fileID: 1917817185}
+  - component: {fileID: 1917817187}
   m_Layer: 5
-  m_Name: 'StatsModsHandler '
+  m_Name: StatsMods
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13614,6 +13883,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917817183}
   m_CullTransparentMesh: 1
+--- !u!114 &1917817187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917817183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4813809cc81c01447923af2379af969f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goToMutationsBonusScreen: {fileID: 11400000, guid: 6d11070a7dc1f0741b1f686379f8d2f5, type: 2}
+  refreshItems:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 486337026}
+        m_TargetAssemblyTypeName: Autobattler.UnitLevelBonusesScreen.LevelBonusPortrait,
+          Assembly-CSharp
+        m_MethodName: AttachData
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  refreshItems2:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2076093961}
+        m_TargetAssemblyTypeName: Autobattler.InfoPanel.Units.InfoPanel_Unit, Assembly-CSharp
+        m_MethodName: AttachUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1926763081
 GameObject:
   m_ObjectHideFlags: 0
@@ -14076,7 +14389,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2024335205}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 503003984}
+        m_TargetAssemblyTypeName: Autobattler.UnitLevelBonusesScreen.MutationsBonusScreen,
+          Assembly-CSharp
+        m_MethodName: GoToStatsModsScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2024335205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14134,6 +14460,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 11400000, guid: f43066d28616d32428f197e282ecf205, type: 2}
   battlefieldView: {fileID: 913608877}
+--- !u!114 &2076093961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7279437506705244826, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
+  m_PrefabInstance: {fileID: 1211501982}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1793617379e67394dbc6a045c0a9e42b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2105047314
 GameObject:
   m_ObjectHideFlags: 0
