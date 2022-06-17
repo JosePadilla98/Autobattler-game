@@ -1,10 +1,8 @@
 using System;
-using Autobattler.Configs;
+using Autobattler.Configs.Color;
 using Autobattler.Units;
-using Autobattler.Units.Management;
-using UnityEngine;
 
-namespace Autobattler.MutationsSystem
+namespace Autobattler.MutationsSystem.Effects
 {
     [Serializable]
     public class SingleStatModifier 

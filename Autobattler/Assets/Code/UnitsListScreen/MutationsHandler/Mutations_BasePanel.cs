@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Autobattler.Events;
-using Autobattler.InfoPanel;
-using Autobattler.InventorySystem;
 using Autobattler.MutationsSystem;
 using Autobattler.MutationsSystem.Mutations;
 using Autobattler.Units.Management;
+using Autobattler.UnitsListScreen.MutationsHandler.Slots;
 using UnityEngine;
 
-namespace Autobattler.UnitsScreenHandler
+namespace Autobattler.UnitsListScreen.MutationsHandler
 {
     public abstract class Mutations_BasePanel : MonoBehaviour
     {

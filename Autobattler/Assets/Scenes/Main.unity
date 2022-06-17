@@ -16068,6 +16068,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfoPanel_Unit
       objectReference: {fileID: 0}
+    - target: {fileID: 7279437506705244806, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7279437506705244807, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

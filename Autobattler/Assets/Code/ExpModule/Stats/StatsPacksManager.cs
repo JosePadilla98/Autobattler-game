@@ -1,0 +1,45 @@
+﻿using System.Collections.Generic;
+using Autobattler.Units;
+
+namespace Autobattler.ExpModule.Stats
+{
+    public class StatsPacksManager
+    {
+        private List<StatsPackModel> unopenedPacks = new();
+        private StatPackOpened currentPackOpened;
+
+        private StatsContainer statsContainer;
+
+        public StatsPacksManager(StatsContainer statsContainer)
+        {
+            this.statsContainer = statsContainer;
+        }
+
+        public void Add(StatsPackModel pack)
+        {
+            if (currentPackOpened == null)
+            {
+                OpenPack(pack);
+                return;
+            }
+
+            unopenedPacks.Add(pack);
+        }
+
+        private void OpenPack(StatsPackModel pack)
+        {
+            currentPackOpened = new StatPackOpened(statsContainer, pack, TryOpenNextPack);
+        }
+
+        private void TryOpenNextPack()
+        {
+            currentPackOpened = null;
+
+            if (unopenedPacks.Count == 0)
+                return;
+
+            OpenPack(unopenedPacks[0]);
+            unopenedPacks.RemoveAt(0);
+        }
+    }
+}

@@ -1,4 +1,7 @@
-﻿namespace Autobattler.Units.Management
+﻿using Autobattler.ExpModule.Stats;
+using Autobattler.Units.Management;
+
+namespace Autobattler.ExpModule
 {
     public class ExperiencieModule
     {
@@ -10,15 +13,21 @@
             set => parent.statsContainer.level = value;
         }
 
-        public int statsValueToModify;
+        #region MODEL DATA
 
-        private LevelsBonificationsModel lvBonificationsModel;
-        private LevelBonifications[] levelBonuses => lvBonificationsModel.LevelsBonifications;
+        private UnitsLevellingModel lvBonifications;
+        private LevelBonifications[] levelBonuses => lvBonifications.data;
 
-        public ExperiencieModule(Unit parent, LevelsBonificationsModel lvBonificationsModel)
+        #endregion
+
+        private StatsPacksManager statsManager;
+
+        public ExperiencieModule(Unit parent, UnitsLevellingModel lvBonifications)
         {
             this.parent = parent;
-            this.lvBonificationsModel = lvBonificationsModel;
+            this.lvBonifications = lvBonifications;
+
+            statsManager = new StatsPacksManager(parent.statsContainer);
             SetInitialLevelBonuses();
         }
 
@@ -32,7 +41,10 @@
 
         public void GetLevelBonifications(LevelBonifications level)
         {
-            statsValueToModify += level.statsValueToModify;
+            foreach (var statPack in level.statsPacks)
+            {
+                statsManager.Add(statPack);
+            }
         }
     }
 }

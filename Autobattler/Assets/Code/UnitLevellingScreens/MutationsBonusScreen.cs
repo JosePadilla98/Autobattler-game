@@ -1,38 +1,38 @@
 ﻿using Autobattler.Events;
 using Autobattler.Screens;
-using Autobattler.Units.Management;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Autobattler.UnitLevelBonusesScreen
+namespace Autobattler.UnitLevellingScreens
 {
-    public class StatsModsScreen : MonoBehaviour
+    public class MutationsBonusScreen : MonoBehaviour
     {
         [SerializeField]
-        private GameEvent_Generic goToMutationsBonusScreen;
+        private GameEvent_Generic goToStatsModsScreen;
 
         [SerializeField]
         [Space(20)]
         private UnityEvent<EditUnitInfo> refreshItems;
-        [SerializeField]
-        [Space(20)]
-        private UnityEvent<Unit> refreshItems2;
-
 
         private EditUnitInfo attachedData;
+
+        public void Close()
+        {
+            attachedData.onClose();
+            gameObject.SetActive(false);
+        }
 
         public void Enable(object obj)
         {
             attachedData = (EditUnitInfo)obj;
             refreshItems?.Invoke(attachedData);
-            refreshItems2?.Invoke(attachedData.unit);
             gameObject.SetActive(true);
         }
 
-        public void GoToStatsModsHandler()
+        public void GoToStatsModsScreen()
         {
             gameObject.SetActive(false);
-            goToMutationsBonusScreen.Raise(attachedData);
+            goToStatsModsScreen.Raise(attachedData);
         }
     }
 }

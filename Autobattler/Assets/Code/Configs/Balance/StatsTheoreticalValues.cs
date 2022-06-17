@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Autobattler.Units.Management;
+using Autobattler.Units;
 
-namespace Autobattler.Configs
+namespace Autobattler.Configs.Balance
 {
     public static class StatsTheoreticalValues
     {

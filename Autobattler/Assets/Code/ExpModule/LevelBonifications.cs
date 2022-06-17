@@ -1,11 +1,12 @@
 ﻿using System;
+using Autobattler.ExpModule.Stats;
 
-namespace Autobattler.Units.Management
+namespace Autobattler.ExpModule
 {
     [Serializable]
     public struct LevelBonifications
     {
-        public int statsValueToModify;
-        public MutationPack[] mutationsPacks;
+        public StatsPackModel[] statsPacks;
+        public RoundData[] mutationsPacks;
     }
 }

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Autobattler.DragAndDrop;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
-namespace Autobattler.SelectionSystem
+namespace Autobattler.SelectionsSystem
 {
     public class SelectionController : MonoBehaviour
     {

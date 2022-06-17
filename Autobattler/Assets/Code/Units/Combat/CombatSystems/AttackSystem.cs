@@ -1,5 +1,6 @@
 using System;
 using Autobattler.Configs;
+using Autobattler.Configs.Balance;
 using Autobattler.Units.Management;
 
 namespace Autobattler.Units.Combat.CombatSystems

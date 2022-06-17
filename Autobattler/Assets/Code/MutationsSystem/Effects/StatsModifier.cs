@@ -1,8 +1,8 @@
 ﻿using System;
-using Autobattler.Configs;
-using Autobattler.Units.Management;
+using Autobattler.Configs.Color;
+using Autobattler.Units;
 
-namespace Autobattler.MutationsSystem
+namespace Autobattler.MutationsSystem.Effects
 {
     [Serializable]
     public class StatsModifier : BaseEffect

@@ -1,12 +1,10 @@
-﻿using System;
-using Autobattler.Events;
-using Autobattler.Screens;
+﻿using Autobattler.Screens;
 using Autobattler.Units.Management;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Autobattler.UnitsScreenHandler
+namespace Autobattler.UnitsListScreen
 {
     public class Portrait : MonoBehaviour
     {

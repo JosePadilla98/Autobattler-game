@@ -1,5 +1,6 @@
 using System;
 using Autobattler.Configs;
+using Autobattler.Configs.Color;
 using TMPro;
 using UnityEngine;
 

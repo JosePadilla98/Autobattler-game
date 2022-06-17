@@ -1,12 +1,11 @@
-﻿using System;
-using Autobattler.Events;
-using Autobattler.GameControllers;
+﻿using Autobattler.Events;
+using Autobattler.ExpModule;
 using Autobattler.Grid;
+using Autobattler.RunData;
 using Autobattler.ScriptableCollections;
-using Autobattler.Units.Management;
 using UnityEngine;
 
-namespace Autobattler.Units
+namespace Autobattler.Units.Management
 {
     [CreateAssetMenu(fileName = "UnitsCreator", menuName = "ScriptableObjects/UnitsCreator")]
     public class UnitsCreator : ScriptableObject
@@ -24,7 +23,7 @@ namespace Autobattler.Units
         private UnitBuild defaultUnitBuild;
 
         [SerializeField]
-        private LevelsBonificationsModel levelBonificationsModel;
+        private UnitsLevellingModel levelBonifications;
 
         public Unit CreateUnitInGrid(UnitBuild blueprint, Side side)
         {
@@ -32,7 +31,7 @@ namespace Autobattler.Units
 
             if (side == Side.LEFT)
             {
-                unit = new PlayerUnit(blueprint, levelBonificationsModel);
+                unit = new PlayerUnit(blueprint, levelBonifications);
                 playerData.teamInGrid.Collection.Add(unit);
                 playerUnitCreated.Raise(unit);
             }
@@ -47,7 +46,7 @@ namespace Autobattler.Units
 
         public Unit CreateNewPlayerUnit()
         {
-            var unit = new PlayerUnit(defaultUnitBuild, levelBonificationsModel);
+            var unit = new PlayerUnit(defaultUnitBuild, levelBonifications);
             playerData.teamInBench.Collection.Add(unit);
             playerUnitCreated.Raise(unit);
             newPlayerUnitBuildInInventory.Raise(unit);

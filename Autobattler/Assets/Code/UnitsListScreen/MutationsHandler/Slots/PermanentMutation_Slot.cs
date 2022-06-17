@@ -1,11 +1,9 @@
 ﻿using Autobattler.DragAndDrop;
 using Autobattler.MutationsSystem;
-using Autobattler.MutationsSystem.Mutations;
-using UnityEngine;
 
-namespace Autobattler.UnitsScreenHandler
+namespace Autobattler.UnitsListScreen.MutationsHandler.Slots
 {
-    public class Mutation_Slot : Mutation_BaseSlot
+    public class PermanentMutation_Slot : Mutation_BaseSlot
     {
         protected override bool CanThisObjectBeDroppedHere(DraggableComponent draggable)
         {
@@ -13,7 +11,7 @@ namespace Autobattler.UnitsScreenHandler
                 return false;
 
             var mutation = ((MutationView)draggable.item).mutation;
-            return mutation.Model.canBeDisabledByPlayer;
+            return !mutation.Model.canBeDisabledByPlayer;
         }
     }
 }

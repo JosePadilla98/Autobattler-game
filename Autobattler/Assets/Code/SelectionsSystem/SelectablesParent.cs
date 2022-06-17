@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Autobattler.SelectionSystem
+namespace Autobattler.SelectionsSystem
 {
     public class SelectablesParent : MonoBehaviour
     {

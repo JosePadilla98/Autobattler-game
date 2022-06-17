@@ -1,6 +1,7 @@
+using Autobattler.Units;
 using Autobattler.Units.Combat;
 using Autobattler.Units.Management;
-using Autobattler.UnitsScreenHandler;
+using Autobattler.UnitsListScreen;
 using UnityEngine;
 
 namespace Autobattler.InfoPanel.Units
@@ -72,7 +73,6 @@ namespace Autobattler.InfoPanel.Units
         private void Start()
         {
             SetColors();
-            gameObject.SetActive(false);
         }
 
         #region EVENT METHODS

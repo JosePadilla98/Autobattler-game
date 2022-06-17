@@ -1,11 +1,10 @@
 ﻿using Autobattler.Events;
 using Autobattler.Screens;
-using Autobattler.Units.Management;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Autobattler.UnitLevelBonusesScreen
+namespace Autobattler.UnitLevellingScreens
 {
     public class LevelBonusPortrait : MonoBehaviour
     {

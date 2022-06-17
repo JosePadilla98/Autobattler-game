@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace Autobattler.Units.Management
+namespace Autobattler.ExpModule
 {
     [CreateAssetMenu(fileName = "LevelsBonificationsModel", menuName = "ScriptableObjects/ExpSystem/LevelsBonifications")]
-    public class LevelsBonificationsModel : ScriptableObject
+    public class UnitsLevellingModel : ScriptableObject
     {
-        public LevelBonifications[] LevelsBonifications;
+        public LevelBonifications[] data;
     }
 }

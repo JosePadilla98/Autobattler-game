@@ -1,10 +1,9 @@
-﻿using System;
-using Autobattler.DragAndDrop;
+﻿using Autobattler.DragAndDrop;
 using Autobattler.MutationsSystem;
 using Autobattler.MutationsSystem.Mutations;
 using UnityEngine;
 
-namespace Autobattler.UnitsScreenHandler
+namespace Autobattler.UnitsListScreen.MutationsHandler.Slots
 {
     public class Mutation_BaseSlot : DropArea
     {

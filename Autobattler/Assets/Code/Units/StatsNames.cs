@@ -1,4 +1,4 @@
-﻿namespace Autobattler.Units.Management
+﻿namespace Autobattler.Units
 {
     ///
     /// Regenerations represents "regenerations" each 4 seconds

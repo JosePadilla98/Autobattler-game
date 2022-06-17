@@ -24,8 +24,8 @@ namespace Autobattler.GameControllers
 
         public void Init()
         {
-            managementState.Init();
             RandomController.Init();
+            managementState.Init();
         }
 
         public void InitCombat()

@@ -1,7 +1,7 @@
 ﻿using System;
-using Autobattler.Configs;
+using Autobattler.Configs.Color;
 
-namespace Autobattler.MutationsSystem
+namespace Autobattler.MutationsSystem.Effects
 {
     [Serializable]
     public abstract class BaseEffect

@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using Autobattler.MutationsSystem.Mutations;
 using Autobattler.Units.Management;
-using UnityEngine;
 
-namespace Autobattler.UnitsScreenHandler
+namespace Autobattler.UnitsListScreen.MutationsHandler
 {
     public class EnabledMutations_Panel : Mutations_BasePanel
     {

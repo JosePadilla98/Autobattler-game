@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Autobattler.Events;
-using Autobattler.SelectionSystem;
 using Autobattler.Units.Management;
 using UnityEngine;
 
-namespace Autobattler.UnitsScreenHandler
+namespace Autobattler.UnitsListScreen
 {
     public class UnitsList : MonoBehaviour
     {

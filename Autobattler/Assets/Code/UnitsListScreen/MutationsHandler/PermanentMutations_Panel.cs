@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Autobattler.Events;
-using Autobattler.InfoPanel;
-using Autobattler.MutationsSystem;
+﻿using System.Collections.Generic;
 using Autobattler.MutationsSystem.Mutations;
 using Autobattler.Units.Management;
-using UnityEngine;
 
-namespace Autobattler.UnitsScreenHandler
+namespace Autobattler.UnitsListScreen.MutationsHandler
 {
     public class PermanentMutations_Panel : Mutations_BasePanel
     {

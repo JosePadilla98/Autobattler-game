@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Autobattler.Configs;
-using Autobattler.MutationsSystem;
+using Autobattler.Configs.Balance;
 
-namespace Autobattler.Units.Management
+namespace Autobattler.Units
 {
     public class StatsContainer
     {

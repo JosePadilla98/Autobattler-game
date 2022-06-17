@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Autobattler.Configs;
-using Autobattler.MutationsSystem;
+using Autobattler.Configs.Balance;
+using Autobattler.MutationsSystem.Effects;
 
-namespace Autobattler.Units.Management
+namespace Autobattler.Units
 {
     public class Stat : ICloneable, IValueExpositor
     {

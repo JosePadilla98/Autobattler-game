@@ -1,4 +1,5 @@
 using Autobattler.Configs;
+using Autobattler.Configs.Color;
 using Autobattler.Units;
 using Autobattler.Units.Combat;
 using Autobattler.Units.Management;

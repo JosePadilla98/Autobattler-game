@@ -1,8 +1,7 @@
-﻿using Autobattler.InventorySystem;
-using Autobattler.ScriptableCollections;
+﻿using Autobattler.ScriptableCollections;
 using UnityEngine;
 
-namespace Autobattler.GameControllers
+namespace Autobattler.RunData
 {
     [CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerData")]
     public class PlayerData : ScriptableObject

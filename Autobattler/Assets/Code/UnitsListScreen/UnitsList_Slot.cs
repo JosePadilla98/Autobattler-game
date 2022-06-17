@@ -1,12 +1,8 @@
-﻿using Autobattler.Configs;
-using Autobattler.DragAndDrop;
-using Autobattler.SelectionSystem;
+﻿using Autobattler.DragAndDrop;
 using Autobattler.Units.Management;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-namespace Autobattler.UnitsScreenHandler
+namespace Autobattler.UnitsListScreen
 {
     public class UnitsList_Slot : DropArea
     {

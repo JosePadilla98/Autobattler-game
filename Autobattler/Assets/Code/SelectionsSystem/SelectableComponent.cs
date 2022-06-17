@@ -1,10 +1,10 @@
 ﻿using System;
-using Autobattler.Configs;
+using Autobattler.Configs.Color;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Autobattler.SelectionSystem
+namespace Autobattler.SelectionsSystem
 {
     public class SelectableComponent : MonoBehaviour, IPointerClickHandler
     {

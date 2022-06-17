@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Autobattler.Units.Management;
+using Autobattler.Units;
 
-namespace Autobattler.Configs
+namespace Autobattler.Configs.Balance
 {
     public class StatsInitialValues
     {
