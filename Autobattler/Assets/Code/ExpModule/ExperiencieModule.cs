@@ -6,12 +6,13 @@ namespace Autobattler.ExpModule
     public class ExperiencieModule
     {
         private Unit parent;
-
         private int Level
         {
             get => parent.statsContainer.level;
             set => parent.statsContainer.level = value;
         }
+        private StatsPacksManager statsManager;
+        public StatsPacksManager StatsManager => statsManager;
 
         #region MODEL DATA
 
@@ -20,7 +21,6 @@ namespace Autobattler.ExpModule
 
         #endregion
 
-        private StatsPacksManager statsManager;
 
         public ExperiencieModule(Unit parent, UnitsLevellingModel lvBonifications)
         {

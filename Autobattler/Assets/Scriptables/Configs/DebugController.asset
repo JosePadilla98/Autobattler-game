@@ -18,3 +18,5 @@ MonoBehaviour:
     elementsHandler: 0
   unitsScreenDebug:
     mutationsHandler: 0
+  levellingDebug:
+    statsModsRounds: 1

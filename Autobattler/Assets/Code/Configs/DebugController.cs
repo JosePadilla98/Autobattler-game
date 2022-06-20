@@ -11,7 +11,6 @@ namespace Autobattler.Configs
         public InventoryDebug inventory;
         public UnitsScreenDebug unitsScreenDebug;
 
-
         [Serializable]
         public class InventoryDebug
         {

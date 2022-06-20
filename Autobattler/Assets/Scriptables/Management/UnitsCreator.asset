@@ -17,4 +17,4 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: a62f197455d8b3747ab4b7132e4fa1b3, type: 2}
   enemies: {fileID: 11400000, guid: a49224322777bca4ea125369eaf56f65, type: 2}
   defaultUnitBuild: {fileID: 11400000, guid: 2cb3f451c4b48ca4aacc7650a1c431b0, type: 2}
-  levelBonificationsModel: {fileID: 11400000, guid: 553c0d19e829f4d498764da461a91ebf, type: 2}
+  levelBonifications: {fileID: 11400000, guid: 553c0d19e829f4d498764da461a91ebf, type: 2}

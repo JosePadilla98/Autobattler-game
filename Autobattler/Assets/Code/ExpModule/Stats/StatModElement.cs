@@ -1,4 +1,5 @@
 ﻿using Autobattler.Units;
+using UnityEngine.UIElements;
 
 namespace Autobattler.ExpModule.Stats
 {
@@ -6,13 +7,13 @@ namespace Autobattler.ExpModule.Stats
     {
         public StatsNames statToAdd;
         public StatsNames statToSubstract;
-        public float value;
+        public float ModValue;
 
-        public StatModElement(StatsNames statToAdd, StatsNames statToSubstract, float value)
+        public StatModElement(StatsNames statToAdd, StatsNames statToSubstract, float modValue)
         {
             this.statToAdd = statToAdd;
             this.statToSubstract = statToSubstract;
-            this.value = value;
+            this.ModValue = modValue;
         }
     }
 }

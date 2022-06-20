@@ -15,6 +15,11 @@ namespace Autobattler.ExpModule.Stats
             this.statsContainer = statsContainer;
         }
 
+        public List<StatModElement> GetCurrentElements()
+        {
+            return currentPackOpened.currentRound.elements;
+        }
+
         public void Add(StatsPackModel pack)
         {
             if (currentPackOpened == null)

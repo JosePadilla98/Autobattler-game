@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace Autobattler.UnitLevellingScreens
 {
-    public class MutationsBonusScreen : MonoBehaviour
+    public class MutationsBonusesScreen : MonoBehaviour
     {
         [SerializeField]
         private GameEvent_Generic goToStatsModsScreen;

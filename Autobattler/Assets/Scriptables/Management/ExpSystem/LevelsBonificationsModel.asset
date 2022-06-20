@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824d7ec5b0fb4624b93bfd4734fdd747, type: 3}
   m_Name: LevelsBonificationsModel
   m_EditorClassIdentifier: 
-  LevelsBonifications:
-  - statsValueToModify: 10
-    numberOfMutations: 2
+  data:
+  - statsPacks:
+    - totalValueToModify: 12.5
+      roundData:
+        elementsNum: 3
+        choicesNum: 1
+      desirableNumOfRounds: 5
+    mutationsPacks:
+    - elementsNum: 3
+      choicesNum: 1

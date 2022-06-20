@@ -12,7 +12,7 @@ namespace Autobattler.ExpModule.Stats
         private int roundsToDo;
         private float valueLeftToModify;
 
-        private StatsPackRound currentRound;
+        public StatsPackRound currentRound;
 
         public StatPackOpened(StatsContainer statsContainer, StatsPackModel model, Action onConsumed)
         {

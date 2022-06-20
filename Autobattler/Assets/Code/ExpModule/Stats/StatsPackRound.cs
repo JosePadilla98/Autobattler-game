@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Autobattler.Configs.Balance;
 using Autobattler.Units;
+using UnityEngine;
+using Random = System.Random;
 
 namespace Autobattler.ExpModule.Stats
 {
@@ -32,7 +34,7 @@ namespace Autobattler.ExpModule.Stats
             if (applyValueVariation)
             {
                 var variation = BalanceConstants.STATS_MODS_VALUE_VARIATION_PER_ROUND;
-                modValue *= GetRandomFloat(variation, -variation);
+                modValue *= GetRandomFloat(1 + variation, 1 - variation);
             }
 
             baseStats = GetModificableBaseStats(statsContainer);
@@ -41,6 +43,14 @@ namespace Autobattler.ExpModule.Stats
             for (int i = 0; i < roundData.elementsNum; i++)
             {
                 elements.Add(GetElement(ref modValue));
+            }
+
+            //Equals the value of all the elements to the minimum value of all of them
+            for (int i = roundData.elementsNum -1; i >= 0 ; i--)
+            {
+                var copy = elements[i];
+                copy.ModValue = modValue;
+                elements[i] = copy;
             }
         }
 
@@ -94,7 +104,7 @@ namespace Autobattler.ExpModule.Stats
             var output = new StatModElement();
             output.statToAdd = statToAddPoints.Key;
             output.statToSubstract = statToSubstractPoints.Key;
-            output.value = modValue;
+            output.ModValue = modValue;
 
             return output;
         }

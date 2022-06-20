@@ -6,7 +6,7 @@ namespace Autobattler.Configs.Balance
     {
         public const float LEVEL_STATS_INCREMENT_FACTOR = 0.1f;
         public const float DAMAGE_MULTIPLIER = 1f;
-        public const float STATS_MODS_VALUE_VARIATION_PER_ROUND = 0.2f;
+        public const float STATS_MODS_VALUE_VARIATION_PER_ROUND = 1f;
 
         public static readonly StatsNames[] UNMODIFIABLE_STAT_IN_STATS_MOD = new []
         {
