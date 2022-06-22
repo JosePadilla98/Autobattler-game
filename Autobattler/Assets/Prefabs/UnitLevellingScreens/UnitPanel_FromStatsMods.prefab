@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 5846723697104269358}
   - component: {fileID: 5846723697104269359}
   - component: {fileID: 5846723697104269352}
+  - component: {fileID: 6828172598325120080}
   m_Layer: 5
   m_Name: SeeUnitsBtn
   m_TagString: Untagged
@@ -217,7 +218,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5846723697104269359}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6828172598325120080}
+        m_TargetAssemblyTypeName: Autobattler.UnitLevellingScreens.SeeUnitsBtn, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6828172598325120080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5846723697104269354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79b44ce5bb19084fb58c46b03d49d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenParent: {fileID: 0}
+  unitsScreen: {fileID: 0}
+  comeBackEvent: {fileID: 11400000, guid: e553098144bccc04c8eeee5d74151b72, type: 2}
 --- !u!1 &5846723697283774997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,6 +1030,10 @@ PrefabInstance:
       propertyPath: screenParent
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7230207446348297164, guid: 839572d74d9983c49bbbd712e14545e3, type: 3}
+      propertyPath: goToEditScreen
+      value: 
+      objectReference: {fileID: 11400000, guid: da6d405c548e92c49be9a1772d3103a2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 839572d74d9983c49bbbd712e14545e3, type: 3}
 --- !u!224 &5846723697077707116 stripped

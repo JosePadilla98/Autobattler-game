@@ -1044,7 +1044,6 @@ MonoBehaviour:
   - {fileID: 1495862262}
   - {fileID: 48900660}
   - {fileID: 40270089}
-  selectFirstAtBeginning: 0
   canBeChildrenUnselectedWithMouse: 1
   selectables: []
   onTargetSelected:
@@ -3161,26 +3160,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e791f4b14b1c7443a77b4806220ee5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &487733433 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5846723697104269354, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
+--- !u!114 &487733438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6828172598325120080, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
   m_PrefabInstance: {fileID: 5846723697289726099}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &487733438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 487733433}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c79b44ce5bb19084fb58c46b03d49d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenParent: {fileID: 1917817183}
-  unitsScreen: {fileID: 11078998}
-  comeBackEvent: {fileID: 11400000, guid: e553098144bccc04c8eeee5d74151b72, type: 2}
 --- !u!224 &503003981 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 338040009899464005, guid: 8f055297be043cb43baaf4d4887ae484, type: 3}
@@ -8109,7 +8099,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectablesParents:
   - {fileID: 1518030393}
-  selectFirstAtBeginning: 1
   canBeChildrenUnselectedWithMouse: 0
   selectables: []
   onTargetSelected:
@@ -9426,6 +9415,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 487733438}
+        m_TargetAssemblyTypeName: Autobattler.UnitLevellingScreens.SeeUnitsBtn, Assembly-CSharp
+        m_MethodName: AttachData
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   refreshItems2:
     m_PersistentCalls:
       m_Calls:
@@ -10239,10 +10240,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 338040009899464024, guid: 8f055297be043cb43baaf4d4887ae484, type: 3}
-      propertyPath: refreshItems.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 338040009927709483, guid: 8f055297be043cb43baaf4d4887ae484, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -10267,14 +10264,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 8656645096321087478, guid: 8f055297be043cb43baaf4d4887ae484, type: 3}
-      propertyPath: m_text
-      value: StatsMods
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656645097727939572, guid: 8f055297be043cb43baaf4d4887ae484, type: 3}
-      propertyPath: m_Name
-      value: StatsModsBtn
-      objectReference: {fileID: 0}
+    - target: {fileID: 7369889013065033804, guid: 8f055297be043cb43baaf4d4887ae484, type: 3}
+      propertyPath: unitsScreen
+      value: 
+      objectReference: {fileID: 11078998}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f055297be043cb43baaf4d4887ae484, type: 3}
 --- !u!114 &438078762790837885
@@ -10651,7 +10644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5421371534391719664, guid: ffd0f9595738d0a4d9974962daa52fb5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5421371534391719665, guid: ffd0f9595738d0a4d9974962daa52fb5, type: 3}
       propertyPath: m_Pivot.x
@@ -10851,49 +10844,21 @@ PrefabInstance:
       value: UnitPanel
       objectReference: {fileID: 0}
     - target: {fileID: 5846723697077707409, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
-      propertyPath: unitsScreen
-      value: 
-      objectReference: {fileID: 11078998}
-    - target: {fileID: 5846723697077707409, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
       propertyPath: screenParent
       value: 
       objectReference: {fileID: 1917817183}
-    - target: {fileID: 5846723697077707409, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
-      propertyPath: goToEditScreen
-      value: 
-      objectReference: {fileID: 11400000, guid: da6d405c548e92c49be9a1772d3103a2, type: 2}
-    - target: {fileID: 5846723697104269352, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5846723697104269352, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5846723697104269352, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 487733438}
-    - target: {fileID: 5846723697104269352, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5846723697104269352, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClick
-      objectReference: {fileID: 0}
-    - target: {fileID: 5846723697104269352, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Autobattler.UnitLevellingScreens.SeeUnitsBtn, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5846723697104269352, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 5846723698016263711, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1917817187}
+    - target: {fileID: 6828172598325120080, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
+      propertyPath: unitsScreen
+      value: 
+      objectReference: {fileID: 11078998}
+    - target: {fileID: 6828172598325120080, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
+      propertyPath: screenParent
+      value: 
+      objectReference: {fileID: 1917817183}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff16ae9174c764e4e9b35438a3721ef8, type: 3}
 --- !u!222 &6236997922593113696

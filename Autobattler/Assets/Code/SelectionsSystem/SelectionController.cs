@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Autobattler.DragAndDrop;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,8 +11,6 @@ namespace Autobattler.SelectionsSystem
     {
         [SerializeField]
         private SelectablesParent[] selectablesParents;
-        [SerializeField]
-        private bool selectFirstAtBeginning;
         [SerializeField]
         private bool canBeChildrenUnselectedWithMouse = true;
         [Space(20)]
@@ -33,10 +32,10 @@ namespace Autobattler.SelectionsSystem
             }
         }
 
-        private void Start()
+        private void OnEnable()
         {
-            if(selectFirstAtBeginning && selectables.Count > 0)
-                OnOneChildSelected(selectables[0]);
+            //if (selectables.Count > 0 && currentlySelected == null)
+            //    OnOneChildSelected(selectables[0]);
         }
 
         public void AddNewSelectable(SelectableComponent selectable)

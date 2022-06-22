@@ -40,6 +40,7 @@ namespace Autobattler.UnitLevellingScreens
             choicesNum = statsPacksManager.CurrentPackOpened.model.roundData.choicesNum;
             RefreshTitlte();
             RefreshSubtitle();
+            RefreshSaveButton();
 
             foreach (var stadMod in statsMods)
             {
