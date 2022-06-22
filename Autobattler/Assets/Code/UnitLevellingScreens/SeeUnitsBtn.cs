@@ -13,9 +13,9 @@ namespace Autobattler.UnitLevellingScreens
         [SerializeField]
         private GameEvent_Generic comeBackEvent;
 
-        private EditUnitInfo attachedData;
+        private ScreenInfo_Unit attachedData;
 
-        public void AttachData(EditUnitInfo data)
+        public void AttachData(ScreenInfo_Unit data)
         {
             attachedData = data;
         }
@@ -23,9 +23,7 @@ namespace Autobattler.UnitLevellingScreens
         public void OnClick()
         {
             void ComeBack() => comeBackEvent.Raise(attachedData);
-            unitsScreen.Enable(ComeBack);
-            unitsScreen.AttachUnit(attachedData.unit);
-
+            unitsScreen.Enable(attachedData);
             screenParent.SetActive(false);
         }
     }

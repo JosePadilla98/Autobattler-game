@@ -14,7 +14,7 @@ namespace Autobattler.Screens
 
         [Header("Events")]
         [SerializeField]
-        private GameEvent_Action goToUnitsScreen;
+        private GameEvent_Generic goToUnitsScreen;
         [SerializeField]
         private GameEvent goToMainScreen;
         [SerializeField]
@@ -50,7 +50,7 @@ namespace Autobattler.Screens
 
         public void GoToUnitsListScreen()
         {
-            goToUnitsScreen.Raise(comeBackHereAction);
+            goToUnitsScreen.Raise(new ScreenInfo_Unit(null, comeBackHereAction));
             gameObject.SetActive(false);
             ObjectBeingDragged.CancelDragging();
         }

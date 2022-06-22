@@ -33,6 +33,7 @@ namespace Autobattler.Units.Management
             {
                 unit = new PlayerUnit(blueprint, levelBonifications);
                 playerData.teamInGrid.Collection.Add(unit);
+                playerData.team.Collection.Add(unit);
                 playerUnitCreated.Raise(unit);
             }
             else
@@ -48,6 +49,7 @@ namespace Autobattler.Units.Management
         {
             var unit = new PlayerUnit(defaultUnitBuild, levelBonifications);
             playerData.teamInBench.Collection.Add(unit);
+            playerData.team.Collection.Add(unit);
             playerUnitCreated.Raise(unit);
             newPlayerUnitBuildInInventory.Raise(unit);
 

@@ -21,6 +21,7 @@ namespace Autobattler.GameControllers
 
         public void Init()
         {
+            playerData.Init();
             levelsSystem.LoadNextLevel();
             itemsController.Init();
         }

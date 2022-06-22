@@ -20,9 +20,9 @@ namespace Autobattler.UnitLevellingScreens
         [SerializeField]
         private GameEvent_Generic goToEditScreen;
 
-        private EditUnitInfo attachedData;
+        private ScreenInfo_Unit attachedData;
 
-        public void AttachData(EditUnitInfo data)
+        public void AttachData(ScreenInfo_Unit data)
         {
             var unit = data.unit;
             image.sprite = unit.sprite;
@@ -33,7 +33,7 @@ namespace Autobattler.UnitLevellingScreens
         public void OnClick()
         {
             void ComeBack() => comeBackEvent.Raise(attachedData);
-            goToEditScreen.Raise(new EditUnitInfo(attachedData.unit, ComeBack));
+            goToEditScreen.Raise(new ScreenInfo_Unit(attachedData.unit, ComeBack));
 
             screenParent.SetActive(false);
         }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Autobattler.DragAndDrop;
+using Autobattler.Units.Management;
+using Autobattler.UnitsListScreen;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -22,7 +24,7 @@ namespace Autobattler.SelectionsSystem
         [Space(20)]
         public UnityEvent OnOneOfMyChildrenSelected;
 
-        private SelectableComponent currentlySelected;
+        protected SelectableComponent currentlySelected;
 
         private void Awake()
         {
@@ -34,8 +36,13 @@ namespace Autobattler.SelectionsSystem
 
         private void OnEnable()
         {
-            //if (selectables.Count > 0 && currentlySelected == null)
-            //    OnOneChildSelected(selectables[0]);
+            if (selectables.Count > 0 && currentlySelected == null)
+                OnOneChildSelected(selectables[0]);
+        }
+
+        private void OnDisable()
+        {
+            currentlySelected = null;
         }
 
         public void AddNewSelectable(SelectableComponent selectable)

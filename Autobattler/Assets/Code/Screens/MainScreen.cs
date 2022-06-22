@@ -17,7 +17,7 @@ namespace Autobattler.Screens
         [SerializeField]
         private GameEvent openInventory;
         [SerializeField]
-        private GameEvent_Action openUnitsScreen;
+        private GameEvent_Generic openInfoUnitsScreenInfo;
         [SerializeField]
         private GameEvent comeBackHere;
 
@@ -51,7 +51,7 @@ namespace Autobattler.Screens
             if (!context.performed)
                 return;
 
-            openUnitsScreen.Raise(comeBackHereAction);
+            openInfoUnitsScreenInfo.Raise(new ScreenInfo_Unit(null, comeBackHereAction));
             gameObject.SetActive(false);
             ObjectBeingDragged.CancelDragging();
         }

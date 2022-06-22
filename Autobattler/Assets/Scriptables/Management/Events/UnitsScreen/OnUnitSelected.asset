@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf0621cd046dd543b0b3ee474bc1487, type: 3}
-  m_Name: UnitsScreenOpen
+  m_Script: {fileID: 11500000, guid: f57b4ec8e7e1c9e478af16a777e86262, type: 3}
+  m_Name: OnUnitSelected
   m_EditorClassIdentifier: 

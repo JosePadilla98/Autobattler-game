@@ -13,16 +13,16 @@ namespace Autobattler.UnitLevellingScreens
 
         [SerializeField]
         [Space(20)]
-        private UnityEvent<EditUnitInfo> refreshItems;
+        private UnityEvent<ScreenInfo_Unit> refreshItems;
         [SerializeField]
         [Space(20)]
         private UnityEvent<Unit> refreshItems2;
 
-        private EditUnitInfo attachedData;
+        private ScreenInfo_Unit attachedData;
 
         public void Enable(object obj)
         {
-            attachedData = (EditUnitInfo)obj;
+            attachedData = (ScreenInfo_Unit)obj;
             Refresh();
             gameObject.SetActive(true);
         }

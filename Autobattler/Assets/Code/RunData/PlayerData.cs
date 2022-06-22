@@ -8,5 +8,13 @@ namespace Autobattler.RunData
     {
         public UnitsCollection teamInGrid;
         public UnitsCollection teamInBench;
+        public UnitsCollection team;
+
+        public void Init()
+        {
+            teamInGrid.Collection.Clear();
+            teamInBench.Collection.Clear();
+            team.Collection.Clear();
+        }
     }
 }

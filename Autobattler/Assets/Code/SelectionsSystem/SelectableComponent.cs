@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Autobattler.SelectionsSystem
 {
-    public class SelectableComponent : MonoBehaviour, IPointerClickHandler
+    public class SelectableComponent : MonoBehaviour, IPointerDownHandler
     {
         [SerializeField]
         private Image image;
@@ -42,14 +42,14 @@ namespace Autobattler.SelectionsSystem
             onSelected.Invoke(this);
         }
 
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            SendInfoThatImSelected();
-        }
-
         private void OnDestroy()
         {
             onDestroy?.Invoke(this);
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            SendInfoThatImSelected();
         }
     }
 }

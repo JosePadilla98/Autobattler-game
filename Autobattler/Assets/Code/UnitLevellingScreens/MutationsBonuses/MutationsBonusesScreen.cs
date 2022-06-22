@@ -12,9 +12,9 @@ namespace Autobattler.UnitLevellingScreens
 
         [SerializeField]
         [Space(20)]
-        private UnityEvent<EditUnitInfo> refreshItems;
+        private UnityEvent<ScreenInfo_Unit> refreshItems;
 
-        private EditUnitInfo attachedData;
+        private ScreenInfo_Unit attachedData;
 
         public void Close()
         {
@@ -24,7 +24,7 @@ namespace Autobattler.UnitLevellingScreens
 
         public void Enable(object obj)
         {
-            attachedData = (EditUnitInfo)obj;
+            attachedData = (ScreenInfo_Unit)obj;
             refreshItems?.Invoke(attachedData);
             gameObject.SetActive(true);
         }

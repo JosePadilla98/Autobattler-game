@@ -3,6 +3,7 @@ using Autobattler.Configs;
 using Autobattler.DragAndDrop;
 using Autobattler.Events;
 using Autobattler.Units.Management;
+using Autobattler.UnitsListScreen;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -11,6 +12,8 @@ namespace Autobattler.Screens
 {
     public class UnitsScreen : MonoBehaviour
     {
+        [SerializeField] 
+        private UnitsSelectionController unitsSelectionController;
 
         [Header("Events")]
         [SerializeField]
@@ -19,29 +22,31 @@ namespace Autobattler.Screens
         private GameEvent goToMainScreenEvent;
         [SerializeField]
         private GameEvent_Generic editUnitEvent;
-
         [Space(20)]
         [SerializeField]
         public UnityEvent<Unit> OnRefreshItems;
 
-        private Action comeBackToLastScreen;
-        private Unit attachedUnit;
+        private ScreenInfo_Unit inputInfo;
+        public Unit AttachedUnit => inputInfo.unit;
 
-        public void Enable(Action comeBackToLastScreen)
+        public void Enable(object obj)
         {
-            this.comeBackToLastScreen = comeBackToLastScreen;
+            var info = (ScreenInfo_Unit)obj;
+            inputInfo = info;
             gameObject.SetActive(true);
+
+            SayToSelectionControllerToSelect(info.unit ?? null);
         }
 
-        public void AttachUnit(Unit unit)
+        private void SayToSelectionControllerToSelect(Unit unit)
         {
-            attachedUnit = unit;
-            RefreshItems();
+            unitsSelectionController.SelectUnit(unit);
         }
 
-        public void RefreshItems()
+        public void SelectUnit(Unit unit)
         {
-            OnRefreshItems?.Invoke(attachedUnit);
+            inputInfo.unit = unit;
+            OnRefreshItems?.Invoke(AttachedUnit);
         }
 
         #region INPUT
@@ -79,21 +84,20 @@ namespace Autobattler.Screens
 
         public void ComebackToLastScreen()
         {
-            comeBackToLastScreen.Invoke();
+            inputInfo.onClose.Invoke();
             gameObject.SetActive(false);
             ObjectBeingDragged.CancelDragging();
         }
 
         public void ComeBackHere()
         {
-            gameObject.SetActive(true);
-            RefreshItems();
+            Enable(inputInfo);
             ObjectBeingDragged.CancelDragging();
         }
 
         public void GoToEditScreen()
         {
-            editUnitEvent.Raise(new EditUnitInfo(attachedUnit, ComeBackHere));
+            editUnitEvent.Raise(new ScreenInfo_Unit(AttachedUnit, ComeBackHere));
         }
     }
 }

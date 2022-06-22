@@ -1,12 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Autobattler.Events;
+using Autobattler.Screens;
+using Autobattler.ScriptableCollections;
 using Autobattler.Units.Management;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Autobattler.UnitsListScreen
 {
     public class UnitsList : MonoBehaviour
     {
+        [SerializeField]
+        private GameEvent_Unit onUnitSelected;
+
         [SerializeField]
         private UnitView playerUnitPrefab;
         [SerializeField]
@@ -15,18 +22,44 @@ namespace Autobattler.UnitsListScreen
         private Transform slotsParent;
         [SerializeField]
         private Canvas canvas;
-        [SerializeField]
-        private GameEvent_Unit onUnitSelectedEvent;
+        [SerializeField] 
+        private UnitsCollection team;
 
-        public List<UnitView> unitViews = new();
+        private List<UnitsList_Slot> slots = new();
 
-        public void OnPlayerUnitCreated(Unit unit)
+        public void OnEnable()
+        {
+            for (int i = 0; i < team.Collection.Count; i++)
+            {
+                var unit = team.Collection[i];
+                AddNewUnitView(unit);
+            }
+        }
+
+        private void OnDisable()
+        {
+            team.Collection.Clear();
+
+            foreach (var slot in slots)
+            {
+                team.Collection.Add(slot.Unit);
+            }
+
+            for (int i = slots.Count -1; i >= 0; i--)
+            {
+                Destroy(slots[i].gameObject);
+            }
+
+            slots.Clear();
+        }
+
+        private void AddNewUnitView(Unit unit)
         {
             var slot = AddNewSlot();
             var unitView = Instantiate<UnitView>(playerUnitPrefab, slot.transform);
             unitView.InyectDependences(unit);
 
-            unitViews.Add(unitView);
+            slots.Add(slot);
         }
 
         private UnitsList_Slot AddNewSlot()
@@ -39,17 +72,17 @@ namespace Autobattler.UnitsListScreen
         }
 
         public void OnUnitSlotSelected(MonoBehaviour unitsList_slot)
-        {
+        { 
            var slot = (UnitsList_Slot)unitsList_slot;
-           Unit unit = slot.getItemContained<UnitView>().unit;
-           onUnitSelectedEvent.Raise(unit);
+           Unit unit = slot.Unit;
+           onUnitSelected.Raise(unit);
         }
 
         public void Refresh()
         {
-            foreach (var unitView in unitViews)
+            foreach (var slot in slots)
             {
-                unitView.Refresh();
+                slot.Refresh();
             }
         }
     }

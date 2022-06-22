@@ -3,12 +3,12 @@ using Autobattler.Units.Management;
 
 namespace Autobattler.Screens
 {
-    public struct EditUnitInfo
+    public struct ScreenInfo_Unit
     {
         public Unit unit;
         public Action onClose;
 
-        public EditUnitInfo(Unit unit, Action onClose)
+        public ScreenInfo_Unit(Unit unit, Action onClose)
         {
             this.unit = unit;
             this.onClose = onClose;

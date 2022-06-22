@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamInGrid: {fileID: 11400000, guid: a899abdbf7e040b4dbd7f7b5baa17acc, type: 2}
   teamInBench: {fileID: 11400000, guid: cf5666d7ea36afb45ba3f89e51948bad, type: 2}
+  team: {fileID: 11400000, guid: cfadd0c134a720340a6b0caa9b170619, type: 2}

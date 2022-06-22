@@ -13,12 +13,12 @@ namespace Autobattler.Screens
         public Image image;
         public TMP_InputField nameText;
 
-        private EditUnitInfo info;
+        private ScreenInfo_Unit info;
         public UnityEvent<Unit> RefreshItems;
 
         public void Enable(object obj)
         {
-            info = (EditUnitInfo)obj;
+            info = (ScreenInfo_Unit)obj;
             AttachUnit(info.unit);
         }
 

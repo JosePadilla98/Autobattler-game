@@ -34,8 +34,8 @@ namespace Autobattler.InventorySystem.Items
             var unit = unitsCreator.CreateNewPlayerUnit();
             itemView.DestroyItem();
 
-            void NextStep() => openMutationsHandler.Raise(new EditUnitInfo(unit, openInventory.Raise));
-            openEditUnitScreen.Raise(new EditUnitInfo(unit, NextStep));
+            void NextStep() => openMutationsHandler.Raise(new ScreenInfo_Unit(unit, openInventory.Raise));
+            openEditUnitScreen.Raise(new ScreenInfo_Unit(unit, NextStep));
         }
     }
 }
