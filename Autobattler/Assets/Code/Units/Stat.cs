@@ -8,7 +8,7 @@ namespace Autobattler.Units
     public class Stat : ICloneable, IValueExpositor
     {
         private const bool SOME_STATS_SCALES_BY_LEVEL = false;
-        private readonly float baseStat;
+        public float baseStat;
 
         /// <summary>
         ///  Passed by reference

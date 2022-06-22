@@ -7313,7 +7313,7 @@ GameObject:
   - component: {fileID: 918571373}
   - component: {fileID: 918571372}
   m_Layer: 5
-  m_Name: PickedMutationsText
+  m_Name: Subtitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8613,7 +8613,7 @@ GameObject:
   - component: {fileID: 1088732669}
   - component: {fileID: 1088732668}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12232,6 +12232,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statModViewPrefab: {fileID: 7009780257935059965, guid: 27a6a472060f2a541954413d9d67564e, type: 3}
   listParents: {fileID: 676372588}
+  title: {fileID: 1088732668}
+  subtitle: {fileID: 918571372}
+  children: []
 --- !u!1 &1611914463 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1013619699885400373, guid: 1c72b78693b237b4a9e653b080697842, type: 3}

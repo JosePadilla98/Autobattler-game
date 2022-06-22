@@ -64,7 +64,7 @@ namespace Autobattler.SelectionsSystem
                 if (selectableChild == selected)
                 {
                     currentlySelected = selected;
-                    selectableChild.WhenSelected();
+                    selectableChild.Select();
                     onTargetSelected.Invoke(selected.target);
                 }
             }
@@ -81,7 +81,7 @@ namespace Autobattler.SelectionsSystem
 
         public void Unselect()
         {
-            currentlySelected.WhenUnselect();
+            currentlySelected.Deselect();
             currentlySelected = null;
             onTargedUnselected?.Invoke();
         }

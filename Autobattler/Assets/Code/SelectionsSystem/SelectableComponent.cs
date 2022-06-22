@@ -24,12 +24,12 @@ namespace Autobattler.SelectionsSystem
             unselectedColor = image.color;
         }
 
-        public void WhenSelected()
+        public void Select()
         {
             image.color = selectedColor.color;
         }
 
-        public void WhenUnselect()
+        public void Deselect()
         {
             image.color = unselectedColor;
         }

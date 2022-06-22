@@ -5,7 +5,7 @@ namespace Autobattler.ExpModule.Stats
 {
     public class StatPackOpened
     {
-        private StatsPackModel model;
+        public StatsPackModel model;
         private StatsContainer statsContainer;
         private Action onConsumed;
 
@@ -35,7 +35,18 @@ namespace Autobattler.ExpModule.Stats
 
         private void OnRoundConsumed()
         {
+            valueLeftToModify -= currentRound.RoundValue;
+            roundsToDo--;
 
+            if (valueLeftToModify == 0)
+            {
+                currentRound = null;
+                Consume();
+            }
+            else
+            {
+                NewRound();
+            }
         }
 
         private void Consume()

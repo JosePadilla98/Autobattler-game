@@ -25,16 +25,20 @@ namespace Autobattler.ExpModule.Stats
         private Dictionary<StatsNames, float> statsYouCanSubstractFrom;
         private Dictionary<StatsNames, float> baseStats;
 
-        private float modValue;
+        private float roundValue;
+        public float RoundValue => roundValue;
+        private StatsContainer statsContainer;
 
-        public StatsPackRound(Action onRoundConsumed, StatsContainer statsContainer, RoundData roundData, float orientativeModValue, bool applyValueVariation = true)
+        public StatsPackRound(Action onRoundConsumed, StatsContainer statsContainer, RoundData roundData, float orientativeRoundValue, bool applyValueVariation = true)
         {
-            modValue = orientativeModValue;
+            roundValue = orientativeRoundValue;
+            this.statsContainer = statsContainer;
+            this.onRoundConsumed = onRoundConsumed;
 
             if (applyValueVariation)
             {
                 var variation = BalanceConstants.STATS_MODS_VALUE_VARIATION_PER_ROUND;
-                modValue *= GetRandomFloat(1 + variation, 1 - variation);
+                roundValue *= GetRandomFloat(1 + variation, 1 - variation);
             }
 
             baseStats = GetModificableBaseStats(statsContainer);
@@ -42,14 +46,14 @@ namespace Autobattler.ExpModule.Stats
 
             for (int i = 0; i < roundData.elementsNum; i++)
             {
-                elements.Add(GetElement(ref modValue));
+                elements.Add(GetElement(ref roundValue));
             }
 
             //Equals the value of all the elements to the minimum value of all of them
             for (int i = roundData.elementsNum -1; i >= 0 ; i--)
             {
                 var copy = elements[i];
-                copy.ModValue = modValue;
+                copy.ModValue = roundValue;
                 elements[i] = copy;
             }
         }
@@ -125,6 +129,13 @@ namespace Autobattler.ExpModule.Stats
         private float GetRandomFloat(float max, float min)
         {
             return (float)(RandomController.random.NextDouble() * (max - min) + min);
+        }
+
+        public void SelectOneToApply(StatModElement element)
+        {
+            element.Apply(statsContainer);
+            onRoundConsumed?.Invoke();
+            onRoundConsumed = null;
         }
     }
 }

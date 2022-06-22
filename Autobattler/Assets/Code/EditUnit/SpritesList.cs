@@ -32,7 +32,7 @@ namespace Autobattler.EditUnit
                 selectableImage.sprite = sprite;
 
                 if (unit.sprite == sprite)
-                    s.WhenSelected();
+                    s.Select();
 
                 children.Add(s);
                 s.onSelected += OnChildSelected;
@@ -58,9 +58,9 @@ namespace Autobattler.EditUnit
           
             foreach (var selectable in children)
             {
-                selectable.WhenUnselect();
+                selectable.Deselect();
             }
-            selectedSelectable.WhenSelected();
+            selectedSelectable.Select();
         }
     }
 }

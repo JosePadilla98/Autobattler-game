@@ -15,5 +15,21 @@ namespace Autobattler.ExpModule.Stats
             this.statToSubstract = statToSubstract;
             this.ModValue = modValue;
         }
+
+        public void Apply(StatsContainer statsContainer)
+        {
+            statsContainer.GetStat(statToAdd).baseStat += GetAdditionValue();
+            statsContainer.GetStat(statToSubstract).baseStat += GetSubstractionValue();
+        }
+
+        public float GetAdditionValue()
+        {
+            return statToAdd.GetRealValue(ModValue);
+        }
+
+        public float GetSubstractionValue()
+        {
+            return statToSubstract.GetRealValue(ModValue);
+        }
     }
 }

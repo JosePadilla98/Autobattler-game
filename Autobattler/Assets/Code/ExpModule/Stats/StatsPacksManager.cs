@@ -7,6 +7,8 @@ namespace Autobattler.ExpModule.Stats
     {
         private List<StatsPackModel> unopenedPacks = new();
         private StatPackOpened currentPackOpened;
+        public StatPackOpened CurrentPackOpened => currentPackOpened;
+
 
         private StatsContainer statsContainer;
 
