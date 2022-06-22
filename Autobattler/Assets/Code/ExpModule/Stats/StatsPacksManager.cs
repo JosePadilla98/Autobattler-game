@@ -8,7 +8,7 @@ namespace Autobattler.ExpModule.Stats
         private List<StatsPackModel> unopenedPacks = new();
         private StatPackOpened currentPackOpened;
         public StatPackOpened CurrentPackOpened => currentPackOpened;
-
+        public int UnopenedPacksLeft => unopenedPacks.Count;
 
         private StatsContainer statsContainer;
 

@@ -5,6 +5,7 @@ using Autobattler.ExpModule.Stats;
 using Autobattler.Units.Management;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Autobattler.UnitLevellingScreens
 {
@@ -18,23 +19,26 @@ namespace Autobattler.UnitLevellingScreens
         private TextMeshProUGUI title;
         [SerializeField]
         private TextMeshProUGUI subtitle;
+        [SerializeField]
+        private UnityEvent<bool> refreshSaveButton;
+        [SerializeField]
+        private UnityEvent refreshParent;
 
-        public List<StatModView> children = new();
+        private List<StatModView> children = new();
         private List<StatModView> selectedItems = new();
 
         private int choicesNum;
         private StringBuilder builder = new StringBuilder();
 
+        private StatsPacksManager statsPacksManager;
+
         public void Enable(Unit unit)
         {
-            var statsManager = (unit as PlayerUnit).expModule.StatsManager;
-            var statsMods = statsManager.GetCurrentElements();
+            statsPacksManager = (unit as PlayerUnit).expModule.StatsManager;
+            var statsMods = statsPacksManager.GetCurrentElements();
 
-            //title
-            choicesNum = statsManager.CurrentPackOpened.model.roundData.choicesNum;
-            builder.AppendFormat("Pick {0} modification:", choicesNum);
-            title.text = builder.ToString();
-
+            choicesNum = statsPacksManager.CurrentPackOpened.model.roundData.choicesNum;
+            RefreshTitlte();
             RefreshSubtitle();
 
             foreach (var stadMod in statsMods)
@@ -43,6 +47,13 @@ namespace Autobattler.UnitLevellingScreens
                 statModView.Inflate(stadMod,this);
                 children.Add(statModView);
             }
+        }
+
+        public void RefreshTitlte()
+        {
+            builder.Clear();
+            builder.AppendFormat("Pick {0} modification:", choicesNum);
+            title.text = builder.ToString();
         }
 
         public void RefreshSubtitle()
@@ -68,6 +79,7 @@ namespace Autobattler.UnitLevellingScreens
         {
             ProcessSelection();
             RefreshSubtitle();
+            RefreshSaveButton();
 
             void ProcessSelection()
             {
@@ -96,10 +108,28 @@ namespace Autobattler.UnitLevellingScreens
             }
         }
 
-        public bool canPassNext()
+        private void RefreshSaveButton()
         {
-            return (selectedItems.Count == choicesNum);
+            refreshSaveButton.Invoke((selectedItems.Count == choicesNum));
         }
 
+        public void Save()
+        {
+            statsPacksManager.CurrentPackOpened.currentRound.SaveSelection(selectedItems);
+            Disable();
+            refreshParent?.Invoke();
+        }
+
+        public void SelectNone()
+        {
+            statsPacksManager.CurrentPackOpened.currentRound.SaveSelection(null);
+            Disable();
+            refreshParent?.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            Disable();
+        }
     }
 }

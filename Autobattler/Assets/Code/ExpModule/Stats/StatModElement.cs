@@ -19,7 +19,7 @@ namespace Autobattler.ExpModule.Stats
         public void Apply(StatsContainer statsContainer)
         {
             statsContainer.GetStat(statToAdd).baseStat += GetAdditionValue();
-            statsContainer.GetStat(statToSubstract).baseStat += GetSubstractionValue();
+            statsContainer.GetStat(statToSubstract).baseStat -= GetSubstractionValue();
         }
 
         public float GetAdditionValue()

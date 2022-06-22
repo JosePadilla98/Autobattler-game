@@ -23,9 +23,14 @@ namespace Autobattler.UnitLevellingScreens
         public void Enable(object obj)
         {
             attachedData = (EditUnitInfo)obj;
+            Refresh();
+            gameObject.SetActive(true);
+        }
+
+        public void Refresh()
+        {
             refreshItems?.Invoke(attachedData);
             refreshItems2?.Invoke(attachedData.unit);
-            gameObject.SetActive(true);
         }
 
         public void GoToStatsModsHandler()

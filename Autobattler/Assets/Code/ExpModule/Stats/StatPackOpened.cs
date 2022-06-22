@@ -41,7 +41,7 @@ namespace Autobattler.ExpModule.Stats
             if (valueLeftToModify == 0)
             {
                 currentRound = null;
-                Consume();
+                ConsumePack();
             }
             else
             {
@@ -49,7 +49,7 @@ namespace Autobattler.ExpModule.Stats
             }
         }
 
-        private void Consume()
+        private void ConsumePack()
         {
             onConsumed.Invoke();
             onConsumed = null;

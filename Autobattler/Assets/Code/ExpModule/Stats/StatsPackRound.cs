@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autobattler.Configs.Balance;
+using Autobattler.UnitLevellingScreens;
 using Autobattler.Units;
 using UnityEngine;
 using Random = System.Random;
@@ -131,9 +132,16 @@ namespace Autobattler.ExpModule.Stats
             return (float)(RandomController.random.NextDouble() * (max - min) + min);
         }
 
-        public void SelectOneToApply(StatModElement element)
+        public void SaveSelection(IEnumerable<StatModView> modViews)
         {
-            element.Apply(statsContainer);
+            if (modViews != null)
+            {
+                foreach (var modView in modViews)
+                {
+                    modView.Element.Apply(statsContainer);
+                }
+            }
+
             onRoundConsumed?.Invoke();
             onRoundConsumed = null;
         }

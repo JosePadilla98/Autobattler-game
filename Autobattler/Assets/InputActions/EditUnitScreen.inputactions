@@ -1,0 +1,34 @@
+{
+    "name": "EditUnitScreen",
+    "maps": [
+        {
+            "name": "EditUnitScreen",
+            "id": "85154e91-fd43-4e94-84fc-5ec84fa4106e",
+            "actions": [
+                {
+                    "name": "Save",
+                    "type": "Button",
+                    "id": "d800a482-3eb0-4a62-920e-a1179992ae5f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3939ff4e-e90e-43c6-8596-9987f1b8c3a6",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Save",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

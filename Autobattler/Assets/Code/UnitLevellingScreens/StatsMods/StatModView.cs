@@ -25,8 +25,13 @@ namespace Autobattler.UnitLevellingScreens
 
         private StatsModsChooser parent;
 
+        private StatModElement element;
+        public StatModElement Element => element;
+
         public void Inflate(StatModElement element, StatsModsChooser parent)
         {
+            this.element = element;
+
             float realAddedValue = element.GetAdditionValue();
             StringBuilder textBuilder = new StringBuilder();
             textBuilder.AppendFormat("+{0} {1}.", realAddedValue.ToString("0.00"), element.statToAdd.GetName());
