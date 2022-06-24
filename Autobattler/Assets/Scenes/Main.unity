@@ -11106,7 +11106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectablesParents:
   - {fileID: 1518030393}
-  canBeChildrenUnselectedWithMouse: 1
+  canBeChildrenUnselectedWithMouse: 0
   selectables: []
   onTargetSelected:
     m_PersistentCalls:
