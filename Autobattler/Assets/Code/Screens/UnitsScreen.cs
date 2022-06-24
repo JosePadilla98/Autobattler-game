@@ -97,6 +97,7 @@ namespace Autobattler.Screens
 
         public void GoToEditScreen()
         {
+            gameObject.SetActive(false);
             editUnitEvent.Raise(new ScreenInfo_Unit(AttachedUnit, ComeBackHere));
         }
     }

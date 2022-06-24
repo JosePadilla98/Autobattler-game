@@ -77,13 +77,5 @@ namespace Autobattler.UnitsListScreen
            Unit unit = slot.Unit;
            onUnitSelected.Raise(unit);
         }
-
-        public void Refresh()
-        {
-            foreach (var slot in slots)
-            {
-                slot.Refresh();
-            }
-        }
     }
 }

@@ -17,10 +17,5 @@ namespace Autobattler.UnitsListScreen
         {
             return draggable.item is UnitView;
         }
-
-        public void Refresh()
-        {
-            (draggableObj.item as UnitView).Refresh();
-        }
     }
 }
