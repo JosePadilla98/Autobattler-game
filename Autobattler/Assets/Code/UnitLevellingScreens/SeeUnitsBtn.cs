@@ -23,7 +23,7 @@ namespace Autobattler.UnitLevellingScreens
         public void OnClick()
         {
             void ComeBack() => comeBackEvent.Raise(attachedData);
-            unitsScreen.Enable(attachedData);
+            unitsScreen.Enable(new ScreenInfo_Unit(attachedData.unit, ComeBack));
             screenParent.SetActive(false);
         }
     }

@@ -22,7 +22,7 @@ namespace Autobattler.MutationsSystem.Mutations
             key = UniqueKeysDispenser.GetNewKey();
         }
 
-        public void AttachToCombatModules(int order, int key, Fighter unit)
+        public void AttachToCombatModules(int order, Fighter unit)
         {
             (Model as IModifyFighter).AttachToFighter(order, key, unit);
         }

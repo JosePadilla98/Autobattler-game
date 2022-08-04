@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
   - statsPacks:
-    - totalValueToModify: 12.5
+    - totalValueToModify: 15
       roundData:
-        elementsNum: 3
+        elementsNum: 4
         choicesNum: 1
       desirableNumOfRounds: 5
     mutationsPacks:

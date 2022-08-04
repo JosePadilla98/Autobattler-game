@@ -84,8 +84,8 @@ namespace Autobattler.Screens
 
         public void ComebackToLastScreen()
         {
-            inputInfo.onClose.Invoke();
             gameObject.SetActive(false);
+            inputInfo.onClose.Invoke();
             ObjectBeingDragged.CancelDragging();
         }
 

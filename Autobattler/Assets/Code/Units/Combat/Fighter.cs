@@ -26,6 +26,13 @@ namespace Autobattler.Units.Combat
         public Fighter(Unit unit)
         {
             this.unit = unit;
+            CreateSystems();
+
+            for (int i = 0; i < unit.enabledMutations.Count; i++)
+            {
+                var mutation = unit.enabledMutations[i];
+                mutation.AttachToCombatModules(i, this);
+            }
         }
 
         public StatsContainer StatsContainer => unit.statsContainer;
@@ -43,6 +50,11 @@ namespace Autobattler.Units.Combat
         public DefenseSystem defenseSys;
         public EnergySystem energySys;
         public ChargerSystem ChargerSys;
+
+        private void CreateSystems()
+        {
+            ChargerSys = new ChargerSystem(this);
+        }
 
         #endregion
     }

@@ -34,6 +34,12 @@ namespace Autobattler.Units.Management
             mouseIsOverMe = false;
         }
 
+        private void OnEnable()
+        {
+            if(unit != null)
+                image.sprite = unit.sprite;
+        }
+
         private void OnDisable()
         {
             if (!mouseIsOverMe)

@@ -10,13 +10,23 @@ namespace Autobattler.MutationsSystem.Mutations.Attacks
     [CreateAssetMenu(fileName = "StandardAttack", menuName = "ScriptableObjects/MutationsSystem/Mutations/Attacks/Standard")]
     public class StandardAttack : MutationModel, IModifyFighter
     {
+        [SerializeField]
+        private float scaleFactor = 100f;
+        [SerializeField]
+        private StatsNames stat;
+        [SerializeField]
+        private DamageType damageType;
+        [SerializeField] 
+        private ChargeableData chargeableData;
+
         void IModifyFighter.AttachToFighter(int order, int key, Fighter fighter)
         {
             ChargerSystem chargerSystem = fighter.ChargerSys;
-
-            var data = new ChargeableData();
+            
             Action OnRecharged = null;
-            var chargeable = ChargeableItem.Pool.Get().Inflate(data, OnRecharged);
+            chargeableData.priority = order;
+
+            var chargeable = ChargeableItem.Pool.Get().Inflate(key, chargeableData, OnRecharged);
             chargerSystem.AddToWaitingList(chargeable);
 
             OnRecharged = () =>
@@ -38,10 +48,8 @@ namespace Autobattler.MutationsSystem.Mutations.Attacks
         {
             var attackSystem = combatInstance.attackSys;
 
-            var attackData = new AttackData(100f, StatsNames.PHYSICAL_ATTACK, DamageType.PHYSICAL);
+            var attackData = new AttackData(scaleFactor, stat, damageType);
             attackSystem.LaunchSimpleAttack(attackData);
         }
-
-       
     }
 }

@@ -11,7 +11,7 @@ namespace Autobattler.Units.Combat.CombatSystems
         public Dictionary<int, ChargeableItem> rechargingItems = new();
         private List<ChargeableItem> waitingToBeRecharged;
 
-        private ChargerSystem(Fighter parent) : base(parent)
+        public ChargerSystem(Fighter parent) : base(parent)
         {
         }
 
@@ -41,27 +41,26 @@ namespace Autobattler.Units.Combat.CombatSystems
         }
     }
 
+    [Serializable]
     public struct ChargeableData
     {
         public EnergyCostData cost;
         public float physicalSpeedFactor;
         public float magicalSpeedFactor;
-        public float duration;
-        public int mutationID;
+        public float timeToCast;
 
+        [HideInInspector]
         /// <summary>
         ///     Mutation instance index in unit's collection
         /// </summary>
         public int priority;
 
-        public ChargeableData(EnergyCostData cost, float physicalSpeedFactor, float magicalSpeedFactor, float duration,
-            int mutationID, int priority)
+        public ChargeableData(EnergyCostData cost, float physicalSpeedFactor, float magicalSpeedFactor, float timeToCast, int priority)
         {
             this.cost = cost;
             this.physicalSpeedFactor = physicalSpeedFactor;
             this.magicalSpeedFactor = magicalSpeedFactor;
-            this.duration = duration;
-            this.mutationID = mutationID;
+            this.timeToCast = timeToCast;
             this.priority = priority;
         }
     }
@@ -72,12 +71,18 @@ namespace Autobattler.Units.Combat.CombatSystems
 
         private Action OnRecharged;
         private float progress;
+
+        /// <summary>
+        /// There is a key because a fighter can have various mutation of the same mutation model
+        /// </summary>
+        private int key;
+
         public float PhysicalSpeedFactor => data.physicalSpeedFactor;
         public float MagicalSpeedFactor => data.magicalSpeedFactor;
-        public float Duration => data.duration;
+        public float TimeToCast => data.timeToCast;
         public EnergyCostData Cost => data.cost;
         public int Priority => data.priority;
-        public int MutationID => data.mutationID;
+        public int MutationID => key;
 
         public int CompareTo(ChargeableItem other)
         {
@@ -90,7 +95,7 @@ namespace Autobattler.Units.Combat.CombatSystems
             return 0;
         }
 
-        public ChargeableItem Inflate(ChargeableData data, Action OnRecharged)
+        public ChargeableItem Inflate(int key, ChargeableData data, Action OnRecharged)
         {
             this.data = data;
             this.OnRecharged = OnRecharged;
@@ -102,9 +107,9 @@ namespace Autobattler.Units.Combat.CombatSystems
             progress += Time.fixedDeltaTime * PhysicalSpeedFactor * statsContainer.GetStatValue(StatsNames.PHYSICAL_SPEED);
             progress += Time.fixedDeltaTime * MagicalSpeedFactor * statsContainer.GetStatValue(StatsNames.MAGICAL_SPEED);
 
-            while (progress >= Duration)
+            while (progress >= TimeToCast)
             {
-                progress -= Duration;
+                progress -= TimeToCast;
                 OnRecharged();
             }
         }
