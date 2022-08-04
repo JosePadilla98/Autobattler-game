@@ -13,7 +13,7 @@ namespace Autobattler.MutationsSystem.Mutations
         public String Description => Model.GetDescription(timesStacked);
         public Sprite Sprite => Model.sprite;
 
-        private int key;
+        private int key = -1;
         private int timesStacked = 1;
 
         public Mutation(MutationModel model)
@@ -22,12 +22,18 @@ namespace Autobattler.MutationsSystem.Mutations
             key = UniqueKeysDispenser.GetNewKey();
         }
 
-        public void AttachToCombatModules(int order, Fighter unit)
+        public void AttachToFighter(int order, Fighter unit)
         {
+            if (key == -1)
+                throw new Exception("Key has not been setted");
+
+            if(Model is not IModifyFighter)
+                throw new Exception("you must make sure of this before calling the function");
+
             (Model as IModifyFighter).AttachToFighter(order, key, unit);
         }
 
-        public void UnattachToCombatModules(int key, Fighter unit)
+        public void UnattachToFighter(int key, Fighter unit)
         {
             throw new NotImplementedException();
         }

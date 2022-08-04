@@ -46,6 +46,8 @@ namespace Autobattler.MutationsSystem.Mutations.Attacks
 
         private void Cast(Fighter combatInstance)
         {
+            Debug.Log(combatInstance + "uses attack");
+
             var attackSystem = combatInstance.attackSys;
 
             var attackData = new AttackData(scaleFactor, stat, damageType);

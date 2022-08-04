@@ -13,5 +13,10 @@ namespace Autobattler.GameControllers.Combat
         {
 
         }
+
+        public void Refresh()
+        {
+            teamsController.Refresh();
+        }
     }
 }

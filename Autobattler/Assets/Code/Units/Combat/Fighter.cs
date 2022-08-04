@@ -31,7 +31,8 @@ namespace Autobattler.Units.Combat
             for (int i = 0; i < unit.enabledMutations.Count; i++)
             {
                 var mutation = unit.enabledMutations[i];
-                mutation.AttachToCombatModules(i, this);
+                if(mutation is IModifyFighter)
+                    mutation.AttachToFighter(i, this);
             }
         }
 

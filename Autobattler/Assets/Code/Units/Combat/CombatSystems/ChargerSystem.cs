@@ -9,7 +9,7 @@ namespace Autobattler.Units.Combat.CombatSystems
     public class ChargerSystem : CombatSystem
     {
         public Dictionary<int, ChargeableItem> rechargingItems = new();
-        private List<ChargeableItem> waitingToBeRecharged;
+        private List<ChargeableItem> waitingToBeRecharged = new();
 
         public ChargerSystem(Fighter parent) : base(parent)
         {
