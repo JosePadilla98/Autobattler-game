@@ -26,17 +26,17 @@ namespace Autobattler.MutationsSystem.Mutations.Attacks
             Action OnRecharged = null;
             chargeableData.priority = order;
 
-            var chargeable = ChargeableItem.Pool.Get().Inflate(key, chargeableData, OnRecharged);
-            chargerSystem.AddToWaitingList(chargeable);
-
+            ChargeableItem chargeable = ChargeableItem.Pool.Get().Inflate(key, chargeableData, null);
             OnRecharged = () =>
             {
                 Cast(fighter);
 
                 //Recursively add to waiting list
-                chargerSystem.rechargingItems.Remove(key);
+                chargerSystem.rechargingItems.Remove(chargeable);
                 chargerSystem.AddToWaitingList(chargeable);
             };
+            chargeable.OnRecharged = OnRecharged;
+            chargerSystem.AddToWaitingList(chargeable);
         }
 
         void IModifyFighter.UnattachToFighter(int key, Fighter fighter)
@@ -46,12 +46,12 @@ namespace Autobattler.MutationsSystem.Mutations.Attacks
 
         private void Cast(Fighter combatInstance)
         {
-            Debug.Log(combatInstance + "uses attack");
+            Debug.Log(combatInstance.name + " uses attack");
 
             var attackSystem = combatInstance.attackSys;
 
             var attackData = new AttackData(scaleFactor, stat, damageType);
-            attackSystem.LaunchSimpleAttack(attackData);
+            //attackSystem.LaunchSimpleAttack(attackData);
         }
     }
 }

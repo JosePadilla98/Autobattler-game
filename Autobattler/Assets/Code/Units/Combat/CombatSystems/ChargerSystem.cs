@@ -8,7 +8,7 @@ namespace Autobattler.Units.Combat.CombatSystems
 {
     public class ChargerSystem : CombatSystem
     {
-        public Dictionary<int, ChargeableItem> rechargingItems = new();
+        public List<ChargeableItem> rechargingItems = new();
         private List<ChargeableItem> waitingToBeRecharged = new();
 
         public ChargerSystem(Fighter parent) : base(parent)
@@ -20,18 +20,22 @@ namespace Autobattler.Units.Combat.CombatSystems
         public void Refresh()
         {
             //Try to pay the costs of waitingToBeRecharged items, and then put it in the recharging collection
-            for (var i = waitingToBeRecharged.Count; i > 0; i--)
+            for (var i = waitingToBeRecharged.Count -1 ; i >= 0; i--)
             {
                 var waitingItem = waitingToBeRecharged[i];
 
                 if (energySystem.TryPayCost(waitingItem.Cost))
                 {
-                    rechargingItems.Add(waitingItem.MutationID, waitingItem);
+                    rechargingItems.Add(waitingItem);
                     waitingToBeRecharged.RemoveAt(i);
                 }
             }
 
-            foreach (var RechargingItem in rechargingItems.Values) RechargingItem.Refresh(parent.StatsContainer);
+            for (var i = rechargingItems.Count - 1; i >= 0; i--)
+            {
+                var rechargingItem = rechargingItems[i];
+                rechargingItem.Refresh(parent.StatsContainer);
+            }
         }
 
         public void AddToWaitingList(ChargeableItem item)
@@ -69,21 +73,14 @@ namespace Autobattler.Units.Combat.CombatSystems
     {
         private ChargeableData data;
 
-        private Action OnRecharged;
+        public Action OnRecharged;
         private float progress;
-
-        /// <summary>
-        /// There is a key because a fighter can have various mutation of the same mutation model
-        /// </summary>
-        private int key;
 
         public float PhysicalSpeedFactor => data.physicalSpeedFactor;
         public float MagicalSpeedFactor => data.magicalSpeedFactor;
         public float TimeToCast => data.timeToCast;
         public EnergyCostData Cost => data.cost;
         public int Priority => data.priority;
-        public int MutationID => key;
-
         public int CompareTo(ChargeableItem other)
         {
             if (Priority > other.Priority)
@@ -104,8 +101,8 @@ namespace Autobattler.Units.Combat.CombatSystems
 
         public void Refresh(StatsContainer statsContainer)
         {
-            progress += Time.fixedDeltaTime * PhysicalSpeedFactor * statsContainer.GetStatValue(StatsNames.PHYSICAL_SPEED);
-            progress += Time.fixedDeltaTime * MagicalSpeedFactor * statsContainer.GetStatValue(StatsNames.MAGICAL_SPEED);
+            progress += Time.fixedDeltaTime * PhysicalSpeedFactor/100 * statsContainer.GetStatValue(StatsNames.PHYSICAL_SPEED);
+            progress += Time.fixedDeltaTime * MagicalSpeedFactor/100 * statsContainer.GetStatValue(StatsNames.MAGICAL_SPEED);
 
             while (progress >= TimeToCast)
             {

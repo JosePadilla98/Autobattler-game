@@ -15,4 +15,12 @@ MonoBehaviour:
   colorsConfig: {fileID: 0}
   canBeDisabledByPlayer: 0
   stackBehaviourTypes: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 2044810830, guid: c8f20aefb408a7d4f9127e09d170e86c, type: 3}
+  scaleFactor: 100
+  stat: 2
+  damageType: 0
+  chargeableData:
+    physicalSpeedFactor: 100
+    magicalSpeedFactor: 0
+    timeToCast: 40
+    priority: 0

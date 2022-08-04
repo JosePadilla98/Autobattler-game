@@ -27,10 +27,8 @@ namespace Autobattler.MutationsSystem.Mutations
             if (key == -1)
                 throw new Exception("Key has not been setted");
 
-            if(Model is not IModifyFighter)
-                throw new Exception("you must make sure of this before calling the function");
-
-            (Model as IModifyFighter).AttachToFighter(order, key, unit);
+            if(Model is IModifyFighter)
+                (Model as IModifyFighter).AttachToFighter(order, key, unit);
         }
 
         public void UnattachToFighter(int key, Fighter unit)

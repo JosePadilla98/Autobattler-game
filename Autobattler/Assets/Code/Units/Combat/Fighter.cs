@@ -20,6 +20,7 @@ namespace Autobattler.Units.Combat
 
         public Team Team => Team.PLAYER;
         public Position Position => new Position();
+        public String name => unit.name;
 
         public Sprite Sprite => unit.sprite;
 
@@ -31,8 +32,12 @@ namespace Autobattler.Units.Combat
             for (int i = 0; i < unit.enabledMutations.Count; i++)
             {
                 var mutation = unit.enabledMutations[i];
-                if(mutation is IModifyFighter)
-                    mutation.AttachToFighter(i, this);
+                mutation.AttachToFighter(i, this);
+            }
+
+            foreach (var mutation in unit.permanentMutations)
+            {
+                mutation.AttachToFighter(0, this);
             }
         }
 
@@ -55,6 +60,7 @@ namespace Autobattler.Units.Combat
         private void CreateSystems()
         {
             ChargerSys = new ChargerSystem(this);
+            energySys = new EnergySystem(this);
         }
 
         #endregion

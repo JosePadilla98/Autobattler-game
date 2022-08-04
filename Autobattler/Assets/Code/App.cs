@@ -27,7 +27,7 @@ namespace Autobattler
             runController.Init();
         }
 
-        public void Update()
+        public void FixedUpdate()
         {
             runController.Refresh();
         }
