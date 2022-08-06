@@ -16,14 +16,20 @@ namespace Autobattler.Units.Combat.CombatSystems
 
         public StatsContainer StatsContainer => parent.StatsContainer;
 
-        public void LaunchSimpleAttack(AttackData attack)
+        /// <summary>
+        /// Returns fighter who has been attacked
+        /// </summary>
+        /// <param name="attack"></param>
+        public Fighter LaunchSimpleAttack(AttackData attack)
         {
             var value = attack.scaleFactor * StatsContainer.GetStatValue(attack.statScaler) * BalanceConstants.DAMAGE_MULTIPLIER;
-            var objetive = TargetsProcessor.GetClosestEnemy(parent.Position);
+            Fighter objetive = TargetsProcessor.GetClosestEnemy(parent.Position);
             objetive.defenseSys.BeAttacked(new DamageData(value, attack.damageType));
 
             OnHitMade?.Invoke();
             OnAttackCasted?.Invoke();
+
+            return objetive;
         }
     }
 

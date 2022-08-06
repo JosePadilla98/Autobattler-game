@@ -46,7 +46,7 @@ namespace Autobattler.Units.Combat
 
         public void Refresh()
         {
-            ChargerSys.Refresh();
+            chargerSys.Refresh();
         }
 
         #region SYSTEMS
@@ -55,12 +55,15 @@ namespace Autobattler.Units.Combat
         public AttackSystem attackSys;
         public DefenseSystem defenseSys;
         public EnergySystem energySys;
-        public ChargerSystem ChargerSys;
+        public ChargerSystem chargerSys;
 
         private void CreateSystems()
         {
-            ChargerSys = new ChargerSystem(this);
+            healthSys = new HealthSystem(this);
+            attackSys = new AttackSystem(this);
+            defenseSys = new DefenseSystem(this);
             energySys = new EnergySystem(this);
+            chargerSys = new ChargerSystem(this);
         }
 
         #endregion

@@ -1,6 +1,7 @@
 ﻿using System;
 using Autobattler.Configs;
 using Autobattler.GameControllers;
+using Autobattler.GameControllers.Combat;
 using UnityEngine;
 
 namespace Autobattler
@@ -9,10 +10,16 @@ namespace Autobattler
     {
         public RunController runController;
         public DebugController debugController;
+        public ConsoleController combatConsole;
+
+
 
         private static App instance;
         public static App Instance => instance;
         public static DebugController DebugController => instance != null ? instance.debugController : null;
+        public static IConsoleController CombatConsole => instance != null ? instance.combatConsole : null;
+
+
 
         private void Awake()
         {
@@ -31,5 +38,10 @@ namespace Autobattler
         {
             runController.Refresh();
         }
+    }
+
+    public interface IEntityInGrid
+    {
+
     }
 }

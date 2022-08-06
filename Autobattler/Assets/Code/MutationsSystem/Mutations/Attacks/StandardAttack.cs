@@ -21,7 +21,7 @@ namespace Autobattler.MutationsSystem.Mutations.Attacks
 
         void IModifyFighter.AttachToFighter(int order, int key, Fighter fighter)
         {
-            ChargerSystem chargerSystem = fighter.ChargerSys;
+            ChargerSystem chargerSystem = fighter.chargerSys;
             
             Action OnRecharged = null;
             chargeableData.priority = order;
@@ -46,12 +46,11 @@ namespace Autobattler.MutationsSystem.Mutations.Attacks
 
         private void Cast(Fighter combatInstance)
         {
-            Debug.Log(combatInstance.name + " uses attack");
-
             var attackSystem = combatInstance.attackSys;
 
             var attackData = new AttackData(scaleFactor, stat, damageType);
-            //attackSystem.LaunchSimpleAttack(attackData);
+            var objetive = attackSystem.LaunchSimpleAttack(attackData);
+            App.CombatConsole.Log(combatInstance.name + " uses attack on " + objetive.name);
         }
     }
 }

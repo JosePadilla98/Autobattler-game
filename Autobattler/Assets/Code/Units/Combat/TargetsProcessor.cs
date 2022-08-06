@@ -13,7 +13,7 @@ namespace Autobattler.Units.Combat
     public static class TargetsProcessor
     {
         private static readonly List<Fighter> objetivesBuffer = new(12);
-        //private static GridsController<Fighter> Battlefield => null;
+        private static GridsController<Fighter> Battlefield => null;
 
         public static List<Fighter> GetObjetives(TargetTypes type, Position ownPos)
         {
@@ -23,14 +23,14 @@ namespace Autobattler.Units.Combat
             {
                 case TargetTypes.CLOSEST_ENEMY:
 
-                    //Grid<Fighter> gridObjetive;
-                    //if (ownPos.side == Side.LEFT)
-                    //    gridObjetive = Battlefield.rightGrid;
-                    //else
-                    //    gridObjetive = Battlefield.leftGrid;
+                    Grid<Fighter> gridObjetive;
+                    if (ownPos.side == Side.LEFT)
+                        gridObjetive = Battlefield.rightGrid;
+                    else
+                        gridObjetive = Battlefield.leftGrid;
 
-                    //var creature = GetClosestEnemy(ownPos);
-                    //objetivesBuffer.Add(creature);
+                    var creature = GetClosestEnemy(ownPos);
+                    objetivesBuffer.Add(creature);
                     break;
             }
 
@@ -39,7 +39,7 @@ namespace Autobattler.Units.Combat
 
         public static Fighter GetClosestEnemy(Position referencePosition)
         {
-            //var oppositeGrid = Battlefield.GetOppositeGrid(referencePosition.side);
+            var oppositeGrid = Battlefield.GetOppositeGrid(referencePosition.side);
 
             //InitialValues the closest heigh
             int[] order = null;
@@ -58,9 +58,9 @@ namespace Autobattler.Units.Combat
                     break;
             }
 
-            //var unit = SearchUntilGetOne(order, oppositeGrid.front);
-            //if (unit == null)
-            //    unit = SearchUntilGetOne(order, oppositeGrid.back);
+            var unit = SearchUntilGetOne(order, oppositeGrid.front);
+            if (unit == null)
+                unit = SearchUntilGetOne(order, oppositeGrid.back);
 
             return null;
         }

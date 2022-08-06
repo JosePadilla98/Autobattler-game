@@ -8467,6 +8467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runController: {fileID: 11400000, guid: 0781be15a2bf6ff48b114e6dcf0b20b7, type: 2}
   debugController: {fileID: 11400000, guid: d8f47b7c938b27445889380e552904f8, type: 2}
+  combatConsole: {fileID: 11400000, guid: 786d1960b1b2f364faeffbc92e427fc3, type: 2}
 --- !u!1 &1127185412
 GameObject:
   m_ObjectHideFlags: 0
@@ -12744,6 +12745,10 @@ PrefabInstance:
     - target: {fileID: 7279437506705244806, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
       propertyPath: m_Name
       value: UnitInfoPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7279437506705244806, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7279437506705244807, guid: 9988ffd67b05edb4bb72cbe2b6e60bb6, type: 3}
       propertyPath: m_Pivot.x
