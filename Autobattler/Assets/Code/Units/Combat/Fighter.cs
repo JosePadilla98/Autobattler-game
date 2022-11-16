@@ -39,6 +39,8 @@ namespace Autobattler.Units.Combat
             {
                 mutation.AttachToFighter(0, this);
             }
+
+            //set position
         }
 
         public StatsContainer StatsContainer => unit.statsContainer;

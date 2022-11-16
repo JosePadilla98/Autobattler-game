@@ -13,7 +13,7 @@ namespace Autobattler.Units.Combat
     public static class TargetsProcessor
     {
         private static readonly List<Fighter> objetivesBuffer = new(12);
-        private static GridsController<Fighter> Battlefield => null;
+        private static GridsController<Fighter> Battlefield => App.Battlefield;
 
         public static List<Fighter> GetObjetives(TargetTypes type, Position ownPos)
         {

@@ -2,6 +2,8 @@
 using Autobattler.Configs;
 using Autobattler.GameControllers;
 using Autobattler.GameControllers.Combat;
+using Autobattler.Grid.Generic;
+using Autobattler.Units.Combat;
 using UnityEngine;
 
 namespace Autobattler
@@ -10,15 +12,17 @@ namespace Autobattler
     {
         public RunController runController;
         public DebugController debugController;
-        public ConsoleController combatConsole;
-
+        [SerializeField]
+        private ConsoleController combatConsole;
+        [SerializeField]
+        private GridsController<Fighter> battlefield;
 
 
         private static App instance;
         public static App Instance => instance;
         public static DebugController DebugController => instance != null ? instance.debugController : null;
         public static IConsoleController CombatConsole => instance != null ? instance.combatConsole : null;
-
+        public static GridsController<Fighter> Battlefield => instance != null ? instance.battlefield : null;
 
 
         private void Awake()

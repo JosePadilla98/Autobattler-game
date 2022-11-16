@@ -8468,6 +8468,7 @@ MonoBehaviour:
   runController: {fileID: 11400000, guid: 0781be15a2bf6ff48b114e6dcf0b20b7, type: 2}
   debugController: {fileID: 11400000, guid: d8f47b7c938b27445889380e552904f8, type: 2}
   combatConsole: {fileID: 11400000, guid: 786d1960b1b2f364faeffbc92e427fc3, type: 2}
+  battlefield: {fileID: 11400000, guid: 813fbc114f8afdc4b937bac7494e35d1, type: 2}
 --- !u!1 &1127185412
 GameObject:
   m_ObjectHideFlags: 0
