@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Autobattler.Art.VFX.Smoke1
+namespace AutobattlerOld.Art.VFX.Smoke1
 {
     public class Smoke : MonoBehaviour
     {

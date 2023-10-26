@@ -1,0 +1,47 @@
+﻿using System;
+using AutobattlerOld.Configs;
+using AutobattlerOld.Configs.Color;
+using TMPro;
+using UnityEngine;
+
+namespace AutobattlerOld.InfoPanel.Units
+{
+    [Serializable]
+    public class StatText
+    {
+        private IValueExpositor valueExpositor;
+        [SerializeField]
+        private TextMeshProUGUI text;
+        [SerializeField]
+        private string textToShow;
+        [SerializeField]
+        private ColorModel colorModel;
+
+        public void SetColor()
+        {
+            text.color = colorModel.color;
+        }
+
+        public void Attach(IValueExpositor valueExpositor)
+        {
+            this.valueExpositor = valueExpositor;
+            valueExpositor.OnValueChanged += OnValueChanged;
+            ChangeText(valueExpositor.Get());
+        }
+
+        public void Unattach()
+        {
+            valueExpositor.OnValueChanged -= OnValueChanged;
+        }
+
+        public void OnValueChanged()
+        {
+            ChangeText(valueExpositor.Get());
+        }
+
+        private void ChangeText(float f)
+        {
+            text.text = textToShow + ": " + f;
+        }
+    }
+}
