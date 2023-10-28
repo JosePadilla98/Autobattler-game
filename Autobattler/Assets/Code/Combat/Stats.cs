@@ -1,19 +1,15 @@
-namespace Autobattler2
+namespace Autobattler
 {
-  public enum StatsNames
-  {
-    HEALTH,
-    DEFENSE,
-    STRENGTH,
-    ATTACK_SPEED,
-    MAGICAL_POWER,
-    MAX_MANA,
-    MANA_REGEN,
-  }
+    public enum StatsNames
+    {
+        HEALTH,
+        DEFENSE,
+        STRENGTH,
+        ATTACK_SPEED,
+        MAGICAL_POWER,
+        MAX_MANA,
+        MANA_REGEN,
+    }
 
-  public class Stats
-  {
-
-  }
-
+    public class Stats { }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutobattlerOld
+namespace Autobattler
 {
     public class RandomController
     {
@@ -13,9 +13,10 @@ namespace AutobattlerOld
             return random;
         }
 
-        public static void Init(int seed)
+        public static Random Init(int seed)
         {
             random = new Random(seed);
+            return random;
         }
     }
 }

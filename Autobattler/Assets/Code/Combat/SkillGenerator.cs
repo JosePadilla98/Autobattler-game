@@ -1,31 +1,108 @@
 using System;
 using System.Collections.Generic;
-using AutobattlerOld;
 
-namespace Autobattler2
+namespace Autobattler
 {
+    public struct ChainPayload
+    {
+        public float powerValue;
+        public float complexity;
+
+        public ChainPayload(float powerValue, float complexity)
+        {
+            this.powerValue = powerValue;
+            this.complexity = complexity;
+        }
+    }
+
     public class SkillGenerator
     {
-        private float cost = 15;
-        const float COST_PER_COMPLEXITY = 5;
-
-        private List<Type> nodes = new List<Type>
+        private class NodesList
         {
-            typeof(AttackClosestAndMoveIt),
-            typeof(RowMovement),
-        };
+            private List<Type> availableNodes;
 
-        // public Skill Build()
-        // {
-        //     float complexity = cost / COST_PER_COMPLEXITY;
+            public NodesList()
+            {
+                availableNodes = SkillsNodesPool.GetSkillsNodesList();
+            }
 
-        //     List<ISkillNode> chain = new List<ISkillNode>();
-        //     int randomIndex = RandomController.Random.Next(nodes.Count);
-        // }
+            public ISkillNode GetNewNode()
+            {
+                int index = RandomController.Random.Next(availableNodes.Count);
+                Type typeToCreate = availableNodes[index];
+                ISkillNode node = Activator.CreateInstance(typeToCreate) as ISkillNode;
+                availableNodes.RemoveAt(index);
+                RepopulateIfNeeded();
+
+                return node;
+            }
+
+            private void RepopulateIfNeeded()
+            {
+                if (availableNodes.Count == 0)
+                {
+                    SkillsNodesPool.RepopulateNodesList(availableNodes);
+                }
+            }
+        }
+
+        private NodesList availableNodes;
+        private List<ISkillNode> rootNodes = new();
+
+        private float CalculateComplexity(float powerValue) => powerValue / 5;
+
+        public SkillGenerator()
+        {
+            availableNodes = new NodesList();
+        }
+
+        public Skill Build()
+        {
+            float powerValue = 15;
+            float complexity = CalculateComplexity(powerValue);
+            ChainPayload payload = new ChainPayload(powerValue: powerValue, complexity: complexity);
+
+            StartNewRootNode(payload);
+
+            return new Skill(rootNodes.ToArray());
+        }
+
+        public void StartNewRootNode(ChainPayload payload)
+        {
+            ISkillNode newRootNode = GetNewRandomNode(payload);
+            rootNodes.Add(newRootNode);
+
+            newRootNode.ContinueChain(
+                getNewRandomNodeDelegate: GetNewRandomNode,
+                startNewRootNodeDelegate: StartNewRootNode,
+                payload
+            );
+        }
+
+        private ISkillNode GetNewRandomNode(ChainPayload payload)
+        {
+            ISkillNode output = null;
+            while (output == null)
+            {
+                ISkillNode newNode = availableNodes.GetNewNode();
+                if (newNode.AreRequirementsMet(payload))
+                {
+                    output = newNode;
+                    output.Initialize(payload);
+                }
+            }
+
+            return output;
+        }
     }
 
     public class Skill
     {
-        public ISkillNode[][] chain;
+        public ISkillNode[] chain;
+
+        public Skill(ISkillNode[] chain)
+        {
+            this.chain = chain;
+        }
     }
 }
