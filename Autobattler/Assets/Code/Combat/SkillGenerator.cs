@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Autobattler
 {
@@ -22,39 +23,40 @@ namespace Autobattler
         private class NodesList
         {
             private List<Type> availableNodes;
-            private List<Type> availableLastNodes;
+            private List<Type> availableEndNodes;
 
             public NodesList()
             {
                 availableNodes = SkillsNodesPool.GetSkillsNodesList();
-                availableLastNodes = SkillsNodesPool.GetSkillsLastNodesList();
+                availableEndNodes = SkillsNodesPool.GetSkillsLastNodesList();
             }
 
             public ISkillNode GetNewNode(bool onlyLastNode)
             {
                 List<Type> listToUse = onlyLastNode
-                    ? availableLastNodes
-                    : availableLastNodes.Concat(availableNodes).ToList();
+                    ? availableEndNodes
+                    : availableEndNodes.Concat(availableNodes).ToList();
 
                 int index = RandomController.Random.Next(listToUse.Count);
                 Type typeToCreate = listToUse[index];
                 ISkillNode node = Activator.CreateInstance(typeToCreate) as ISkillNode;
-                listToUse.RemoveAt(index);
-                RepopulateIfNeeded();
+                RemoveNode(typeToCreate, onlyLastNode);
 
                 return node;
             }
 
-            private void RepopulateIfNeeded()
+            private void RemoveNode(Type type, bool isEndNode)
             {
-                if (availableNodes.Count == 0)
+                if (isEndNode)
                 {
-                    SkillsNodesPool.RepopulateNodesList(availableNodes);
+                    availableEndNodes.Remove(type);
+                    if (availableEndNodes.Count == 0)
+                        SkillsNodesPool.RepopulateEndNodesList(availableEndNodes);
                 }
-
-                if (availableLastNodes.Count == 0)
                 {
-                    SkillsNodesPool.RepopulateLastNodesList(availableLastNodes);
+                    availableNodes.Remove(type);
+                    if (availableNodes.Count == 0)
+                        SkillsNodesPool.RepopulateNodesList(availableNodes);
                 }
             }
         }
@@ -112,6 +114,7 @@ namespace Autobattler
                 ISkillNode newNode = availableNodes.GetNewNode(
                     onlyLastNode: payload.complexity <= 1f
                 );
+
                 if (newNode.AreRequirementsMet(payload))
                 {
                     output = newNode;

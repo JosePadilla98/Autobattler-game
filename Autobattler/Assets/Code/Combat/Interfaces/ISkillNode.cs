@@ -1,10 +1,11 @@
-using System.Collections.Generic;
+using System.Reflection;
+using UnityEngine;
 
 namespace Autobattler
 {
     public delegate void StartNewRootNodeDelegate(ChainPayload payload);
 
-    public interface ISkillLastNode { }
+    public interface ISkillEndNode { }
 
     public interface ISkillNode
     {
@@ -14,6 +15,7 @@ namespace Autobattler
 
         public bool AreRequirementsMet(ChainPayload payload)
         {
+            Debug.Log($@"Checking requirements of {this.GetType().Name}");
             SkillNodeRequirements requirements = GetRequirements();
 
             if (payload.powerValue < requirements.minimunPowerValue)

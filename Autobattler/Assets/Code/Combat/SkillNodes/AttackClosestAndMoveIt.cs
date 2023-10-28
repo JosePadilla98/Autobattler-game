@@ -1,6 +1,6 @@
 namespace Autobattler
 {
-    public class AttackClosestAndMoveIt : ISkillNode, ISkillLastNode
+    public class AttackClosestAndMoveIt : ISkillNode, ISkillEndNode
     {
         private float inputValue;
         private float modifiedInputValue => inputValue - Movement.NormalizedValue();

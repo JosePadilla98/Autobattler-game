@@ -9,7 +9,6 @@ namespace Autobattler.Tests
         void Start()
         {
             SkillGenerator skillGenerator = new();
-
             Debug.Log(skillGenerator.Build().Text());
         }
     }

@@ -15,13 +15,17 @@ namespace Autobattler
             StringBuilder sb = new($@"{Environment.NewLine}<i>From back row</i> => Move forwards");
             foreach (ISkillNode rootNode in mainChain)
             {
-                sb.AppendLine($@"{Environment.NewLine}{Constants.TABULATION}* {rootNode.Text()}");
+                sb.AppendLine(
+                    $@"{Environment.NewLine}{SkillGeneratorConstants.TABULATION}* {rootNode.Text()}"
+                );
             }
 
             sb.Append("<i>From front row</i> => Move backwards");
             foreach (ISkillNode rootNode in secondaryChain)
             {
-                sb.Append($@"{Environment.NewLine}{Constants.TABULATION}* {rootNode.Text()}");
+                sb.Append(
+                    $@"{Environment.NewLine}{SkillGeneratorConstants.TABULATION}* {rootNode.Text()}"
+                );
             }
 
             return sb.ToString();
@@ -41,7 +45,7 @@ namespace Autobattler
             ChainPayload mainChainPayload = payload;
             mainChainPayload.complexity -= 1f;
             mainChainPayload.powerValue =
-                (mainChainPayload.powerValue * 1.6f) - Movement.NormalizedValue();
+                (mainChainPayload.powerValue * 1.6f) - (Movement.NormalizedValue() * 2);
 
             SkillGenerator.current.AddNewNodeToThisRoot(mainChain, mainChainPayload);
 
