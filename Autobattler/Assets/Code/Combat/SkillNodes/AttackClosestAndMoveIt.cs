@@ -1,6 +1,6 @@
 namespace Autobattler
 {
-    public class AttackClosestAndMoveIt : ISkillNode, ILastSkillNode
+    public class AttackClosestAndMoveIt : ISkillNode, ISkillLastNode
     {
         private float _value;
         public float AttackPower => _value * 15;

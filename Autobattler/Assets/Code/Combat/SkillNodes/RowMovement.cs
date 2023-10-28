@@ -15,13 +15,13 @@ namespace Autobattler
             StringBuilder sb = new("<i>From back row</i> => Move forwards");
             foreach (ISkillNode rootNode in mainChain)
             {
-                sb.AppendLine($@"* {rootNode.Text()}");
+                sb.AppendLine($@"{Environment.NewLine}* {rootNode.Text()}");
             }
 
-            sb.AppendLine("\n<i>From front row</i> => Move backwards");
+            sb.AppendLine("<i>From front row</i> => Move backwards");
             foreach (ISkillNode rootNode in secondaryChain)
             {
-                sb.AppendLine($@"* {rootNode.Text()}");
+                sb.AppendLine($@"{Environment.NewLine}* {rootNode.Text()}");
             }
 
             return sb.ToString();
@@ -39,18 +39,18 @@ namespace Autobattler
         {
             //FROM BACK ROW
             ChainPayload mainChainPayload = payload;
-            mainChainPayload.complexity = -1f;
+            mainChainPayload.complexity -= 1f;
             mainChainPayload.powerValue =
                 (mainChainPayload.powerValue * 1.6f) - Movement.NormalizedValue();
 
-            SkillGenerator.current.AddNewNodeToTheseRoots(mainChain, mainChainPayload);
+            SkillGenerator.current.AddNewNodeToThisRoot(mainChain, mainChainPayload);
 
             //FROM FRONT ROW
             ChainPayload secondaryChainPayload = payload;
-            secondaryChainPayload.complexity = secondaryChainPayload.complexity / 2f;
+            secondaryChainPayload.complexity /= 2f;
             secondaryChainPayload.powerValue = mainChainPayload.powerValue * 0.4f;
 
-            SkillGenerator.current.AddNewNodeToTheseRoots(secondaryChain, secondaryChainPayload);
+            SkillGenerator.current.AddNewNodeToThisRoot(secondaryChain, secondaryChainPayload);
         }
 
         void ISkillNode.Initialize(ChainPayload payload) { }

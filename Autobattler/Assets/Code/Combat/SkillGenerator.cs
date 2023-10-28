@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Autobattler
@@ -21,18 +22,24 @@ namespace Autobattler
         private class NodesList
         {
             private List<Type> availableNodes;
+            private List<Type> availableLastNodes;
 
             public NodesList()
             {
                 availableNodes = SkillsNodesPool.GetSkillsNodesList();
+                availableLastNodes = SkillsNodesPool.GetSkillsLastNodesList();
             }
 
-            public ISkillNode GetNewNode()
+            public ISkillNode GetNewNode(bool onlyLastNode)
             {
-                int index = RandomController.Random.Next(availableNodes.Count);
-                Type typeToCreate = availableNodes[index];
+                List<Type> listToUse = onlyLastNode
+                    ? availableLastNodes
+                    : availableLastNodes.Concat(availableNodes).ToList();
+
+                int index = RandomController.Random.Next(listToUse.Count);
+                Type typeToCreate = listToUse[index];
                 ISkillNode node = Activator.CreateInstance(typeToCreate) as ISkillNode;
-                availableNodes.RemoveAt(index);
+                listToUse.RemoveAt(index);
                 RepopulateIfNeeded();
 
                 return node;
@@ -43,6 +50,11 @@ namespace Autobattler
                 if (availableNodes.Count == 0)
                 {
                     SkillsNodesPool.RepopulateNodesList(availableNodes);
+                }
+
+                if (availableLastNodes.Count == 0)
+                {
+                    SkillsNodesPool.RepopulateLastNodesList(availableLastNodes);
                 }
             }
         }
@@ -71,23 +83,23 @@ namespace Autobattler
 
         public Skill Build()
         {
-            float powerValue = 15;
+            float powerValue = 10;
             float complexity = CalculateComplexity(powerValue);
             ChainPayload payload = new ChainPayload(powerValue: powerValue, complexity: complexity);
 
-            AddNewNodeToTheseRoots(rootNodes, payload);
+            AddNewNodeToThisRoot(rootNodes, payload);
 
             return new Skill(rootNodes.ToArray());
         }
 
-        public void AddNewNodeToTheseRoots(List<ISkillNode> roots, ChainPayload payload)
+        public void AddNewNodeToThisRoot(List<ISkillNode> root, ChainPayload payload)
         {
-            ISkillNode newRootNode = GetNewRandomNode(payload);
-            roots.Add(newRootNode);
+            ISkillNode newRootChild = GetNewRandomNode(payload);
+            root.Add(newRootChild);
 
-            newRootNode.ContinueChain(
+            newRootChild.ContinueChain(
                 startNewRootNodeDelegate: (ChainPayload newPayload) =>
-                    AddNewNodeToTheseRoots(roots, newPayload),
+                    AddNewNodeToThisRoot(root, newPayload),
                 payload
             );
         }
@@ -97,7 +109,9 @@ namespace Autobattler
             ISkillNode output = null;
             while (output == null)
             {
-                ISkillNode newNode = availableNodes.GetNewNode();
+                ISkillNode newNode = availableNodes.GetNewNode(
+                    onlyLastNode: payload.complexity <= 1f
+                );
                 if (newNode.AreRequirementsMet(payload))
                 {
                     output = newNode;
@@ -136,9 +150,10 @@ namespace Autobattler
         public string Text()
         {
             StringBuilder sb = new();
-            foreach (ISkillNode rootNode in roots)
+            for (int i = 0; i < roots.Count(); i++)
             {
-                sb.AppendLine($@"* {rootNode.Text()}");
+                ISkillNode rootNode = roots[i];
+                sb.AppendLine($@"{Environment.NewLine}{i + 1}. {rootNode.Text()}");
             }
 
             return sb.ToString();

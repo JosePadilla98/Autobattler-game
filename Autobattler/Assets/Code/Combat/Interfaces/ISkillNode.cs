@@ -4,7 +4,7 @@ namespace Autobattler
 {
     public delegate void StartNewRootNodeDelegate(ChainPayload payload);
 
-    public interface ILastSkillNode { }
+    public interface ISkillLastNode { }
 
     public interface ISkillNode
     {
