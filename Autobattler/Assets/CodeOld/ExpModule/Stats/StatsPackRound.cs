@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Autobattler;
 using AutobattlerOld.Configs.Balance;
 using AutobattlerOld.UnitLevellingScreens;
 using AutobattlerOld.Units;
@@ -30,7 +31,13 @@ namespace AutobattlerOld.ExpModule.Stats
         public float RoundValue => roundValue;
         private StatsContainer statsContainer;
 
-        public StatsPackRound(Action onRoundConsumed, StatsContainer statsContainer, RoundData roundData, float orientativeRoundValue, bool applyValueVariation = true)
+        public StatsPackRound(
+            Action onRoundConsumed,
+            StatsContainer statsContainer,
+            RoundData roundData,
+            float orientativeRoundValue,
+            bool applyValueVariation = true
+        )
         {
             roundValue = orientativeRoundValue;
             this.statsContainer = statsContainer;
@@ -71,7 +78,9 @@ namespace AutobattlerOld.ExpModule.Stats
             return statsYouCanModify;
         }
 
-        private Dictionary<StatsNames, float> GetStatsYouCanSubstractFrom(StatsContainer statsContainer)
+        private Dictionary<StatsNames, float> GetStatsYouCanSubstractFrom(
+            StatsContainer statsContainer
+        )
         {
             var statsYouCanModify = GetModificableBaseStats(statsContainer);
 
@@ -86,13 +95,16 @@ namespace AutobattlerOld.ExpModule.Stats
 
         private StatModElement GetElement(ref float modValue)
         {
-            KeyValuePair<StatsNames, float> statToSubstractPoints = SelectRandomStat(statsYouCanSubstractFrom);
+            KeyValuePair<StatsNames, float> statToSubstractPoints = SelectRandomStat(
+                statsYouCanSubstractFrom
+            );
             // No other element will have the same stat in the subtractive part:
             statsYouCanSubstractFrom.Remove(statToSubstractPoints.Key);
 
-            //The stat to be added cannot be the same as the one removed #1 
+            //The stat to be added cannot be the same as the one removed #1
             StatsNames statToBeRemoved = statToSubstractPoints.Key;
-            KeyValuePair<StatsNames, float> tmpStatContainer = new(statToBeRemoved, baseStats[statToBeRemoved]);
+            KeyValuePair<StatsNames, float> tmpStatContainer =
+                new(statToBeRemoved, baseStats[statToBeRemoved]);
             baseStats.Remove(statToSubstractPoints.Key);
 
             KeyValuePair<StatsNames, float> statToAddPoints = SelectRandomStat(baseStats);
@@ -114,7 +126,9 @@ namespace AutobattlerOld.ExpModule.Stats
             return output;
         }
 
-        private KeyValuePair<StatsNames, float> SelectRandomStat(Dictionary<StatsNames, float> statsToChoose)
+        private KeyValuePair<StatsNames, float> SelectRandomStat(
+            Dictionary<StatsNames, float> statsToChoose
+        )
         {
             int randomIndex = Random.Next(statsToChoose.Count);
             var pair = statsToChoose.ElementAt(randomIndex);

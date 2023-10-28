@@ -7,8 +7,8 @@ namespace Autobattler
     public class RowMovement : ISkillNode
     {
         private float _value;
-        private List<ISkillNode> mainChain;
-        private List<ISkillNode> secondaryChain;
+        private List<ISkillNode> mainChain = new();
+        private List<ISkillNode> secondaryChain = new();
 
         string ISkillNode.Text()
         {
@@ -29,37 +29,28 @@ namespace Autobattler
 
         SkillNodeRequirements ISkillNode.GetRequirements()
         {
-            return new SkillNodeRequirements(10);
+            return new SkillNodeRequirements(minimunPowerValue: 10f, minimunComplexity: 1f);
         }
 
         void ISkillNode.ContinueChain(
-            GetNewRandomNodeDelegate getNewRandomNodeDelegate,
             StartNewRootNodeDelegate startNewRootNodeDelegate,
             ChainPayload payload
         )
         {
-            void StartNewRootNodeInMainChain(ChainPayload payload)
-            {
-                ISkillNode newRootNode = getNewRandomNodeDelegate(payload)
-                mainChain.Add(newRootNode);
-                newRootNode.ContinueChain(
-                    getNewRandomNodeDelegate: GetNewRandomNode,
-                    startNewRootNodeDelegate: StartNewRootNode,
-                    payload
-                );
-            }
-
             //FROM BACK ROW
             ChainPayload mainChainPayload = payload;
+            mainChainPayload.complexity = -1f;
             mainChainPayload.powerValue =
                 (mainChainPayload.powerValue * 1.6f) - Movement.NormalizedValue();
 
-            StartNewRootNodeInMainChain(mainChainPayload);
+            SkillGenerator.current.AddNewNodeToTheseRoots(mainChain, mainChainPayload);
 
             //FROM FRONT ROW
+            ChainPayload secondaryChainPayload = payload;
+            secondaryChainPayload.complexity = secondaryChainPayload.complexity / 2f;
+            secondaryChainPayload.powerValue = mainChainPayload.powerValue * 0.4f;
 
-            //Cambiar startNewRootNodeDelegate en ambas
-            throw new NotImplementedException();
+            SkillGenerator.current.AddNewNodeToTheseRoots(secondaryChain, secondaryChainPayload);
         }
 
         void ISkillNode.Initialize(ChainPayload payload) { }

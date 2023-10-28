@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Autobattler
 {
@@ -51,10 +52,22 @@ namespace Autobattler
 
         private float CalculateComplexity(float powerValue) => powerValue / 5;
 
+        #region SINGLETON
+        public static SkillGenerator current;
+
         public SkillGenerator()
         {
-            availableNodes = new NodesList();
+            if (current != null)
+            {
+                throw new Exception("This should never happen");
+            }
+
+            Initialize();
+            current = this;
         }
+        #endregion
+
+        #region PUBLIC
 
         public Skill Build()
         {
@@ -62,24 +75,24 @@ namespace Autobattler
             float complexity = CalculateComplexity(powerValue);
             ChainPayload payload = new ChainPayload(powerValue: powerValue, complexity: complexity);
 
-            StartNewRootNode(payload);
+            AddNewNodeToTheseRoots(rootNodes, payload);
 
             return new Skill(rootNodes.ToArray());
         }
 
-        public void StartNewRootNode(ChainPayload payload)
+        public void AddNewNodeToTheseRoots(List<ISkillNode> roots, ChainPayload payload)
         {
             ISkillNode newRootNode = GetNewRandomNode(payload);
-            rootNodes.Add(newRootNode);
+            roots.Add(newRootNode);
 
             newRootNode.ContinueChain(
-                getNewRandomNodeDelegate: GetNewRandomNode,
-                startNewRootNodeDelegate: StartNewRootNode,
+                startNewRootNodeDelegate: (ChainPayload newPayload) =>
+                    AddNewNodeToTheseRoots(roots, newPayload),
                 payload
             );
         }
 
-        private ISkillNode GetNewRandomNode(ChainPayload payload)
+        public ISkillNode GetNewRandomNode(ChainPayload payload)
         {
             ISkillNode output = null;
             while (output == null)
@@ -94,15 +107,41 @@ namespace Autobattler
 
             return output;
         }
+
+        public void Clean()
+        {
+            Initialize();
+        }
+
+        #endregion
+
+        #region PRIVATE
+        private void Initialize()
+        {
+            availableNodes = new NodesList();
+        }
+
+        #endregion
     }
 
     public class Skill
     {
-        public ISkillNode[] chain;
+        public ISkillNode[] roots;
 
         public Skill(ISkillNode[] chain)
         {
-            this.chain = chain;
+            this.roots = chain;
+        }
+
+        public string Text()
+        {
+            StringBuilder sb = new();
+            foreach (ISkillNode rootNode in roots)
+            {
+                sb.AppendLine($@"* {rootNode.Text()}");
+            }
+
+            return sb.ToString();
         }
     }
 }

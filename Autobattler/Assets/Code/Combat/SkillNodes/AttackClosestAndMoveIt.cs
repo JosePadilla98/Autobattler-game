@@ -17,13 +17,11 @@ namespace Autobattler
         }
 
         void ISkillNode.ContinueChain(
-            GetNewRandomNodeDelegate getNewRandomNodeDelegate,
             StartNewRootNodeDelegate startNewRootNodeDelegate,
             ChainPayload payload
         )
         {
             payload.complexity -= 1;
-            //
             if (payload.complexity > 0)
                 startNewRootNodeDelegate(payload);
         }

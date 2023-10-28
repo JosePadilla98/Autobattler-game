@@ -2,7 +2,6 @@ using System.Collections.Generic;
 
 namespace Autobattler
 {
-    public delegate ISkillNode GetNewRandomNodeDelegate(ChainPayload payload);
     public delegate void StartNewRootNodeDelegate(ChainPayload payload);
 
     public interface ILastSkillNode { }
@@ -24,7 +23,6 @@ namespace Autobattler
         }
 
         public void ContinueChain(
-            GetNewRandomNodeDelegate getNewRandomNodeDelegate,
             StartNewRootNodeDelegate startNewRootNodeDelegate,
             ChainPayload payload
         );
@@ -35,12 +33,14 @@ namespace Autobattler
     public struct SkillNodeRequirements
     {
         public float minimunPowerValue;
+        public float minimunComplexity;
 
-        public SkillNodeRequirements(float minimunPowerValue)
+        public SkillNodeRequirements(float minimunPowerValue, float minimunComplexity)
         {
             this.minimunPowerValue = minimunPowerValue;
+            this.minimunComplexity = minimunComplexity;
         }
 
-        public static SkillNodeRequirements Zero = new(1);
+        public static SkillNodeRequirements Zero = new(1f, 1f);
     }
 }
