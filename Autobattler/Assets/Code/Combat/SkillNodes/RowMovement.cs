@@ -12,16 +12,16 @@ namespace Autobattler
 
         string ISkillNode.Text()
         {
-            StringBuilder sb = new("<i>From back row</i> => Move forwards");
+            StringBuilder sb = new($@"{Environment.NewLine}<i>From back row</i> => Move forwards");
             foreach (ISkillNode rootNode in mainChain)
             {
-                sb.AppendLine($@"{Environment.NewLine}* {rootNode.Text()}");
+                sb.AppendLine($@"{Environment.NewLine}{Constants.TABULATION}* {rootNode.Text()}");
             }
 
-            sb.AppendLine("<i>From front row</i> => Move backwards");
+            sb.Append("<i>From front row</i> => Move backwards");
             foreach (ISkillNode rootNode in secondaryChain)
             {
-                sb.AppendLine($@"{Environment.NewLine}* {rootNode.Text()}");
+                sb.Append($@"{Environment.NewLine}{Constants.TABULATION}* {rootNode.Text()}");
             }
 
             return sb.ToString();

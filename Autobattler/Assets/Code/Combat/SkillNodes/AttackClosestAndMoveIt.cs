@@ -2,9 +2,10 @@ namespace Autobattler
 {
     public class AttackClosestAndMoveIt : ISkillNode, ISkillLastNode
     {
-        private float _value;
-        public float AttackPower => _value * 15;
-        public float SecondaryAttackPower => _value * 5;
+        private float inputValue;
+        private float modifiedInputValue => inputValue - Movement.NormalizedValue();
+        private float AttackPower => modifiedInputValue * 15;
+        private float SecondaryAttackPower => modifiedInputValue * 5;
 
         string ISkillNode.Text()
         {
@@ -19,16 +20,11 @@ namespace Autobattler
         void ISkillNode.ContinueChain(
             StartNewRootNodeDelegate startNewRootNodeDelegate,
             ChainPayload payload
-        )
-        {
-            payload.complexity -= 1;
-            if (payload.complexity > 0)
-                startNewRootNodeDelegate(payload);
-        }
+        ) { }
 
         void ISkillNode.Initialize(ChainPayload payload)
         {
-            _value = payload.powerValue - Movement.NormalizedValue();
+            inputValue = payload.powerValue;
         }
     }
 }
