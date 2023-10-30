@@ -12,7 +12,7 @@ namespace Autobattler
 
         string ISkillNode.Text()
         {
-            StringBuilder sb = new($@"{Environment.NewLine}<i>From back row</i> => Move forwards");
+            StringBuilder sb = new($@"{Environment.NewLine}<i>From back row</i> => Move forwards.");
             foreach (ISkillNode rootNode in mainChain)
             {
                 sb.AppendLine(
@@ -20,7 +20,7 @@ namespace Autobattler
                 );
             }
 
-            sb.Append("<i>From front row</i> => Move backwards");
+            sb.Append("<i>From front row</i> => Move backwards.");
             foreach (ISkillNode rootNode in secondaryChain)
             {
                 sb.Append(

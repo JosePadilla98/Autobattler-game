@@ -5,9 +5,9 @@ namespace Autobattler
 {
     public static class SkillsNodesPool
     {
-        private static readonly Type[] NODES_POOL = { typeof(RowMovement), };
+        private static readonly Type[] NODES_POOL = { typeof(RowMovement), typeof(StuntYourself) };
 
-        private static readonly Type[] LAST_NODES_POOL = { typeof(AttackClosestAndMoveIt), };
+        private static readonly Type[] LAST_NODES_POOL = { typeof(AttackClosestAndMoveIt) };
 
         public static List<Type> GetSkillsNodesList()
         {

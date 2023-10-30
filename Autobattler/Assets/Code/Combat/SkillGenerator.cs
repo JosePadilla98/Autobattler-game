@@ -106,6 +106,16 @@ namespace Autobattler
             );
         }
 
+        public void FillThisNode(
+            StartNewRootNodeDelegate startNewRootNodeDelegate,
+            ref ISkillNode node,
+            ChainPayload payload
+        )
+        {
+            node = GetNewRandomNode(payload);
+            node.ContinueChain(startNewRootNodeDelegate, payload);
+        }
+
         public ISkillNode GetNewRandomNode(ChainPayload payload)
         {
             ISkillNode output = null;

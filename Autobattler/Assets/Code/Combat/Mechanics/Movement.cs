@@ -1,8 +1,10 @@
-
-public class Movement
+namespace Autobattler
 {
-    public static float NormalizedValue()
+    public class Movement
     {
-        return 2;
+        public static float NormalizedValue()
+        {
+            return 2;
+        }
     }
 }
