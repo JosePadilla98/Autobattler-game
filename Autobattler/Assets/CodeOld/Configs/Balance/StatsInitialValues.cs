@@ -5,37 +5,30 @@ namespace AutobattlerOld.Configs.Balance
 {
     public class StatsInitialValues
     {
-        public static Dictionary<StatsNames, float> InitialValues { get; } = new Dictionary<StatsNames, float>()
+        public static Dictionary<OldStatsNames, float> InitialValues { get; } =
+            new Dictionary<OldStatsNames, float>()
+            {
+                { OldStatsNames.HEALTH, 10 },
+                { OldStatsNames.HEALTH_REGEN, 0.25f },
+                { OldStatsNames.PHYSICAL_ATTACK, 10 },
+                { OldStatsNames.MAGICAL_ATTACK, 10 },
+                { OldStatsNames.PHYSICAL_DEFENSE, 10 },
+                { OldStatsNames.MAGICAL_DEFENSE, 10 },
+                { OldStatsNames.PHYSICAL_SPEED, 10 },
+                { OldStatsNames.MAGICAL_SPEED, 10 },
+                { OldStatsNames.VIGOR, 10 },
+                { OldStatsNames.REINVIGORATION, 0.25f },
+                { OldStatsNames.MANA, 10 },
+                { OldStatsNames.MANA_REGEN, 0.25f },
+                { OldStatsNames.INTELLECT, 10 },
+                { OldStatsNames.WEIGHT_CAPACITY, 10 },
+                { OldStatsNames.PHYSICAL_FATIGUE, 1 },
+                { OldStatsNames.MAGICAL_FATIGUE, 1 },
+            };
+
+        public static Dictionary<OldStatsNames, Stat> GetInitialStats(ref int level)
         {
-            { StatsNames.HEALTH, 10 },
-            { StatsNames.HEALTH_REGEN, 0.25f },
-
-            { StatsNames.PHYSICAL_ATTACK, 10 },
-            { StatsNames.MAGICAL_ATTACK, 10 },
-
-            { StatsNames.PHYSICAL_DEFENSE, 10 },
-            { StatsNames.MAGICAL_DEFENSE, 10 },
-
-            { StatsNames.PHYSICAL_SPEED, 10 },
-            { StatsNames.MAGICAL_SPEED, 10 },
-
-            { StatsNames.VIGOR, 10 },
-            { StatsNames.REINVIGORATION, 0.25f },
-
-            { StatsNames.MANA, 10 },
-            { StatsNames.MANA_REGEN, 0.25f },
-
-            { StatsNames.INTELLECT, 10 },
-
-            { StatsNames.WEIGHT_CAPACITY, 10 },
-
-            { StatsNames.PHYSICAL_FATIGUE, 1 },
-            { StatsNames.MAGICAL_FATIGUE, 1 },
-        };
-
-        public static Dictionary<StatsNames, Stat> GetInitialStats(ref int level)
-        {
-            var dic = new Dictionary<StatsNames, Stat>();
+            var dic = new Dictionary<OldStatsNames, Stat>();
             foreach (var keyValue in InitialValues)
             {
                 if (Stat.CheckIfScalesByLevel(keyValue.Key))

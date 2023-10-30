@@ -5,11 +5,15 @@ namespace AutobattlerOld.ExpModule.Stats
 {
     public struct StatModElement
     {
-        public StatsNames statToAdd;
-        public StatsNames statToSubstract;
+        public OldStatsNames statToAdd;
+        public OldStatsNames statToSubstract;
         public float ModValue;
 
-        public StatModElement(StatsNames statToAdd, StatsNames statToSubstract, float modValue)
+        public StatModElement(
+            OldStatsNames statToAdd,
+            OldStatsNames statToSubstract,
+            float modValue
+        )
         {
             this.statToAdd = statToAdd;
             this.statToSubstract = statToSubstract;

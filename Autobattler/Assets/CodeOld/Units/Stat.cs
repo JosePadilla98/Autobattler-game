@@ -47,8 +47,10 @@ namespace AutobattlerOld.Units
         private float GetWithoutLevelIncrement()
         {
             var value = baseStat;
-            foreach (var item in linearModifiers) value += item;
-            foreach (var item in percentualModifiers) value += item * value / 100;
+            foreach (var item in linearModifiers)
+                value += item;
+            foreach (var item in percentualModifiers)
+                value += item * value / 100;
 
             return value;
         }
@@ -69,7 +71,8 @@ namespace AutobattlerOld.Units
         public float GetOnlyWithLinearModifiers()
         {
             var value = baseStat;
-            foreach (var item in linearModifiers) value += item;
+            foreach (var item in linearModifiers)
+                value += item;
             return value;
         }
 
@@ -93,20 +96,21 @@ namespace AutobattlerOld.Units
             OnValueChanged?.Invoke();
         }
 
-        public static bool CheckIfScalesByLevel(StatsNames statName)
+        public static bool CheckIfScalesByLevel(OldStatsNames statName)
         {
             if (!SOME_STATS_SCALES_BY_LEVEL)
                 return false;
 
             switch (statName)
             {
-                case StatsNames.PHYSICAL_ATTACK:
-                case StatsNames.MAGICAL_ATTACK:
-                case StatsNames.PHYSICAL_DEFENSE:
-                case StatsNames.MAGICAL_DEFENSE:
+                case OldStatsNames.PHYSICAL_ATTACK:
+                case OldStatsNames.MAGICAL_ATTACK:
+                case OldStatsNames.PHYSICAL_DEFENSE:
+                case OldStatsNames.MAGICAL_DEFENSE:
                     return true;
 
-                default: return false;
+                default:
+                    return false;
             }
         }
     }

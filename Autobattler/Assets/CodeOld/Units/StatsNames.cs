@@ -7,7 +7,7 @@ namespace AutobattlerOld.Units
     /// Regenerations represents "regenerations" each 4 seconds
     /// 
 
-    public enum StatsNames
+    public enum OldStatsNames
     {
         HEALTH,
         HEALTH_REGEN,
@@ -30,59 +30,59 @@ namespace AutobattlerOld.Units
     }
 
 
-    static class StatsNamesMethods
+    static class OldStatsNamesMethods
     {
-        public static String GetName(this StatsNames statName)
+        public static String GetName(this OldStatsNames statName)
         {
             String output = "";
             switch (statName)
             {
-                case StatsNames.HEALTH:
+                case OldStatsNames.HEALTH:
                     output = "Health";
                     break;
-                case StatsNames.HEALTH_REGEN:
+                case OldStatsNames.HEALTH_REGEN:
                     output = "Health regeneration";
                     break;
-                case StatsNames.PHYSICAL_ATTACK:
+                case OldStatsNames.PHYSICAL_ATTACK:
                     output = "Physical attack";
                     break;
-                case StatsNames.MAGICAL_ATTACK:
+                case OldStatsNames.MAGICAL_ATTACK:
                     output = "Magical attack";
                     break;
-                case StatsNames.PHYSICAL_DEFENSE:
+                case OldStatsNames.PHYSICAL_DEFENSE:
                     output = "Physical defense";
                     break;
-                case StatsNames.MAGICAL_DEFENSE:
+                case OldStatsNames.MAGICAL_DEFENSE:
                     output = "Magical defense";
                     break;
-                case StatsNames.PHYSICAL_SPEED:
+                case OldStatsNames.PHYSICAL_SPEED:
                     output = "Physical speed";
                     break;
-                case StatsNames.MAGICAL_SPEED:
+                case OldStatsNames.MAGICAL_SPEED:
                     output = "Magical speed";
                     break;
-                case StatsNames.VIGOR:
+                case OldStatsNames.VIGOR:
                     output = "Vigor";
                     break;
-                case StatsNames.REINVIGORATION:
+                case OldStatsNames.REINVIGORATION:
                     output = "Reinvigoration";
                     break;
-                case StatsNames.MANA:
+                case OldStatsNames.MANA:
                     output = "Mana";
                     break;
-                case StatsNames.MANA_REGEN:
+                case OldStatsNames.MANA_REGEN:
                     output = "Mana regen";
                     break;
-                case StatsNames.INTELLECT:
+                case OldStatsNames.INTELLECT:
                     output = "Intellect";
                     break;
-                case StatsNames.WEIGHT_CAPACITY:
+                case OldStatsNames.WEIGHT_CAPACITY:
                     output = "Weight capacity";
                     break;
-                case StatsNames.PHYSICAL_FATIGUE:
+                case OldStatsNames.PHYSICAL_FATIGUE:
                     output = "Physical fatigue";
                     break;
-                case StatsNames.MAGICAL_FATIGUE:
+                case OldStatsNames.MAGICAL_FATIGUE:
                     output = "Magical fatigue";
                     break;
             }
@@ -90,7 +90,7 @@ namespace AutobattlerOld.Units
             return output;
         }
 
-        public static float GetRealValue(this StatsNames statName, float value)
+        public static float GetRealValue(this OldStatsNames statName, float value)
         {
             return StatsTheoreticalValues.dic[statName] * value;
         }

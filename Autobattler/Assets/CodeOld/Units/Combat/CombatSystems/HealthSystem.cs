@@ -4,9 +4,8 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
 {
     public class HealthSystem : CombatSystem
     {
-        public HealthSystem(Fighter parent) : base(parent)
-        {
-        }
+        public HealthSystem(Fighter parent)
+            : base(parent) { }
 
         public void ReceiveDamage(float damage)
         {
@@ -18,7 +17,7 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
 
         #region Properties
 
-        public float MaxHealth => parent.StatsContainer.GetStatValue(StatsNames.HEALTH);
+        public float MaxHealth => parent.StatsContainer.GetStatValue(OldStatsNames.HEALTH);
 
         public float CurrentHealth
         {

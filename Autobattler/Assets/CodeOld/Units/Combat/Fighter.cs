@@ -10,7 +10,8 @@ namespace AutobattlerOld.Units.Combat
 {
     public enum Team
     {
-        PLAYER, ENEMY
+        PLAYER,
+        ENEMY
     }
 
     public class Fighter
@@ -79,9 +80,11 @@ namespace AutobattlerOld.Units.Combat
 
         public CombatValues(Unit build)
         {
-            currentHealth = new CombatValue(build.statsContainer.GetStatValue(StatsNames.HEALTH));
-            currentVigor = new CombatValue(build.statsContainer.GetStatValue(StatsNames.VIGOR));
-            currentMana = new CombatValue(build.statsContainer.GetStatValue(StatsNames.MANA));
+            currentHealth = new CombatValue(
+                build.statsContainer.GetStatValue(OldStatsNames.HEALTH)
+            );
+            currentVigor = new CombatValue(build.statsContainer.GetStatValue(OldStatsNames.VIGOR));
+            currentMana = new CombatValue(build.statsContainer.GetStatValue(OldStatsNames.MANA));
         }
     }
 

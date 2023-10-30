@@ -11,9 +11,8 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
         public List<ChargeableItem> rechargingItems = new();
         private List<ChargeableItem> waitingToBeRecharged = new();
 
-        public ChargerSystem(Fighter parent) : base(parent)
-        {
-        }
+        public ChargerSystem(Fighter parent)
+            : base(parent) { }
 
         private EnergySystem energySystem => parent.energySys;
 
@@ -59,7 +58,13 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
         /// </summary>
         public int priority;
 
-        public ChargeableData(EnergyCostData cost, float physicalSpeedFactor, float magicalSpeedFactor, float timeToCast, int priority)
+        public ChargeableData(
+            EnergyCostData cost,
+            float physicalSpeedFactor,
+            float magicalSpeedFactor,
+            float timeToCast,
+            int priority
+        )
         {
             this.cost = cost;
             this.physicalSpeedFactor = physicalSpeedFactor;
@@ -81,6 +86,7 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
         public float TimeToCast => data.timeToCast;
         public EnergyCostData Cost => data.cost;
         public int Priority => data.priority;
+
         public int CompareTo(ChargeableItem other)
         {
             if (Priority > other.Priority)
@@ -101,8 +107,16 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
 
         public void Refresh(StatsContainer statsContainer)
         {
-            progress += Time.fixedDeltaTime * PhysicalSpeedFactor / 100 * statsContainer.GetStatValue(StatsNames.PHYSICAL_SPEED);
-            progress += Time.fixedDeltaTime * MagicalSpeedFactor / 100 * statsContainer.GetStatValue(StatsNames.MAGICAL_SPEED);
+            progress +=
+                Time.fixedDeltaTime
+                * PhysicalSpeedFactor
+                / 100
+                * statsContainer.GetStatValue(OldStatsNames.PHYSICAL_SPEED);
+            progress +=
+                Time.fixedDeltaTime
+                * MagicalSpeedFactor
+                / 100
+                * statsContainer.GetStatValue(OldStatsNames.MAGICAL_SPEED);
 
             while (progress >= TimeToCast)
             {

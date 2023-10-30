@@ -7,15 +7,21 @@ using UnityEngine;
 
 namespace AutobattlerOld.MutationsSystem.Mutations.Attacks
 {
-    [CreateAssetMenu(fileName = "StandardAttack", menuName = "ScriptableObjects/MutationsSystem/Mutations/Attacks/Standard")]
+    [CreateAssetMenu(
+        fileName = "StandardAttack",
+        menuName = "ScriptableObjects/MutationsSystem/Mutations/Attacks/Standard"
+    )]
     public class StandardAttack : MutationModel, IModifyFighter
     {
         [SerializeField]
         private float scaleFactor = 100f;
+
         [SerializeField]
-        private StatsNames stat;
+        private OldStatsNames stat;
+
         [SerializeField]
         private DamageType damageType;
+
         [SerializeField]
         private ChargeableData chargeableData;
 
@@ -26,7 +32,9 @@ namespace AutobattlerOld.MutationsSystem.Mutations.Attacks
             Action OnRecharged = null;
             chargeableData.priority = order;
 
-            ChargeableItem chargeable = ChargeableItem.Pool.Get().Inflate(key, chargeableData, null);
+            ChargeableItem chargeable = ChargeableItem.Pool
+                .Get()
+                .Inflate(key, chargeableData, null);
             OnRecharged = () =>
             {
                 Cast(fighter);
