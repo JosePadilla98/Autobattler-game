@@ -8,7 +8,7 @@ namespace Autobattler
         DEFENSE,
         STRENGTH,
         ATTACK_SPEED,
-        MAGICAL_POWER,
+        MAGIC_POWER,
         MANA_REGEN,
     }
 

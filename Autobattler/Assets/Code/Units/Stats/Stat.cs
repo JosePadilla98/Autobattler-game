@@ -26,7 +26,9 @@ namespace Autobattler
             return clone;
         }
 
-        private float Get()
+        #region GET
+
+        public float Get()
         {
             var value = baseStat;
             foreach (var item in linearModifiers)
@@ -36,6 +38,8 @@ namespace Autobattler
 
             return value;
         }
+
+        #endregion
 
         public void AddModifier(ModifierType type, float modifier)
         {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Autobattler;
 using AutobattlerOld.Configs.Balance;
 using AutobattlerOld.UnitLevellingScreens;
 using AutobattlerOld.Units;
