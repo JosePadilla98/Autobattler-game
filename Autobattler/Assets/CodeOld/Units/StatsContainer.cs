@@ -7,7 +7,7 @@ namespace AutobattlerOld.Units
     public class StatsContainer
     {
         public int level;
-        public readonly Dictionary<OldStatsNames, Stat> valuePairs;
+        public readonly Dictionary<StatsNames, Stat> valuePairs;
 
         public StatsContainer(int initialLevel)
         {
@@ -15,20 +15,20 @@ namespace AutobattlerOld.Units
             valuePairs = StatsInitialValues.GetInitialStats(ref level);
         }
 
-        public Stat GetStat(OldStatsNames name)
+        public Stat GetStat(StatsNames name)
         {
             Stat stat;
             valuePairs.TryGetValue(name, out stat);
             return stat;
         }
 
-        public float GetStatValue(OldStatsNames name)
+        public float GetStatValue(StatsNames name)
         {
             var stat = GetStat(name);
             return stat.Get();
         }
 
-        public Dictionary<OldStatsNames, float> GetStatsWithoutPercentageModifiers()
+        public Dictionary<StatsNames, float> GetStatsWithoutPercentageModifiers()
         {
             var newDictionary = valuePairs.ToDictionary(
                 entry => entry.Key,

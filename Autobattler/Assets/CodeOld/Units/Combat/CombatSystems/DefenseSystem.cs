@@ -4,24 +4,16 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
 {
     public class DefenseSystem : CombatSystem
     {
+        private float Defense =>
+            parent.StatsContainer.GetStatValue(StatsNames.DEFENSE);
+
         public DefenseSystem(Fighter parent)
             : base(parent) { }
 
         public void BeAttacked(DamageData damageData)
         {
-            var defenseValue =
-                damageData.type == DamageType.PHYSICAL ? PhysicalDefense : MagicalDefense;
-            var damage = damageData.value / defenseValue;
+            var damage = damageData.value / Defense;
             parent.healthSys.ReceiveDamage(damage);
         }
-
-        #region Properties
-
-        public float PhysicalDefense =>
-            parent.StatsContainer.GetStatValue(OldStatsNames.PHYSICAL_DEFENSE);
-        public float MagicalDefense =>
-            parent.StatsContainer.GetStatValue(OldStatsNames.MAGICAL_DEFENSE);
-
-        #endregion
     }
 }

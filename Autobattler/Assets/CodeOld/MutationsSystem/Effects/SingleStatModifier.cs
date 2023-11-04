@@ -7,7 +7,7 @@ namespace AutobattlerOld.MutationsSystem.Effects
     [Serializable]
     public class SingleStatModifier
     {
-        public OldStatsNames statName;
+        public StatsNames statName;
         public ModifierType type;
         public float value;
 

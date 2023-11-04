@@ -5,13 +5,13 @@ namespace AutobattlerOld.ExpModule.Stats
 {
     public struct StatModElement
     {
-        public OldStatsNames statToAdd;
-        public OldStatsNames statToSubstract;
+        public StatsNames statToAdd;
+        public StatsNames statToSubstract;
         public float ModValue;
 
         public StatModElement(
-            OldStatsNames statToAdd,
-            OldStatsNames statToSubstract,
+            StatsNames statToAdd,
+            StatsNames statToSubstract,
             float modValue
         )
         {

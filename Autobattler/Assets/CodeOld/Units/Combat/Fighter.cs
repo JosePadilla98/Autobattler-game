@@ -49,7 +49,7 @@ namespace AutobattlerOld.Units.Combat
 
         public void Refresh()
         {
-            chargerSys.Refresh();
+
         }
 
         #region SYSTEMS
@@ -58,7 +58,6 @@ namespace AutobattlerOld.Units.Combat
         public AttackSystem attackSys;
         public DefenseSystem defenseSys;
         public EnergySystem energySys;
-        public ChargerSystem chargerSys;
 
         private void CreateSystems()
         {
@@ -66,7 +65,6 @@ namespace AutobattlerOld.Units.Combat
             attackSys = new AttackSystem(this);
             defenseSys = new DefenseSystem(this);
             energySys = new EnergySystem(this);
-            chargerSys = new ChargerSystem(this);
         }
 
         #endregion
@@ -80,11 +78,7 @@ namespace AutobattlerOld.Units.Combat
 
         public CombatValues(Unit build)
         {
-            currentHealth = new CombatValue(
-                build.statsContainer.GetStatValue(OldStatsNames.HEALTH)
-            );
-            currentVigor = new CombatValue(build.statsContainer.GetStatValue(OldStatsNames.VIGOR));
-            currentMana = new CombatValue(build.statsContainer.GetStatValue(OldStatsNames.MANA));
+            currentHealth = new CombatValue(build.statsContainer.GetStatValue(StatsNames.HEALTH));
         }
     }
 

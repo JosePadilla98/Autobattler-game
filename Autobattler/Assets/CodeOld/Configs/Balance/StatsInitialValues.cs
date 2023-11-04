@@ -5,40 +5,23 @@ namespace AutobattlerOld.Configs.Balance
 {
     public class StatsInitialValues
     {
-        public static Dictionary<OldStatsNames, float> InitialValues { get; } =
-            new Dictionary<OldStatsNames, float>()
+        public static Dictionary<StatsNames, float> InitialValues { get; } =
+            new Dictionary<StatsNames, float>()
             {
-                { OldStatsNames.HEALTH, 10 },
-                { OldStatsNames.HEALTH_REGEN, 0.25f },
-                { OldStatsNames.PHYSICAL_ATTACK, 10 },
-                { OldStatsNames.MAGICAL_ATTACK, 10 },
-                { OldStatsNames.PHYSICAL_DEFENSE, 10 },
-                { OldStatsNames.MAGICAL_DEFENSE, 10 },
-                { OldStatsNames.PHYSICAL_SPEED, 10 },
-                { OldStatsNames.MAGICAL_SPEED, 10 },
-                { OldStatsNames.VIGOR, 10 },
-                { OldStatsNames.REINVIGORATION, 0.25f },
-                { OldStatsNames.MANA, 10 },
-                { OldStatsNames.MANA_REGEN, 0.25f },
-                { OldStatsNames.INTELLECT, 10 },
-                { OldStatsNames.WEIGHT_CAPACITY, 10 },
-                { OldStatsNames.PHYSICAL_FATIGUE, 1 },
-                { OldStatsNames.MAGICAL_FATIGUE, 1 },
+                { StatsNames.HEALTH, 10f },
+                { StatsNames.DEFENSE, 10f },
+                { StatsNames.STRENGTH, 10f },
+                { StatsNames.ATTACK_SPEED, 0.25f },
+                { StatsNames.MAGIC_POWER, 10f },
+                { StatsNames.MANA_REGEN, 1f },
             };
 
-        public static Dictionary<OldStatsNames, Stat> GetInitialStats(ref int level)
+        public static Dictionary<StatsNames, Stat> GetInitialStats(ref int level)
         {
-            var dic = new Dictionary<OldStatsNames, Stat>();
+            var dic = new Dictionary<StatsNames, Stat>();
             foreach (var keyValue in InitialValues)
             {
-                if (Stat.CheckIfScalesByLevel(keyValue.Key))
-                {
-                    dic.Add(keyValue.Key, new Stat(keyValue.Value, ref level));
-                }
-                else
-                {
-                    dic.Add(keyValue.Key, new Stat(keyValue.Value));
-                }
+                dic.Add(keyValue.Key, new Stat(keyValue.Value));
             }
 
             return dic;

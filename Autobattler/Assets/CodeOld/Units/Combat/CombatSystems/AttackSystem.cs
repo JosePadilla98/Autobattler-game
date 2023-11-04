@@ -44,10 +44,10 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
     public struct AttackData
     {
         public float scaleFactor;
-        public OldStatsNames statScaler;
+        public StatsNames statScaler;
         public DamageType damageType;
 
-        public AttackData(float scaleFactor, OldStatsNames statScaler, DamageType damageType)
+        public AttackData(float scaleFactor, StatsNames statScaler, DamageType damageType)
         {
             this.scaleFactor = scaleFactor;
             this.statScaler = statScaler;
