@@ -8,9 +8,10 @@ namespace AutobattlerOld.Units.Management
     public class UnitBuild : ScriptableObject
     {
         public int level = 1;
+
         [Space(20)]
         public MutationModel[] mutations;
         public Sprite sprite;
-        public String name = "NoName";
+        public String buildName = "NoName";
     }
 }

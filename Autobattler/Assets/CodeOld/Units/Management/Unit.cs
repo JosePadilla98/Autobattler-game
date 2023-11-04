@@ -15,10 +15,7 @@ namespace AutobattlerOld.Units.Management
         public List<Mutation> disabledMutations;
         public List<Mutation> enabledMutations;
 
-        public Unit()
-        {
-
-        }
+        public Unit() { }
 
         public Unit(UnitBuild blueprint)
         {
@@ -32,7 +29,7 @@ namespace AutobattlerOld.Units.Management
             enabledMutations = new List<Mutation>();
             disabledMutations = new List<Mutation>();
 
-            name = blueprint.name;
+            name = blueprint.buildName;
             sprite = blueprint.sprite;
 
             foreach (var mutationModel in blueprint.mutations)

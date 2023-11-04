@@ -4,7 +4,10 @@ using UnityEngine;
 
 namespace AutobattlerOld.LevelSystem
 {
-    [CreateAssetMenu(fileName = "LevelSystem", menuName = "ScriptableObjects/LevelSystem/LevelSystem")]
+    [CreateAssetMenu(
+        fileName = "LevelSystem",
+        menuName = "ScriptableObjects/LevelSystem/LevelSystem"
+    )]
     public class LevelsSystem : ScriptableObject
     {
         public int currentLevel = 0;
@@ -25,7 +28,7 @@ namespace AutobattlerOld.LevelSystem
 
         private void LoadLevel(Level level)
         {
-            //You will only summon units in the player side to test
+            //It will only summon units in the player side to test
             invocationsProcessor.SummonUnits(playerTestingUnits, Side.LEFT);
             invocationsProcessor.SummonUnits(level.enemies, Side.RIGHT);
         }
