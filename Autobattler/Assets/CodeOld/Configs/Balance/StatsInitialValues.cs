@@ -16,7 +16,7 @@ namespace AutobattlerOld.Configs.Balance
                 { StatsNames.MANA_REGEN, 1f },
             };
 
-        public static Dictionary<StatsNames, Stat> GetInitialStats(ref int level)
+        public static Dictionary<StatsNames, Stat> GetInitialStats()
         {
             var dic = new Dictionary<StatsNames, Stat>();
             foreach (var keyValue in InitialValues)

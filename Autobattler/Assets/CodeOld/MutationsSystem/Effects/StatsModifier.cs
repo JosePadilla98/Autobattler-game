@@ -9,13 +9,13 @@ namespace AutobattlerOld.MutationsSystem.Effects
     {
         public SingleStatModifier[] modifiers;
 
-        public override String GetDescription(int timesStacked, StatsColorsConfig colorsConfig)
+        public override String GetDescription(int timesStacked)
         {
             string output = "";
 
             foreach (var modifier in modifiers)
             {
-                output += modifier.GetDescription(timesStacked, colorsConfig);
+                output += modifier.GetDescription(timesStacked);
             }
 
             return output;

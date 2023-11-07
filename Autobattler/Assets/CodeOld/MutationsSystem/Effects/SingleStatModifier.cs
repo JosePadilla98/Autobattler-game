@@ -11,7 +11,7 @@ namespace AutobattlerOld.MutationsSystem.Effects
         public ModifierType type;
         public float value;
 
-        public String GetDescription(int timesStacked, StatsColorsConfig colorsConfig)
+        public String GetDescription(int timesStacked)
         {
             String outPut = "";
             if (value > 0)

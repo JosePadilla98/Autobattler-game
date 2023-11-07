@@ -4,7 +4,10 @@ using UnityEngine;
 
 namespace AutobattlerOld.MutationsSystem.Mutations.Others
 {
-    [CreateAssetMenu(fileName = "StandardMutation", menuName = "ScriptableObjects/MutationsSystem/Mutations/Standard")]
+    [CreateAssetMenu(
+        fileName = "StandardMutation",
+        menuName = "ScriptableObjects/MutationsSystem/Mutations/Standard"
+    )]
     public class StandardMutation : MutationModel, IModifyStats
     {
         [SerializeField]
@@ -12,7 +15,7 @@ namespace AutobattlerOld.MutationsSystem.Mutations.Others
 
         public override string GetDescription(int timesStacked)
         {
-            return statModifiers.GetDescription(timesStacked, colorsConfig);
+            return statModifiers.GetDescription(timesStacked);
         }
 
         public void ModifyStats(StatsContainer statsContainer)

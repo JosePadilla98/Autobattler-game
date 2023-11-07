@@ -26,9 +26,6 @@ namespace AutobattlerOld.InfoPanel.Units
         [SerializeField]
         private StatText magicalPower;
 
-        [SerializeField]
-        private StatText manaRegen;
-
         private void SetColors()
         {
             health.SetColor();
@@ -87,9 +84,6 @@ namespace AutobattlerOld.InfoPanel.Units
             strength.Unattach();
             attackSpeed.Unattach();
             magicalPower.Unattach();
-            manaRegen.Unattach();
-
-            manaRegen.Unattach();
 
             gameObject.SetActive(false);
         }
@@ -100,7 +94,6 @@ namespace AutobattlerOld.InfoPanel.Units
             strength.Attach(statsContainer.GetStat(StatsNames.STRENGTH));
             magicalPower.Attach(statsContainer.GetStat(StatsNames.MAGIC_POWER));
             attackSpeed.Attach(statsContainer.GetStat(StatsNames.ATTACK_SPEED));
-            manaRegen.Attach(statsContainer.GetStat(StatsNames.MANA_REGEN));
 
             if (combatValues != null)
             {

@@ -15,12 +15,14 @@ namespace AutobattlerOld.UnitsListScreen.MutationsHandler
 
         [SerializeField]
         private Transform slotsParent;
+
         [SerializeField]
         private Canvas canvas;
 
         [Header("Prefabs")]
         [SerializeField]
         private Mutation_BaseSlot slotPrefab;
+
         [SerializeField]
         private MutationView mutationViewPrefab;
 
@@ -107,12 +109,10 @@ namespace AutobattlerOld.UnitsListScreen.MutationsHandler
             CheckIfAddNewSlot();
             SaveChanges();
 
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-
-            if (App.DebugController != null && App.DebugController.unitsScreenDebug.mutationsHandler)
+            if (
+                App.DebugController != null && App.DebugController.unitsScreenDebug.mutationsHandler
+            )
                 Debug.Log(mutation.Name + " attached in " + gameObject.name);
-
-#endif
         }
 
         public void CheckIfAttachMutation(Mutation mutation)
@@ -126,12 +126,12 @@ namespace AutobattlerOld.UnitsListScreen.MutationsHandler
             RemoveEmptySlot();
             SaveChanges();
 
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-
-            if (App.DebugController != null && App.DebugController.unitsScreenDebug.mutationsHandler)
+            if (
+                App.DebugController != null && App.DebugController.unitsScreenDebug.mutationsHandler
+            )
+            {
                 Debug.Log(mutation.Name + " unattached in in " + gameObject.name);
-
-#endif
+            }
         }
 
         public void CheckIfAddNewSlot()

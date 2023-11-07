@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutobattlerOld.DragAndDrop;
-using AutobattlerOld.Units.Management;
-using AutobattlerOld.UnitsListScreen;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -13,14 +11,19 @@ namespace AutobattlerOld.SelectionsSystem
     {
         [SerializeField]
         private SelectablesParent[] selectablesParents;
+
         [SerializeField]
         private bool canBeChildrenUnselectedWithMouse = true;
+
         [Space(20)]
         public List<SelectableComponent> selectables;
+
         [Space(20)]
         public UnityEvent<MonoBehaviour> onTargetSelected;
+
         [Space(20)]
         public UnityEvent onTargedUnselected;
+
         [Space(20)]
         public UnityEvent OnOneOfMyChildrenSelected;
 

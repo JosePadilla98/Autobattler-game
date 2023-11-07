@@ -9,9 +9,6 @@ namespace AutobattlerOld.MutationsSystem.Mutations
 {
     public abstract class MutationModel : ScriptableObject
     {
-        [SerializeField]
-        protected StatsColorsConfig colorsConfig;
-
         public bool canBeDisabledByPlayer;
         public StackBehaviourTypes stackBehaviourTypes;
         public Sprite sprite;

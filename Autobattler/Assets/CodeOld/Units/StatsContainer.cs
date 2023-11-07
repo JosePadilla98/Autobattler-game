@@ -6,13 +6,11 @@ namespace AutobattlerOld.Units
 {
     public class StatsContainer
     {
-        public int level;
         public readonly Dictionary<StatsNames, Stat> valuePairs;
 
-        public StatsContainer(int initialLevel)
+        public StatsContainer()
         {
-            level = initialLevel;
-            valuePairs = StatsInitialValues.GetInitialStats(ref level);
+            valuePairs = StatsInitialValues.GetInitialStats();
         }
 
         public Stat GetStat(StatsNames name)

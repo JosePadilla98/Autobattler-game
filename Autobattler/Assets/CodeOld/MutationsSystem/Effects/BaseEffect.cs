@@ -6,7 +6,6 @@ namespace AutobattlerOld.MutationsSystem.Effects
     [Serializable]
     public abstract class BaseEffect
     {
-        public abstract String GetDescription(int timesStacked, StatsColorsConfig colorsConfig);
-
+        public abstract String GetDescription(int timesStacked);
     }
 }

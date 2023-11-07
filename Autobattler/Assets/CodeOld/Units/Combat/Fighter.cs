@@ -29,28 +29,11 @@ namespace AutobattlerOld.Units.Combat
         {
             this.unit = unit;
             CreateSystems();
-
-            for (int i = 0; i < unit.enabledMutations.Count; i++)
-            {
-                var mutation = unit.enabledMutations[i];
-                mutation.AttachToFighter(i, this);
-            }
-
-            foreach (var mutation in unit.permanentMutations)
-            {
-                mutation.AttachToFighter(0, this);
-            }
-
-            //set position
         }
 
         public StatsContainer StatsContainer => unit.statsContainer;
-        public List<Mutation> Mutations => unit.enabledMutations;
 
-        public void Refresh()
-        {
-
-        }
+        public void Refresh() { }
 
         #region SYSTEMS
 
