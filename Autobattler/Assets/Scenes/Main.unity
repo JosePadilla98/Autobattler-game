@@ -3686,9 +3686,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1298348803}
     m_Modifications:
+    - target: {fileID: 316583502647524778, guid: 1c72b78693b237b4a9e653b080697842, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 316583502647524778, guid: 1c72b78693b237b4a9e653b080697842, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1013619701109390401, guid: 1c72b78693b237b4a9e653b080697842, type: 3}
       propertyPath: m_Name
       value: CombatBattlefield
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013619701109390401, guid: 1c72b78693b237b4a9e653b080697842, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1013619701109390402, guid: 1c72b78693b237b4a9e653b080697842, type: 3}
       propertyPath: m_Pivot.x
