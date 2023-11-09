@@ -14,6 +14,7 @@ namespace AutobattlerOld.DragAndDrop
 
         [Space(20)]
         public UnityEvent<MonoBehaviour> onDropEvent;
+
         [Space(20)]
         public UnityEvent<MonoBehaviour> onItemTakenAwayEvent;
 
@@ -49,7 +50,10 @@ namespace AutobattlerOld.DragAndDrop
             return true;
         }
 
-        private void CheckIfSwapPlaces(DraggableComponent itemContainedHere, DraggableComponent itemToSwap)
+        private void CheckIfSwapPlaces(
+            DraggableComponent itemContainedHere,
+            DraggableComponent itemToSwap
+        )
         {
             var slotToMaybeGo = itemToSwap.lastDropArea;
             if (!slotToMaybeGo.CanThisObjectBeDroppedHere(itemContainedHere))
@@ -79,12 +83,8 @@ namespace AutobattlerOld.DragAndDrop
             draggable.onDropAction += MyLastItemHasBeenPlacedSomewhere;
             onItemTakenAwayEvent?.Invoke(draggable.item);
 
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-
-            if (App.DebugController != null && App.DebugController.dragAndDrop)
+            if (SingletonMaster.DebugController.dragAndDrop)
                 Debug.Log(draggable.name + " take away from (" + name + ")");
-
-#endif
         }
 
         /// <summary>
@@ -104,27 +104,29 @@ namespace AutobattlerOld.DragAndDrop
             draggable.onDropAction?.Invoke(this, draggableObj);
             onDropEvent?.Invoke(draggable.item);
 
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-
-            if (App.DebugController != null && App.DebugController.dragAndDrop)
+            if (SingletonMaster.DebugController.dragAndDrop)
                 Debug.Log(draggable.name + " dropped in (" + name + ")");
-
-#endif
         }
 
-        protected virtual void MyLastItemHasBeenPlacedSomewhere(DropArea dropAreaWherePlaced, DraggableComponent draggable)
+        protected virtual void MyLastItemHasBeenPlacedSomewhere(
+            DropArea dropAreaWherePlaced,
+            DraggableComponent draggable
+        )
         {
             draggable.onDropAction -= MyLastItemHasBeenPlacedSomewhere;
         }
 
-        public T getItemContained<T>() where T : MonoBehaviour
+        public T getItemContained<T>()
+            where T : MonoBehaviour
         {
             var item = draggableObj.item;
 
             if (item == null)
                 throw new Exception("There is no item contained");
 
-            return item is T ? item as T : throw new Exception("There is an item, but is not of that type");
+            return item is T
+                ? item as T
+                : throw new Exception("There is an item, but is not of that type");
         }
     }
 }

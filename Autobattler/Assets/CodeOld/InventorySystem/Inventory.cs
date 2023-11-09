@@ -16,14 +16,17 @@ namespace AutobattlerOld.InventorySystem
         [Header("Prefabs")]
         [SerializeField]
         private ItemView itemPrefab;
+
         [SerializeField]
         private UnitView playerUnitPrefab;
+
         [SerializeField]
         private Inventory_Slot slotPrefab;
 
         [Header("Scene things")]
         [Space(20)]
         public List<Inventory_Slot> slots;
+
         [SerializeField]
         private Transform slotsParent;
         public Canvas canvas;
@@ -39,12 +42,8 @@ namespace AutobattlerOld.InventorySystem
             unitsInBench.Collection.Add(unit);
             CheckIfAddNewSlot();
 
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-
-            if (App.DebugController != null && App.DebugController.inventory.elementsHandler)
+            if (SingletonMaster.DebugController.inventory.elementsHandler)
                 Debug.Log(unit.name + " attached in inventory");
-
-#endif
         }
 
         public void UnattachUnit(Unit unit)
@@ -52,30 +51,19 @@ namespace AutobattlerOld.InventorySystem
             unitsInBench.Collection.Remove(unit);
             RemoveEmptySlot();
 
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-
-            if (App.DebugController != null && App.DebugController.inventory.elementsHandler)
+            if (SingletonMaster.DebugController.inventory.elementsHandler)
                 Debug.Log(unit.name + " unattached in inventory");
-
-#endif
         }
 
-        public void CheckIfAttachItem(Item item)
-        {
-
-        }
+        public void CheckIfAttachItem(Item item) { }
 
         public void UnattachItem(Item item)
         {
             items.Collection.Remove(item);
             RemoveEmptySlot();
 
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-
-            if (App.DebugController != null && App.DebugController.inventory.elementsHandler)
+            if (SingletonMaster.DebugController.inventory.elementsHandler)
                 Debug.Log(item.Scriptable.name + " unattached in inventory");
-
-#endif
         }
 
         public void OnItemViewDestroyed(ItemView itemView)
@@ -137,7 +125,9 @@ namespace AutobattlerOld.InventorySystem
                     return slot;
             }
 
-            throw new Exception("There is no empty slot in the inventory and you are requesting one");
+            throw new Exception(
+                "There is no empty slot in the inventory and you are requesting one"
+            );
         }
 
         private void AddNewSlot()

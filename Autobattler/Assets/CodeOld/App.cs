@@ -10,16 +10,11 @@ namespace AutobattlerOld
 {
     public class App : MonoBehaviour
     {
-        public static DebugController DebugController =>
-            instance != null ? instance.debugController : null;
         public static GridsController<Fighter> Battlefield =>
             instance != null ? instance.battlefield : null;
 
         [SerializeField]
         private RunController runController;
-
-        [SerializeField]
-        private DebugController debugController;
 
         [SerializeField]
         private GridsController<Fighter> battlefield;

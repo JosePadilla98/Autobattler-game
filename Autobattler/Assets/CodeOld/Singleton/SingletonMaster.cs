@@ -10,7 +10,7 @@ namespace AutobattlerOld
         [SerializeField]
         private DebugController _debugController;
 
-        public DebugController DebugController
+        public static DebugController DebugController
         {
             get { return Instance._debugController; }
         }
