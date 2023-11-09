@@ -1,9 +1,12 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AutobattlerOld.Configs
+namespace AutobattlerOld
 {
-    [CreateAssetMenu(fileName = "DebugController", menuName = "ScriptableObjects/Config/DebugController")]
+    [CreateAssetMenu(
+        fileName = "DebugController",
+        menuName = "ScriptableObjects/Config/DebugController"
+    )]
     public class DebugController : ScriptableObject
     {
         public bool dragAndDrop;

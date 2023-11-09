@@ -10,20 +10,21 @@ namespace AutobattlerOld
 {
     public class App : MonoBehaviour
     {
-        public RunController runController;
-        public DebugController debugController;
+        public static DebugController DebugController =>
+            instance != null ? instance.debugController : null;
+        public static GridsController<Fighter> Battlefield =>
+            instance != null ? instance.battlefield : null;
+
         [SerializeField]
-        private ConsoleController combatConsole;
+        private RunController runController;
+
+        [SerializeField]
+        private DebugController debugController;
+
         [SerializeField]
         private GridsController<Fighter> battlefield;
 
-
         private static App instance;
-        public static App Instance => instance;
-        public static DebugController DebugController => instance != null ? instance.debugController : null;
-        public static IConsoleController CombatConsole => instance != null ? instance.combatConsole : null;
-        public static GridsController<Fighter> Battlefield => instance != null ? instance.battlefield : null;
-
 
         private void Awake()
         {
@@ -42,10 +43,5 @@ namespace AutobattlerOld
         {
             runController.Refresh();
         }
-    }
-
-    public interface IEntityInGrid
-    {
-
     }
 }
