@@ -21,11 +21,6 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
         /// <param name="attack"></param>
         public Fighter LaunchSimpleAttack(AttackData attack)
         {
-            if (App.DebugController.combat)
-            {
-                Debug.Log(parent.name + "triggers basic attack");
-            }
-
             var attackPower =
                 attack.percentage
                 * StatsContainer.GetStatValue(attack.statUsed)
@@ -37,6 +32,11 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
             if (objetive.ReceiveAttack(new DamageData(attackPower)))
             {
                 OnHitMade?.Invoke();
+            }
+
+            if (App.DebugController.combat)
+            {
+                Debug.Log(parent.name + " triggers basic attack to " + objetive.name);
             }
 
             return objetive;

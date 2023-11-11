@@ -16,9 +16,9 @@ namespace AutobattlerOld.Grid.Generic
 
         public ItemContainer<T> GetItemContainer(Position pos)
         {
-            var grid = pos.side == Side.LEFT ? leftGrid : rightGrid;
-            var column = pos.column == Column.FRONT ? grid.front : grid.back;
-            return column[pos.heigh];
+            Grid<T> grid = pos.side == Side.LEFT ? leftGrid : rightGrid;
+            ItemContainer<T>[] column = pos.column == Column.FRONT ? grid.front : grid.back;
+            return column[(int)pos.heigh];
         }
 
         public Position GetItemPosition(T item)
@@ -34,12 +34,12 @@ namespace AutobattlerOld.Grid.Generic
             throw new Exception("The item is not on the grid");
         }
 
-        public Grid<T> GetOppositeGrid(Side side)
+        public Grid<T> GetOppositeGrid(Side ReferenceSide)
         {
-            if (side == Side.LEFT)
-                return leftGrid;
+            if (ReferenceSide == Side.LEFT)
+                return rightGrid;
 
-            return rightGrid;
+            return leftGrid;
         }
     }
 }

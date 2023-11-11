@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using AutobattlerOld.Grid;
 using AutobattlerOld.Grid.Generic;
+using UnityEngine;
 
 namespace AutobattlerOld.Units.Combat
 {
@@ -23,11 +24,8 @@ namespace AutobattlerOld.Units.Combat
             {
                 case TargetTypes.CLOSEST_ENEMY:
 
-                    Grid<Fighter> gridObjetive;
-                    if (ownPos.side == Side.LEFT)
-                        gridObjetive = Battlefield.rightGrid;
-                    else
-                        gridObjetive = Battlefield.leftGrid;
+                    // Grid<Fighter> gridObjective =
+                    //     (ownPos.side == Side.LEFT) ? Battlefield.rightGrid : Battlefield.leftGrid;
 
                     var creature = GetClosestEnemy(ownPos);
                     objetivesBuffer.Add(creature);
@@ -39,43 +37,51 @@ namespace AutobattlerOld.Units.Combat
 
         public static Fighter GetClosestEnemy(Position referencePosition)
         {
-            var oppositeGrid = Battlefield.GetOppositeGrid(referencePosition.side);
+            Grid<Fighter> oppositeGrid = Battlefield.GetOppositeGrid(referencePosition.side);
 
             int[] order = null;
             switch (referencePosition.heigh)
             {
-                case 1:
-                    order = new[] { 1, 2, 3 };
+                case Height.UP:
+                    order = new[] { (int)Height.UP, (int)Height.CENTER, (int)Height.DOWN };
                     break;
 
-                case 2:
-                    order = new[] { 2, 1, 3 };
+                case Height.CENTER:
+                    order = new[] { (int)Height.CENTER, (int)Height.UP, (int)Height.DOWN };
                     break;
 
-                case 3:
-                    order = new[] { 3, 2, 1 };
+                case Height.DOWN:
+                    order = new[] { (int)Height.DOWN, (int)Height.CENTER, (int)Height.UP };
                     break;
+
+                default:
+                    throw new Exception("Incorrect height");
             }
 
-            var unit = SearchUntilGetOne(order, oppositeGrid.front);
-            if (unit == null)
-                unit = SearchUntilGetOne(order, oppositeGrid.back);
+            Fighter fighter =
+                SearchUntilGetOne(order, oppositeGrid.front)
+                ?? SearchUntilGetOne(order, oppositeGrid.back);
 
-            return null;
+            if (fighter == null)
+            {
+                throw new Exception(
+                    "You are looking for a unit but there isn't any. What the hell is happening? "
+                );
+            }
+
+            return fighter;
         }
 
         public static Fighter SearchUntilGetOne(int[] order, IGridSlot<Fighter>[] column)
         {
-            foreach (var i in order)
+            foreach (int i in order)
             {
                 var combatInstance = column[i].GetItem();
                 if (combatInstance != null)
                     return combatInstance;
             }
 
-            throw new Exception(
-                "You are looking for a unit but there isn't any. What the hell is happening?"
-            );
+            return null;
         }
     }
 }

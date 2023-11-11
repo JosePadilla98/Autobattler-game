@@ -1,4 +1,7 @@
-﻿namespace AutobattlerOld.Grid
+﻿using System;
+using JetBrains.Annotations;
+
+namespace AutobattlerOld.Grid
 {
     public enum Column
     {
@@ -15,22 +18,39 @@
 
     public enum Height
     {
-        UP,
-        CENTER,
-        DOWN
+        UP = 0,
+        CENTER = 1,
+        DOWN = 2
     }
 
     public struct Position
     {
-        public int heigh;
+        public Height heigh;
         public Column column;
         public Side side;
 
-        public Position(int heigh, Column column, Side side)
+        public Position(Height heigh, Column column, Side side)
         {
             this.heigh = heigh;
             this.column = column;
             this.side = side;
+        }
+
+        public Position(int heigh, Column column, Side side)
+        {
+            this.heigh = HeightFromNumber(heigh);
+            this.column = column;
+            this.side = side;
+        }
+
+        private static Height HeightFromNumber(int heightNumber)
+        {
+            if (Enum.IsDefined(typeof(Height), heightNumber))
+            {
+                return (Height)heightNumber;
+            }
+
+            throw new Exception("Invalid height");
         }
     }
 }
