@@ -1,9 +1,6 @@
-using System.Data;
 using AutobattlerOld.DragAndDrop;
-using AutobattlerOld.Units;
 using AutobattlerOld.Units.Management;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace AutobattlerOld.InventorySystem
 {

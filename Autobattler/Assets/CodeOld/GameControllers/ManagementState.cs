@@ -1,12 +1,9 @@
 ﻿using System;
-using AutobattlerOld.Grid.Generic;
 using AutobattlerOld.Grid.Logic;
 using AutobattlerOld.InventorySystem;
 using AutobattlerOld.LevelSystem;
 using AutobattlerOld.RunData;
 using AutobattlerOld.ScriptableCollections;
-using AutobattlerOld.Units;
-using AutobattlerOld.Units.Management;
 
 namespace AutobattlerOld.GameControllers
 {

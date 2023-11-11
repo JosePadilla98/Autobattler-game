@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using AutobattlerOld.Grid;
 using AutobattlerOld.LevelSystem;
 using UnityEngine;

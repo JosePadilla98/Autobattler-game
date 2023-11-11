@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using AutobattlerOld.Configs.Color;
 using AutobattlerOld.ExpModule.Stats;
 using AutobattlerOld.Units;

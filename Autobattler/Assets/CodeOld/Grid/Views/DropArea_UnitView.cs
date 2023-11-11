@@ -1,7 +1,6 @@
 using AutobattlerOld.DragAndDrop;
 using AutobattlerOld.Units.Management;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace AutobattlerOld.Grid.Views
 {

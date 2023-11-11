@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AutobattlerOld.Events;
-using AutobattlerOld.Screens;
 using AutobattlerOld.ScriptableCollections;
 using AutobattlerOld.Units.Management;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace AutobattlerOld.UnitsListScreen
 {

@@ -1,5 +1,4 @@
 ﻿using System;
-using AutobattlerOld.Configs;
 using AutobattlerOld.Configs.Color;
 using TMPro;
 using UnityEngine;

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace AutobattlerOld.DragAndDrop
+﻿namespace AutobattlerOld.DragAndDrop
 {
     public static class ObjectBeingDragged
     {

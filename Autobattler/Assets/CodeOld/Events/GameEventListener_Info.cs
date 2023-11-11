@@ -1,6 +1,4 @@
 ﻿using AutobattlerOld.InfoPanel;
-using AutobattlerOld.Units;
-using AutobattlerOld.Units.Management;
 using UnityEngine;
 using UnityEngine.Events;
 

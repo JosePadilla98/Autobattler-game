@@ -1,7 +1,4 @@
-using System;
 using AutobattlerOld.Grid.Logic;
-using AutobattlerOld.ScriptableCollections;
-using AutobattlerOld.Units;
 using AutobattlerOld.Units.Management;
 using UnityEditor;
 using UnityEngine;

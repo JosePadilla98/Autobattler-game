@@ -1,7 +1,5 @@
 ﻿using System;
-using AutobattlerOld.Events;
 using AutobattlerOld.InfoPanel;
-using AutobattlerOld.Units.Management;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;

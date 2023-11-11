@@ -1,9 +1,6 @@
 ﻿using System;
-using AutobattlerOld.GameControllers;
 using AutobattlerOld.Grid;
 using AutobattlerOld.Grid.Logic;
-using AutobattlerOld.ScriptableCollections;
-using AutobattlerOld.Units;
 using AutobattlerOld.Units.Management;
 using UnityEngine;
 

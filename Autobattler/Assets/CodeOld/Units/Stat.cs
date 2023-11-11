@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using AutobattlerOld.Configs.Balance;
 using AutobattlerOld.MutationsSystem.Effects;
 
 namespace AutobattlerOld.Units

@@ -1,5 +1,4 @@
 ﻿using System;
-using AutobattlerOld.Units.Combat;
 using UnityEngine;
 using UnityEngine.Events;
 

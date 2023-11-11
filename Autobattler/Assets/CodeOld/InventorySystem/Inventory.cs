@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutobattlerOld.ScriptableCollections;
-using AutobattlerOld.Units;
 using AutobattlerOld.Units.Management;
 using UnityEngine;
 

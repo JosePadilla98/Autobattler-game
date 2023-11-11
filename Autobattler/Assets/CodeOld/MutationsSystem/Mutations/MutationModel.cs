@@ -1,8 +1,3 @@
-using AutobattlerOld.Configs;
-using AutobattlerOld.Configs.Color;
-using AutobattlerOld.Units;
-using AutobattlerOld.Units.Combat;
-using AutobattlerOld.Units.Management;
 using UnityEngine;
 
 namespace AutobattlerOld.MutationsSystem.Mutations

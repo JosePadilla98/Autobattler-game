@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using AutobattlerOld.InfoPanel;
-using AutobattlerOld.Units;
-using AutobattlerOld.Units.Management;
 using UnityEngine;
 
 namespace AutobattlerOld.Events

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using AutobattlerOld.Grid;
-using AutobattlerOld.MutationsSystem.Mutations;
 using AutobattlerOld.Units.Combat.CombatSystems;
 using AutobattlerOld.Units.Management;
 using UnityEngine;

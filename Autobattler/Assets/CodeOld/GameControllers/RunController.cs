@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Autobattler;
 using AutobattlerOld.Events;
 using AutobattlerOld.GameControllers.Combat;
 using AutobattlerOld.Grid;

@@ -1,5 +1,4 @@
 ﻿using System;
-using AutobattlerOld.Units.Management;
 using UnityEngine;
 
 namespace AutobattlerOld.Units.Combat.View.InfoBars

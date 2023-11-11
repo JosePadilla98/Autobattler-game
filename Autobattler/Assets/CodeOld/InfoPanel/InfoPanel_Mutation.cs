@@ -1,8 +1,6 @@
-using System;
 using AutobattlerOld.MutationsSystem;
 using AutobattlerOld.MutationsSystem.Mutations;
 using AutobattlerOld.UnitsListScreen.MutationsHandler.Slots;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 

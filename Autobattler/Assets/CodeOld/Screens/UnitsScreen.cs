@@ -1,6 +1,4 @@
-﻿using System;
-using AutobattlerOld.Configs;
-using AutobattlerOld.DragAndDrop;
+﻿using AutobattlerOld.DragAndDrop;
 using AutobattlerOld.Events;
 using AutobattlerOld.Units.Management;
 using AutobattlerOld.UnitsListScreen;

@@ -1,5 +1,4 @@
 ﻿using System;
-using AutobattlerOld.Configs.Color;
 
 namespace AutobattlerOld.MutationsSystem.Effects
 {

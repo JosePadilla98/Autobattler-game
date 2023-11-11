@@ -1,6 +1,4 @@
 ﻿using AutobattlerOld.Grid.Generic;
-using AutobattlerOld.ScriptableCollections;
-using AutobattlerOld.Units;
 using AutobattlerOld.Units.Management;
 using UnityEngine;
 

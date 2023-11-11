@@ -1,7 +1,6 @@
 ﻿using System;
 using AutobattlerOld.SelectionsSystem;
 using AutobattlerOld.Units.Management;
-using UnityEngine;
 
 namespace AutobattlerOld.UnitsListScreen
 {

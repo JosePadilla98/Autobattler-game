@@ -1,5 +1,3 @@
-using System;
-
 namespace Autobattler
 {
     public enum StatsNames

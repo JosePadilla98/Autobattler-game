@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using AutobattlerOld.InventorySystem;
-using AutobattlerOld.Units;
 using UnityEngine;
 
 namespace AutobattlerOld.ScriptableCollections

@@ -1,7 +1,5 @@
 ﻿using System;
-using AutobattlerOld.Configs;
 using AutobattlerOld.GameControllers;
-using AutobattlerOld.GameControllers.Combat;
 using AutobattlerOld.Grid.Generic;
 using AutobattlerOld.Units.Combat;
 using UnityEngine;

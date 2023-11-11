@@ -1,7 +1,5 @@
 ﻿using System;
 using AutobattlerOld.Units.Combat;
-using AutobattlerOld.Units.Management;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace AutobattlerOld.MutationsSystem.Mutations

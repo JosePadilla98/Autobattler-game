@@ -1,5 +1,4 @@
 ﻿using System;
-using AutobattlerOld.Configs;
 using AutobattlerOld.DragAndDrop;
 using AutobattlerOld.Events;
 using UnityEngine;

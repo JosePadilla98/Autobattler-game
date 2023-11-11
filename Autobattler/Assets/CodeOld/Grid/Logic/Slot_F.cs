@@ -1,5 +1,4 @@
 ﻿using AutobattlerOld.Grid.Generic;
-using AutobattlerOld.Units;
 using AutobattlerOld.Units.Combat;
 using UnityEngine;
 

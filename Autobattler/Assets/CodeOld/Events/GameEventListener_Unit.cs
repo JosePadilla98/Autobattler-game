@@ -1,5 +1,4 @@
-﻿using AutobattlerOld.Units;
-using AutobattlerOld.Units.Management;
+﻿using AutobattlerOld.Units.Management;
 using UnityEngine;
 using UnityEngine.Events;
 

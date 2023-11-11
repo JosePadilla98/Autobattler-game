@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using AutobattlerOld.ExpModule.Stats;
 using AutobattlerOld.Units.Management;

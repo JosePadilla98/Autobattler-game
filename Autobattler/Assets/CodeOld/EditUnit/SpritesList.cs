@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AutobattlerOld.Screens;
+﻿using System.Collections.Generic;
 using AutobattlerOld.SelectionsSystem;
 using AutobattlerOld.Units.Management;
 using AutobattlerOld.UserData;
