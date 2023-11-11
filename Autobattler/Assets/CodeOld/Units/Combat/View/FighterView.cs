@@ -9,8 +9,10 @@ namespace AutobattlerOld.Units.Combat.View
     public class FighterView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public Image image;
+
         [SerializeField]
         private Transform numberPopupsLocation;
+
         [SerializeField]
         private AnimationsController animationsController;
 
@@ -28,6 +30,7 @@ namespace AutobattlerOld.Units.Combat.View
         {
             this.fighter = fighter;
             image.sprite = fighter.Sprite;
+            infoBars.AttachUnit(fighter);
         }
 
         #region MOUSE_INTERACTIONS
@@ -43,6 +46,5 @@ namespace AutobattlerOld.Units.Combat.View
         }
 
         #endregion
-
     }
 }

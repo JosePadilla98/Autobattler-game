@@ -7,8 +7,10 @@ namespace AutobattlerOld.Units.Combat.View.InfoBars
     {
         [SerializeField]
         private Image fill;
+
         [SerializeField]
         private Gradient gradient;
+
         [SerializeField]
         private Slider slider;
 

@@ -82,7 +82,7 @@ namespace AutobattlerOld.DragAndDrop
             draggable.onDropAction += MyLastItemHasBeenPlacedSomewhere;
             onItemTakenAwayEvent?.Invoke(draggable.item);
 
-            if (App.DebugController.dragAndDrop)
+            if (SingletonMaster.DebugController.dragAndDrop)
                 Debug.Log(draggable.name + " take away from (" + name + ")");
         }
 
@@ -103,7 +103,7 @@ namespace AutobattlerOld.DragAndDrop
             draggable.onDropAction?.Invoke(this, draggableObj);
             onDropEvent?.Invoke(draggable.item);
 
-            if (App.DebugController.dragAndDrop)
+            if (SingletonMaster.DebugController.dragAndDrop)
                 Debug.Log(draggable.name + " dropped in (" + name + ")");
         }
 

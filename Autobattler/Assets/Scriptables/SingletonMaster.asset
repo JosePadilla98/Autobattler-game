@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e2d731a0a69074fbac329da3ce7d52, type: 3}
-  m_Name: Default
+  m_Script: {fileID: 11500000, guid: 870e6dc453534c04488d0004c7dcb389, type: 3}
+  m_Name: SingletonMaster
   m_EditorClassIdentifier: 
-  level: 1
-  mutations: []
-  sprite: {fileID: 21300000, guid: 50ac659bbc09cd144b7d84923568d130, type: 3}
-  buildName: NoName
+  _debugController: {fileID: 0}

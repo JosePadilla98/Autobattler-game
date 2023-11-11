@@ -34,7 +34,7 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
                 OnHitMade?.Invoke();
             }
 
-            if (App.DebugController.combat)
+            if (SingletonMaster.DebugController.combat)
             {
                 Debug.Log(parent.name + " triggers basic attack to " + objetive.name);
             }

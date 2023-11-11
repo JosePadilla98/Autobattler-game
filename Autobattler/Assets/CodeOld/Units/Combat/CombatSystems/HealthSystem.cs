@@ -9,7 +9,7 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
         {
             CurrentHealth -= damage;
 
-            //La representacion deber�a de engancharse a un delegado que se lanza aqu�
+            //La representacion debería de engancharse a un delegado que se lanza aquí
             //NumberPopup.Create(parent.gameObject.numberPopupsLocation, (int)damage, NumberPopupTypes.DAMAGE);
         }
 

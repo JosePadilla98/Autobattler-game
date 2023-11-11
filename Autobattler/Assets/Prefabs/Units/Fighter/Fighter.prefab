@@ -211,7 +211,7 @@ MonoBehaviour:
   numberPopupsLocation: {fileID: 0}
   animationsController: {fileID: 0}
   infoBars:
-    healthBar: {fileID: 0}
+    healthBar: {fileID: 9174109093689926213}
   onPointerEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -366,6 +366,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4644467236362693675, guid: 70f54a28433c5114ba3c07de2f54639f, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4644467236362693677, guid: 70f54a28433c5114ba3c07de2f54639f, type: 3}
       propertyPath: m_SizeDelta.x
       value: 143.57
@@ -408,3 +412,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2447564747152816535, guid: 70f54a28433c5114ba3c07de2f54639f, type: 3}
   m_PrefabInstance: {fileID: 5949229619619631281}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9174109093689926213 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3305381871482352372, guid: 70f54a28433c5114ba3c07de2f54639f, type: 3}
+  m_PrefabInstance: {fileID: 5949229619619631281}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3171a006c41d656459f271b9cd005b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
