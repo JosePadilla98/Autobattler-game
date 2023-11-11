@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870e6dc453534c04488d0004c7dcb389, type: 3}
   m_Name: SingletonMaster
   m_EditorClassIdentifier: 
-  _debugController: {fileID: 0}
+  _debugController: {fileID: 11400000, guid: d8f47b7c938b27445889380e552904f8, type: 2}
+  _combatState: {fileID: 11400000, guid: 5fb778d0c00c2a246bbb6607bbf289ae, type: 2}
