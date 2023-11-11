@@ -19,6 +19,9 @@ namespace AutobattlerOld
         [SerializeField]
         private GridsController<Fighter> battlefield;
 
+        [SerializeField]
+        private SingletonMaster singletonMaster;
+
         private static App instance;
 
         private void Awake()

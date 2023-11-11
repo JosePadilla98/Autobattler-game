@@ -14,5 +14,11 @@ namespace AutobattlerOld
         {
             get { return Instance._debugController; }
         }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void InitializeOnLoat()
+        {
+            Debug.Log("SingletonMaster initialized");
+        }
     }
 }
