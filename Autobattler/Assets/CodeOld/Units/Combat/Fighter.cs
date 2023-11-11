@@ -18,7 +18,7 @@ namespace AutobattlerOld.Units.Combat
         public CombatValues combatValues;
 
         public Team Team => Team.PLAYER;
-        public Position Position => new Position();
+        public Position Position => SingletonMaster.CombatState.battlefield.GetItemPosition(this);
         public String name => unit.name;
 
         public Sprite Sprite => unit.sprite;
