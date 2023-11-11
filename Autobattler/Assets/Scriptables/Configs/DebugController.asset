@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragAndDrop: 0
   unitsGridDebug: 0
+  combat: 1
   inventory:
     elementsHandler: 0
   unitsScreenDebug:

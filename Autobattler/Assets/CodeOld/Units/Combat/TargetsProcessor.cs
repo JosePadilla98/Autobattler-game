@@ -41,7 +41,6 @@ namespace AutobattlerOld.Units.Combat
         {
             var oppositeGrid = Battlefield.GetOppositeGrid(referencePosition.side);
 
-            //InitialValues the closest heigh
             int[] order = null;
             switch (referencePosition.heigh)
             {
@@ -70,10 +69,13 @@ namespace AutobattlerOld.Units.Combat
             foreach (var i in order)
             {
                 var combatInstance = column[i].GetItem();
-                if (combatInstance != null) return combatInstance;
+                if (combatInstance != null)
+                    return combatInstance;
             }
 
-            throw new Exception("You are looking for a unit but there isn't any. What the hell is happening?");
+            throw new Exception(
+                "You are looking for a unit but there isn't any. What the hell is happening?"
+            );
         }
     }
 }

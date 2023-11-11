@@ -13,6 +13,13 @@
         RIGHT
     }
 
+    public enum Height
+    {
+        UP,
+        CENTER,
+        DOWN
+    }
+
     public struct Position
     {
         public int heigh;
