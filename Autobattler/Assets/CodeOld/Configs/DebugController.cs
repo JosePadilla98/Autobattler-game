@@ -11,6 +11,7 @@ namespace AutobattlerOld
     {
         public bool dragAndDrop;
         public bool unitsGridDebug;
+        public bool combat;
         public InventoryDebug inventory;
         public UnitsScreenDebug unitsScreenDebug;
 

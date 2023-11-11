@@ -1,17 +1,19 @@
 using System;
 using AutobattlerOld.Configs.Balance;
+using UnityEngine;
 
 namespace AutobattlerOld.Units.Combat.CombatSystems
 {
     public class BasicAttackSystem : CombatSystem
     {
-        public Action OnAttackCasted;
+        public Action OnAttackLaunched;
         public Action OnHitMade;
 
         public BasicAttackSystem(Fighter parent)
             : base(parent) { }
 
         public StatsContainer StatsContainer => parent.StatsContainer;
+        private CombatValue AttackProgress => parent.combatValues.basicAttackProgress;
 
         /// <summary>
         /// Returns fighter who has been attacked
@@ -19,15 +21,20 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
         /// <param name="attack"></param>
         public Fighter LaunchSimpleAttack(AttackData attack)
         {
-            var damagePower =
-                attack.power
+            if (SingletonMaster.DebugController.combat)
+            {
+                Debug.Log(parent.name + "triggers basic attack");
+            }
+
+            var attackPower =
+                attack.percentage
                 * StatsContainer.GetStatValue(attack.statUsed)
                 * BalanceConstants.DAMAGE_MULTIPLIER;
 
             Fighter objetive = TargetsProcessor.GetClosestEnemy(parent.Position);
 
-            OnAttackCasted?.Invoke();
-            if (objetive.ReceiveAttack(new DamageData(damagePower)))
+            OnAttackLaunched?.Invoke();
+            if (objetive.ReceiveAttack(new DamageData(attackPower)))
             {
                 OnHitMade?.Invoke();
             }
@@ -35,6 +42,14 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
             return objetive;
         }
 
-        public void Refresh() { }
+        public void Refresh()
+        {
+            AttackProgress.Value += StatsContainer.GetStatValue(StatsNames.ATTACK_SPEED);
+            if (AttackProgress.Value > BalanceConstants.BASIC_ATTACK_PROGRESS_TO_BE_TRIGGERED)
+            {
+                AttackProgress.Value -= BalanceConstants.BASIC_ATTACK_PROGRESS_TO_BE_TRIGGERED;
+                LaunchSimpleAttack(new AttackData(1f, StatsNames.STRENGTH));
+            }
+        }
     }
 }

@@ -4,12 +4,12 @@ namespace AutobattlerOld
 {
     public struct AttackData
     {
-        public float power;
+        public float percentage;
         public StatsNames statUsed;
 
-        public AttackData(float scaleFactor, StatsNames statScaler)
+        public AttackData(float percentage, StatsNames statScaler)
         {
-            this.power = scaleFactor;
+            this.percentage = percentage;
             this.statUsed = statScaler;
         }
     }

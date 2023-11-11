@@ -24,9 +24,7 @@ namespace AutobattlerOld.GameControllers.Combat
         {
             while (true)
             {
-                Debug.Log("Código ejecutado cada segundo");
-
-                // teamsController.Refresh();
+                teamsController.Refresh();
                 yield return new WaitForSeconds(1f);
             }
         }

@@ -26,6 +26,7 @@ namespace AutobattlerOld.Units.Combat
         public Fighter(Unit unit)
         {
             this.unit = unit;
+            combatValues = new CombatValues(unit);
             CreateSystems();
         }
 

@@ -36,12 +36,12 @@ namespace AutobattlerOld.Units.Combat.View
         public void AttachUnit(Fighter unit)
         {
             attachedFighter = unit;
-            unit.basicAttackSys.OnAttackCasted += AttackAnimation;
+            unit.basicAttackSys.OnAttackLaunched += AttackAnimation;
         }
 
         public void UnnatachUnit()
         {
-            attachedFighter.basicAttackSys.OnAttackCasted -= AttackAnimation;
+            attachedFighter.basicAttackSys.OnAttackLaunched -= AttackAnimation;
             attachedFighter = null;
         }
 
