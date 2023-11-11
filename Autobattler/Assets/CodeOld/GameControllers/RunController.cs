@@ -19,8 +19,6 @@ namespace AutobattlerOld.GameControllers
         public CombatState combatState;
         public GameEvent combatStarted;
 
-        private bool combatIsRunning;
-
         public void Init()
         {
             RandomController.Init();
@@ -32,13 +30,6 @@ namespace AutobattlerOld.GameControllers
             PassManagementDataToCombatState();
             combatState.Init();
             combatStarted.Raise();
-            combatIsRunning = true;
-        }
-
-        public void Refresh()
-        {
-            if (combatIsRunning)
-                combatState.Refresh();
         }
 
         public void PassManagementDataToCombatState()

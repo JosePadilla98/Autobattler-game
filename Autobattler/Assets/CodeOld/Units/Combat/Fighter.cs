@@ -31,13 +31,27 @@ namespace AutobattlerOld.Units.Combat
 
         public StatsContainer StatsContainer => unit.statsContainer;
 
-        public void Refresh() { }
+        public void Refresh()
+        {
+            basicAttackSys.Refresh();
+        }
+
+        /// <summary>
+        /// Returns true if the attack is successfully made
+        /// </summary>
+        /// <param name="damageData"></param>
+        /// <returns></returns>
+        public bool ReceiveAttack(DamageData damageData)
+        {
+            defenseSys.ReceiveAttack(damageData);
+            return true;
+        }
 
         #region SYSTEMS
 
         public HealthSystem healthSys;
-        public BasicAttackSystem basicAttackSys;
         public DefenseSystem defenseSys;
+        public BasicAttackSystem basicAttackSys;
 
         private void CreateSystems()
         {
@@ -52,12 +66,13 @@ namespace AutobattlerOld.Units.Combat
     public class CombatValues
     {
         public CombatValue currentHealth;
-        public CombatValue currentMana;
-        public CombatValue currentVigor;
+
+        public CombatValue basicAttackProgress;
 
         public CombatValues(Unit build)
         {
             currentHealth = new CombatValue(build.statsContainer.GetStatValue(StatsNames.HEALTH));
+            basicAttackProgress = new CombatValue(0f);
         }
     }
 

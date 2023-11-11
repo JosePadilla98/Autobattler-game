@@ -34,10 +34,5 @@ namespace AutobattlerOld
         {
             runController.Init();
         }
-
-        public void FixedUpdate()
-        {
-            runController.Refresh();
-        }
     }
 }

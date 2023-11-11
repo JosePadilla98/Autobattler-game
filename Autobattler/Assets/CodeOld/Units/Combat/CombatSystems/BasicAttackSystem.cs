@@ -19,17 +19,22 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
         /// <param name="attack"></param>
         public Fighter LaunchSimpleAttack(AttackData attack)
         {
-            var value =
+            var damagePower =
                 attack.power
                 * StatsContainer.GetStatValue(attack.statUsed)
                 * BalanceConstants.DAMAGE_MULTIPLIER;
-            Fighter objetive = TargetsProcessor.GetClosestEnemy(parent.Position);
-            objetive.defenseSys.BeAttacked(new DamageData(value));
 
-            OnHitMade?.Invoke();
+            Fighter objetive = TargetsProcessor.GetClosestEnemy(parent.Position);
+
             OnAttackCasted?.Invoke();
+            if (objetive.ReceiveAttack(new DamageData(damagePower)))
+            {
+                OnHitMade?.Invoke();
+            }
 
             return objetive;
         }
+
+        public void Refresh() { }
     }
 }

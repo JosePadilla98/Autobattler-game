@@ -15,8 +15,10 @@ namespace AutobattlerOld.Screens
         [Header("Events")]
         [SerializeField]
         private GameEvent openInventory;
+
         [SerializeField]
         private GameEvent_Generic openInfoUnitsScreenInfo;
+
         [SerializeField]
         private GameEvent comeBackHere;
 
@@ -30,7 +32,6 @@ namespace AutobattlerOld.Screens
         public void InitCombat()
         {
             gameObject.SetActive(false);
-            runController.InitCombat();
         }
 
         #region INPUT
