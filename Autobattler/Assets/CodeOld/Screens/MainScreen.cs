@@ -29,11 +29,6 @@ namespace AutobattlerOld.Screens
             comeBackHereAction = () => comeBackHere.Raise();
         }
 
-        public void InitCombat()
-        {
-            gameObject.SetActive(false);
-        }
-
         #region INPUT
 
         public void Input_GoToInventory(InputAction.CallbackContext context)

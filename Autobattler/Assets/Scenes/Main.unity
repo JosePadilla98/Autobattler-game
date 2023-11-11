@@ -5323,7 +5323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &586630510
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9045,7 +9045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runController: {fileID: 11400000, guid: 0781be15a2bf6ff48b114e6dcf0b20b7, type: 2}
   battlefield: {fileID: 11400000, guid: 813fbc114f8afdc4b937bac7494e35d1, type: 2}
-  singletonMaster: {fileID: 11400000, guid: 633992c7ebd8aea40a2befc4754361fb, type: 2}
+  singletonMaster: {fileID: 0}
 --- !u!1 &1127185412
 GameObject:
   m_ObjectHideFlags: 0
