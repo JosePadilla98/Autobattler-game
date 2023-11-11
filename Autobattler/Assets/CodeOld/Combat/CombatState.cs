@@ -1,4 +1,5 @@
-﻿using AutobattlerOld.Events;
+﻿using System.Collections;
+using AutobattlerOld.Events;
 using AutobattlerOld.Grid.Logic;
 using UnityEngine;
 
@@ -14,11 +15,20 @@ namespace AutobattlerOld.GameControllers.Combat
         public Battlefield_F battlefield;
         public FighterTeamsController teamsController;
 
-        public void Init() { }
-
-        public void Refresh()
+        public void Init()
         {
-            teamsController.Refresh();
+            App.instance.StartCoroutine(BattleLoop());
+        }
+
+        IEnumerator BattleLoop()
+        {
+            while (true)
+            {
+                Debug.Log("Código ejecutado cada segundo");
+
+                // teamsController.Refresh();
+                yield return new WaitForSeconds(1f);
+            }
         }
     }
 }

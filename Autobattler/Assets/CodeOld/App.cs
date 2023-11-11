@@ -20,7 +20,7 @@ namespace AutobattlerOld
         [SerializeField]
         private SingletonMaster singletonMaster;
 
-        private static App instance;
+        public static App instance;
 
         private void Awake()
         {
