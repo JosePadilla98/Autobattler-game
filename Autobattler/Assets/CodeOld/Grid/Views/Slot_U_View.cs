@@ -39,7 +39,7 @@ namespace AutobattlerOld.Grid.Views
             logic.UnnatachItem();
             playerUnitsInGrid.Collection.Remove(unitView.unit);
 
-            if (SingletonMaster.DebugController.unitsGridDebug)
+            if (App.DebugController.unitsGridDebug)
                 Debug.Log(unitView.unit.name + " unattached in grid");
         }
 
@@ -50,7 +50,7 @@ namespace AutobattlerOld.Grid.Views
             logic.AttachItem(unitView.unit);
             playerUnitsInGrid.Collection.Add(unitView.unit);
 
-            if (SingletonMaster.DebugController.unitsGridDebug)
+            if (App.DebugController.unitsGridDebug)
                 Debug.Log(unitView.unit.name + " attached in grid");
         }
 

@@ -11,6 +11,9 @@ namespace AutobattlerOld
         public static GridsController<Fighter> Battlefield =>
             instance != null ? instance.battlefield : null;
 
+        public static DebugController DebugController =>
+            instance != null ? instance.debugController : null;
+
         [SerializeField]
         private RunController runController;
 
@@ -18,7 +21,7 @@ namespace AutobattlerOld
         private GridsController<Fighter> battlefield;
 
         [SerializeField]
-        private SingletonMaster singletonMaster;
+        private DebugController debugController;
 
         public static App instance;
 

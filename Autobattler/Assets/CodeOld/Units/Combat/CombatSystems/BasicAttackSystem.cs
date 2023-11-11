@@ -21,7 +21,7 @@ namespace AutobattlerOld.Units.Combat.CombatSystems
         /// <param name="attack"></param>
         public Fighter LaunchSimpleAttack(AttackData attack)
         {
-            if (SingletonMaster.DebugController.combat)
+            if (App.DebugController.combat)
             {
                 Debug.Log(parent.name + "triggers basic attack");
             }

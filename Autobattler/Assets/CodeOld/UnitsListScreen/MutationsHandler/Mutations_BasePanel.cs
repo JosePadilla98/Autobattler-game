@@ -109,7 +109,7 @@ namespace AutobattlerOld.UnitsListScreen.MutationsHandler
             CheckIfAddNewSlot();
             SaveChanges();
 
-            if (SingletonMaster.DebugController.unitsScreenDebug.mutationsHandler)
+            if (App.DebugController.unitsScreenDebug.mutationsHandler)
                 Debug.Log(mutation.Name + " attached in " + gameObject.name);
         }
 
@@ -124,7 +124,7 @@ namespace AutobattlerOld.UnitsListScreen.MutationsHandler
             RemoveEmptySlot();
             SaveChanges();
 
-            if (SingletonMaster.DebugController.unitsScreenDebug.mutationsHandler)
+            if (App.DebugController.unitsScreenDebug.mutationsHandler)
             {
                 Debug.Log(mutation.Name + " unattached in in " + gameObject.name);
             }

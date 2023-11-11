@@ -41,7 +41,7 @@ namespace AutobattlerOld.InventorySystem
             unitsInBench.Collection.Add(unit);
             CheckIfAddNewSlot();
 
-            if (SingletonMaster.DebugController.inventory.elementsHandler)
+            if (App.DebugController.inventory.elementsHandler)
                 Debug.Log(unit.name + " attached in inventory");
         }
 
@@ -50,7 +50,7 @@ namespace AutobattlerOld.InventorySystem
             unitsInBench.Collection.Remove(unit);
             RemoveEmptySlot();
 
-            if (SingletonMaster.DebugController.inventory.elementsHandler)
+            if (App.DebugController.inventory.elementsHandler)
                 Debug.Log(unit.name + " unattached in inventory");
         }
 
@@ -61,7 +61,7 @@ namespace AutobattlerOld.InventorySystem
             items.Collection.Remove(item);
             RemoveEmptySlot();
 
-            if (SingletonMaster.DebugController.inventory.elementsHandler)
+            if (App.DebugController.inventory.elementsHandler)
                 Debug.Log(item.Scriptable.name + " unattached in inventory");
         }
 
