@@ -36,16 +36,14 @@ namespace AutobattlerOld.Units.Combat
         #region SYSTEMS
 
         public HealthSystem healthSys;
-        public AttackSystem attackSys;
+        public BasicAttackSystem basicAttackSys;
         public DefenseSystem defenseSys;
-        public EnergySystem energySys;
 
         private void CreateSystems()
         {
             healthSys = new HealthSystem(this);
-            attackSys = new AttackSystem(this);
+            basicAttackSys = new BasicAttackSystem(this);
             defenseSys = new DefenseSystem(this);
-            energySys = new EnergySystem(this);
         }
 
         #endregion
