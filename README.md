@@ -1,2 +1,2 @@
 # Autobattler-game
-Project in progress
+Project cancelled. Will be done on the web with React
